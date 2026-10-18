@@ -1,0 +1,6 @@
+interface:
+  display_name: "Acquire and Preserve Records"
+  short_description: "Acquire and Preserve Records workflows and evidence checks"
+  default_prompt: "Use $genealogy-record-acquisition for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

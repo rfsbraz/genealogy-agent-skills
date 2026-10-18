@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "code": "US",
+  "name": "United States",
+  "native_name": "United States",
+  "aliases": [
+    "USA",
+    "US",
+    "United States",
+    "United States of America"
+  ],
+  "languages": [
+    "en"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "county clerk",
+    "state archives",
+    "vital records",
+    "probate court",
+    "county history"
+  ],
+  "first_steps": [
+    "Resolve the state, county and local jurisdiction for the event date.",
+    "Use state/county custodians for local vital, probate and land records.",
+    "Use NARA for relevant federal records and research guidance."
+  ],
+  "jurisdiction_questions": [
+    "Was this place in a different county, territory or jurisdiction?",
+    "Which religious, tribal or community institution generated the relevant record? Identify this from evidence."
+  ],
+  "query_templates": [
+    "{place} {region} county clerk archives vital records {period}",
+    "{place} probate land records archive {period}"
+  ],
+  "sources": [
+    {
+      "id": "US-NARA",
+      "name": "National Archives - genealogy",
+      "kind": "guide",
+      "url": "https://www.archives.gov/research/genealogy",
+      "purpose": "Find federal genealogical sources and research guidance.",
+      "record_families": [
+        "household",
+        "migration",
+        "military",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.archives.gov/research/genealogy",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "US-LOCAL",
+      "name": "National Archives - local record guidance",
+      "kind": "guide",
+      "url": "https://www.archives.gov/research/genealogy/start-research/faqs",
+      "purpose": "Identify why state and county agencies are needed for many vital records.",
+      "record_families": [
+        "civil",
+        "legal"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.archives.gov/research/genealogy/start-research/faqs",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

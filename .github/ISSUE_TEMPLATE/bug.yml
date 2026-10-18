@@ -1,0 +1,34 @@
+name: Bug
+description: A helper script, the installer or a check does something wrong.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Use made-up names, dates, places and record references only. Do not paste real family or case data.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the exact command and the full error or output.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How can we reproduce it?
+      description: Steps and a small made-up input file if one is needed.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Version and environment
+      description: Skills version or commit, operating system, Python version, and the agent host if relevant.
+    validations:
+      required: true

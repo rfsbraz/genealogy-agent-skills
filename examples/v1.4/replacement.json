@@ -1,0 +1,12 @@
+{
+  "id": "O2",
+  "source_id": "S1",
+  "citation_id": "C1",
+  "locator": "p. 1, entry 4",
+  "statement": "The fixture reread gives age 28.",
+  "uncertainty": "Fixture text is supplied; no image reading tested.",
+  "subject_id": "M1",
+  "predicate": "reported_age",
+  "value": 28,
+  "processing_run_id": "RUN-SYNTHETIC-NEW"
+}

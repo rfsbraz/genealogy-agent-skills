@@ -1,0 +1,175 @@
+{
+  "id": "TURN-001",
+  "speaker": "User (synthetic interview participant; name not supplied)",
+  "recorded_at": "2026-10-17T04:14:34.234056+00:00",
+  "question": "",
+  "answer": "Interview me to start my family tree. Start with my grandmother Ada Vale, born around 1910 or 1912; I don’t know where. She lived in Vale da Serra. Her brother was Leo, who may have been adopted by another family. Her husband was Rui; after his death she married someone called Manuel. I'd like to find Ada’s parents.",
+  "people": [
+    {
+      "id": "P-USER",
+      "label": "Interview participant",
+      "literal": "my grandmother Ada Vale"
+    },
+    {
+      "id": "P-ADA",
+      "label": "Ada Vale",
+      "literal": "my grandmother Ada Vale"
+    },
+    {
+      "id": "P-LEO",
+      "label": "Leo (Ada’s reported brother)",
+      "literal": "Her brother was Leo"
+    },
+    {
+      "id": "P-RUI",
+      "label": "Rui (Ada’s reported husband)",
+      "literal": "Her husband was Rui"
+    },
+    {
+      "id": "P-MANUEL",
+      "label": "Manuel (Ada’s reported later husband)",
+      "literal": "she married someone called Manuel"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "OBS-ADA-NAME",
+      "subject_id": "P-ADA",
+      "statement": "The user identifies their grandmother as Ada Vale.",
+      "predicate": "reported_name",
+      "value": "Ada Vale",
+      "uncertainty": "Whether Vale was a birth surname, married surname or another form is unspecified.",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-GRANDMOTHER",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Ada Vale as their grandmother.",
+      "predicate": "grandparent_unspecified",
+      "value": {
+        "literal": "my grandmother",
+        "kind": "unspecified",
+        "intermediate_parent": "not supplied"
+      },
+      "uncertainty": "Biological, adoptive, step or other basis of the grandparent relationship has not been specified.",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-USER"
+    },
+    {
+      "id": "OBS-ADA-BIRTH",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Ada Vale was born around 1910 or 1912.",
+      "predicate": "birth_date",
+      "value": {
+        "literal": "born around 1910 or 1912",
+        "kind": "alternative_approximate_years",
+        "alternatives": [
+          {
+            "year": 1910,
+            "kind": "approximate_year"
+          },
+          {
+            "year": 1912,
+            "kind": "approximate_year"
+          }
+        ]
+      },
+      "uncertainty": "Both approximate alternatives retained; no midpoint, exact date or exclusive range inferred. User explicitly does not know the birthplace.",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-RESIDENCE",
+      "subject_id": "P-ADA",
+      "statement": "The user reports that Ada lived in Vale da Serra.",
+      "predicate": "residence",
+      "value": {
+        "literal": "Vale da Serra",
+        "kind": "unresolved_place_label",
+        "normalized": null,
+        "candidate_identities": [],
+        "time_period": null
+      },
+      "uncertainty": "Country, jurisdiction, precise locality and period of residence are unspecified. This is a residence report, not a birthplace statement.",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-LEO-SIBLING",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Leo as Ada’s brother.",
+      "predicate": "sibling_unspecified",
+      "value": {
+        "literal": "Her brother was Leo",
+        "kind": "unspecified"
+      },
+      "uncertainty": "Biological, adoptive, step, half-sibling or other basis is unspecified; no common parent identity established.",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-LEO"
+    },
+    {
+      "id": "OBS-LEO-ADOPTION",
+      "subject_id": "P-LEO",
+      "statement": "The user reports that Leo may have been adopted by another family.",
+      "predicate": "possible_adoption",
+      "value": {
+        "literal": "may have been adopted by another family",
+        "adopting_family_identity": null,
+        "date": null,
+        "place": null
+      },
+      "uncertainty": "Adoption is uncertain. No adoptive parent, adoption event, legal status or effect on sibling relationship is established.",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-RUI-SPOUSE",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Rui as Ada’s husband.",
+      "predicate": "spouse",
+      "value": {
+        "literal": "Her husband was Rui",
+        "date": null,
+        "place": null
+      },
+      "uncertainty": "Name is partial and the marriage date and place are unspecified; reported marriage remains unverified.",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-RUI"
+    },
+    {
+      "id": "OBS-RUI-DEATH",
+      "subject_id": "P-RUI",
+      "statement": "The user reports Rui died before Ada married Manuel.",
+      "predicate": "death_date",
+      "value": {
+        "literal": "after his death she married someone called Manuel",
+        "kind": "relative_date",
+        "relative_to": "Ada’s reported marriage to Manuel",
+        "relation": "before"
+      },
+      "uncertainty": "No date or place of death supplied. The statement establishes only reported event order.",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-MANUEL-SPOUSE",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Ada married someone called Manuel after Rui’s death.",
+      "predicate": "spouse",
+      "value": {
+        "literal": "after his death she married someone called Manuel",
+        "date": {
+          "literal": "after his death",
+          "kind": "relative_date",
+          "relative_to_person_id": "P-RUI",
+          "relative_to_event": "death",
+          "relation": "after"
+        },
+        "place": null
+      },
+      "uncertainty": "Manuel is a partial reported name. Marriage date and place are unspecified; reported sequence remains unverified.",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-MANUEL"
+    }
+  ],
+  "action": "continue",
+  "next_action": "Ask which country or nearby town identifies the Vale da Serra where Ada lived; preserve the unknown birthplace and both approximate birth-year alternatives.",
+  "pending_question": "Which country or nearby town was the Vale da Serra where Ada lived?",
+  "focus_person_id": "P-ADA"
+}

@@ -1,0 +1,146 @@
+{
+  "case_id": "CASE-2d3036a50c7d",
+  "question_ids": [
+    "Q-1"
+  ],
+  "skill": "genealogy-interview",
+  "status": "partial",
+  "artifact_paths": [
+    "case.json",
+    "turn-001.json",
+    "next-response.txt"
+  ],
+  "source_ids": [
+    "SRC-3f3019f3eb17"
+  ],
+  "citation_ids": [
+    "CIT-fd9f1934e655"
+  ],
+  "observation_ids": [
+    "OBS-ADA-NAME",
+    "OBS-ADA-GRANDMOTHER",
+    "OBS-ADA-BIRTH",
+    "OBS-ADA-RESIDENCE",
+    "OBS-ADA-LEO-SIBLING",
+    "OBS-LEO-ADOPTION",
+    "OBS-ADA-RUI-SPOUSE",
+    "OBS-RUI-DEATH",
+    "OBS-ADA-MANUEL-SPOUSE"
+  ],
+  "conclusion_ids": [
+    "CON-83975ffee022",
+    "CON-9e9b87dde3bb",
+    "CON-3fc8580102d2",
+    "CON-de8b267c5c06",
+    "CON-ed1b4dee5cd4",
+    "CON-1b9850d20f14",
+    "CON-23032c8bcbc0",
+    "CON-963da96f5ebd",
+    "CON-dc9ff77a6649"
+  ],
+  "findings": [
+    {
+      "status": "provisional",
+      "text": "Ada Vale is the user’s reported grandmother; the intervening parent and relationship kind are unspecified.",
+      "observation_ids": [
+        "OBS-ADA-GRANDMOTHER"
+      ]
+    },
+    {
+      "status": "provisional",
+      "text": "Ada is reported born around 1910 or around 1912, with birthplace explicitly unknown.",
+      "observation_ids": [
+        "OBS-ADA-BIRTH"
+      ]
+    },
+    {
+      "status": "provisional",
+      "text": "Vale da Serra is a reported place of residence; country, jurisdiction, identity and period remain unresolved.",
+      "observation_ids": [
+        "OBS-ADA-RESIDENCE"
+      ]
+    },
+    {
+      "status": "provisional",
+      "text": "Leo is a reported brother, relationship kind unspecified; adoption by another family is only a possibility.",
+      "observation_ids": [
+        "OBS-ADA-LEO-SIBLING",
+        "OBS-LEO-ADOPTION"
+      ]
+    },
+    {
+      "status": "provisional",
+      "text": "Ada reportedly had husband Rui, who died before her marriage to Manuel. Neither marriage date nor location is known.",
+      "observation_ids": [
+        "OBS-ADA-RUI-SPOUSE",
+        "OBS-RUI-DEATH",
+        "OBS-ADA-MANUEL-SPOUSE"
+      ]
+    }
+  ],
+  "current_family_view": [
+    "User → reported grandmother Ada Vale (grandparent type unspecified; intervening parent not supplied)",
+    "Ada Vale ↔ reported brother Leo (sibling type unspecified; possible adoption unconfirmed)",
+    "Ada Vale ↔ reported husband Rui (reported deceased before the later marriage)",
+    "Ada Vale ↔ reported later husband Manuel",
+    "Ada’s parents: unknown; no parent candidates invented"
+  ],
+  "uncertainties": [
+    "No records have been inspected; all claims derive from one user-supplied testimony source and remain provisional.",
+    "The source of the user’s knowledge was not supplied; knowledge_basis remains unspecified.",
+    "Birthplace is explicitly unknown; do not ask for it again as the immediate next question.",
+    "Both approximate birth-year alternatives are retained without a midpoint or an exact interval.",
+    "Vale da Serra must be disambiguated without inferring country from its wording or any surname.",
+    "Whether Vale is Ada’s birth surname is unknown.",
+    "Leo’s adoption, adopting family, date and place are unknown; no adoption relationship has been created.",
+    "Rui and Manuel have partial names; the marriage and death dates/locations remain unknown.",
+    "The user’s route of descent from Ada is not yet supplied."
+  ],
+  "actions_performed": [
+    "Created a private seed case using the local interview helper.",
+    "Saved the supplied user request verbatim as TURN-001 with actual recording timestamp and no invented prior question.",
+    "Applied TURN-001 with expected revision 0; case is now revision 1.",
+    "Created 5 provisional person candidates, 9 cited observations and provisional conclusions, and 4 provisional typed relationships.",
+    "Validated the saved case with the local validator and --gps; validation passed.",
+    "Saved the exact pending question and next action for resumption."
+  ],
+  "next_actions": [
+    {
+      "rank": 1,
+      "action": "Ask which country or nearby town identifies Vale da Serra.",
+      "reason": "This narrows the jurisdiction without mistaking residence for birthplace.",
+      "status": "pending"
+    },
+    {
+      "rank": 2,
+      "action": "If locality remains unknown, ask for a record or photograph connected with Ada.",
+      "reason": "An available item may provide a precise place, surname or event; no such document has yet been mentioned.",
+      "status": "conditional"
+    },
+    {
+      "rank": 3,
+      "action": "When the interview supplies a usable anchor and research is requested, hand the saved case to case-intake, locality/origin discovery and research-planner.",
+      "reason": "Plan a focused search for Ada’s parents using the saved testimony and explicit uncertainty.",
+      "status": "not_attempted"
+    }
+  ],
+  "pending_question": "Which country or nearby town was the Vale da Serra where Ada lived?",
+  "active_research_question": "Who were the parents of Ada Vale, reported born around 1910 or 1912 and resident in Vale da Serra?",
+  "blockers": [],
+  "inspected_artifacts": [],
+  "uninspected_document_leads": [],
+  "coverage": {
+    "interview_turn_ids": [
+      "TURN-001"
+    ],
+    "external_research": "not_attempted",
+    "external_contact": "not_attempted"
+  },
+  "authority": {
+    "scope": "Synthetic interview starting state; local saves only within the assigned output directory.",
+    "external_research": false,
+    "contact": false,
+    "public_sharing": false,
+    "paid_orders": false
+  }
+}

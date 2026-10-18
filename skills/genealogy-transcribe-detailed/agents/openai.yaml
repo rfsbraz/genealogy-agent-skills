@@ -1,0 +1,6 @@
+interface:
+  display_name: "Detailed Document Reading"
+  short_description: "Read selected pages with full evidence controls"
+  default_prompt: "Use $genealogy-transcribe-detailed to process the supplied genealogy documents."
+policy:
+  allow_implicit_invocation: false

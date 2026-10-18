@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "decision": "not_ready",
+  "evidence_digest": "not-yet-reviewed",
+  "reviewer": {
+    "id": "not-assigned",
+    "kind": "self_review"
+  },
+  "reviewed_on": "2026-10-17",
+  "research": {
+    "status": "open",
+    "summary": "Research scope has not been reviewed.",
+    "search_ids": [],
+    "coverage": [],
+    "remaining_gaps": []
+  },
+  "citations": {
+    "status": "open",
+    "summary": "Citations have not been checked against consulted sources.",
+    "citation_ids": []
+  },
+  "analysis": {
+    "status": "open",
+    "summary": "Evidence and alternatives have not been correlated.",
+    "observation_ids": [],
+    "hypothesis_ids": [],
+    "source_assessments": [],
+    "information_assessments": []
+  },
+  "conflicts": {
+    "status": "open",
+    "summary": "Contradictions have not been reviewed.",
+    "items": []
+  },
+  "writing": {
+    "status": "open",
+    "summary": "Argument has not been written.",
+    "form": "summary",
+    "text": "No conclusion yet.",
+    "reopen_when": "New evidence or a corrected reading."
+  }
+}

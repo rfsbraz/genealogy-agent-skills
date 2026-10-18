@@ -1,0 +1,13 @@
+flowchart TD
+    A["Question, new evidence or scheduled job"] --> B["Orchestrator: load case and prior work"]
+    B --> C["Choose the next useful action"]
+    C --> D["Discover sources and acquire records"]
+    C --> E["Process existing documents"]
+    D --> F["Extract evidence and resolve identities"]
+    E --> F
+    F --> G{"Evidence assessment"}
+    G -->|Supported| H["Review and update private research"]
+    G -->|More evidence| C
+    G -->|Blocked or no budget| I["Checkpoint and resume condition"]
+    H --> J["Generate approved outputs"]
+    I -->|Reply, source or capacity| B

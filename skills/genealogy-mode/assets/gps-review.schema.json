@@ -1,0 +1,424 @@
+{
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "decision": {
+      "enum": [
+        "ready",
+        "not_ready"
+      ]
+    },
+    "evidence_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "human",
+            "agent",
+            "self_review"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "reviewed_on": {
+      "type": "string",
+      "minLength": 1
+    },
+    "research": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "met",
+            "open"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "search_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "coverage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "record_family": {
+                "type": "string",
+                "minLength": 1
+              },
+              "jurisdiction": {
+                "type": "string",
+                "minLength": 1
+              },
+              "period": {
+                "type": "string",
+                "minLength": 1
+              },
+              "disposition": {
+                "enum": [
+                  "searched",
+                  "pending",
+                  "unavailable",
+                  "destroyed",
+                  "not_relevant"
+                ]
+              },
+              "material": {
+                "type": "boolean"
+              },
+              "search_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "record_family",
+              "jurisdiction",
+              "period",
+              "disposition",
+              "material",
+              "search_ids",
+              "rationale"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "remaining_gaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "material": {
+                "type": "boolean"
+              },
+              "next_action": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "description",
+              "material",
+              "next_action"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "search_ids",
+        "coverage",
+        "remaining_gaps"
+      ],
+      "additionalProperties": false
+    },
+    "citations": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "met",
+            "open"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "citation_ids"
+      ],
+      "additionalProperties": false
+    },
+    "analysis": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "met",
+            "open"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "hypothesis_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_assessments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "form": {
+                "enum": [
+                  "original",
+                  "derivative",
+                  "authored",
+                  "undetermined"
+                ]
+              },
+              "informant_assessment": {
+                "type": "string",
+                "minLength": 1
+              },
+              "independence_group": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "source_id",
+              "form",
+              "informant_assessment",
+              "independence_group",
+              "rationale"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "information_assessments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "observation_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "information_quality": {
+                "enum": [
+                  "primary",
+                  "secondary",
+                  "undetermined"
+                ]
+              },
+              "evidence_relevance": {
+                "enum": [
+                  "direct",
+                  "indirect",
+                  "negative"
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              },
+              "absence_basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "observation_id",
+              "information_quality",
+              "evidence_relevance",
+              "rationale"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "observation_ids",
+        "hypothesis_ids",
+        "source_assessments",
+        "information_assessments"
+      ],
+      "additionalProperties": false
+    },
+    "conflicts": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "met",
+            "open"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observation_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "material": {
+                "type": "boolean"
+              },
+              "status": {
+                "enum": [
+                  "open",
+                  "resolved"
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "description",
+              "observation_ids",
+              "material",
+              "status",
+              "rationale"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "writing": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "met",
+            "open"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "form": {
+          "enum": [
+            "statement",
+            "summary",
+            "argument"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reopen_when": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "form",
+        "text",
+        "reopen_when"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "decision",
+    "evidence_digest",
+    "reviewer",
+    "reviewed_on",
+    "research",
+    "citations",
+    "analysis",
+    "conflicts",
+    "writing"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:genealogy-agent-skills:gps-review:1.0",
+  "title": "GPS review record: documented assessment, not certification"
+}

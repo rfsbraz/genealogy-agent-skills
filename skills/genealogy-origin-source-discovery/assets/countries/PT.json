@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "code": "PT",
+  "name": "Portugal",
+  "native_name": "Portugal",
+  "aliases": [
+    "Portugal",
+    "Portuguese"
+  ],
+  "languages": [
+    "pt"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "arquivo distrital",
+    "freguesia",
+    "registo paroquial",
+    "conservatória",
+    "assento",
+    "inventário"
+  ],
+  "first_steps": [
+    "Resolve the historical freguesia and municipality for the event.",
+    "Use Digitarq and official archive directories to identify the actual custodian and series.",
+    "Use IRN/conservatória routes for civil certificates when appropriate; confirm transfers rather than applying a universal date cut-off.",
+    "Use CRAV for services offered by the identified participating archive."
+  ],
+  "jurisdiction_questions": [
+    "Is this the mainland, Madeira or the Azores? Identify the relevant regional custody route.",
+    "Did the record remain at the conservatória or transfer to an archive?",
+    "Does the creator belong to a parish, court, notary, institution or overseas administration?"
+  ],
+  "query_templates": [
+    "{place} {region} arquivo registo paroquial {period}",
+    "{place} freguesia arquivo distrital inventário {period}"
+  ],
+  "sources": [
+    {
+      "id": "PT-DIGITARQ",
+      "name": "Digitarq",
+      "kind": "catalogue",
+      "url": "https://digitarq.arquivos.pt/",
+      "purpose": "Search descriptions and available digital reproductions; identify the archive holding the record.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "migration",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://digitarq.arquivos.pt/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "PT-ANTT",
+      "name": "Arquivo Nacional da Torre do Tombo",
+      "kind": "repository",
+      "url": "https://antt.dglab.gov.pt/pesquisar-na-torre-do-tombo/genealogia-ou-historia-local/genealogia/",
+      "purpose": "Start with the official genealogy guide and follow collection-specific custody.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://antt.dglab.gov.pt/pesquisar-na-torre-do-tombo/genealogia-ou-historia-local/genealogia/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "PT-CRAV",
+      "name": "CRAV - Consulta Real em Ambiente Virtual",
+      "kind": "request_service",
+      "url": "https://crav.arquivos.pt/",
+      "purpose": "Arrange available archive services after identifying the custodian and record.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://dglab.gov.pt/novo-crav-dglab/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "PT-IRN",
+      "name": "IRN / Justiça - civil certificates",
+      "kind": "civil_authority",
+      "url": "https://justica.gov.pt/Servicos/Pedir-certidao-de-nascimento",
+      "purpose": "Find the current civil-certificate request route and relevant conservatória.",
+      "record_families": [
+        "civil"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://justica.gov.pt/Servicos/Pedir-certidao-de-nascimento",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "PT-CIVILONLINE",
+      "name": "Civil Online",
+      "kind": "request_service",
+      "url": "https://www.civilonline.mj.pt/",
+      "purpose": "Request available civil registration certificates through the official service.",
+      "record_families": [
+        "civil"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://irn.justica.gov.pt/online",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

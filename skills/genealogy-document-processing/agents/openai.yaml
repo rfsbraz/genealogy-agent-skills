@@ -1,0 +1,6 @@
+interface:
+  display_name: "Document Processing Ledger"
+  short_description: "Track page readings and budgeted review jobs"
+  default_prompt: "Use $genealogy-document-processing to process the supplied genealogy documents."
+policy:
+  allow_implicit_invocation: false

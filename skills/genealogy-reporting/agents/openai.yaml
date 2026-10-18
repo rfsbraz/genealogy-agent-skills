@@ -1,0 +1,6 @@
+interface:
+  display_name: "Research Progress and Reports"
+  short_description: "Explain findings clearly with sources and next steps"
+  default_prompt: "Use $genealogy-reporting to show what we learned, what is uncertain and what to do next."
+policy:
+  allow_implicit_invocation: false

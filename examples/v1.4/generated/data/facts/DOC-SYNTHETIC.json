@@ -1,0 +1,33 @@
+{
+  "generated_by": "genealogy-case",
+  "case_id": "C-EXAMPLE",
+  "case_revision": 1,
+  "case_digest": "f0a079cc5946b040da4643ba4ca719d3dbac7a38b8e17528755d825a915d8456",
+  "visibility": "private",
+  "editable": false,
+  "document_id": "DOC-SYNTHETIC",
+  "facts": [
+    {
+      "id": "O2",
+      "person": "ada",
+      "mention_id": "M1",
+      "role": null,
+      "field": "reported_age",
+      "value": 28,
+      "evidence_class": "stated",
+      "location": "p. 1, entry 4",
+      "note": "The fixture reread gives age 28.",
+      "uncertainty": "Fixture text is supplied; no image reading tested.",
+      "source_id": "S1",
+      "citation": {
+        "id": "C1",
+        "source_id": "S1",
+        "locator": "p. 1, entry 4",
+        "text": "Synthetic Archive, register TEST, p. 1, entry 4; supplied fixture image."
+      },
+      "processing_run_id": "RUN-SYNTHETIC-NEW",
+      "source_version_id": null,
+      "supersedes": "O1"
+    }
+  ]
+}

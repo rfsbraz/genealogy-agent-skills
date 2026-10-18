@@ -1,0 +1,809 @@
+{
+  "suite": "genealogy-agent-skills",
+  "version": "2.0.0",
+  "skill_count": 27,
+  "reused_unchanged": [],
+  "runtime": "Python 3.10+; local helpers only. Models, quotas and timers supplied by host.",
+  "files": {
+    "evaluation/genealogy-evaluation/SKILL.md": {
+      "sha256": "553390d6f8ff744b3b09a16b304adb8280c0c0bedb923310912e1378515e405d",
+      "bytes": 5554
+    },
+    "evaluation/genealogy-evaluation/agents/openai.yaml": {
+      "sha256": "42652e7ded396e9f8afba1850d499fa687152d26d69535ebbacc652b1251e497",
+      "bytes": 257
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/01-portugal-routing.json": {
+      "sha256": "db7bcd00d72ced28cbeb9d23f56f336836583e6406e8225ecd764f1aba88d00f",
+      "bytes": 1002
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/02-event-extraction.json": {
+      "sha256": "104aac4ef151bb690a281ea28281a07b81bdb518d6be28f89aef1b2b6bfb8365",
+      "bytes": 764
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/03-namesakes.json": {
+      "sha256": "e52ee45c3b6ec334d4bef41c6e4660f0cf77565c578033d1a42c1648e6835fb6",
+      "bytes": 613
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/04-source-independence.json": {
+      "sha256": "7a5571288673f0edfce3752c8fce9b52d1edc1dc04b63b7f3c164009c0e9be64",
+      "bytes": 691
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/05-ambiguous-origin.json": {
+      "sha256": "d575a661e8a6d32de72e32d75d842273895a04caf14ff09e03061153b2ca5599",
+      "bytes": 795
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/06-migration-discovery.json": {
+      "sha256": "1981f36e8c06b755d5fa49b75fe5352fffa2ca8b4981588d9bccc9cac5352aab",
+      "bytes": 669
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/07-coverage-gap.json": {
+      "sha256": "7d090b5dfbf28951f462d5fd44a666fa34921895ed9a4a20320f8e8be135a426",
+      "bytes": 613
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/08-mail-draft.json": {
+      "sha256": "fc31b5359d8b1ac6c92b655d1db63f2f2563acf916651be6a5af42e5e7e29982",
+      "bytes": 1056
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/09-mail-timeout.json": {
+      "sha256": "0e56d131bb28fc02ee6ce420788b9159d4d3a687af7cc22b56b5a6019c52ea97",
+      "bytes": 867
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/answer-keys/10-resume.json": {
+      "sha256": "dda919671721a2a6f297e94c9d0e8e3d923e3ad46afa598b8cdbb47d304b92c1",
+      "bytes": 894
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/catalogue.json": {
+      "sha256": "4832bb1ca05ca6c6bcb5075efcedcf580965d5e01d364b8c7d11bf61e130c57e",
+      "bytes": 1425
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/01-portugal-routing/sources.json": {
+      "sha256": "45962a0db7ff23eb6d4052c92b8003fbe31a044d4ad4cad9a8b190684c1b6cbb",
+      "bytes": 716
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/01-portugal-routing/task.json": {
+      "sha256": "bc56f250149d6a088f8de3e6faa1bad58b5b83ea7d527defb5b1ff7261170334",
+      "bytes": 1341
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/02-event-extraction/sources.json": {
+      "sha256": "416653a7bc988e6405f2f92f5078593fb4674252990ebb61b8a88f179698c98f",
+      "bytes": 268
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/02-event-extraction/task.json": {
+      "sha256": "013e383095d1aa42ab07f3f9cd5c966300529300bd41db6f7aac422f02835053",
+      "bytes": 1115
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/03-namesakes/sources.json": {
+      "sha256": "2f5f707cb33e9b80cafdd3fb1468493185a4ce62690be7f1ac5d61e9d68d6d5c",
+      "bytes": 558
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/03-namesakes/task.json": {
+      "sha256": "b886d2a48b10edb3dd10f446294ecfc7cbe0d0559fe8e58ec532f6d38b687f00",
+      "bytes": 1066
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/04-source-independence/sources.json": {
+      "sha256": "689b39539b80c01aaab51b6c6a4240e04f1d36eb428b044a9125f66ac8551b50",
+      "bytes": 376
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/04-source-independence/task.json": {
+      "sha256": "8daa7106d4b52bd75889976a3571631c02490ab5e0596447e0a3a56aafa7a696",
+      "bytes": 1091
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/05-ambiguous-origin/sources.json": {
+      "sha256": "3572071c5982a53c9d1d2c2f56efa5bc7f4b4539871b04045cb44439d7960e9b",
+      "bytes": 368
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/05-ambiguous-origin/task.json": {
+      "sha256": "1d1fc1ae138b45dd357efc6c8b84d76aa5b915df081f8908451c9cc3db27975b",
+      "bytes": 1088
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/06-migration-discovery/sources.json": {
+      "sha256": "40cf44e50b7598517340aad2cb34a468e1492e967aa167a234f76c4367b7a419",
+      "bytes": 363
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/06-migration-discovery/task.json": {
+      "sha256": "533397e526881a9eaf9499dcfe28feadb88bb02040757b1ae4f719fc0dae53e2",
+      "bytes": 1129
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/07-coverage-gap/sources.json": {
+      "sha256": "78da52000bfd023d1279e116cc4aa10537af55e9b70d72e7027c22f66a4891d6",
+      "bytes": 242
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/07-coverage-gap/task.json": {
+      "sha256": "d5a5870118f39993dc26133f37765c48116756eaf6a620981083ae8ea67d5b88",
+      "bytes": 1015
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/08-mail-draft/sources.json": {
+      "sha256": "0d03df96d7588655f0ae5d5aa2881b1974ce68548c52c3c3f9d079161aecf780",
+      "bytes": 540
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/08-mail-draft/task.json": {
+      "sha256": "c2d59d7fa553586b02bd9422e62dea1f8ebfbeff068a4742a51a047f347aadab",
+      "bytes": 1110
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/09-mail-timeout/sources.json": {
+      "sha256": "e8f1116be8954dcc1b4d1e525decf4af823de38d2bb744b0d02ef75d72eeb84b",
+      "bytes": 382
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/09-mail-timeout/task.json": {
+      "sha256": "c5971187020615ddf975ac5d84b36b41b4156013c070ee02f099c29af42bdf38",
+      "bytes": 1140
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/10-resume/sources.json": {
+      "sha256": "18ec7050a8dc4cfafa7e32492f868064d665a8df41e0cfcde8dd810995cfa87d",
+      "bytes": 459
+    },
+    "evaluation/genealogy-evaluation/assets/benchmark/public/10-resume/task.json": {
+      "sha256": "76b9c7093b4af4afcd533cbe25b6c21090c08c0b8e9d74143453b23fd304ad4c",
+      "bytes": 986
+    },
+    "evaluation/genealogy-evaluation/references/ease-of-use.md": {
+      "sha256": "724491ee069edafecaaac286c08e45c813f7059d88531ab46b7d65f48e98578f",
+      "bytes": 2473
+    },
+    "evaluation/genealogy-evaluation/references/evaluation-protocol.md": {
+      "sha256": "fe55fe09c050b41815ce5276efdde61215305da03354825357a78b3bb038100a",
+      "bytes": 5372
+    },
+    "evaluation/genealogy-evaluation/references/result-contract.md": {
+      "sha256": "6c745858ee8fc42a612e357afc1877c020fe1a819ae5aca0e2380c744720a661",
+      "bytes": 2952
+    },
+    "evaluation/genealogy-evaluation/scripts/score_result.py": {
+      "sha256": "3eee1f4115a12f910f3023dccb887f6ac53d97f63ec4d6e950a69f65100411bd",
+      "bytes": 4361
+    },
+    "evaluation/genealogy-evaluation/scripts/stage_case.py": {
+      "sha256": "03be58ccc2182e75c8b938493708ea002378e21f676ad3f94383366c802c65d2",
+      "bytes": 2297
+    },
+    "genealogy.py": {
+      "sha256": "d4754b16f6c032f23874f9d570c858d8a30fb197095ab6aa752ece8230748b0a",
+      "bytes": 5764
+    },
+    "install.py": {
+      "sha256": "17544bc57e66f128da016e9eb772fb96ef313d40b714ddc82b12d64789fb2336",
+      "bytes": 3469
+    },
+    "skills/genealogy-archive-correspondence/SKILL.md": {
+      "sha256": "aeda0009e77b8d49d137a48ee5c624a22d9f1a94114e329be5020f26d1acca5e",
+      "bytes": 4724
+    },
+    "skills/genealogy-archive-correspondence/agents/openai.yaml": {
+      "sha256": "e63bdf609ead62eb1a7cb4dcb570e305a40bd4c0c13e41c8e00af3e22a96576b",
+      "bytes": 320
+    },
+    "skills/genealogy-archive-correspondence/references/correspondence-protocol.md": {
+      "sha256": "c12b6584d3dd43ad302ed616162d2c9657c911bc15945a3b7b3093646917a098",
+      "bytes": 3864
+    },
+    "skills/genealogy-archive-fieldwork/SKILL.md": {
+      "sha256": "0c24a1ce6161e5e5d57d18c39de57536fb534cb76e47500aa80a26ec89649860",
+      "bytes": 3233
+    },
+    "skills/genealogy-archive-fieldwork/agents/openai.yaml": {
+      "sha256": "da56291343ca361df792609c89d5730902b4a459d85155de6e102b088f7b84f0",
+      "bytes": 307
+    },
+    "skills/genealogy-case-intake/SKILL.md": {
+      "sha256": "51535cd24889697d5e663ee0592b5b5d77dc7ca8e494920fe9601fac30b2919e",
+      "bytes": 4062
+    },
+    "skills/genealogy-case-intake/agents/openai.yaml": {
+      "sha256": "e1c2ad84a40c4dbc3a9b352e65e336bc3814b98b5896e2e60588266474743caf",
+      "bytes": 293
+    },
+    "skills/genealogy-document-processing/SKILL.md": {
+      "sha256": "679e80451b731bf83cf606672bbbcea80724a80f9e9ea7dfbc8475a146facaa2",
+      "bytes": 3730
+    },
+    "skills/genealogy-document-processing/agents/openai.yaml": {
+      "sha256": "9f83da249d6090bdb79e0e5f761cab899b993fc44ebf7d92826a158fb4ec3323",
+      "bytes": 267
+    },
+    "skills/genealogy-document-processing/assets/schedule.example.json": {
+      "sha256": "7350458887e800dd2c4a094fd461911cdadc7c1ead66794325358efcc713d65b",
+      "bytes": 423
+    },
+    "skills/genealogy-document-processing/references/cli.md": {
+      "sha256": "38e95b3d6a7ad30cb5c0dad333200e74d43802d94aa4fc0655233770bd858811",
+      "bytes": 12313
+    },
+    "skills/genealogy-document-processing/references/processing-protocol.md": {
+      "sha256": "06eb2d93deb268d12de1cd6f913f233f5abd5179e02a9414dc4f379e4547af99",
+      "bytes": 4778
+    },
+    "skills/genealogy-document-processing/scripts/document_queue.py": {
+      "sha256": "b0e75295a7a8dbbbb3d343d8f6d248d44935669a9161bba2d5d65045aa57b61b",
+      "bytes": 29227
+    },
+    "skills/genealogy-evidence-extraction/SKILL.md": {
+      "sha256": "488515cfc8b8c29ec1ef418bb3ed97b050b61e5c656794d81cd0801c40ed6823",
+      "bytes": 4714
+    },
+    "skills/genealogy-evidence-extraction/agents/openai.yaml": {
+      "sha256": "e867f9424c4762015b3592883b2b6cd9da65f4ee0337b5bcd098024ad252918c",
+      "bytes": 317
+    },
+    "skills/genealogy-family-reconstruction/SKILL.md": {
+      "sha256": "127f16f1e405c938f94a6e82f06c60a527dec614bf19365cbefedc3442657541",
+      "bytes": 3567
+    },
+    "skills/genealogy-family-reconstruction/agents/openai.yaml": {
+      "sha256": "5bd84df7db016a7bf4ddc1e6db3d11da1d5483a570f036ee9c0ef2d1dc1adcca",
+      "bytes": 327
+    },
+    "skills/genealogy-genetic-evidence/SKILL.md": {
+      "sha256": "6bee7d76b4b4b66adfebd891558dee4bdbc2e45294e884b28134cfd94a9f0071",
+      "bytes": 3757
+    },
+    "skills/genealogy-genetic-evidence/agents/openai.yaml": {
+      "sha256": "343e1db8801d66bd2c2a7947624606adce61c9aa623e73966bb1f902f7d68d6e",
+      "bytes": 322
+    },
+    "skills/genealogy-historical-translation/SKILL.md": {
+      "sha256": "f57685c530cafec38dd8b69735fe4f2c66e7a0babe5513cdc72d6a1ca9f978e8",
+      "bytes": 3312
+    },
+    "skills/genealogy-historical-translation/agents/openai.yaml": {
+      "sha256": "69d943fa066909230ae3df013d3a8315424184b0d32648680c7b5291372ca49e",
+      "bytes": 318
+    },
+    "skills/genealogy-identity-resolution/SKILL.md": {
+      "sha256": "654c8cdc4dba66e0470da2ea8aebed579d448ec0f4537abc7568186b8d2bce88",
+      "bytes": 3773
+    },
+    "skills/genealogy-identity-resolution/agents/openai.yaml": {
+      "sha256": "cd6861d1e63c08bcb044d8ac11485e0bceafd16a4bd67f5403689f01d4053c28",
+      "bytes": 309
+    },
+    "skills/genealogy-independent-review/SKILL.md": {
+      "sha256": "d70e3876e1b18c4eb74d1eabfc187721204a2ac3d5b6810c090deccc52090c5d",
+      "bytes": 4030
+    },
+    "skills/genealogy-independent-review/agents/openai.yaml": {
+      "sha256": "ba570506c4f98fb92187a6ab04144d67be8c0bdab5e95e534237a6e8f98304ff",
+      "bytes": 318
+    },
+    "skills/genealogy-interview/SKILL.md": {
+      "sha256": "25a43fece9da5c60cf2a29bed551366b0428134a55ae315153489aabcce79aeb",
+      "bytes": 4964
+    },
+    "skills/genealogy-interview/agents/openai.yaml": {
+      "sha256": "f09c41bc583e65e63f04d1d0904ffaadd3e0684b61a435e25fdb3d29a339ab3a",
+      "bytes": 229
+    },
+    "skills/genealogy-interview/assets/turn.example.json": {
+      "sha256": "ae02b9bf9964b98c5459395830c47cf831fe382e28c2a46193ec3d2399d812e0",
+      "bytes": 1021
+    },
+    "skills/genealogy-interview/assets/turn.schema.json": {
+      "sha256": "ae7c545234c0a64a87bca70019fab124bbb017674684f105daf7d104631188c0",
+      "bytes": 3077
+    },
+    "skills/genealogy-interview/references/interview-protocol.md": {
+      "sha256": "6bb70dd2f7ab23850d39eb70e8fd0ef8c72a894b84297d5da73d3ddd25fece80",
+      "bytes": 4586
+    },
+    "skills/genealogy-interview/references/storage.md": {
+      "sha256": "5faea24eda21df9867cbad1acffb45b0c6006596200e19ca040ff9ca5abef612",
+      "bytes": 3667
+    },
+    "skills/genealogy-interview/scripts/interview_tools.py": {
+      "sha256": "89c7832288290cf5d8b2641d9b246677a0e8617572264ca1405813b329b6856f",
+      "bytes": 12076
+    },
+    "skills/genealogy-locality-research/SKILL.md": {
+      "sha256": "deb9b1ef662de8b16bce4732fff351a4fe1c0459326f9295e87b2ad636f1fd30",
+      "bytes": 3644
+    },
+    "skills/genealogy-locality-research/agents/openai.yaml": {
+      "sha256": "084b996268444aa3d75d1c457dce988469f1aeafb72dc6a1a227a5bdf2dcfb14",
+      "bytes": 313
+    },
+    "skills/genealogy-mode/SKILL.md": {
+      "sha256": "9d86339bafdb0cf4695a0606a6a87a6bba1af008643bde7f9463ff8160ff5b68",
+      "bytes": 8578
+    },
+    "skills/genealogy-mode/agents/openai.yaml": {
+      "sha256": "b46c1a877e44534da923c68567a59b059faef607978d43c062fe7869a341e1c0",
+      "bytes": 275
+    },
+    "skills/genealogy-mode/assets/case-template.json": {
+      "sha256": "72ca50313f73a6e43acc16634fab656686045abb1676bcb7b99e9003dd534d4e",
+      "bytes": 819
+    },
+    "skills/genealogy-mode/assets/case.schema.json": {
+      "sha256": "da3775283e6680a280ad1b355b304e5af88de72dec094630052a53be3ba9a830",
+      "bytes": 34997
+    },
+    "skills/genealogy-mode/assets/gps-review-template.json": {
+      "sha256": "e7ebf83576869e44838348d442337d722a628d4e1278338a620722e1b9383e16",
+      "bytes": 1058
+    },
+    "skills/genealogy-mode/assets/gps-review.schema.json": {
+      "sha256": "370f367ff82e84651bbaaf40f61906466c1db3605485997ad82be4b6bbd752ee",
+      "bytes": 9754
+    },
+    "skills/genealogy-mode/assets/host-adapter-contract.json": {
+      "sha256": "3206b6de533211980608f8415856abb5d82a7f4ce9694f9b731f724fecaf4bdf",
+      "bytes": 3397
+    },
+    "skills/genealogy-mode/references/chat-commands.md": {
+      "sha256": "9abef32b2584253ce2513c82d34f97bb88e86d1664e8a89d01628d4a4574a371",
+      "bytes": 2048
+    },
+    "skills/genealogy-mode/references/data-model.md": {
+      "sha256": "e82742d8cdd511990965a43976c87e4236e3659c5b4c03fea2185f7aff9543b1",
+      "bytes": 8746
+    },
+    "skills/genealogy-mode/references/easy-use.md": {
+      "sha256": "149414a258407a984e3adbe73c3d3ce8a5f98abb549b4a5f169ba638f526ee83",
+      "bytes": 4451
+    },
+    "skills/genealogy-mode/references/gps-policy.md": {
+      "sha256": "88f98ac0cb515dcb809c3efef8f35d8ac9987e39b5f28bdf9023629597a26264",
+      "bytes": 8165
+    },
+    "skills/genealogy-mode/references/host-adapter.md": {
+      "sha256": "7ef00cf33868e1aa2440f860be6f8dc68d83e8b67612573f88ab226fbad8e589",
+      "bytes": 6551
+    },
+    "skills/genealogy-mode/references/revisions-and-projections.md": {
+      "sha256": "a009ca02728d14cd86240ae3fbba690044ee0bca2de0d8be3dc2ce3f7a6b572c",
+      "bytes": 8619
+    },
+    "skills/genealogy-mode/references/shared-contract.md": {
+      "sha256": "ec313885526f61a42dcf445409fbdc4b74830b601cd5731aef8f34e388f3e9f9",
+      "bytes": 6804
+    },
+    "skills/genealogy-mode/references/skill-routing.md": {
+      "sha256": "4d8f9238d52e9449609e01335c8876e4e22e1a9ee27501551886cb6e8903e8bb",
+      "bytes": 3470
+    },
+    "skills/genealogy-mode/references/sources.md": {
+      "sha256": "76dfedd2ec36d750cc4e61b0e1bfa7fdcd54c03e4fe9b0e3a9767eadf81dad5a",
+      "bytes": 2800
+    },
+    "skills/genealogy-mode/references/tool-contracts.md": {
+      "sha256": "799dff40b17208a560dcddfbc2a568810538fba3f6dc4379793a44a070f6731e",
+      "bytes": 6495
+    },
+    "skills/genealogy-mode/scripts/case_tools.py": {
+      "sha256": "f9f6da2b354b299d3a45f7da118c157e41f357af0c7494e1af70a3b756001353",
+      "bytes": 12437
+    },
+    "skills/genealogy-mode/scripts/gps_review.py": {
+      "sha256": "c98e7d0b712de61fb168694d0071ba5cce30709e5a16bc1c5442b7eb6e832360",
+      "bytes": 8312
+    },
+    "skills/genealogy-mode/scripts/host_adapter.py": {
+      "sha256": "649b35775c0db6729cd3706de7ddb31e8bd33d8115e3d073f63dedac67d29cab",
+      "bytes": 7560
+    },
+    "skills/genealogy-mode/scripts/research_updates.py": {
+      "sha256": "e2a39b67f5442e117a8becb50b356016b02aa3615e99100f850e73556d32d5e3",
+      "bytes": 18654
+    },
+    "skills/genealogy-narrative/SKILL.md": {
+      "sha256": "43d54bc023106a520f062771f33ca8c04d285784375b3c2bd534ee443232f8da",
+      "bytes": 5363
+    },
+    "skills/genealogy-narrative/agents/openai.yaml": {
+      "sha256": "373bde87bf6e649c162bf58bce0906e7db65be7d602250fdc88d0ae494f3a0fc",
+      "bytes": 251
+    },
+    "skills/genealogy-narrative/assets/story-template.json": {
+      "sha256": "0205a4411d21847a66c9ed73aef3f19d544ed9c7e3b3794a0f9eb701df486eaf",
+      "bytes": 485
+    },
+    "skills/genealogy-narrative/assets/story.schema.json": {
+      "sha256": "b18ab74caaab84fe941e8131fb24c9471c9f2052548e66790ecc431a208c2cba",
+      "bytes": 3788
+    },
+    "skills/genealogy-narrative/references/story-contract.md": {
+      "sha256": "108bfac062f2e5aacbcd2f3b5e9846f766b61a8289005d0d5ea811a3cb64dab3",
+      "bytes": 4164
+    },
+    "skills/genealogy-narrative/references/writing-guide.md": {
+      "sha256": "dcfcb861e6b61aad5b5e9b10784df4116a189511af5795aada7d5c284400d35a",
+      "bytes": 4199
+    },
+    "skills/genealogy-narrative/scripts/story_tools.py": {
+      "sha256": "7b58acbec763056ca07592ef24ffaaead0d2b7bdeb066d06afcb0f00edc03e17",
+      "bytes": 10755
+    },
+    "skills/genealogy-oral-history/SKILL.md": {
+      "sha256": "10b0f471ed3b2fb152fae1213819f96cc67f54ec9920df45429ed3b87f790c13",
+      "bytes": 3450
+    },
+    "skills/genealogy-oral-history/agents/openai.yaml": {
+      "sha256": "73ef0a3d2974a236218c62c05b4203da324447f241be4fdbf29f1edf07b1e44c",
+      "bytes": 300
+    },
+    "skills/genealogy-origin-source-discovery/SKILL.md": {
+      "sha256": "9503e4a3d1c486a773929cb751914ed2a0e72f2ef3228976e0549996ac0f029f",
+      "bytes": 4955
+    },
+    "skills/genealogy-origin-source-discovery/agents/openai.yaml": {
+      "sha256": "2018d814d80278cdcc0f1c5a46aee0875635402f4dbd67cc584cde58545acf12",
+      "bytes": 294
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/AU.json": {
+      "sha256": "824c0c793b7f68385d491765f9f3a49ec5357adf8a9601b29e47f7d85d5958f3",
+      "bytes": 3544
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/BR.json": {
+      "sha256": "e6219e514df3650b537e0a6b96890debd6b589a191a6231408ea8be14a3cf5b6",
+      "bytes": 4092
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/CA.json": {
+      "sha256": "b9fdd6e7300da4894d220c2d0cf3415335cb75669e765a3ad3507add7e9e927a",
+      "bytes": 3541
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/DE.json": {
+      "sha256": "0f0c3267aa9257c986f4a186d527491f6d60b3dea339b8561fedd84a6a0e1863",
+      "bytes": 3559
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/ES.json": {
+      "sha256": "317457e124effd9bfbcfccceba088870f19b673bf6991345a180f434e13c954e",
+      "bytes": 3519
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/FR.json": {
+      "sha256": "e456203aadbfbdf7635af9f6ae8c9d1d280fbb335c9a8d60b6766d4cb5b781f1",
+      "bytes": 3478
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/GB.json": {
+      "sha256": "2bd57d0f6134d0bfef2e85b0f910342675200bb2c5a082803e699475bce09aea",
+      "bytes": 4867
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/IE.json": {
+      "sha256": "866fa97186188def1c5afee81ef3c46dd142c2c965f1dbbcf2c57c8a67fcb6b8",
+      "bytes": 3811
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/IN.json": {
+      "sha256": "ea544d70c19725942d798ec8148f4139328e2850cfb8a2fe9c5282b75284daf0",
+      "bytes": 3691
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/IT.json": {
+      "sha256": "d2a935ee0fe69f935629067f2725404202b2a9acbc520c31deae95e9f67f53f5",
+      "bytes": 2450
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/MX.json": {
+      "sha256": "8816f2252d129a37a89c2f550c28614be16a1a22fb62cd706dc32ab849e34dc7",
+      "bytes": 3633
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/PL.json": {
+      "sha256": "13488a4305f50aa86efd29c62f51c60726f5a46a96b828abf4b42e9bb1abde53",
+      "bytes": 3388
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/PT.json": {
+      "sha256": "b1ba15c033d1206fe91e4608dd12d019df773af91a6ae7a9363a454f20883ba7",
+      "bytes": 6723
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/US.json": {
+      "sha256": "db1caf4edc0da041fb6068c8fa58a67a5056583ebbfff752444ac273e007e5a1",
+      "bytes": 3489
+    },
+    "skills/genealogy-origin-source-discovery/assets/countries/index.json": {
+      "sha256": "cb73921ecdc48ee900da882a044645dea9d5558ca3f0519af3b9a317be5af2e3",
+      "bytes": 2406
+    },
+    "skills/genealogy-origin-source-discovery/assets/country-profile-template.json": {
+      "sha256": "881a47f610fc49e1f41718b1e26bf36e38a84921b1a7345d8fa8ea2655d57591",
+      "bytes": 411
+    },
+    "skills/genealogy-origin-source-discovery/assets/country.schema.json": {
+      "sha256": "931ef34382b3cc056e07a0dfe75294ffa18efb18649649582e5c718e2f2b0b96",
+      "bytes": 5652
+    },
+    "skills/genealogy-origin-source-discovery/references/country-database.md": {
+      "sha256": "34c71653bba5fe74f52c6c7d2338b0eb47b018f0d3823ba0ef2ac3b4d4d2723e",
+      "bytes": 4754
+    },
+    "skills/genealogy-origin-source-discovery/references/country-discovery.md": {
+      "sha256": "400bca84b076d0aacd4f81be2f588486b2409b1b46a4aa8bfa54cc321fb256df",
+      "bytes": 2928
+    },
+    "skills/genealogy-origin-source-discovery/references/record-families.md": {
+      "sha256": "9b736b385a99cc70c4bcbbb55b054a31ffe8bd274cf878776941005f5ad4da88",
+      "bytes": 2640
+    },
+    "skills/genealogy-origin-source-discovery/scripts/country_tools.py": {
+      "sha256": "8b4f0e48ca43b38aa2359d0b6651ec35a111d623b7dcecc405671d7d4c740bec",
+      "bytes": 10981
+    },
+    "skills/genealogy-proof-evaluation/SKILL.md": {
+      "sha256": "a3deea1a78f13b97444d4eb3a07d643ab555d6929659223d45237455e92e20ee",
+      "bytes": 4596
+    },
+    "skills/genealogy-proof-evaluation/agents/openai.yaml": {
+      "sha256": "390ee097be575c99a8a2d43ebac77ef920f5603c8eba345b6289a2c1e6e70ccf",
+      "bytes": 268
+    },
+    "skills/genealogy-read-manuscripts/SKILL.md": {
+      "sha256": "7ae5d21eed89fdcb52bff33e6d0e0ad670544c266a0e2ea00581e676c9840a78",
+      "bytes": 12831
+    },
+    "skills/genealogy-read-manuscripts/agents/openai.yaml": {
+      "sha256": "866ffded1cd7ac0ba8559877987ae494cd6cce0c8bffb8599a684af2cee5750d",
+      "bytes": 461
+    },
+    "skills/genealogy-read-manuscripts/assets/icon.svg": {
+      "sha256": "49315dda7125ec5fc77ef5f2b96126d8b2121c6e72944b4702972e90f321d3ee",
+      "bytes": 1210
+    },
+    "skills/genealogy-read-manuscripts/references/common-contract.md": {
+      "sha256": "8ca251830ca9d3f990522e8a7c5b9ceddacb218e5f734a5f712ccd02ceeb3697",
+      "bytes": 3618
+    },
+    "skills/genealogy-read-manuscripts/references/context-decoding.md": {
+      "sha256": "591ef408bc4ecf128b1e9f52f6885c5182b7fea22cb2b4a12eaaaa301b0bc96c",
+      "bytes": 2661
+    },
+    "skills/genealogy-read-manuscripts/references/line-recognition.md": {
+      "sha256": "30f938de3c1d930710788743405a96f24066996c64cb22e970269896ece28e37",
+      "bytes": 2766
+    },
+    "skills/genealogy-read-manuscripts/references/methods.md": {
+      "sha256": "a71d1805a0e2317b838e3931cabeecc6c8c7081965710d882c92134ef3d68f86",
+      "bytes": 2115
+    },
+    "skills/genealogy-read-manuscripts/references/packet-helper.md": {
+      "sha256": "007d4d61b5ce92e3d29a0beced9dcef65660080d198b8a1ff1fa5a92d00e9adf",
+      "bytes": 11294
+    },
+    "skills/genealogy-read-manuscripts/references/protocol.md": {
+      "sha256": "3efcb1f86cb4c540e110576624ab90c6288550fe8715e69ec3f4d8942fc79b82",
+      "bytes": 12534
+    },
+    "skills/genealogy-read-manuscripts/references/research-basis.md": {
+      "sha256": "ce5931401eb666fc99955fcd1be08ff8ff3ea0072020b584862494df62f31893",
+      "bytes": 4061
+    },
+    "skills/genealogy-read-manuscripts/references/same-hand.md": {
+      "sha256": "df9843661c8c4d180a5ab72986b5128d824df75a9d56ee7b27f31750c14922a5",
+      "bytes": 2609
+    },
+    "skills/genealogy-read-manuscripts/references/stroke-analysis.md": {
+      "sha256": "927d553aa16635f4da3d788b69becc48d5ed6886b6a9db671b95c7dfa30434c9",
+      "bytes": 1413
+    },
+    "skills/genealogy-read-manuscripts/scripts/image_views.py": {
+      "sha256": "09e394517b9f4fdb2686ca069540c7a8e5800fa27d12627bc325c194b69a2de0",
+      "bytes": 8021
+    },
+    "skills/genealogy-read-manuscripts/scripts/method_packets.py": {
+      "sha256": "af6a6373280658a42d1117f118c2ce13f24480ef8b40b12b77fb9178845f18b2",
+      "bytes": 26005
+    },
+    "skills/genealogy-read-manuscripts/scripts/packet_review.py": {
+      "sha256": "788383e076bfdd7ff6e2d93c06a112d3879a27380722dd16764321c5d6c702d7",
+      "bytes": 7451
+    },
+    "skills/genealogy-read-manuscripts/scripts/source_crops.py": {
+      "sha256": "ad5eccc9b6b9ac4a5031d9fad7003d762dc076bad7cc671dd8a37042d373e714",
+      "bytes": 6563
+    },
+    "skills/genealogy-record-acquisition/SKILL.md": {
+      "sha256": "cbedb6b352fee4d7a3642b0d6da8660512100d69a6a6d75f1a2d546485dd8d14",
+      "bytes": 4058
+    },
+    "skills/genealogy-record-acquisition/agents/openai.yaml": {
+      "sha256": "cab5c4ddebbc4c3ecac4b19bf2a3fb001457122839df0349eb1f4db91c921248",
+      "bytes": 314
+    },
+    "skills/genealogy-reporting/SKILL.md": {
+      "sha256": "ee90a53b020a7a3d3d9b8b5e097d69991d21b9d326a5d639e9e675095c6bd9d0",
+      "bytes": 4725
+    },
+    "skills/genealogy-reporting/agents/openai.yaml": {
+      "sha256": "9fd2b244ed60a90fad2bcd73e78b0be1bdc26610d4bbdb5b8b1193a5262666cf",
+      "bytes": 287
+    },
+    "skills/genealogy-reporting/assets/research-report-template.md": {
+      "sha256": "da9adf1b9b2db8cecd2c7c0716fa0038daf4ec9b870be3cab5ee35107277bb0f",
+      "bytes": 1193
+    },
+    "skills/genealogy-repository-discovery/SKILL.md": {
+      "sha256": "1b9ba964e2d3ac5531626a8b02386892eee72251b1ab2dc973fcabfa7e6fc13a",
+      "bytes": 5319
+    },
+    "skills/genealogy-repository-discovery/agents/openai.yaml": {
+      "sha256": "830fc1591988a6c73b4fd322a9a4d9ad912b408097ca834b4780b0cf48ed684b",
+      "bytes": 324
+    },
+    "skills/genealogy-repository-discovery/assets/repository-profile-template.json": {
+      "sha256": "1c07f2cb022c0bf69c6c1c46cd87aa278b3cbe2589a536c39a0efbe4e5fd5df5",
+      "bytes": 685
+    },
+    "skills/genealogy-repository-discovery/references/discovery-protocol.md": {
+      "sha256": "7606061a3b6f78b1fad5b250195559ec8f23f8a6534670e0b91c732d8261d454",
+      "bytes": 3894
+    },
+    "skills/genealogy-repository-discovery/references/portugal.md": {
+      "sha256": "e0cf0a222ac5c73182ab453a84a89d77314d3157c6d7479f12524895c7445a98",
+      "bytes": 5095
+    },
+    "skills/genealogy-research-maintenance/SKILL.md": {
+      "sha256": "64b26ba205778dc4c047d1f339b8f8d3a61eb85567f9b415654e5594c8e5dd7e",
+      "bytes": 5183
+    },
+    "skills/genealogy-research-maintenance/agents/openai.yaml": {
+      "sha256": "cde9165e365c2d1fcb59a4462c14cb68dc1feda10dfadc34db519481dee9017d",
+      "bytes": 306
+    },
+    "skills/genealogy-research-planner/SKILL.md": {
+      "sha256": "ca5ea5c52aaed4eec1d25dbc108ae0d76a9c2308203ac22f420f8f64bac60394",
+      "bytes": 4462
+    },
+    "skills/genealogy-research-planner/agents/openai.yaml": {
+      "sha256": "d4000375cca0cfa65ac2d3bf3f844b1f6ac587c1e8c09e21d331b29672c63ca3",
+      "bytes": 302
+    },
+    "skills/genealogy-research-planner/assets/research-plan-template.md": {
+      "sha256": "7c983e4e456e295bff4c0a47739c0ff2cf4244baac60aa37d5d728feb972d6b6",
+      "bytes": 792
+    },
+    "skills/genealogy-source-discovery/SKILL.md": {
+      "sha256": "625fb2646417f88261d1747125572e7132e7a0bebff837a9b0ebb69f5202264c",
+      "bytes": 3395
+    },
+    "skills/genealogy-source-discovery/agents/openai.yaml": {
+      "sha256": "6d03aea286881b0eafaf0a842e83cec464c9fbba6086707b66f3b37a48d3a554",
+      "bytes": 306
+    },
+    "skills/genealogy-transcribe-detailed/SKILL.md": {
+      "sha256": "49ffed9285a79ac8ceca34eadfa7c149cd8eb21c26b19b977e993195c94ab8a5",
+      "bytes": 5372
+    },
+    "skills/genealogy-transcribe-detailed/agents/openai.yaml": {
+      "sha256": "d598d4679d847eca3bbe7333885f02ee4461fe896d2e0872aaf52324d7718684",
+      "bytes": 269
+    },
+    "skills/genealogy-transcribe-quick/SKILL.md": {
+      "sha256": "81bb53475e6062f6c711966a9d33540537cc57eacceaaf4707c9ac5a1d4927f9",
+      "bytes": 5130
+    },
+    "skills/genealogy-transcribe-quick/agents/openai.yaml": {
+      "sha256": "677bc88c562835bb9ddca0c729c1cbb38b005725a54d521884c7c1804fc71064",
+      "bytes": 267
+    },
+    "tests/check_commands.py": {
+      "sha256": "dc56ab91c81ff4ddf7ac4774a52b80bc22445d3d6d2c203cc8781314cbc8b8d0",
+      "bytes": 3527
+    },
+    "tests/check_document_queue.py": {
+      "sha256": "ad588a878fec099381276cf19deb5f631d4b64cd8f8c4852b5c2d33e921509a8",
+      "bytes": 19921
+    },
+    "tests/check_evaluation_layout.py": {
+      "sha256": "a47f01206ba732cb7f5f70fdab3880e47b0f6f6260168292a18e83913922ce3d",
+      "bytes": 1686
+    },
+    "tests/check_examples_v14.py": {
+      "sha256": "7ec264bc550f3d26f587043917e1dea6e75917ab2ee2c688c9c920716dc0758e",
+      "bytes": 3213
+    },
+    "tests/check_gps_countries.py": {
+      "sha256": "63cb3f984f8dc6471ebc1baca5091e43619020b9b2fb7aa6d25579aced2d80d6",
+      "bytes": 13597
+    },
+    "tests/check_helpers.py": {
+      "sha256": "1150f8de923a9d2acd9410a33f29c133535006e0bee120932ca304a82ef0318b",
+      "bytes": 7878
+    },
+    "tests/check_host_adapter.py": {
+      "sha256": "9868d06dfedfaadce40ce418ca4bd58905339a7a9ff1d02a8db6b44f6a1ab491",
+      "bytes": 8391
+    },
+    "tests/check_interview_narrative.py": {
+      "sha256": "15a3b070138d10f51b482e7006cae8e4a1596b0869d3c21e8ca8e4cd8cb99591",
+      "bytes": 9984
+    },
+    "tests/check_packaging.py": {
+      "sha256": "b9e5f50979962c3dd8b6fe69cc829e74cbc3e4e18dc806c7af815fc92647fe67",
+      "bytes": 3953
+    },
+    "tests/check_panel_build_output.py": {
+      "sha256": "4c216a91a785aaca022dae8eeddb7f9524a45617327b09ea31c389a844dd08e0",
+      "bytes": 7737
+    },
+    "tests/check_panel_contexts.py": {
+      "sha256": "a575d64f1fe89b41ddfc7cb5e84dc75a6f7304d96c31a1888114b35642a2ab28",
+      "bytes": 5771
+    },
+    "tests/check_panel_line_confidence.py": {
+      "sha256": "3ada509ec992423afaf58b7eae2b931ea423b7e4c8bf3ebef3449fce82614834",
+      "bytes": 6035
+    },
+    "tests/check_panel_malformed.py": {
+      "sha256": "e3bfa0680af75407dca9fac98c7930105ef585036f03c64fd1d3da81661a50bc",
+      "bytes": 2759
+    },
+    "tests/check_panel_page_resolution.py": {
+      "sha256": "5e4349db34ba40a809a873e077c619a355b06fa7afbf13bade7e080e8f89c2d7",
+      "bytes": 5537
+    },
+    "tests/check_panel_review_fields.py": {
+      "sha256": "77f0442e721d2e3f96739c410e25518cb74540a126e4a2b7f3e5c8295eab4610",
+      "bytes": 4862
+    },
+    "tests/check_panel_sample_pages.py": {
+      "sha256": "ce4eed470c78b2b5049f941951c2b80cae4baaa95a8241b584fba1891bc87725",
+      "bytes": 5960
+    },
+    "tests/check_panel_target_position.py": {
+      "sha256": "76daba35cfbde08fb3bb2cd8ab004e1413a07c9bc7cf2bd25a9d8b73ff497cd3",
+      "bytes": 6905
+    },
+    "tests/check_panel_views.py": {
+      "sha256": "b9789c652ebae6c99e0a56961bc7c80f7d0a09eb79b75de65bc842fd4a90248f",
+      "bytes": 8945
+    },
+    "tests/check_queue_cli.py": {
+      "sha256": "db434994c8a4ffa30f88bc19893e1a0f699b5e59c573fffcef7989bbb570e617",
+      "bytes": 4925
+    },
+    "tests/check_reading_rules.py": {
+      "sha256": "5f06c3e22b07e48addc6e1005a419ae3cf78a024fce2f82e922bcc9d8aa47852",
+      "bytes": 2392
+    },
+    "tests/check_repo_hygiene.py": {
+      "sha256": "b378796c8ca62cf77a843c48e7c344cce39e88ffdab62df4c21627f04941fe0c",
+      "bytes": 1869
+    },
+    "tests/check_repository_routes.py": {
+      "sha256": "c8b45b15e60f29392e22140eb1306c51989b4d9e303776e36dfab7dff105fa9c",
+      "bytes": 2599
+    },
+    "tests/check_reread_story.py": {
+      "sha256": "6d90896468dff8fcc3e5890d4e5c666d3dcfef3fdc6f3dc043bc3c55dbef585c",
+      "bytes": 1569
+    },
+    "tests/check_skill_routing.py": {
+      "sha256": "84827e9ed9faeaaacbdbc0c5639213aaffe3d70e7945185f5e9485f968fec06a",
+      "bytes": 1614
+    },
+    "tests/check_source_supported.py": {
+      "sha256": "2d8318cb1de8c5efc9f07071c5aa05aef42bc0cc5d063f619eeec4b5fa80e725",
+      "bytes": 2921
+    },
+    "tests/check_v14.py": {
+      "sha256": "5b215d6a80ef920e719c901ac76a4a68a3fef2c89e7a11885376800fecd2cbbc",
+      "bytes": 16489
+    },
+    "tests/check_v141.py": {
+      "sha256": "a9be30de3d14b893b9bacc03239edbe3749130125d8803833d255109806f89c4",
+      "bytes": 6958
+    },
+    "tests/check_v142.py": {
+      "sha256": "93e912ca4d46acf4be093ac12dea707ac92763ed3da0cf1bd097bd4528fb8e5a",
+      "bytes": 10443
+    },
+    "tests/check_v143.py": {
+      "sha256": "6a67cd06ea702d96db29727f68e11bcf1b424bf9ee38ea45147feca5c67ef510",
+      "bytes": 13717
+    },
+    "tests/fixtures/line_confidence_cases.json": {
+      "sha256": "ba281bbe9a681921e7bc3447f87bcbb099ace8e840ce34d6cd5d5916ba75c97e",
+      "bytes": 942
+    },
+    "tests/fixtures/synthetic_pages.py": {
+      "sha256": "38a7aa82181bb7b4e7136b39283a72b9c933665e4d6c0de870e9cf700fcb2134",
+      "bytes": 3254
+    },
+    "tests/panel_support.py": {
+      "sha256": "bb06f61786b9c0e53f776481ecf2102fa30ef8abf46b54bb8b4f4980228b4346",
+      "bytes": 1589
+    },
+    "tests/test_repo.py": {
+      "sha256": "29e766fad3355df46d007fa30375917ec77460382cb310b68caf51e8713678ef",
+      "bytes": 11709
+    },
+    "validate_package.py": {
+      "sha256": "4295303667df73c8ba137a2dbb6c8017c49960c45a201d3754d3c4caa57f4f31",
+      "bytes": 2199
+    }
+  }
+}

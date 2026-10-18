@@ -1,0 +1,45 @@
+{
+  "generated_by": "genealogy-case",
+  "case_id": "C-EXAMPLE",
+  "case_revision": 1,
+  "case_digest": "f0a079cc5946b040da4643ba4ca719d3dbac7a38b8e17528755d825a915d8456",
+  "visibility": "private",
+  "editable": false,
+  "people": {
+    "ada": [
+      {
+        "generated_by": "genealogy-case",
+        "case_id": "C-EXAMPLE",
+        "conclusion_id": "K1",
+        "text": "The fixture entry reports age 23.",
+        "status": "provisional",
+        "rationale": "Synthetic reviewer judgment; not a real genealogy conclusion.",
+        "evidence_assessment": null,
+        "review_required": true,
+        "observations": [
+          {
+            "id": "O1",
+            "source_id": "S1",
+            "citation_id": "C1",
+            "locator": "p. 1, entry 4",
+            "statement": "The fixture entry gives age 23.",
+            "uncertainty": "Fixture text is supplied; no image reading tested.",
+            "subject_id": "M1",
+            "predicate": "reported_age",
+            "value": 23,
+            "processing_run_id": "RUN-SYNTHETIC-OLD"
+          }
+        ],
+        "citations": [
+          {
+            "id": "C1",
+            "source_id": "S1",
+            "locator": "p. 1, entry 4",
+            "text": "Synthetic Archive, register TEST, p. 1, entry 4; supplied fixture image."
+          }
+        ]
+      }
+    ],
+    "manuel": []
+  }
+}

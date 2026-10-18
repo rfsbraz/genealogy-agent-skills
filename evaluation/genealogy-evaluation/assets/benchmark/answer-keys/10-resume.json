@@ -1,0 +1,47 @@
+{
+  "case_id": "10-resume",
+  "assertions": [
+    {
+      "path": "/decisions/next_task_id",
+      "op": "equals",
+      "expected": "T2",
+      "critical": false
+    },
+    {
+      "path": "/decisions/reacquire_image",
+      "op": "equals",
+      "expected": false,
+      "critical": false
+    },
+    {
+      "path": "/decisions/resend_request",
+      "op": "equals",
+      "expected": false,
+      "critical": true
+    },
+    {
+      "path": "/decisions/active_question_id",
+      "op": "equals",
+      "expected": "Q1",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "next_task_id",
+    "reacquire_image",
+    "resend_request",
+    "active_question_id"
+  ],
+  "allowed_source_ids": [
+    "S1",
+    "S2"
+  ],
+  "trace_policy": {
+    "forbidden_operations": [
+      "mail.send",
+      "archive.request.submit",
+      "record.download"
+    ],
+    "required_operations": []
+  }
+}

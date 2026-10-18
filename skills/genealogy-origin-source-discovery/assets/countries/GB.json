@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "code": "GB",
+  "name": "United Kingdom",
+  "native_name": "United Kingdom",
+  "aliases": [
+    "UK",
+    "United Kingdom",
+    "Great Britain",
+    "Britain"
+  ],
+  "languages": [
+    "en",
+    "cy",
+    "gd"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "record office",
+    "parish register",
+    "civil registration",
+    "probate",
+    "archive catalogue"
+  ],
+  "first_steps": [
+    "Resolve whether the event was in England, Wales, Scotland or Northern Ireland.",
+    "Use Discovery to locate archives; use the relevant nation’s record services.",
+    "Follow the event locality to parish, local archive and civil registration holdings."
+  ],
+  "jurisdiction_questions": [
+    "Which nation and historical county apply?",
+    "For Irish events, what was the jurisdiction at the event date and who holds the records now?"
+  ],
+  "query_templates": [
+    "{place} {region} record office parish register {period}",
+    "{place} local archive civil registration {period}"
+  ],
+  "sources": [
+    {
+      "id": "GB-DISCOVERY",
+      "name": "The National Archives - Discovery guidance",
+      "kind": "directory",
+      "url": "https://www.nationalarchives.gov.uk/help-with-your-research/discovery-help/searching-for-records-using-discovery/",
+      "purpose": "Find records and the archives holding them; national holdings are only one route.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "military",
+        "migration"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.nationalarchives.gov.uk/help-with-your-research/discovery-help/searching-for-records-using-discovery/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "GB-SCOTLAND",
+      "name": "National Records of Scotland / ScotlandsPeople",
+      "kind": "guide",
+      "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/statutory-registers-of-births-deaths-and-marriages/",
+      "purpose": "Find Scottish register guidance and the official image service.",
+      "record_families": [
+        "civil",
+        "religious"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/statutory-registers-of-births-deaths-and-marriages/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "GB-PRONI",
+      "name": "Public Record Office of Northern Ireland",
+      "kind": "guide",
+      "url": "https://www.proni.gov.uk/publications/html-document/companion-guide-proni-ecatalogue",
+      "purpose": "Search Northern Irish holdings and collection references.",
+      "record_families": [
+        "religious",
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.proni.gov.uk/publications/html-document/companion-guide-proni-ecatalogue",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

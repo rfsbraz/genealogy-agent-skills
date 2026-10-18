@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evaluate Genealogy Agents"
+  short_description: "Evaluate Genealogy Agents workflows and evidence checks"
+  default_prompt: "Use $genealogy-evaluation for this genealogy task, preserve citations, and state unresolved questions."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Quick Document Reading"
+  short_description: "Index long documents with explicit reading coverage"
+  default_prompt: "Use $genealogy-transcribe-quick to process the supplied genealogy documents."
+policy:
+  allow_implicit_invocation: false

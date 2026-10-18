@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "code": "IT",
+  "name": "Italy",
+  "native_name": "Italia",
+  "aliases": [
+    "Italy",
+    "Italia"
+  ],
+  "languages": [
+    "it"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "comune",
+    "stato civile",
+    "Archivio di Stato",
+    "parrocchia",
+    "liste di leva"
+  ],
+  "first_steps": [
+    "Establish the comune, province and period administration.",
+    "Check Antenati for the relevant state archive and series, then confirm image and year coverage.",
+    "Discover municipal and diocesan/parish custodians for missing or different record series."
+  ],
+  "jurisdiction_questions": [
+    "Which pre-unification authority or later jurisdiction created these records?",
+    "Are both the original and duplicate series available, and are they independent?"
+  ],
+  "query_templates": [
+    "{place} {region} archivio stato civile {period}",
+    "{place} archivio diocesano parrocchia registri {period}"
+  ],
+  "sources": [
+    {
+      "id": "IT-ANTENATI",
+      "name": "Antenati - state archive genealogy portal",
+      "kind": "catalogue",
+      "url": "https://antenati.cultura.gov.it/",
+      "purpose": "Discover digitised civil registers and other genealogical holdings of Italian state archives.",
+      "record_families": [
+        "civil",
+        "military"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://icar.cultura.gov.it/sistemi-e-portali/antenati",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

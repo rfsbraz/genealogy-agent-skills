@@ -1,0 +1,6 @@
+interface:
+  display_name: "Discover Relevant Records"
+  short_description: "Discover Relevant Records workflows and evidence checks"
+  default_prompt: "Use $genealogy-source-discovery for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

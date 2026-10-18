@@ -1,0 +1,11 @@
+{
+  "note": "Invented names only. C's whole-line reading next to A/B letter-by-letter readings: [x/y] is one letter with alternatives, ? one unresolved letter, ... an unresolved run, null an abstention. The summary must queue every C candidate for coordinator letter review, whatever A and B say.",
+  "cases": [
+    {"id": "all-letters-agree", "line": "Ulvadine", "letters": {"A": "Ulvadine", "B": "Ul[v/n]adine"}},
+    {"id": "fluent-but-false-name", "line": "Orlamund", "letters": {"A": "Orbem[u/n]nd", "B": null}},
+    {"id": "one-source-contradicts-the-other-agrees", "line": "Zephrine", "letters": {"A": "Zephrine", "B": "Zeph[v/r]ime"}},
+    {"id": "unresolved-letters", "line": "Ulvadine Moonquill", "letters": {"A": "Ulvad?ne Moon...", "B": null}},
+    {"id": "extra-letter", "line": "Tarskelo", "letters": {"A": "Tarskel", "B": null}},
+    {"id": "no-letter-evidence", "line": "Glimmerholt", "letters": {"A": null, "B": null}}
+  ]
+}

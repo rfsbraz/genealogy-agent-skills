@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "code": "MX",
+  "name": "Mexico",
+  "native_name": "México",
+  "aliases": [
+    "Mexico",
+    "México"
+  ],
+  "languages": [
+    "es"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "archivo histórico",
+    "registro civil",
+    "archivo parroquial",
+    "archivo diocesano",
+    "padrón"
+  ],
+  "first_steps": [
+    "Identify the municipio, state and period jurisdiction.",
+    "Use AGN guides for relevant national holdings and discover state and municipal archives.",
+    "Locate civil registration and religious records with their actual custodians."
+  ],
+  "jurisdiction_questions": [
+    "Was the locality under a colonial, state or municipal administration?",
+    "Are there relevant Indigenous/community custodians or languages? Establish these from the evidence."
+  ],
+  "query_templates": [
+    "{place} {region} archivo histórico registro civil {period}",
+    "{place} archivo parroquial diocesano {period}"
+  ],
+  "sources": [
+    {
+      "id": "MX-AGN",
+      "name": "Archivo General de la Nación - finding aids",
+      "kind": "guide",
+      "url": "https://www.gob.mx/agn/acciones-y-programas/consulta-la-guia-general-de-los-fondos-del-agn?idiom=es",
+      "purpose": "Discover official finding aids for AGN holdings.",
+      "record_families": [
+        "legal",
+        "institutional",
+        "migration"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.gob.mx/agn/acciones-y-programas/consulta-la-guia-general-de-los-fondos-del-agn?idiom=es",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "MX-ACCESS",
+      "name": "Archivo General de la Nación - access services",
+      "kind": "repository",
+      "url": "https://www.gob.mx/agn/acciones-y-programas/servicios-de-acceso-consulta-y-uso-del-patrimonio-documental",
+      "purpose": "Check consultation, reproduction and finding-aid routes.",
+      "record_families": [
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.gob.mx/agn/acciones-y-programas/servicios-de-acceso-consulta-y-uso-del-patrimonio-documental",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

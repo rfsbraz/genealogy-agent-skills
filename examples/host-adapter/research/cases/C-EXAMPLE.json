@@ -1,0 +1,44 @@
+{
+  "format": "genealogy-case-sidecar/1.0",
+  "case_id": "C-EXAMPLE",
+  "sections": {
+    "goal": "Replace with a focused genealogy goal",
+    "active_question_id": "Q-1",
+    "authorization": {
+      "send_mail": false,
+      "paid_orders": false,
+      "public_sharing": false,
+      "evidence": []
+    },
+    "checkpoint": {
+      "next_action": "Review the supplied evidence and choose one useful next step."
+    },
+    "questions": [
+      {
+        "id": "Q-1",
+        "text": "Replace with an answerable question",
+        "status": "active"
+      }
+    ],
+    "hypotheses": [],
+    "tasks": [],
+    "repositories": [],
+    "holdings": [],
+    "correspondence": [],
+    "changes": []
+  },
+  "fields": {
+    "conclusions": {
+      "K1": {
+        "evidence_assessment": {
+          "basis": "Supplied synthetic statement, no historical claim.",
+          "scope": "Age as reported, not an exact birth date or resolved identity.",
+          "reviewer": "synthetic-test",
+          "reviewed_on": "2026-10-17",
+          "known_conflicts": [],
+          "limitations": "Synthetic example; no real source image was read."
+        }
+      }
+    }
+  }
+}

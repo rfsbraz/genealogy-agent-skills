@@ -1,0 +1,6 @@
+interface:
+  display_name: "Historical Locality Research"
+  short_description: "Historical Locality Research workflows and evidence checks"
+  default_prompt: "Use $genealogy-locality-research for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

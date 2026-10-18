@@ -1,0 +1,39 @@
+{
+  "case_id": "02-event-extraction",
+  "assertions": [
+    {
+      "path": "/decisions/birth_date",
+      "op": "equals",
+      "expected": "1872-04-08",
+      "critical": false
+    },
+    {
+      "path": "/decisions/baptism_date",
+      "op": "equals",
+      "expected": "1872-04-10",
+      "critical": false
+    },
+    {
+      "path": "/decisions/father_literal",
+      "op": "equals",
+      "expected": "Jo[?] Pereira",
+      "critical": false
+    },
+    {
+      "path": "/decisions/father_normalized",
+      "op": "equals",
+      "expected": null,
+      "critical": true
+    }
+  ],
+  "evidence_fields": [
+    "birth_date",
+    "baptism_date",
+    "father_literal",
+    "father_normalized"
+  ],
+  "allowed_source_ids": [
+    "S1"
+  ],
+  "trace_policy": null
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "S1",
+    "text": "Request key REQ-9. User authorized exactly one request. Local ledger says delivery_uncertain after timeout; this does not prove failure."
+  },
+  {
+    "id": "S2",
+    "text": "Mailbox reconciliation found sent message M-91 in thread T-9 with request key REQ-9, expected recipient and exact prepared content. Server delivery status is sent."
+  }
+]

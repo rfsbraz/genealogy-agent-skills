@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.2",
+  "case_id": "C-EXAMPLE",
+  "revision": 0,
+  "goal": "Replace with a focused genealogy goal",
+  "active_question_id": "Q-1",
+  "authorization": {
+    "send_mail": false,
+    "paid_orders": false,
+    "public_sharing": false,
+    "evidence": []
+  },
+  "checkpoint": {
+    "next_action": "Review the supplied evidence and choose one useful next step."
+  },
+  "questions": [
+    {
+      "id": "Q-1",
+      "text": "Replace with an answerable question",
+      "status": "active"
+    }
+  ],
+  "persons": [
+    {
+      "id": "P1",
+      "label": "Synthetic Ada"
+    },
+    {
+      "id": "P2",
+      "label": "Synthetic Manuel"
+    }
+  ],
+  "mentions": [
+    {
+      "id": "M1",
+      "source_id": "S1",
+      "locator": "p. 1, entry 4",
+      "literal": "Ada",
+      "person_id": "P1"
+    }
+  ],
+  "relationships": [],
+  "events": [],
+  "places": [],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Synthetic register, fixture only",
+      "source_type": "original",
+      "derived_from": []
+    }
+  ],
+  "citations": [
+    {
+      "id": "C1",
+      "source_id": "S1",
+      "locator": "p. 1, entry 4",
+      "text": "Synthetic Archive, register TEST, p. 1, entry 4; supplied fixture image."
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "source_id": "S1",
+      "citation_id": "C1",
+      "locator": "p. 1, entry 4",
+      "statement": "The fixture entry gives age 23.",
+      "uncertainty": "Fixture text is supplied; no image reading tested.",
+      "subject_id": "M1",
+      "predicate": "reported_age",
+      "value": 23,
+      "processing_run_id": "RUN-SYNTHETIC-OLD"
+    }
+  ],
+  "hypotheses": [],
+  "conclusions": [
+    {
+      "id": "K1",
+      "question_id": "Q-1",
+      "claim": "The fixture entry reports age 23.",
+      "status": "source_supported",
+      "observation_ids": [
+        "O1"
+      ],
+      "rationale": "Synthetic reviewer judgment; not a real genealogy conclusion.",
+      "depends_on": [],
+      "evidence_assessment": {
+        "basis": "Supplied synthetic statement, no historical claim.",
+        "scope": "Age as reported, not an exact birth date or resolved identity.",
+        "reviewer": "synthetic-test",
+        "reviewed_on": "2026-10-17",
+        "known_conflicts": [],
+        "limitations": "Synthetic example; no real source image was read."
+      }
+    }
+  ],
+  "searches": [
+    {
+      "id": "SR1",
+      "question_id": "Q-1",
+      "target": "Synthetic collection",
+      "method": "Supplied fixture review",
+      "coverage": "All supplied fixture material, p. 1",
+      "outcome": "found"
+    }
+  ],
+  "tasks": [],
+  "repositories": [],
+  "holdings": [],
+  "correspondence": [],
+  "changes": []
+}

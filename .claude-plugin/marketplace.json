@@ -1,0 +1,16 @@
+{
+  "name": "genealogy-agent-skills",
+  "owner": {
+    "name": "Rodrigo Braz"
+  },
+  "metadata": {
+    "description": "Genealogy research skills for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "genealogy",
+      "source": "./",
+      "description": "Evidence-based genealogy research skills: plan, find sources and archives, read records and handwriting, resolve identities, and write cited conclusions."
+    }
+  ]
+}

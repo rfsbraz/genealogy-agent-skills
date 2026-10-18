@@ -1,0 +1,13 @@
+{
+  "documents": {
+    "S1": "DOC-SYNTHETIC"
+  },
+  "persons": {
+    "P1": "ada",
+    "P2": "manuel"
+  },
+  "tree_person_pointers": {
+    "P1": "/people/0",
+    "P2": "/people/1"
+  }
+}

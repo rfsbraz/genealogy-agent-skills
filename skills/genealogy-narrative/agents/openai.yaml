@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tell a Family Story"
+  short_description: "Turn family evidence into an evocative life story"
+  default_prompt: "Use $genealogy-narrative to tell this person’s life as an evocative historical story, with evidence notes."

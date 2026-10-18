@@ -1,0 +1,42 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "genealogy",
+  "version": "2.0.0",
+  "description": "Evidence-based genealogy research skills: plan, find sources and archives, read records and handwriting, resolve identities, and write cited conclusions.",
+  "author": {
+    "name": "Rodrigo Braz",
+    "url": "https://github.com/rfsbraz"
+  },
+  "homepage": "https://github.com/rfsbraz/genealogy-agent-skills",
+  "repository": "https://github.com/rfsbraz/genealogy-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "genealogy",
+    "family history",
+    "genealogical proof standard",
+    "parish records",
+    "archives"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Genealogy",
+        "shortDescription": "Research family history with cited, evidence-based conclusions",
+        "longDescription": "Evidence-based genealogy research skills: plan, find sources and archives, read records and handwriting, resolve identities, and write cited conclusions. Follows the Genealogical Proof Standard, keeps uncertainty visible and drafts archive requests without sending them.",
+        "developerName": "Rodrigo Braz",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Start a genealogy case for my great-grandfather and plan the first searches",
+          "Transcribe this parish record and list what it says about each person",
+          "Which archive is likely to hold this baptism record, and how do I request it?"
+        ],
+        "composerIcon": "./assets/logo.svg",
+        "logo": "./assets/logo.svg"
+      }
+    }
+  }
+}

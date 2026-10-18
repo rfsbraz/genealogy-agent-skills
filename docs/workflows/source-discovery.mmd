@@ -1,0 +1,18 @@
+flowchart TD
+    A["Load question and prior searches"] --> B{"Existing evidence sufficient for next action?"}
+    B -->|Yes| J["Document-processing workflow"]
+    B -->|No| C["Resolve origins, dates and historical jurisdictions"]
+    C --> D["Discover custodians, holdings and access services"]
+    D --> E["Plan bounded searches that distinguish hypotheses"]
+    E --> F{"Search result"}
+    F -->|Record found| G["Acquire and cite source version"]
+    G --> J
+    F -->|No match or partial| H["Record coverage, gaps and result"]
+    H --> E
+    F -->|Request or visit needed| I["Prepare correspondence or fieldwork"]
+    I --> K["Track authorization, request and blocker"]
+    K -->|Record arrives| G
+    F -->|Technical failure| L["Record failure and retry condition"]
+    L -->|Access restored| E
+    J --> M["Observations, identities and proof evaluation"]
+    M -->|New origin| C

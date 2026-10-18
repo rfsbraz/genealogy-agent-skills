@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "include-component-in-tag": false,
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "genealogy",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {"type": "json", "path": "plugin.json", "jsonpath": "$.version"},
+        {"type": "json", "path": ".cursor-plugin/plugin.json", "jsonpath": "$.version"},
+        {"type": "json", "path": ".claude-plugin/plugin.json", "jsonpath": "$.version"},
+        {"type": "json", "path": "gemini-extension.json", "jsonpath": "$.version"},
+        {"type": "json", "path": "manifest.json", "jsonpath": "$.version"},
+        {"type": "generic", "path": "INSTALL.md"},
+        {"type": "generic", "path": "README.md"}
+      ]
+    }
+  }
+}

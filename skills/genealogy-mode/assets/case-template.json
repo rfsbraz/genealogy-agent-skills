@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.2",
+  "case_id": "C-EXAMPLE",
+  "revision": 0,
+  "goal": "Replace with a focused genealogy goal",
+  "active_question_id": "Q-1",
+  "authorization": {
+    "send_mail": false,
+    "paid_orders": false,
+    "public_sharing": false,
+    "evidence": []
+  },
+  "checkpoint": {
+    "next_action": "Review the supplied evidence and choose one useful next step."
+  },
+  "questions": [
+    {
+      "id": "Q-1",
+      "text": "Replace with an answerable question",
+      "status": "active"
+    }
+  ],
+  "persons": [],
+  "mentions": [],
+  "relationships": [],
+  "events": [],
+  "places": [],
+  "sources": [],
+  "citations": [],
+  "observations": [],
+  "hypotheses": [],
+  "conclusions": [],
+  "searches": [],
+  "tasks": [],
+  "repositories": [],
+  "holdings": [],
+  "correspondence": [],
+  "changes": []
+}

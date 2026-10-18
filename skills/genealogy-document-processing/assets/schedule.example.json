@@ -1,0 +1,13 @@
+{
+  "enabled": false,
+  "tick_every_minutes": 180,
+  "timezone": "UTC",
+  "budget_source": "host_supplied",
+  "run_when_allowance_missing": false,
+  "max_parallel_jobs": 1,
+  "default_detailed_batch_pages": 2,
+  "background_full_detail": true,
+  "max_attempts_before_review": 3,
+  "automatic_reclaim_of_running_jobs": false,
+  "notes": "Example only. No daemon, model connector, quota integration or timer is installed."
+}

@@ -1,0 +1,38 @@
+{
+  "case_id": "01-portugal-routing",
+  "decisions": {
+    "custodian_candidate": "Archive of the University of Coimbra",
+    "digitarq_role": "catalogue_and_images",
+    "crav_role": "request_service",
+    "holding_confirmed": false,
+    "next_action": "verify_parish_volume_coverage"
+  },
+  "evidence": {
+    "custodian_candidate": [
+      "S1"
+    ],
+    "digitarq_role": [
+      "S2"
+    ],
+    "crav_role": [
+      "S2"
+    ],
+    "holding_confirmed": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "next_action": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  "limitations": [
+    "Only the supplied synthetic directory and service excerpts were assessed; no browsing or contact was performed.",
+    "District archival functions identify a custodian candidate but do not confirm custody of the specific 1840 baptism volume.",
+    "The parish, collection, volume reference, date coverage and gaps remain unverified.",
+    "Before acquisition, verify a holding description for the identified parish covering 1840, its actual custodian and available access route.",
+    "Digitization and image availability for the requested volume are unknown."
+  ]
+}

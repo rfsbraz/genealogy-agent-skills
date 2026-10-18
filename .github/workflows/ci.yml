@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install test dependencies
+        run: python -m pip install --quiet pillow
+      - name: Validate package
+        run: python validate_package.py
+      - name: Manifest is current
+        run: python scripts/build_manifest.py --check
+      - name: Installer dry run, apply and repeat
+        run: |
+          check() {
+            # $1 = destination, $2 = expected installs, remaining args = extra install.py flags
+            dest="$1"; expected="$2"; shift 2
+            python install.py --dest "$dest" "$@" > dry.json
+            python -c "import json, sys; a=json.load(open('dry.json'))['actions']; assert len(a)==int(sys.argv[1]), (len(a), sys.argv[1]); assert all(x['action']=='install' for x in a)" "$expected"
+            python install.py --dest "$dest" "$@" --apply > /dev/null
+            python install.py --dest "$dest" "$@" > again.json
+            python -c "import json, sys; a=json.load(open('again.json'))['actions']; assert len(a)==int(sys.argv[1]); assert all(x['action']=='skip_identical' for x in a)" "$expected"
+          }
+          runtime=$(ls -d skills/*/ | wc -l)
+          check "$RUNNER_TEMP/skills" "$runtime"
+          check "$RUNNER_TEMP/skills-with-evaluation" "$((runtime + 1))" --include-evaluation
+      - name: Helper tests
+        run: |
+          python tests/check_helpers.py
+          python tests/check_v14.py
+          python tests/check_source_supported.py
+          python tests/check_reread_story.py
+          python tests/check_examples_v14.py
+          python tests/check_host_adapter.py
+          python tests/check_document_queue.py
+          python tests/check_queue_cli.py
+          python tests/check_evaluation_layout.py
+          python tests/check_skill_routing.py
+          python tests/check_gps_countries.py
+          python tests/check_interview_narrative.py
+          python tests/check_repository_routes.py
+          python tests/check_commands.py
+          python tests/check_v141.py
+          python tests/check_v142.py
+          python tests/check_v143.py
+          python tests/check_packaging.py
+          python tests/check_reading_rules.py
+          python tests/check_repo_hygiene.py
+      - name: Reading panel tests
+        run: |
+          for test in tests/check_panel_*.py; do
+            python "$test" || exit 1
+          done
+      - name: Offline CLI smoke run
+        run: |
+          python genealogy.py countries
+          python genealogy.py interview --help
+          python genealogy.py story --help
+          python genealogy.py reread --help
+          python genealogy.py project --help
+      - name: Repository tests
+        run: python tests/test_repo.py
+
+  privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Privacy scan
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}
+        run: python scripts/privacy_scan.py

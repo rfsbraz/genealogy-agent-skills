@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Your Family History"
+  short_description: "Interview, investigate and tell family stories"
+  default_prompt: "Use $genealogy-mode to start or continue my family research, interview me when needed, and tell evidence-based family stories."

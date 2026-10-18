@@ -1,0 +1,37 @@
+{
+  "case_id": "03-namesakes",
+  "assertions": [
+    {
+      "path": "/decisions/merge",
+      "op": "equals",
+      "expected": false,
+      "critical": true
+    },
+    {
+      "path": "/decisions/identity_ids",
+      "op": "equals",
+      "expected": [
+        "P1",
+        "P2"
+      ],
+      "critical": true
+    },
+    {
+      "path": "/decisions/status",
+      "op": "equals",
+      "expected": "keep_distinct",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "merge",
+    "identity_ids",
+    "status"
+  ],
+  "allowed_source_ids": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "trace_policy": null
+}

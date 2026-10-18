@@ -1,0 +1,6 @@
+interface:
+  display_name: "Reconstruct Families and Networks"
+  short_description: "Reconstruct Families and Networks workflows and evidence checks"
+  default_prompt: "Use $genealogy-family-reconstruction for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

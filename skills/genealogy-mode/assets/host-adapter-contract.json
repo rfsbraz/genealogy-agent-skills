@@ -1,0 +1,124 @@
+{
+  "contract": "genealogy-host-adapter",
+  "version": "1.0",
+  "case_schema_versions": [
+    "1.2"
+  ],
+  "classes": {
+    "required": "Lives in the host record and must come back unchanged through export and import.",
+    "optional": "The host may store it. If it does not, it lives in the sidecar. Either way it must round trip.",
+    "sidecar_only": "Working case state. Lives only in the sidecar, never in the host record."
+  },
+  "sidecar": {
+    "path": "research/cases/<case-id>.json",
+    "format": "genealogy-case-sidecar/1.0"
+  },
+  "sections": {
+    "schema_version": {
+      "class": "required",
+      "note": "The adapter writes the case schema version it exports."
+    },
+    "case_id": {
+      "class": "required",
+      "note": "Stable case ID. The adapter keeps the same ID on every export."
+    },
+    "revision": {
+      "class": "required",
+      "note": "Changes only when the host record or the sidecar changes."
+    },
+    "goal": {
+      "class": "sidecar_only",
+      "note": "Working research goal."
+    },
+    "active_question_id": {
+      "class": "sidecar_only",
+      "note": "Points at a question in the sidecar."
+    },
+    "authorization": {
+      "class": "sidecar_only",
+      "note": "What the user allowed in this working case."
+    },
+    "checkpoint": {
+      "class": "sidecar_only",
+      "note": "Next action for the working case."
+    },
+    "questions": {
+      "class": "sidecar_only",
+      "note": "Research questions of the working case."
+    },
+    "persons": {
+      "class": "required",
+      "note": "People the host owns."
+    },
+    "mentions": {
+      "class": "required",
+      "note": "Person mentions in sources."
+    },
+    "relationships": {
+      "class": "required",
+      "note": "Relationships the host owns."
+    },
+    "events": {
+      "class": "required",
+      "note": "Events the host owns."
+    },
+    "places": {
+      "class": "required",
+      "note": "Places the host owns."
+    },
+    "sources": {
+      "class": "required",
+      "note": "Sources the host owns."
+    },
+    "citations": {
+      "class": "required",
+      "note": "Citations the host owns."
+    },
+    "observations": {
+      "class": "required",
+      "note": "Readings, including rereads with supersedes."
+    },
+    "hypotheses": {
+      "class": "optional",
+      "note": "Host stores them, or they go in the sidecar."
+    },
+    "conclusions": {
+      "class": "required",
+      "note": "Conclusions the host owns."
+    },
+    "searches": {
+      "class": "optional",
+      "note": "Includes negative searches. Host or sidecar."
+    },
+    "tasks": {
+      "class": "optional",
+      "note": "Host or sidecar."
+    },
+    "repositories": {
+      "class": "optional",
+      "note": "Host or sidecar."
+    },
+    "holdings": {
+      "class": "optional",
+      "note": "Host or sidecar."
+    },
+    "correspondence": {
+      "class": "optional",
+      "note": "Host or sidecar."
+    },
+    "changes": {
+      "class": "optional",
+      "note": "Reread and correction history. Host or sidecar."
+    }
+  },
+  "fields": {
+    "conclusions.evidence_assessment": {
+      "class": "optional",
+      "note": "Scoped assessment for source_supported. Host or sidecar, keyed by conclusion ID."
+    },
+    "observations.reading_method": {
+      "class": "optional",
+      "note": "How the reading was made. Host or sidecar, keyed by observation ID."
+    }
+  }
+}

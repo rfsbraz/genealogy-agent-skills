@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "code": "BR",
+  "name": "Brazil",
+  "native_name": "Brasil",
+  "aliases": [
+    "Brasil",
+    "Brazil"
+  ],
+  "languages": [
+    "pt"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "cartório",
+    "registro civil",
+    "arquivo público estadual",
+    "paróquia",
+    "habilitação de casamento",
+    "imigração"
+  ],
+  "first_steps": [
+    "Identify the municipality and state at the event date.",
+    "Locate the cartório, parish/diocese and state or municipal archive relevant to that event.",
+    "Use Arquivo Nacional guides for applicable national holdings and migration questions; use newspapers as contextual or identifying evidence."
+  ],
+  "jurisdiction_questions": [
+    "Did the municipality or parish change name or boundaries?",
+    "Which local office created the record, and where are its originals and copies now?",
+    "Is there evidence connecting this person to Portugal or another origin country?"
+  ],
+  "query_templates": [
+    "{place} {region} arquivo público registro civil {period}",
+    "{place} paróquia cartório registros {period}"
+  ],
+  "sources": [
+    {
+      "id": "BR-AN",
+      "name": "Arquivo Nacional - research databases",
+      "kind": "repository",
+      "url": "https://www.gov.br/arquivonacional/pt-br/servicos/bases-de-dados",
+      "purpose": "Discover SIAN and other official finding aids.",
+      "record_families": [
+        "migration",
+        "institutional",
+        "legal"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.gov.br/arquivonacional/pt-br/servicos/bases-de-dados",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "BR-HDB",
+      "name": "Biblioteca Nacional - Hemeroteca Digital",
+      "kind": "digital_library",
+      "url": "https://bndigital.bn.gov.br/hemeroteca-digital/",
+      "purpose": "Find newspaper titles and date coverage, then inspect the original pages.",
+      "record_families": [
+        "press"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.gov.br/bn/pt-br/central-de-conteudos/externos/hemeroteca-digital/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": {
+        "status": "recheck_required",
+        "observed_on": "2026-10-17",
+        "evidence_url": "https://www.gov.br/bn/pt-br/central-de-conteudos/noticias/aos-usuarios-da-hemeroteca-digital-brasileira-1/",
+        "note": "Official indexed notice reports access restoration work and points to the digital collection. Full notice retrieval redirected to sign-in; present availability was not established.",
+        "fallback_url": "https://bndigital.bn.gov.br/acervodigital/"
+      },
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

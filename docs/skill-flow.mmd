@@ -1,0 +1,55 @@
+---
+config:
+  look: neo
+  theme: redux
+  layout: elk
+  flowchart:
+    wrappingWidth: 220
+---
+flowchart TD
+    %% Regenerate the image after editing: npx @mermaid-js/mermaid-cli -i docs/skill-flow.mmd -o docs/assets/skill-flow.svg -c docs/mermaid-config.json -b white
+    U["You: a question, a document or 'start my tree'"] --> M["mode: the coordinator"]
+    T["/tree command"] --> IV
+    S["/story command"] --> NA
+
+    M -->|Start by chatting| IV["interview"]
+    M -->|New case or imported tree| CI["case-intake"]
+    M -->|Tell a life story| NA["narrative"]
+    IV -->|Research now| CI
+
+    CI --> LR["locality-research"]
+    CI --> OD["origin-source-discovery"]
+    LR --> OD
+    OD --> RD["repository-discovery"]
+    RD --> PL["research-planner"]
+    CI --> PL
+
+    PL --> SD["source-discovery"]
+    SD --> RA["record-acquisition"]
+    RA -->|Not online| AC["archive-correspondence"]
+    RA -->|Visit needed| AF["archive-fieldwork"]
+    AC --> RA
+    AF --> RA
+
+    RA --> DP["document-processing: page ledger and budget"]
+    DP --> TQ["transcribe-quick"]
+    DP --> TD["transcribe-detailed"]
+    TQ -->|Pages that matter| TD
+    TD --> RM["genealogy-read-manuscripts: four reading methods"]
+    RM --> TD
+    TD --> EX["evidence-extraction"]
+    TQ --> EX
+    HT["historical-translation"] <--> EX
+    OH["oral-history"] --> EX
+    GE["genetic-evidence"] --> PE
+
+    EX --> IR["identity-resolution"]
+    EX --> FR["family-reconstruction"]
+    IR --> PE["proof-evaluation: GPS review"]
+    FR --> PE
+    PE <-->|Consequential or disputed| IRV["independent-review"]
+    PE -->|Gaps remain| PL
+    PE --> MA["research-maintenance: save and version"]
+    MA --> RP["reporting: brief card or full report"]
+    MA -.->|Reads the case, never changes evidence| NA
+    RP -->|Next question| M

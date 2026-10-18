@@ -1,0 +1,8 @@
+description = "Tell a researched ancestor's life as a readable story with traceable evidence"
+prompt = """
+Use the genealogy-narrative skill for this request and follow its instructions.
+
+Person and options from the user: {{args}}
+
+If no person was given, ask which researched person the story is about. Do not write the story here; the skill is the source of truth.
+"""

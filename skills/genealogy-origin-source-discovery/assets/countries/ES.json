@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "code": "ES",
+  "name": "Spain",
+  "native_name": "España",
+  "aliases": [
+    "España",
+    "Espana",
+    "Spain"
+  ],
+  "languages": [
+    "es",
+    "ca",
+    "gl",
+    "eu"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "archivo municipal",
+    "archivo histórico provincial",
+    "registro civil",
+    "archivo diocesano",
+    "padrón"
+  ],
+  "first_steps": [
+    "Resolve the municipality, province and historical jurisdiction.",
+    "Use Censo-Guía to discover local custodians; use PARES for relevant participating holdings.",
+    "Investigate civil, diocesan and municipal routes separately."
+  ],
+  "jurisdiction_questions": [
+    "Which language and historical place-name forms apply?",
+    "Was the record created locally or by a central or overseas authority?"
+  ],
+  "query_templates": [
+    "{place} {region} archivo municipal registro civil {period}",
+    "{place} archivo diocesano parroquia {period}"
+  ],
+  "sources": [
+    {
+      "id": "ES-CENSO",
+      "name": "Censo-Guía de Archivos de España e Iberoamérica",
+      "kind": "directory",
+      "url": "https://censoarchivos.cultura.gob.es/CensoGuia/portada.htm",
+      "purpose": "Discover archives and descriptions of their holdings.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://censoarchivos.cultura.gob.es/CensoGuia/portada.htm",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "ES-PARES",
+      "name": "PARES - Portal de Archivos Españoles",
+      "kind": "catalogue",
+      "url": "https://pares.cultura.gob.es/inicio.html",
+      "purpose": "Search descriptions and available images from participating state archives.",
+      "record_families": [
+        "legal",
+        "migration",
+        "military",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://pares.cultura.gob.es/preguntas-frecuentes.html",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

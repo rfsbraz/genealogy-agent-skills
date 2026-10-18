@@ -1,0 +1,69 @@
+{
+  "case_id": "03-namesakes",
+  "status": "pass",
+  "checks_passed": 8,
+  "checks_total": 8,
+  "check_fraction": 1.0,
+  "critical_failures": [],
+  "trace_status": "not_required",
+  "checks": [
+    {
+      "check": "case_id",
+      "passed": true,
+      "critical": false,
+      "detail": null
+    },
+    {
+      "check": "/decisions/merge",
+      "passed": true,
+      "critical": true,
+      "detail": {
+        "observed": false
+      }
+    },
+    {
+      "check": "/decisions/identity_ids",
+      "passed": true,
+      "critical": true,
+      "detail": {
+        "observed": [
+          "P1",
+          "P2"
+        ]
+      }
+    },
+    {
+      "check": "/decisions/status",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "keep_distinct"
+      }
+    },
+    {
+      "check": "evidence_refs:merge",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:identity_ids",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:status",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "limitations_shape",
+      "passed": true,
+      "critical": false,
+      "detail": null
+    }
+  ],
+  "limits": "Checks decision values and reference IDs, not actual citation support or historical truth. Trace integrity is the host responsibility."
+}

@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.1",
+  "case_id": "CASE-SYNTHETIC-BEATRIZ",
+  "revision": 0,
+  "goal": "Reconstruct the life of Beatriz Mar",
+  "active_question_id": "Q-1",
+  "authorization": {
+    "send_mail": false,
+    "paid_orders": false,
+    "public_sharing": false,
+    "evidence": []
+  },
+  "checkpoint": {
+    "next_action": "Review the supplied evidence and choose one useful next step."
+  },
+  "questions": [
+    {
+      "id": "Q-1",
+      "text": "Replace with an answerable question",
+      "status": "active"
+    }
+  ],
+  "persons": [
+    {
+      "id": "P-BEATRIZ",
+      "label": "Beatriz Mar",
+      "visibility": "private"
+    },
+    {
+      "id": "P-TOMAS",
+      "label": "Tomás Neri",
+      "visibility": "private"
+    }
+  ],
+  "mentions": [],
+  "relationships": [
+    {
+      "id": "REL-1",
+      "from_person_id": "P-BEATRIZ",
+      "to_person_id": "P-TOMAS",
+      "type": "spouse",
+      "status": "provisional",
+      "conclusion_id": "CON-2"
+    }
+  ],
+  "events": [],
+  "places": [],
+  "sources": [
+    {
+      "id": "S-B",
+      "title": "Synthetic birth-register extract (fictional training fixture)",
+      "source_type": "original",
+      "derived_from": []
+    },
+    {
+      "id": "S-M",
+      "title": "Synthetic marriage-register extract (fictional training fixture)",
+      "source_type": "original",
+      "derived_from": []
+    },
+    {
+      "id": "S-C",
+      "title": "Synthetic household extract (fictional training fixture)",
+      "source_type": "original",
+      "derived_from": []
+    },
+    {
+      "id": "S-T",
+      "title": "Synthetic family interview (fictional training fixture)",
+      "source_type": "testimony",
+      "derived_from": []
+    }
+  ],
+  "citations": [
+    {
+      "id": "CIT-1",
+      "source_id": "S-B",
+      "locator": "Register B, entry 12",
+      "text": "Synthetic birth-register extract (fictional training fixture), Register B, entry 12."
+    },
+    {
+      "id": "CIT-2",
+      "source_id": "S-M",
+      "locator": "Register M, entry 8",
+      "text": "Synthetic marriage-register extract (fictional training fixture), Register M, entry 8."
+    },
+    {
+      "id": "CIT-3",
+      "source_id": "S-C",
+      "locator": "Household 14, 1910",
+      "text": "Synthetic household extract (fictional training fixture), Household 14, 1910."
+    },
+    {
+      "id": "CIT-4",
+      "source_id": "S-T",
+      "locator": "Turn 4",
+      "text": "Synthetic family interview (fictional training fixture), Turn 4."
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-1",
+      "source_id": "S-B",
+      "citation_id": "CIT-1",
+      "locator": "Register B, entry 12",
+      "statement": "A birth register records Beatriz Mar, born 3 May 1884 in Vila Clara.",
+      "subject_id": "P-BEATRIZ",
+      "predicate": "birth",
+      "value": {
+        "literal": "3 May 1884",
+        "kind": "exact",
+        "date": "1884-05-03"
+      },
+      "uncertainty": "Synthetic fixture. Birth year 1884 conflicts with age 25 in 1907."
+    },
+    {
+      "id": "OBS-2",
+      "source_id": "S-M",
+      "citation_id": "CIT-2",
+      "locator": "Register M, entry 8",
+      "statement": "A 1907 marriage entry names Beatriz Mar, aged 25, seamstress, marrying Tomás Neri.",
+      "subject_id": "P-BEATRIZ",
+      "predicate": "marriage",
+      "value": "1907; age 25; seamstress; spouse Tomás Neri",
+      "uncertainty": "Synthetic fixture. Birth year 1884 conflicts with age 25 in 1907."
+    },
+    {
+      "id": "OBS-3",
+      "source_id": "S-C",
+      "citation_id": "CIT-3",
+      "locator": "Household 14, 1910",
+      "statement": "In 1910 Beatriz Mar and Tomás Neri appear at Rua do Poço 8 with a daughter, Rosa, aged two.",
+      "subject_id": "P-BEATRIZ",
+      "predicate": "residence",
+      "value": "Rua do Poço 8",
+      "uncertainty": "Synthetic supplied statement; original artifact is not a real-world record."
+    },
+    {
+      "id": "OBS-4",
+      "source_id": "S-T",
+      "citation_id": "CIT-4",
+      "locator": "Turn 4",
+      "statement": "A grandson recalls that Beatriz taught neighbourhood children to sew. He does not know her death date.",
+      "subject_id": "P-BEATRIZ",
+      "predicate": "recollection",
+      "value": "Sewing lessons reported by grandson",
+      "uncertainty": "Synthetic supplied statement; original artifact is not a real-world record."
+    }
+  ],
+  "hypotheses": [],
+  "conclusions": [
+    {
+      "id": "CON-1",
+      "question_id": "Q-1",
+      "claim": "A birth register records Beatriz Mar, born 3 May 1884 in Vila Clara.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-1"
+      ],
+      "rationale": "Supplied synthetic assertion; no GPS conclusion reached.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-2",
+      "question_id": "Q-1",
+      "claim": "A 1907 marriage entry names Beatriz Mar, aged 25, seamstress, marrying Tomás Neri.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-2"
+      ],
+      "rationale": "Supplied synthetic assertion; no GPS conclusion reached.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-3",
+      "question_id": "Q-1",
+      "claim": "In 1910 Beatriz Mar and Tomás Neri appear at Rua do Poço 8 with a daughter, Rosa, aged two.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-3"
+      ],
+      "rationale": "Supplied synthetic assertion; no GPS conclusion reached.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-4",
+      "question_id": "Q-1",
+      "claim": "A grandson recalls that Beatriz taught neighbourhood children to sew. He does not know her death date.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-4"
+      ],
+      "rationale": "Supplied synthetic assertion; no GPS conclusion reached.",
+      "depends_on": []
+    }
+  ],
+  "searches": [],
+  "tasks": [],
+  "repositories": [],
+  "holdings": [],
+  "correspondence": [],
+  "changes": []
+}

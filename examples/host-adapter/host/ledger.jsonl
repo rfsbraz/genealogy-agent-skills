@@ -1,0 +1,9 @@
+{"case_id": "C-EXAMPLE", "kind": "case", "revision": 0, "schema_version": "1.2"}
+{"kind": "person", "record": {"id": "P1", "label": "Synthetic Ada"}}
+{"kind": "person", "record": {"id": "P2", "label": "Synthetic Manuel"}}
+{"kind": "mention", "record": {"id": "M1", "literal": "Ada", "locator": "p. 1, entry 4", "person_id": "P1", "source_id": "S1"}}
+{"kind": "source", "record": {"derived_from": [], "id": "S1", "source_type": "original", "title": "Synthetic register, fixture only"}}
+{"kind": "citation", "record": {"id": "C1", "locator": "p. 1, entry 4", "source_id": "S1", "text": "Synthetic Archive, register TEST, p. 1, entry 4; supplied fixture image."}}
+{"kind": "reading", "record": {"citation_id": "C1", "id": "O1", "locator": "p. 1, entry 4", "predicate": "reported_age", "processing_run_id": "RUN-SYNTHETIC-OLD", "source_id": "S1", "statement": "The fixture entry gives age 23.", "subject_id": "M1", "uncertainty": "Fixture text is supplied; no image reading tested.", "value": 23}}
+{"kind": "conclusion", "record": {"claim": "The fixture entry reports age 23.", "depends_on": [], "id": "K1", "observation_ids": ["O1"], "question_id": "Q-1", "rationale": "Synthetic reviewer judgment; not a real genealogy conclusion.", "status": "source_supported"}}
+{"kind": "search", "record": {"coverage": "All supplied fixture material, p. 1", "id": "SR1", "method": "Supplied fixture review", "outcome": "found", "question_id": "Q-1", "target": "Synthetic collection"}}

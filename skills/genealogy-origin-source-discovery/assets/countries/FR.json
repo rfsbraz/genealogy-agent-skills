@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "code": "FR",
+  "name": "France",
+  "native_name": "France",
+  "aliases": [
+    "France"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "archives départementales",
+    "état civil",
+    "registres paroissiaux",
+    "tables décennales",
+    "recensement"
+  ],
+  "first_steps": [
+    "Resolve the commune and département for the event.",
+    "Find the responsible archive through FranceArchives, then use its own catalogue and digitised collections.",
+    "Check civil, parish, notarial and municipal records for the precise period."
+  ],
+  "jurisdiction_questions": [
+    "Did the commune merge, change department or fall under another administration?",
+    "Are relevant records metropolitan, overseas, consular or held in another country?"
+  ],
+  "query_templates": [
+    "{place} {region} archives départementales état civil {period}",
+    "{place} archives municipales registres paroissiaux {period}"
+  ],
+  "sources": [
+    {
+      "id": "FR-DIRECTORY",
+      "name": "FranceArchives - archive directory",
+      "kind": "directory",
+      "url": "https://francearchives.gouv.fr/fr/annuaire/departements",
+      "purpose": "Locate the appropriate archival service.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://francearchives.gouv.fr/fr/annuaire/departements",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "FR-SEARCH",
+      "name": "FranceArchives - research guidance",
+      "kind": "guide",
+      "url": "https://francearchives.gouv.fr/fr/rechercher",
+      "purpose": "Navigate finding aids, digitised records and reading-room research.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "military"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://francearchives.gouv.fr/fr/rechercher",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

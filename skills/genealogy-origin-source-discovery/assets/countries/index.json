@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "release": "1.2.0",
+  "checked_on": "2026-10-17",
+  "date_timezone": "Europe/Lisbon",
+  "scope": "Fourteen starter profiles; all other countries use open discovery. No country is excluded.",
+  "countries": [
+    {
+      "code": "PT",
+      "name": "Portugal",
+      "aliases": [
+        "Portugal",
+        "Portuguese"
+      ],
+      "path": "PT.json"
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "aliases": [
+        "Brasil",
+        "Brazil"
+      ],
+      "path": "BR.json"
+    },
+    {
+      "code": "ES",
+      "name": "Spain",
+      "aliases": [
+        "España",
+        "Espana",
+        "Spain"
+      ],
+      "path": "ES.json"
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "aliases": [
+        "France"
+      ],
+      "path": "FR.json"
+    },
+    {
+      "code": "IT",
+      "name": "Italy",
+      "aliases": [
+        "Italy",
+        "Italia"
+      ],
+      "path": "IT.json"
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "aliases": [
+        "Germany",
+        "Deutschland"
+      ],
+      "path": "DE.json"
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "aliases": [
+        "UK",
+        "United Kingdom",
+        "Great Britain",
+        "Britain"
+      ],
+      "path": "GB.json"
+    },
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "aliases": [
+        "Ireland",
+        "Éire",
+        "Eire",
+        "Republic of Ireland"
+      ],
+      "path": "IE.json"
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "aliases": [
+        "USA",
+        "US",
+        "United States",
+        "United States of America"
+      ],
+      "path": "US.json"
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "aliases": [
+        "Canada"
+      ],
+      "path": "CA.json"
+    },
+    {
+      "code": "AU",
+      "name": "Australia",
+      "aliases": [
+        "Australia"
+      ],
+      "path": "AU.json"
+    },
+    {
+      "code": "PL",
+      "name": "Poland",
+      "aliases": [
+        "Poland",
+        "Polska"
+      ],
+      "path": "PL.json"
+    },
+    {
+      "code": "IN",
+      "name": "India",
+      "aliases": [
+        "India",
+        "Bharat"
+      ],
+      "path": "IN.json"
+    },
+    {
+      "code": "MX",
+      "name": "Mexico",
+      "aliases": [
+        "Mexico",
+        "México"
+      ],
+      "path": "MX.json"
+    }
+  ]
+}

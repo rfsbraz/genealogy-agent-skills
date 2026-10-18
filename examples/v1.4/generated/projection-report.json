@@ -1,0 +1,22 @@
+{
+  "generated_by": "genealogy-case",
+  "case_id": "C-EXAMPLE",
+  "case_revision": 1,
+  "case_digest": "f0a079cc5946b040da4643ba4ca719d3dbac7a38b8e17528755d825a915d8456",
+  "visibility": "private",
+  "editable": false,
+  "schema": "genealogy-private-projection/1.0",
+  "mapping_digest": "f04c1f67084649b049bc9da82e732a7df673909eb4a9196570741afd493c5081",
+  "files": [
+    "data/facts/DOC-SYNTHETIC.json",
+    "data/tree-notes.json",
+    "data/tree.json"
+  ],
+  "omissions": [],
+  "limits": [
+    "Generated private views; not a publication allowlist.",
+    "Verify native repository schemas before adopting generated envelopes.",
+    "Observation text is a source statement, not a proof-reviewed fact.",
+    "Unmapped custom case fields remain in the canonical case."
+  ]
+}

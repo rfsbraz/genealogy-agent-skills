@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "code": "IE",
+  "name": "Ireland",
+  "native_name": "Éire / Ireland",
+  "aliases": [
+    "Ireland",
+    "Éire",
+    "Eire",
+    "Republic of Ireland"
+  ],
+  "languages": [
+    "en",
+    "ga"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "townland",
+    "civil parish",
+    "registration district",
+    "parish register",
+    "valuation"
+  ],
+  "first_steps": [
+    "Establish the townland, county and event jurisdiction.",
+    "Check IrishGenealogy for the stated coverage of civil and church records.",
+    "Consult National Archives guidance and current availability notices; investigate local and religious custodians."
+  ],
+  "jurisdiction_questions": [
+    "Does the place fall in present-day Northern Ireland? Also load GB where relevant.",
+    "Which surviving register or substitute addresses the question?"
+  ],
+  "query_templates": [
+    "{place} {region} townland parish records {period}",
+    "{place} archive civil registration valuation {period}"
+  ],
+  "sources": [
+    {
+      "id": "IE-IRISHGEN",
+      "name": "IrishGenealogy",
+      "kind": "catalogue",
+      "url": "https://www.irishgenealogy.ie/Search/",
+      "purpose": "Search the portal’s civil and church collections, checking image and date coverage.",
+      "record_families": [
+        "civil",
+        "religious"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.irishgenealogy.ie/Search/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "IE-NAI",
+      "name": "National Archives of Ireland",
+      "kind": "repository",
+      "url": "https://nationalarchives.ie/",
+      "purpose": "Find archival guidance and current access arrangements.",
+      "record_families": [
+        "household",
+        "legal",
+        "migration"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://nationalarchives.ie/collections/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": {
+        "status": "recheck_required",
+        "observed_on": "2026-10-17",
+        "evidence_url": "https://nationalarchives.ie/genealogy-website/8790-2/",
+        "note": "Official indexed pages report genealogy microsites offline and describe reading-room alternatives. Check the current notice before promising online access.",
+        "fallback_url": "https://nationalarchives.ie/genealogy-website/8790-2/"
+      },
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

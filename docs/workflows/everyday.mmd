@@ -1,0 +1,14 @@
+flowchart TD
+  A["Person, question or document"] --> B{"What is needed?"}
+  B -->|Research| C["Find relevant sources"]
+  B -->|Read| D["Quick or detailed reading"]
+  B -->|Continue| E["Resume saved work"]
+  C --> D
+  E --> F["Next useful action"]
+  F --> C
+  D --> G["Save evidence and uncertainty"]
+  G --> H{"All five GPS elements met?"}
+  H -->|Yes| I["Reviewed conclusion"]
+  H -->|No| J["Working lead and next step"]
+  J --> F
+  I --> K["Brief finding with citations"]

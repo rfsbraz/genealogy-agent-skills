@@ -1,0 +1,27 @@
+{
+  "case_id": "09-mail-timeout",
+  "decisions": {
+    "action": "record_sent",
+    "message_id": "M-91",
+    "thread_id": "T-9",
+    "ledger_status": "sent"
+  },
+  "evidence": {
+    "action": [
+      "S1",
+      "S2"
+    ],
+    "message_id": [
+      "S2"
+    ],
+    "thread_id": [
+      "S2"
+    ],
+    "ledger_status": [
+      "S2"
+    ]
+  },
+  "limitations": [
+    "Reconciliation relies solely on the supplied synthetic results; no live mailbox access, ledger mutation, or external message was performed."
+  ]
+}

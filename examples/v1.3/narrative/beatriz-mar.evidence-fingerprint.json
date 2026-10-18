@@ -1,0 +1,15 @@
+{
+  "case_id": "CASE-SYNTHETIC-BEATRIZ",
+  "person_id": "P-BEATRIZ",
+  "evidence_digest": "6e7c1ab68ac13cda34459aba47e749f231502ff06ed5487dcaa9986e4cc8f94a",
+  "inputs": [
+    {
+      "path": "case.json",
+      "sha256": "537f99af3707c4ad1337ff58d8d02c6856193e74bcecafc161bd18d2b731b5f0"
+    },
+    {
+      "path": "source-extracts.txt",
+      "sha256": "0061411f7a67fb89ddad6c23bf481de1c2b9951f8300f9a8a1b1e9103e18fd3e"
+    }
+  ]
+}

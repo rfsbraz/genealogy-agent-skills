@@ -1,0 +1,13 @@
+interface:
+  display_name: "Read Manuscripts"
+  short_description: "Four methods, separate contexts, grounded readings"
+  default_prompt: "Use $genealogy-read-manuscripts to read this manuscript with four distinct methods in separate contexts, then reconcile visible evidence and uncertainty."
+  icon_small: "assets/icon.svg"
+  icon_large: "assets/icon.svg"
+policy:
+  products:
+    - chatgpt
+    - codex
+    - api
+    - atlas
+  allow_implicit_invocation: false

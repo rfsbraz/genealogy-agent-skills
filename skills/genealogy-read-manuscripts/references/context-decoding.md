@@ -1,0 +1,13 @@
+# Assignment D: contextual constraint decoding
+
+Use the full supplied entry/page, verified language/period/genre, and sourced contextual references to assess plausible readings. Keep the pixel evidence distinct from lexical and documentary expectations. Do not use a previously proposed target reading, assumed family identity or unsupported provenance as a fact.
+
+1. Use the page overview for document context, then inspect the separate original/enlarged line and target views before deciding letters. Do not infer an ending or name from a reduced page display. If any necessary detail view is missing, request it instead of substituting context.
+2. Read the visible phrase and identify constraints: grammatical role, period spelling, abbreviation conventions and the structure of the document. Names, ages and places are open-vocabulary fields; a closed list can wrongly force a familiar answer.
+3. Construct plausible candidates from the image and these constraints. For each candidate, record visible compatible letters, conflicting ink, linguistic/formula fit, and the exact contextual clue used. Retain a plausible out-of-list reading rather than normalizing it to a known name.
+4. Return `method_product.context_constraints`: candidate, constraint, source/clue ID, compatibility, and whether the constraint comes from pixels or context. Also return `visible_literal` and `contextual_completion` separately. Abbreviation expansions and restored words are not literally observed text.
+5. State what would distinguish candidates visually. Context may suggest where to inspect, but cannot supply missing ink or erase a contradiction.
+
+If a modern gazetteer supplies a matching name, mark that candidate `context_assisted` and cite the clue ID and date/scope of the list. Modern membership neither proves historical presence nor resolves an ambiguous letter. Keep the visible historical spelling, any out-of-list alternative and the gazetteer form separate.
+
+Set `execution_kind: contextual_decoding`. This is a qualitative constrained analysis unless an actual language-model/WFST/decoder tool was run. Do not invent likelihoods, claim a Viterbi implementation, or turn gazetteer membership into certainty. Reject any supplied clue whose provenance depends on the target reading; report the circularity. Each clue states its `clue_certainty` (`certain`, `probable` or `uncertain`). A candidate supported by a clue cannot be more certain than that clue: an `uncertain` clue can suggest a candidate but cannot raise the reading above uncertain, and a `probable` clue cannot make it certain. Report the clue's certainty next to its ID in `context_constraints`.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Check the Evidence"
+  short_description: "Review a claim against all five GPS elements"
+  default_prompt: "Use $genealogy-proof-evaluation to assess this claim and explain what remains uncertain."
+policy:
+  allow_implicit_invocation: false

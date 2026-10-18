@@ -1,0 +1,6 @@
+interface:
+  display_name: "Discover Archives and Custodians"
+  short_description: "Discover Archives and Custodians workflows and evidence checks"
+  default_prompt: "Use $genealogy-repository-discovery for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

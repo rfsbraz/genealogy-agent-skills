@@ -1,0 +1,33 @@
+{
+  "id": "TURN-001",
+  "speaker": "Example interviewer participant (synthetic)",
+  "recorded_at": "2026-10-17T10:00:00Z",
+  "question": "Who would you like to start with?",
+  "answer": "My grandmother was Ada Vale. I think she was born around 1910, but I do not know where.",
+  "people": [
+    {
+      "id": "P-ADA",
+      "label": "Ada Vale",
+      "literal": "My grandmother was Ada Vale"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "OBS-ADA-BIRTH",
+      "subject_id": "P-ADA",
+      "statement": "The participant thinks Ada Vale was born around 1910.",
+      "predicate": "birth_date",
+      "value": {
+        "literal": "around 1910",
+        "kind": "approximate_year",
+        "year": 1910
+      },
+      "uncertainty": "Approximate year from recollection; birthplace unknown.",
+      "knowledge_basis": "unspecified"
+    }
+  ],
+  "action": "continue",
+  "next_action": "Ask for a known place associated with Ada.",
+  "pending_question": "Do you know a place where Ada lived?",
+  "focus_person_id": "P-ADA"
+}

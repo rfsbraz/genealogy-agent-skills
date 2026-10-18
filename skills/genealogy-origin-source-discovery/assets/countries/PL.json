@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "code": "PL",
+  "name": "Poland",
+  "native_name": "Polska",
+  "aliases": [
+    "Poland",
+    "Polska"
+  ],
+  "languages": [
+    "pl"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "archiwum państwowe",
+    "akta metrykalne",
+    "urząd stanu cywilnego",
+    "parafia",
+    "księgi ludności"
+  ],
+  "first_steps": [
+    "Identify the locality under its historical and current names.",
+    "Use the State Archives genealogy guide and Szukaj w Archiwach to locate relevant series.",
+    "Discover civil-office and religious custodians for holdings not in the archive catalogue."
+  ],
+  "jurisdiction_questions": [
+    "Which partition, state or border applied when the record was created?",
+    "Which record languages and calendars occur in the actual series?",
+    "Is the current custodian outside Poland?"
+  ],
+  "query_templates": [
+    "{place} {region} archiwum akta metrykalne {period}",
+    "{place} parafia urząd stanu cywilnego {period}"
+  ],
+  "sources": [
+    {
+      "id": "PL-GUIDE",
+      "name": "Archiwa Państwowe - genealogy",
+      "kind": "guide",
+      "url": "https://archiwa.gov.pl/szukaj/genealogia/",
+      "purpose": "Find official genealogy research guidance.",
+      "record_families": [
+        "civil",
+        "religious",
+        "household"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://archiwa.gov.pl/szukaj/genealogia/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "PL-SWA",
+      "name": "Szukaj w Archiwach",
+      "kind": "catalogue",
+      "url": "https://www.szukajwarchiwach.gov.pl/en/",
+      "purpose": "Search archival descriptions and available scans.",
+      "record_families": [
+        "civil",
+        "religious",
+        "household",
+        "legal"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.szukajwarchiwach.gov.pl/en/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

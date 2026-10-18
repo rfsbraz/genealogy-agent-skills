@@ -1,0 +1,6 @@
+interface:
+  display_name: "Translate Historical Records"
+  short_description: "Translate Historical Records workflows and evidence checks"
+  default_prompt: "Use $genealogy-historical-translation for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

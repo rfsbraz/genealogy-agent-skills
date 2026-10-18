@@ -1,0 +1,58 @@
+# Contributing
+
+Thanks for helping with the genealogy skills. This file covers setup, the checks to run before a pull request, and the one rule about data.
+
+## Data rule
+
+Never commit family data or real case data. That includes names, dates, places, record references, images and transcriptions from your own research or anyone else's. Tests, fixtures and examples use made-up people and sources only, such as the synthetic cases in `examples/` and `tests/fixtures/`. If you found a problem while working on real research, describe it with invented details.
+
+## Setup
+
+You need Python 3.10 or newer and Git. The helpers use only the standard library; the tests also need Pillow.
+
+```sh
+git clone https://github.com/rfsbraz/genealogy-agent-skills.git
+cd genealogy-agent-skills
+python -m pip install pillow
+```
+
+To try the skills in an agent, follow [INSTALL.md](INSTALL.md).
+
+## Checks
+
+These are the commands the CI job runs. The exact list of test files is in [.github/workflows/ci.yml](.github/workflows/ci.yml).
+
+```sh
+python validate_package.py
+python scripts/build_manifest.py --check
+for test in tests/check_*.py; do python "$test" || exit 1; done
+python tests/test_repo.py
+```
+
+The loop runs the helper tests and the reading panel tests (`tests/check_panel_*.py`). CI also checks the installer:
+
+```sh
+python install.py --dest /tmp/genealogy-skills
+python install.py --dest /tmp/genealogy-skills --apply
+```
+
+If you add, remove or change a file under `skills/`, `evaluation/` or `tests/`, or change `install.py`, `validate_package.py` or `genealogy.py`, regenerate the manifest and commit it:
+
+```sh
+python scripts/build_manifest.py
+```
+
+Do not edit version numbers or `CHANGELOG.md`. Releases are made by release-please from the commit messages.
+
+## Privacy check
+
+CI also runs `python scripts/privacy_scan.py`. It looks for email addresses, phone numbers and home folder paths, plus extra terms from a repository secret. GitHub does not pass secrets to pull requests from forks, so a pull request from a fork only gets the built-in checks. Run `python scripts/privacy_scan.py` locally to get the same built-in result. The full scan runs again on `main` after merging.
+
+## Pull requests
+
+- Open an issue first for anything larger than a small fix, so we can agree on the approach.
+- Keep each pull request to one change, with tests for code changes.
+- Use a [Conventional Commits](https://www.conventionalcommits.org/) title with a scope, for example `fix(queue): ...` or `docs(reading): ...`. `feat` and `fix` appear in the release notes; `docs`, `test` and `chore` do not.
+- Fill in the pull request template, including the AI use section.
+
+By contributing you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md). Report security problems as described in [SECURITY.md](SECURITY.md), not in a public issue.

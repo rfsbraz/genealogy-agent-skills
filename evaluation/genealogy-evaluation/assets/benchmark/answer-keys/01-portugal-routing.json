@@ -1,0 +1,48 @@
+{
+  "case_id": "01-portugal-routing",
+  "assertions": [
+    {
+      "path": "/decisions/custodian_candidate",
+      "op": "equals",
+      "expected": "Archive of the University of Coimbra",
+      "critical": false
+    },
+    {
+      "path": "/decisions/digitarq_role",
+      "op": "equals",
+      "expected": "catalogue_and_images",
+      "critical": false
+    },
+    {
+      "path": "/decisions/crav_role",
+      "op": "equals",
+      "expected": "request_service",
+      "critical": false
+    },
+    {
+      "path": "/decisions/holding_confirmed",
+      "op": "equals",
+      "expected": false,
+      "critical": true
+    },
+    {
+      "path": "/decisions/next_action",
+      "op": "equals",
+      "expected": "verify_parish_volume_coverage",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "custodian_candidate",
+    "digitarq_role",
+    "crav_role",
+    "holding_confirmed",
+    "next_action"
+  ],
+  "allowed_source_ids": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "trace_policy": null
+}

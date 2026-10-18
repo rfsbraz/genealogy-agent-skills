@@ -1,0 +1,14 @@
+{
+  "people": [
+    {
+      "id": "ada",
+      "notes": [
+        "Synthetic manual note; preserve."
+      ]
+    },
+    {
+      "id": "manuel"
+    }
+  ],
+  "purpose": "Synthetic fixture only"
+}

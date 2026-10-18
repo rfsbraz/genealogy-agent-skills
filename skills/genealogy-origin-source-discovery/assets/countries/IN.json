@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "code": "IN",
+  "name": "India",
+  "native_name": "India",
+  "aliases": [
+    "India",
+    "Bharat"
+  ],
+  "languages": [
+    "en",
+    "hi"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "state archives",
+    "district records",
+    "registration office",
+    "Abhilekh Patal"
+  ],
+  "first_steps": [
+    "Identify the locality, state and historical administration.",
+    "Use National Archives guidance to identify relevant national records.",
+    "Discover state, district, religious and community custodians using the locality’s own languages."
+  ],
+  "jurisdiction_questions": [
+    "Which local language and script are needed? The language list is a starter, not an exhaustive list.",
+    "Did the event occur under a princely state, colonial administration or another jurisdiction?",
+    "Does evidence justify a search in another present-day country or a former administering country?"
+  ],
+  "query_templates": [
+    "{place} {region} state archives district records {period}",
+    "{place} {region} genealogy registration records {period}"
+  ],
+  "sources": [
+    {
+      "id": "IN-NAI",
+      "name": "National Archives of India - Abhilekh Patal guide",
+      "kind": "guide",
+      "url": "https://nationalarchives.nic.in/en/online-records-national-archives-india/abhilekh-patal",
+      "purpose": "Find the official description and route to digital reference media.",
+      "record_families": [
+        "institutional",
+        "legal",
+        "military"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://nationalarchives.nic.in/en/online-records-national-archives-india/abhilekh-patal",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "IN-PATAL",
+      "name": "Abhilekh Patal",
+      "kind": "catalogue",
+      "url": "https://www.abhilekh-patal.in/",
+      "purpose": "Search the National Archives of India’s reference media and available digital holdings.",
+      "record_families": [
+        "institutional",
+        "legal",
+        "military"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://nationalarchives.nic.in/en/online-records-national-archives-india/abhilekh-patal",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "case_id": "01-portugal-routing",
+      "skill": "genealogy-repository-discovery",
+      "requires_trace": false
+    },
+    {
+      "case_id": "02-event-extraction",
+      "skill": "genealogy-evidence-extraction",
+      "requires_trace": false
+    },
+    {
+      "case_id": "03-namesakes",
+      "skill": "genealogy-identity-resolution",
+      "requires_trace": false
+    },
+    {
+      "case_id": "04-source-independence",
+      "skill": "genealogy-proof-evaluation",
+      "requires_trace": false
+    },
+    {
+      "case_id": "05-ambiguous-origin",
+      "skill": "genealogy-locality-research",
+      "requires_trace": false
+    },
+    {
+      "case_id": "06-migration-discovery",
+      "skill": "genealogy-origin-source-discovery",
+      "requires_trace": false
+    },
+    {
+      "case_id": "07-coverage-gap",
+      "skill": "genealogy-proof-evaluation",
+      "requires_trace": false
+    },
+    {
+      "case_id": "08-mail-draft",
+      "skill": "genealogy-archive-correspondence",
+      "requires_trace": true
+    },
+    {
+      "case_id": "09-mail-timeout",
+      "skill": "genealogy-archive-correspondence",
+      "requires_trace": true
+    },
+    {
+      "case_id": "10-resume",
+      "skill": "genealogy-mode",
+      "requires_trace": true
+    }
+  ],
+  "notice": "Synthetic development fixtures. Not held-out historical ground truth or a deployment certification."
+}

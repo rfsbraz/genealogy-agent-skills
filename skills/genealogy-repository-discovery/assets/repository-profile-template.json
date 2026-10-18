@@ -1,0 +1,28 @@
+{
+  "id": "R-REPLACE",
+  "name": "Replace after verification",
+  "roles": [],
+  "official_homepage": null,
+  "aliases": [],
+  "verification_evidence": [],
+  "verified_at": null,
+  "record_creators": [],
+  "historical_jurisdictions": [],
+  "holdings": [],
+  "catalogue_routes": [],
+  "request_routes": [],
+  "route_provenance": [
+    {
+      "route": null,
+      "found_via": "official_link | host_project_document",
+      "documented_by": null,
+      "observed_from": null,
+      "checked_on": null,
+      "scope": null
+    }
+  ],
+  "contact_routes": [],
+  "custody_history": [],
+  "limitations": [],
+  "next_action": "Discover official identity, role, holdings and access evidence"
+}

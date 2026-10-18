@@ -1,0 +1,18 @@
+flowchart TD
+    A["Register exact source version and physical pages"] --> B{"Required treatment"}
+    B -->|Overview| C["Extract text if useful; quick-read in batches"]
+    C --> D["Save excerpts, page map and exact coverage"]
+    D --> E["Extract provisional observations"]
+    D --> F["Queue priority passages and unread remainder"]
+    B -->|Critical or uncertain passage| F
+    F --> G{"Host allowance available?"}
+    G -->|No| H["Checkpoint until next budget window"]
+    H --> F
+    G -->|Yes| I["Reserve a bounded page batch"]
+    I --> J["Read original pages in detail"]
+    J --> K["Save immutable run and settle actual usage"]
+    K --> L["Reassess observations and affected conclusions"]
+    E --> L
+    K --> M{"Useful work remains?"}
+    M -->|Yes| F
+    M -->|No| N["Checkpoint"]

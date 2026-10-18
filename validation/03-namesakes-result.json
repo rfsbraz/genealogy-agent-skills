@@ -1,0 +1,32 @@
+{
+  "case_id": "03-namesakes",
+  "decisions": {
+    "merge": false,
+    "identity_ids": [
+      "P1",
+      "P2"
+    ],
+    "status": "keep_distinct"
+  },
+  "evidence": {
+    "merge": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "identity_ids": [
+      "S1",
+      "S2"
+    ],
+    "status": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  "limitations": [
+    "Assessment is limited to the supplied synthetic source summaries.",
+    "Each identity has internally consistent parentage across baptism and marriage, but the two identities have different parents, baptismal localities, and spouses. Their shared name and broad district do not justify a merge.",
+    "No linking record or parentage correction is supplied. Any future merge would require evidence reconciling these differences."
+  ]
+}

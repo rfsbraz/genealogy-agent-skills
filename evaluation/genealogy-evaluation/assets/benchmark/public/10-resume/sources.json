@@ -1,0 +1,10 @@
+[
+  {
+    "id": "S1",
+    "text": "Checkpoint: active question Q1 parentage. T1 acquire image is completed with source IMG-1 and SHA-256 stored. T2 transcribe image is planned. T3 extract observations depends on T2. Request REQ-2 is sent with confirmed message ID M-2; no reply yet."
+  },
+  {
+    "id": "S2",
+    "text": "The next checkpoint must retain the active question and request state. There is no new evidence of corruption or failed delivery."
+  }
+]

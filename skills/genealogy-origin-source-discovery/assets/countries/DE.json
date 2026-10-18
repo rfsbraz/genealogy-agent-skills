@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "code": "DE",
+  "name": "Germany",
+  "native_name": "Deutschland",
+  "aliases": [
+    "Germany",
+    "Deutschland"
+  ],
+  "languages": [
+    "de"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "Standesamt",
+    "Kirchenbuch",
+    "Stadtarchiv",
+    "Landesarchiv",
+    "Personenstandsregister"
+  ],
+  "first_steps": [
+    "Resolve the town and historical state, including former place names.",
+    "Find the local/state archive or registry office via archive directories.",
+    "Use Bundesarchiv for relevant federal holdings and its family-research guidance."
+  ],
+  "jurisdiction_questions": [
+    "Does the historical locality now lie outside Germany?",
+    "Which civil or religious jurisdiction created the record?",
+    "Do relevant series reside in local, church, state or federal custody?"
+  ],
+  "query_templates": [
+    "{place} {region} Stadtarchiv Personenstandsregister {period}",
+    "{place} Kirchenbuch Standesamt Archiv {period}"
+  ],
+  "sources": [
+    {
+      "id": "DE-PORTAL",
+      "name": "Archivportal-D",
+      "kind": "directory",
+      "url": "https://www.archivportal-d.de/",
+      "purpose": "Discover archives and archival descriptions across Germany.",
+      "record_families": [
+        "civil",
+        "religious",
+        "legal",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://cms.archivportal-d.de/en/ueber-uns",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "DE-BUND",
+      "name": "Bundesarchiv - family research",
+      "kind": "guide",
+      "url": "https://www.bundesarchiv.de/im-archiv-recherchieren/archivgut-recherchieren/personen-und-familienforschung/",
+      "purpose": "Identify applicable federal sources and follow links to other custodians.",
+      "record_families": [
+        "military",
+        "migration",
+        "institutional"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.bundesarchiv.de/im-archiv-recherchieren/archivgut-recherchieren/personen-und-familienforschung/",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

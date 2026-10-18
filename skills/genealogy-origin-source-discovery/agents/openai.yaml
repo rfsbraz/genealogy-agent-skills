@@ -1,0 +1,6 @@
+interface:
+  display_name: "Find Sources by Country"
+  short_description: "Find useful archives for a person’s place and time"
+  default_prompt: "Use $genealogy-origin-source-discovery to find the best starting sources for this person’s origins."
+policy:
+  allow_implicit_invocation: false

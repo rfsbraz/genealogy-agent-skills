@@ -1,0 +1,674 @@
+{
+  "schema_version": "1.1",
+  "case_id": "CASE-2d3036a50c7d",
+  "revision": 1,
+  "goal": "Who were the parents of Ada Vale, reported born around 1910 or 1912 and resident in Vale da Serra?",
+  "active_question_id": "Q-1",
+  "authorization": {
+    "send_mail": false,
+    "paid_orders": false,
+    "public_sharing": false,
+    "evidence": []
+  },
+  "checkpoint": {
+    "next_action": "Ask which country or nearby town identifies the Vale da Serra where Ada lived; preserve the unknown birthplace and both approximate birth-year alternatives."
+  },
+  "questions": [
+    {
+      "id": "Q-1",
+      "text": "Who were the parents of Ada Vale, reported born around 1910 or 1912 and resident in Vale da Serra?",
+      "status": "active"
+    }
+  ],
+  "persons": [
+    {
+      "id": "P-USER",
+      "label": "Interview participant",
+      "visibility": "private",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    },
+    {
+      "id": "P-ADA",
+      "label": "Ada Vale",
+      "visibility": "private",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    },
+    {
+      "id": "P-LEO",
+      "label": "Leo (Ada’s reported brother)",
+      "visibility": "private",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    },
+    {
+      "id": "P-RUI",
+      "label": "Rui (Ada’s reported husband)",
+      "visibility": "private",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    },
+    {
+      "id": "P-MANUEL",
+      "label": "Manuel (Ada’s reported later husband)",
+      "visibility": "private",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    }
+  ],
+  "mentions": [
+    {
+      "id": "MEN-a521a330694e",
+      "source_id": "SRC-3f3019f3eb17",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "literal": "my grandmother Ada Vale",
+      "person_id": "P-USER"
+    },
+    {
+      "id": "MEN-dd52112ef12c",
+      "source_id": "SRC-3f3019f3eb17",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "literal": "my grandmother Ada Vale",
+      "person_id": "P-ADA"
+    },
+    {
+      "id": "MEN-2208499927fb",
+      "source_id": "SRC-3f3019f3eb17",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "literal": "Her brother was Leo",
+      "person_id": "P-LEO"
+    },
+    {
+      "id": "MEN-94e415752764",
+      "source_id": "SRC-3f3019f3eb17",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "literal": "Her husband was Rui",
+      "person_id": "P-RUI"
+    },
+    {
+      "id": "MEN-38b11bd39b1e",
+      "source_id": "SRC-3f3019f3eb17",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "literal": "she married someone called Manuel",
+      "person_id": "P-MANUEL"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "REL-b1e1a2b3981f",
+      "from_person_id": "P-ADA",
+      "to_person_id": "P-USER",
+      "type": "grandparent_unspecified",
+      "status": "provisional",
+      "conclusion_id": "CON-9e9b87dde3bb"
+    },
+    {
+      "id": "REL-bf66ddc9fc3a",
+      "from_person_id": "P-ADA",
+      "to_person_id": "P-LEO",
+      "type": "sibling_unspecified",
+      "status": "provisional",
+      "conclusion_id": "CON-ed1b4dee5cd4"
+    },
+    {
+      "id": "REL-3bca6f083760",
+      "from_person_id": "P-ADA",
+      "to_person_id": "P-RUI",
+      "type": "spouse",
+      "status": "provisional",
+      "conclusion_id": "CON-23032c8bcbc0"
+    },
+    {
+      "id": "REL-aae4e876f6f5",
+      "from_person_id": "P-ADA",
+      "to_person_id": "P-MANUEL",
+      "type": "spouse",
+      "status": "provisional",
+      "conclusion_id": "CON-dc9ff77a6649"
+    }
+  ],
+  "events": [],
+  "places": [],
+  "sources": [
+    {
+      "id": "SRC-3f3019f3eb17",
+      "title": "Interview testimony: User (synthetic interview participant; name not supplied)",
+      "source_type": "testimony",
+      "derived_from": [],
+      "recorded_at": "2026-10-17T04:14:34.234056+00:00",
+      "speaker": "User (synthetic interview participant; name not supplied)",
+      "interview_id": "INT-6a4d6ceca493",
+      "independence_group": "INT-6a4d6ceca493",
+      "visibility": "private"
+    }
+  ],
+  "citations": [
+    {
+      "id": "CIT-fd9f1934e655",
+      "source_id": "SRC-3f3019f3eb17",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "text": "User (synthetic interview participant; name not supplied), interview response, 2026-10-17T04:14:34.234056+00:00; Interview INT-6a4d6ceca493, turn TURN-001.",
+      "quotation": "Interview me to start my family tree. Start with my grandmother Ada Vale, born around 1910 or 1912; I don’t know where. She lived in Vale da Serra. Her brother was Leo, who may have been adopted by another family. Her husband was Rui; after his death she married someone called Manuel. I'd like to find Ada’s parents."
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-ADA-NAME",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user identifies their grandmother as Ada Vale.",
+      "predicate": "reported_name",
+      "value": "Ada Vale",
+      "uncertainty": "Whether Vale was a birth surname, married surname or another form is unspecified.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-GRANDMOTHER",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Ada Vale as their grandmother.",
+      "predicate": "grandparent_unspecified",
+      "value": {
+        "literal": "my grandmother",
+        "kind": "unspecified",
+        "intermediate_parent": "not supplied"
+      },
+      "uncertainty": "Biological, adoptive, step or other basis of the grandparent relationship has not been specified.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-USER"
+    },
+    {
+      "id": "OBS-ADA-BIRTH",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Ada Vale was born around 1910 or 1912.",
+      "predicate": "birth_date",
+      "value": {
+        "literal": "born around 1910 or 1912",
+        "kind": "alternative_approximate_years",
+        "alternatives": [
+          {
+            "year": 1910,
+            "kind": "approximate_year"
+          },
+          {
+            "year": 1912,
+            "kind": "approximate_year"
+          }
+        ]
+      },
+      "uncertainty": "Both approximate alternatives retained; no midpoint, exact date or exclusive range inferred. User explicitly does not know the birthplace.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-RESIDENCE",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user reports that Ada lived in Vale da Serra.",
+      "predicate": "residence",
+      "value": {
+        "literal": "Vale da Serra",
+        "kind": "unresolved_place_label",
+        "normalized": null,
+        "candidate_identities": [],
+        "time_period": null
+      },
+      "uncertainty": "Country, jurisdiction, precise locality and period of residence are unspecified. This is a residence report, not a birthplace statement.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-LEO-SIBLING",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Leo as Ada’s brother.",
+      "predicate": "sibling_unspecified",
+      "value": {
+        "literal": "Her brother was Leo",
+        "kind": "unspecified"
+      },
+      "uncertainty": "Biological, adoptive, step, half-sibling or other basis is unspecified; no common parent identity established.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-LEO"
+    },
+    {
+      "id": "OBS-LEO-ADOPTION",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-LEO",
+      "statement": "The user reports that Leo may have been adopted by another family.",
+      "predicate": "possible_adoption",
+      "value": {
+        "literal": "may have been adopted by another family",
+        "adopting_family_identity": null,
+        "date": null,
+        "place": null
+      },
+      "uncertainty": "Adoption is uncertain. No adoptive parent, adoption event, legal status or effect on sibling relationship is established.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-RUI-SPOUSE",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Rui as Ada’s husband.",
+      "predicate": "spouse",
+      "value": {
+        "literal": "Her husband was Rui",
+        "date": null,
+        "place": null
+      },
+      "uncertainty": "Name is partial and the marriage date and place are unspecified; reported marriage remains unverified.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-RUI"
+    },
+    {
+      "id": "OBS-RUI-DEATH",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-RUI",
+      "statement": "The user reports Rui died before Ada married Manuel.",
+      "predicate": "death_date",
+      "value": {
+        "literal": "after his death she married someone called Manuel",
+        "kind": "relative_date",
+        "relative_to": "Ada’s reported marriage to Manuel",
+        "relation": "before"
+      },
+      "uncertainty": "No date or place of death supplied. The statement establishes only reported event order.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified"
+    },
+    {
+      "id": "OBS-ADA-MANUEL-SPOUSE",
+      "source_id": "SRC-3f3019f3eb17",
+      "citation_id": "CIT-fd9f1934e655",
+      "locator": "Interview INT-6a4d6ceca493, turn TURN-001",
+      "subject_id": "P-ADA",
+      "statement": "The user reports Ada married someone called Manuel after Rui’s death.",
+      "predicate": "spouse",
+      "value": {
+        "literal": "after his death she married someone called Manuel",
+        "date": {
+          "literal": "after his death",
+          "kind": "relative_date",
+          "relative_to_person_id": "P-RUI",
+          "relative_to_event": "death",
+          "relation": "after"
+        },
+        "place": null
+      },
+      "uncertainty": "Manuel is a partial reported name. Marriage date and place are unspecified; reported sequence remains unverified.",
+      "evidence_class": "testimony",
+      "knowledge_basis": "unspecified",
+      "object_person_id": "P-MANUEL"
+    }
+  ],
+  "hypotheses": [],
+  "conclusions": [
+    {
+      "id": "CON-83975ffee022",
+      "question_id": "Q-1",
+      "claim": "The user identifies their grandmother as Ada Vale.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-NAME"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-9e9b87dde3bb",
+      "question_id": "Q-1",
+      "claim": "The user reports Ada Vale as their grandmother.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-GRANDMOTHER"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-3fc8580102d2",
+      "question_id": "Q-1",
+      "claim": "The user reports Ada Vale was born around 1910 or 1912.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-BIRTH"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-de8b267c5c06",
+      "question_id": "Q-1",
+      "claim": "The user reports that Ada lived in Vale da Serra.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-RESIDENCE"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-ed1b4dee5cd4",
+      "question_id": "Q-1",
+      "claim": "The user reports Leo as Ada’s brother.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-LEO-SIBLING"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-1b9850d20f14",
+      "question_id": "Q-1",
+      "claim": "The user reports that Leo may have been adopted by another family.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-LEO-ADOPTION"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-23032c8bcbc0",
+      "question_id": "Q-1",
+      "claim": "The user reports Rui as Ada’s husband.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-RUI-SPOUSE"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-963da96f5ebd",
+      "question_id": "Q-1",
+      "claim": "The user reports Rui died before Ada married Manuel.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-RUI-DEATH"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    },
+    {
+      "id": "CON-dc9ff77a6649",
+      "question_id": "Q-1",
+      "claim": "The user reports Ada married someone called Manuel after Rui’s death.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ADA-MANUEL-SPOUSE"
+      ],
+      "depends_on": [],
+      "rationale": "Attributed interview testimony; documentary assessment remains open.",
+      "interview_id": "INT-6a4d6ceca493"
+    }
+  ],
+  "searches": [],
+  "tasks": [],
+  "repositories": [],
+  "holdings": [],
+  "correspondence": [],
+  "changes": [
+    {
+      "id": "CHG-0dd6eeb89713",
+      "revision": 1,
+      "reason": "Interview turn TURN-001",
+      "affected_ids": [
+        "SRC-3f3019f3eb17",
+        "CIT-fd9f1934e655",
+        "P-USER",
+        "P-ADA",
+        "P-LEO",
+        "P-RUI",
+        "P-MANUEL",
+        "OBS-ADA-NAME",
+        "CON-83975ffee022",
+        "OBS-ADA-GRANDMOTHER",
+        "CON-9e9b87dde3bb",
+        "OBS-ADA-BIRTH",
+        "CON-3fc8580102d2",
+        "OBS-ADA-RESIDENCE",
+        "CON-de8b267c5c06",
+        "OBS-ADA-LEO-SIBLING",
+        "CON-ed1b4dee5cd4",
+        "OBS-LEO-ADOPTION",
+        "CON-1b9850d20f14",
+        "OBS-ADA-RUI-SPOUSE",
+        "CON-23032c8bcbc0",
+        "OBS-RUI-DEATH",
+        "CON-963da96f5ebd",
+        "OBS-ADA-MANUEL-SPOUSE",
+        "CON-dc9ff77a6649"
+      ],
+      "recorded_at": "2026-10-17T04:14:34.591357+00:00",
+      "turn_id": "TURN-001"
+    }
+  ],
+  "interview": {
+    "version": "1.0",
+    "session_id": "INT-6a4d6ceca493",
+    "language": "en",
+    "status": "active",
+    "visibility": "private",
+    "focus_person_id": "P-ADA",
+    "pending_question": "Which country or nearby town was the Vale da Serra where Ada lived?",
+    "skipped_topics": [],
+    "turns": [
+      {
+        "id": "TURN-001",
+        "input_digest": "1efc5215c566266a2ce69d60d54ca409750718881e907866812649c81ff191f6",
+        "input": {
+          "id": "TURN-001",
+          "speaker": "User (synthetic interview participant; name not supplied)",
+          "recorded_at": "2026-10-17T04:14:34.234056+00:00",
+          "question": "",
+          "answer": "Interview me to start my family tree. Start with my grandmother Ada Vale, born around 1910 or 1912; I don’t know where. She lived in Vale da Serra. Her brother was Leo, who may have been adopted by another family. Her husband was Rui; after his death she married someone called Manuel. I'd like to find Ada’s parents.",
+          "people": [
+            {
+              "id": "P-USER",
+              "label": "Interview participant",
+              "literal": "my grandmother Ada Vale"
+            },
+            {
+              "id": "P-ADA",
+              "label": "Ada Vale",
+              "literal": "my grandmother Ada Vale"
+            },
+            {
+              "id": "P-LEO",
+              "label": "Leo (Ada’s reported brother)",
+              "literal": "Her brother was Leo"
+            },
+            {
+              "id": "P-RUI",
+              "label": "Rui (Ada’s reported husband)",
+              "literal": "Her husband was Rui"
+            },
+            {
+              "id": "P-MANUEL",
+              "label": "Manuel (Ada’s reported later husband)",
+              "literal": "she married someone called Manuel"
+            }
+          ],
+          "assertions": [
+            {
+              "id": "OBS-ADA-NAME",
+              "subject_id": "P-ADA",
+              "statement": "The user identifies their grandmother as Ada Vale.",
+              "predicate": "reported_name",
+              "value": "Ada Vale",
+              "uncertainty": "Whether Vale was a birth surname, married surname or another form is unspecified.",
+              "knowledge_basis": "unspecified"
+            },
+            {
+              "id": "OBS-ADA-GRANDMOTHER",
+              "subject_id": "P-ADA",
+              "statement": "The user reports Ada Vale as their grandmother.",
+              "predicate": "grandparent_unspecified",
+              "value": {
+                "literal": "my grandmother",
+                "kind": "unspecified",
+                "intermediate_parent": "not supplied"
+              },
+              "uncertainty": "Biological, adoptive, step or other basis of the grandparent relationship has not been specified.",
+              "knowledge_basis": "unspecified",
+              "object_person_id": "P-USER"
+            },
+            {
+              "id": "OBS-ADA-BIRTH",
+              "subject_id": "P-ADA",
+              "statement": "The user reports Ada Vale was born around 1910 or 1912.",
+              "predicate": "birth_date",
+              "value": {
+                "literal": "born around 1910 or 1912",
+                "kind": "alternative_approximate_years",
+                "alternatives": [
+                  {
+                    "year": 1910,
+                    "kind": "approximate_year"
+                  },
+                  {
+                    "year": 1912,
+                    "kind": "approximate_year"
+                  }
+                ]
+              },
+              "uncertainty": "Both approximate alternatives retained; no midpoint, exact date or exclusive range inferred. User explicitly does not know the birthplace.",
+              "knowledge_basis": "unspecified"
+            },
+            {
+              "id": "OBS-ADA-RESIDENCE",
+              "subject_id": "P-ADA",
+              "statement": "The user reports that Ada lived in Vale da Serra.",
+              "predicate": "residence",
+              "value": {
+                "literal": "Vale da Serra",
+                "kind": "unresolved_place_label",
+                "normalized": null,
+                "candidate_identities": [],
+                "time_period": null
+              },
+              "uncertainty": "Country, jurisdiction, precise locality and period of residence are unspecified. This is a residence report, not a birthplace statement.",
+              "knowledge_basis": "unspecified"
+            },
+            {
+              "id": "OBS-ADA-LEO-SIBLING",
+              "subject_id": "P-ADA",
+              "statement": "The user reports Leo as Ada’s brother.",
+              "predicate": "sibling_unspecified",
+              "value": {
+                "literal": "Her brother was Leo",
+                "kind": "unspecified"
+              },
+              "uncertainty": "Biological, adoptive, step, half-sibling or other basis is unspecified; no common parent identity established.",
+              "knowledge_basis": "unspecified",
+              "object_person_id": "P-LEO"
+            },
+            {
+              "id": "OBS-LEO-ADOPTION",
+              "subject_id": "P-LEO",
+              "statement": "The user reports that Leo may have been adopted by another family.",
+              "predicate": "possible_adoption",
+              "value": {
+                "literal": "may have been adopted by another family",
+                "adopting_family_identity": null,
+                "date": null,
+                "place": null
+              },
+              "uncertainty": "Adoption is uncertain. No adoptive parent, adoption event, legal status or effect on sibling relationship is established.",
+              "knowledge_basis": "unspecified"
+            },
+            {
+              "id": "OBS-ADA-RUI-SPOUSE",
+              "subject_id": "P-ADA",
+              "statement": "The user reports Rui as Ada’s husband.",
+              "predicate": "spouse",
+              "value": {
+                "literal": "Her husband was Rui",
+                "date": null,
+                "place": null
+              },
+              "uncertainty": "Name is partial and the marriage date and place are unspecified; reported marriage remains unverified.",
+              "knowledge_basis": "unspecified",
+              "object_person_id": "P-RUI"
+            },
+            {
+              "id": "OBS-RUI-DEATH",
+              "subject_id": "P-RUI",
+              "statement": "The user reports Rui died before Ada married Manuel.",
+              "predicate": "death_date",
+              "value": {
+                "literal": "after his death she married someone called Manuel",
+                "kind": "relative_date",
+                "relative_to": "Ada’s reported marriage to Manuel",
+                "relation": "before"
+              },
+              "uncertainty": "No date or place of death supplied. The statement establishes only reported event order.",
+              "knowledge_basis": "unspecified"
+            },
+            {
+              "id": "OBS-ADA-MANUEL-SPOUSE",
+              "subject_id": "P-ADA",
+              "statement": "The user reports Ada married someone called Manuel after Rui’s death.",
+              "predicate": "spouse",
+              "value": {
+                "literal": "after his death she married someone called Manuel",
+                "date": {
+                  "literal": "after his death",
+                  "kind": "relative_date",
+                  "relative_to_person_id": "P-RUI",
+                  "relative_to_event": "death",
+                  "relation": "after"
+                },
+                "place": null
+              },
+              "uncertainty": "Manuel is a partial reported name. Marriage date and place are unspecified; reported sequence remains unverified.",
+              "knowledge_basis": "unspecified",
+              "object_person_id": "P-MANUEL"
+            }
+          ],
+          "action": "continue",
+          "next_action": "Ask which country or nearby town identifies the Vale da Serra where Ada lived; preserve the unknown birthplace and both approximate birth-year alternatives.",
+          "pending_question": "Which country or nearby town was the Vale da Serra where Ada lived?",
+          "focus_person_id": "P-ADA"
+        },
+        "source_id": "SRC-3f3019f3eb17",
+        "citation_id": "CIT-fd9f1934e655",
+        "saved_at": "2026-10-17T04:14:34.591341+00:00"
+      }
+    ]
+  }
+}

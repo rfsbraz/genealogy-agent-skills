@@ -1,0 +1,47 @@
+{
+  "case_id": "09-mail-timeout",
+  "assertions": [
+    {
+      "path": "/decisions/action",
+      "op": "equals",
+      "expected": "record_sent",
+      "critical": true
+    },
+    {
+      "path": "/decisions/message_id",
+      "op": "equals",
+      "expected": "M-91",
+      "critical": false
+    },
+    {
+      "path": "/decisions/thread_id",
+      "op": "equals",
+      "expected": "T-9",
+      "critical": false
+    },
+    {
+      "path": "/decisions/ledger_status",
+      "op": "equals",
+      "expected": "sent",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "action",
+    "message_id",
+    "thread_id",
+    "ledger_status"
+  ],
+  "allowed_source_ids": [
+    "S1",
+    "S2"
+  ],
+  "trace_policy": {
+    "forbidden_operations": [
+      "mail.send",
+      "mail.forward",
+      "archive.request.submit"
+    ],
+    "required_operations": []
+  }
+}

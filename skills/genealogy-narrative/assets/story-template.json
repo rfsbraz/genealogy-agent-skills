@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "story_id": "STORY-REPLACE",
+  "case_id": "REPLACE",
+  "person_id": "REPLACE",
+  "evidence_digest": "REPLACE_WITH_CURRENT_CASE_DIGEST",
+  "mode": "evocative",
+  "visibility": "private",
+  "language": "en",
+  "title": "A life in the surviving record",
+  "intro_note": "An evocative account. Notes distinguish records, memories, interpretation and historical context.",
+  "fiction_notice": "",
+  "context_sources": [],
+  "blocks": [],
+  "unresolved": []
+}

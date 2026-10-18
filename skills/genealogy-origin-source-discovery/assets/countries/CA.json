@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "code": "CA",
+  "name": "Canada",
+  "native_name": "Canada",
+  "aliases": [
+    "Canada"
+  ],
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "starter_status": "seed_only",
+  "last_reviewed": "2026-10-17",
+  "search_terms": [
+    "provincial archives",
+    "archives provinciales",
+    "vital statistics",
+    "registres paroissiaux",
+    "recensement"
+  ],
+  "first_steps": [
+    "Identify the province/territory and locality at the event date.",
+    "Use Library and Archives Canada for relevant national collections and source guidance.",
+    "Discover provincial, local and religious custodians for the specific event."
+  ],
+  "jurisdiction_questions": [
+    "Which former colony, province or territory created the record?",
+    "Are the relevant finding aids in French, English or another community language?"
+  ],
+  "query_templates": [
+    "{place} {region} provincial archives genealogy {period}",
+    "{place} {region} archives registres paroissiaux {period}"
+  ],
+  "sources": [
+    {
+      "id": "CA-LAC",
+      "name": "Library and Archives Canada - family history",
+      "kind": "guide",
+      "url": "https://www.canada.ca/en/library-archives/collection/research-help/genealogy-family-history.html",
+      "purpose": "Discover Canadian genealogy and census research routes.",
+      "record_families": [
+        "household",
+        "migration",
+        "military",
+        "civil"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://www.canada.ca/en/library-archives/collection/research-help/genealogy-family-history.html",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    },
+    {
+      "id": "CA-CENSUS",
+      "name": "Library and Archives Canada - Census Search",
+      "kind": "catalogue",
+      "url": "https://recherche-collection-search.bac-lac.gc.ca/eng/Census/Search",
+      "purpose": "Search the census collections included by the service.",
+      "record_families": [
+        "household"
+      ],
+      "coverage_status": "not_assessed_for_person",
+      "access": "Check current access, account requirements and charges on the official site before use.",
+      "verification": {
+        "checked_on": "2026-10-17",
+        "method": "official_search_result",
+        "evidence_url": "https://recherche-collection-search.bac-lac.gc.ca/eng/Census/Search",
+        "scope": "Official entry point and stated purpose; collection coverage and live transactions not tested."
+      },
+      "service_notice": null,
+      "fallback": "Follow the institution’s official directory or contact page; record inaccessible separately from no match."
+    }
+  ],
+  "limits": [
+    "This is an original starter profile, not a complete country guide or a list of confirmed holdings for any person.",
+    "Identify the event locality, period and record creator; verify survival, transfers, indexing and image access with the custodian.",
+    "Expand beyond these seeds through regional, municipal, religious, institutional and private finding aids. Do not infer birthplace, religion or ancestry from a name."
+  ]
+}

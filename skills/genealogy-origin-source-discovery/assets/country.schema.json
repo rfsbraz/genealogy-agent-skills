@@ -1,0 +1,247 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "native_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "starter_status": {
+      "const": "seed_only"
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date"
+    },
+    "search_terms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "first_steps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "jurisdiction_questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "query_templates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "repository",
+              "catalogue",
+              "request_service",
+              "civil_authority",
+              "directory",
+              "digital_library",
+              "guide"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "record_families": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "coverage_status": {
+            "const": "not_assessed_for_person"
+          },
+          "access": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verification": {
+            "type": "object",
+            "properties": {
+              "checked_on": {
+                "type": "string",
+                "format": "date"
+              },
+              "method": {
+                "enum": [
+                  "official_search_result",
+                  "official_page"
+                ]
+              },
+              "evidence_url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "checked_on",
+              "method",
+              "evidence_url",
+              "scope"
+            ],
+            "additionalProperties": false
+          },
+          "service_notice": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "recheck_required"
+                    ]
+                  },
+                  "observed_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https://"
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "fallback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https://"
+                  }
+                },
+                "required": [
+                  "status",
+                  "observed_on",
+                  "evidence_url",
+                  "note",
+                  "fallback_url"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "fallback": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "url",
+          "purpose",
+          "record_families",
+          "coverage_status",
+          "access",
+          "verification",
+          "service_notice",
+          "fallback"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "code",
+    "name",
+    "native_name",
+    "aliases",
+    "languages",
+    "starter_status",
+    "last_reviewed",
+    "search_terms",
+    "first_steps",
+    "jurisdiction_questions",
+    "query_templates",
+    "sources",
+    "limits"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:genealogy-agent-skills:country:1.0",
+  "title": "Country source starter profile"
+}

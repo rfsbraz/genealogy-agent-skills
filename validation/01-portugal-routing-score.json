@@ -1,0 +1,94 @@
+{
+  "case_id": "01-portugal-routing",
+  "status": "pass",
+  "checks_passed": 12,
+  "checks_total": 12,
+  "check_fraction": 1.0,
+  "critical_failures": [],
+  "trace_status": "not_required",
+  "checks": [
+    {
+      "check": "case_id",
+      "passed": true,
+      "critical": false,
+      "detail": null
+    },
+    {
+      "check": "/decisions/custodian_candidate",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "Archive of the University of Coimbra"
+      }
+    },
+    {
+      "check": "/decisions/digitarq_role",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "catalogue_and_images"
+      }
+    },
+    {
+      "check": "/decisions/crav_role",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "request_service"
+      }
+    },
+    {
+      "check": "/decisions/holding_confirmed",
+      "passed": true,
+      "critical": true,
+      "detail": {
+        "observed": false
+      }
+    },
+    {
+      "check": "/decisions/next_action",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "verify_parish_volume_coverage"
+      }
+    },
+    {
+      "check": "evidence_refs:custodian_candidate",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:digitarq_role",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:crav_role",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:holding_confirmed",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:next_action",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "limitations_shape",
+      "passed": true,
+      "critical": false,
+      "detail": null
+    }
+  ],
+  "limits": "Checks decision values and reference IDs, not actual citation support or historical truth. Trace integrity is the host responsibility."
+}

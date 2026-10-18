@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prepare Archive Fieldwork"
+  short_description: "Prepare Archive Fieldwork workflows and evidence checks"
+  default_prompt: "Use $genealogy-archive-fieldwork for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

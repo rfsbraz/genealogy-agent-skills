@@ -1,0 +1,49 @@
+{
+  "people": [
+    {
+      "id": "ada",
+      "notes": [
+        "Synthetic manual note; preserve."
+      ],
+      "research_notes": [
+        {
+          "generated_by": "genealogy-case",
+          "case_id": "C-EXAMPLE",
+          "conclusion_id": "K1",
+          "text": "The fixture entry reports age 23.",
+          "status": "provisional",
+          "rationale": "Synthetic reviewer judgment; not a real genealogy conclusion.",
+          "evidence_assessment": null,
+          "review_required": true,
+          "observations": [
+            {
+              "id": "O1",
+              "source_id": "S1",
+              "citation_id": "C1",
+              "locator": "p. 1, entry 4",
+              "statement": "The fixture entry gives age 23.",
+              "uncertainty": "Fixture text is supplied; no image reading tested.",
+              "subject_id": "M1",
+              "predicate": "reported_age",
+              "value": 23,
+              "processing_run_id": "RUN-SYNTHETIC-OLD"
+            }
+          ],
+          "citations": [
+            {
+              "id": "C1",
+              "source_id": "S1",
+              "locator": "p. 1, entry 4",
+              "text": "Synthetic Archive, register TEST, p. 1, entry 4; supplied fixture image."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manuel",
+      "research_notes": []
+    }
+  ],
+  "purpose": "Synthetic fixture only"
+}

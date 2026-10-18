@@ -1,0 +1,43 @@
+{
+  "case_id": "05-ambiguous-origin",
+  "assertions": [
+    {
+      "path": "/decisions/locality_id",
+      "op": "equals",
+      "expected": null,
+      "critical": true
+    },
+    {
+      "path": "/decisions/candidate_ids",
+      "op": "equals",
+      "expected": [
+        "L1",
+        "L2"
+      ],
+      "critical": false
+    },
+    {
+      "path": "/decisions/status",
+      "op": "equals",
+      "expected": "unresolved",
+      "critical": false
+    },
+    {
+      "path": "/decisions/next_action",
+      "op": "equals",
+      "expected": "seek_more_specific_origin_evidence",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "locality_id",
+    "candidate_ids",
+    "status",
+    "next_action"
+  ],
+  "allowed_source_ids": [
+    "S1",
+    "S2"
+  ],
+  "trace_policy": null
+}

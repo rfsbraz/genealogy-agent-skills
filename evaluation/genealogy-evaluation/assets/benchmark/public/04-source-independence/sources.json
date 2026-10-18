@@ -1,0 +1,14 @@
+[
+  {
+    "id": "S1",
+    "text": "Index A says mother Teresa. Its provenance identifies unavailable register R1 as the sole source."
+  },
+  {
+    "id": "S2",
+    "text": "Online tree B says mother Teresa and cites only Index A."
+  },
+  {
+    "id": "S3",
+    "text": "Compilation C says mother Teresa and explicitly copies Online tree B. No other evidence is supplied."
+  }
+]

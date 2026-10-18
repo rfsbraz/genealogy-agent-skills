@@ -1,0 +1,20 @@
+{
+  "name": "genealogy-agent-skills",
+  "interface": {
+    "displayName": "Genealogy"
+  },
+  "plugins": [
+    {
+      "name": "genealogy",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

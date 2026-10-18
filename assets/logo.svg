@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Genealogy">
+  <rect width="128" height="128" rx="24" fill="#1f4e5f"/>
+  <g fill="none" stroke="#f3e9d2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 100V64M64 64L36 40M64 64l28-24M36 40V28M92 40V28"/>
+  </g>
+  <g fill="#f3e9d2">
+    <circle cx="64" cy="104" r="10"/>
+    <circle cx="36" cy="26" r="9"/>
+    <circle cx="92" cy="26" r="9"/>
+    <circle cx="64" cy="64" r="8"/>
+  </g>
+</svg>

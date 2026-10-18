@@ -1,0 +1,18 @@
+flowchart TD
+    A[Start or resume] --> B{What do you need?}
+    B -->|Build a tree| C[Conversational interview]
+    C --> D[Save testimony and provisional links]
+    D --> E{Continue or research?}
+    E -->|Next question| C
+    E -->|Pause| F[Save checkpoint]
+    E -->|Research| G[Research and GPS review]
+    B -->|Investigate| G
+    G --> H[Current evidence and conclusions]
+    B -->|Tell a story| I[Read current person evidence]
+    H --> I
+    I --> J{Story style}
+    J -->|Documentary or evocative| K[Records, memory, context and inference]
+    J -->|Novelized| L[Add identified imagined scenes]
+    K --> M[Story with evidence notes]
+    L --> M
+    M --> N[Save separately from evidence]

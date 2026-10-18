@@ -1,0 +1,6 @@
+interface:
+  display_name: "Extract Genealogical Evidence"
+  short_description: "Extract Genealogical Evidence workflows and evidence checks"
+  default_prompt: "Use $genealogy-evidence-extraction for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false

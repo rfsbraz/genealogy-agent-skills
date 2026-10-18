@@ -1,0 +1,80 @@
+{
+  "case_id": "09-mail-timeout",
+  "status": "unverified",
+  "checks_passed": 10,
+  "checks_total": 10,
+  "check_fraction": 1.0,
+  "critical_failures": [],
+  "trace_status": "missing",
+  "checks": [
+    {
+      "check": "case_id",
+      "passed": true,
+      "critical": false,
+      "detail": null
+    },
+    {
+      "check": "/decisions/action",
+      "passed": true,
+      "critical": true,
+      "detail": {
+        "observed": "record_sent"
+      }
+    },
+    {
+      "check": "/decisions/message_id",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "M-91"
+      }
+    },
+    {
+      "check": "/decisions/thread_id",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "T-9"
+      }
+    },
+    {
+      "check": "/decisions/ledger_status",
+      "passed": true,
+      "critical": false,
+      "detail": {
+        "observed": "sent"
+      }
+    },
+    {
+      "check": "evidence_refs:action",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:message_id",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:thread_id",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "evidence_refs:ledger_status",
+      "passed": true,
+      "critical": true,
+      "detail": null
+    },
+    {
+      "check": "limitations_shape",
+      "passed": true,
+      "critical": false,
+      "detail": null
+    }
+  ],
+  "limits": "Checks decision values and reference IDs, not actual citation support or historical truth. Trace integrity is the host responsibility."
+}

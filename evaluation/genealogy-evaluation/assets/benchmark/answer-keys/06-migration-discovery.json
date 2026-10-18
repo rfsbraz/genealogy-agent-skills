@@ -1,0 +1,36 @@
+{
+  "case_id": "06-migration-discovery",
+  "assertions": [
+    {
+      "path": "/decisions/countries",
+      "op": "equals",
+      "expected": [
+        "BR",
+        "PT"
+      ],
+      "critical": false
+    },
+    {
+      "path": "/decisions/origin_parish_known",
+      "op": "equals",
+      "expected": false,
+      "critical": true
+    },
+    {
+      "path": "/decisions/next_action",
+      "op": "equals",
+      "expected": "seek_locality_in_destination_records",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "countries",
+    "origin_parish_known",
+    "next_action"
+  ],
+  "allowed_source_ids": [
+    "S1",
+    "S2"
+  ],
+  "trace_policy": null
+}

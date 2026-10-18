@@ -1,0 +1,32 @@
+{
+  "case_id": "07-coverage-gap",
+  "assertions": [
+    {
+      "path": "/decisions/search_outcome",
+      "op": "equals",
+      "expected": "partial",
+      "critical": false
+    },
+    {
+      "path": "/decisions/absence_excludes_birth",
+      "op": "equals",
+      "expected": false,
+      "critical": true
+    },
+    {
+      "path": "/decisions/conclusion",
+      "op": "equals",
+      "expected": "unresolved",
+      "critical": false
+    }
+  ],
+  "evidence_fields": [
+    "search_outcome",
+    "absence_excludes_birth",
+    "conclusion"
+  ],
+  "allowed_source_ids": [
+    "S1"
+  ],
+  "trace_policy": null
+}

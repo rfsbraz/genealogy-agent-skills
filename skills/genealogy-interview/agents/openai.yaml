@@ -1,0 +1,4 @@
+interface:
+  display_name: "Start Your Family Tree"
+  short_description: "Build a starting tree through a simple conversation"
+  default_prompt: "Use $genealogy-interview to help me start my family tree, one question at a time."

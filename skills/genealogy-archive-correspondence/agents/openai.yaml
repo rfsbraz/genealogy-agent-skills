@@ -1,0 +1,6 @@
+interface:
+  display_name: "Manage Archive Correspondence"
+  short_description: "Manage Archive Correspondence workflows and evidence checks"
+  default_prompt: "Use $genealogy-archive-correspondence for this genealogy task, preserve citations, and state unresolved questions."
+policy:
+  allow_implicit_invocation: false
