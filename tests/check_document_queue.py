@@ -110,6 +110,18 @@ class QueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'reading_method'): q.finish(self.db,job['id'],'w',bad)
         missing=self.results([1]); missing['metadata'].pop('reading_method')
         self.assertEqual(q.finish(self.db,job['id'],'w',missing)['job_state'],'completed')
+    def test_not_blind_double_reading_is_accepted_by_finish_and_import(self):
+        block={'methods':[{**METHOD['methods'][0],'method_id':m,'context_isolation':'shared','context_id':'ctx-synthetic-shared',
+                           'execution_kind':kind} for m,kind in (('not_blind','visual_reading'),('context','contextual_decoding'))]}
+        self.allowance(); q.plan(self.db,'DOC1','detailed',[1],tokens_per_page=100); job=q.claim(self.db,'w')['job']
+        r=self.results([1]); r['metadata']['reading_method']=block
+        self.assertEqual(q.finish(self.db,job['id'],'w',r)['job_state'],'completed')
+        old=self.results([2]); old['metadata'].update(reading_method=block,external_run_id='legacy-not-blind',original_read_on='unknown')
+        self.assertTrue(q.import_history(self.db,'DOC1','detailed',old)['created'])
+        stored=[json.loads(m[0])['reading_method'] for m in self.db.execute('SELECT metadata FROM runs ORDER BY rowid')]
+        self.assertEqual(stored,[block,block])
+        for legacy in ('single','blind','context','A'):
+            with self.subTest(method_id=legacy): q.reading_method({'methods':[{**METHOD['methods'][0],'method_id':legacy}]})
     def test_reading_method_values_match_case_schema(self):
         schema=json.loads((ROOT/'skills/genealogy-mode/assets/case.schema.json').read_text(encoding='utf-8'))
         item=schema['$defs']['reading_method']['properties']['methods']['items']

@@ -57,7 +57,7 @@ def timestamp(value):
     date=datetime.fromisoformat(value.replace('Z','+00:00'))
     require(date.tzinfo is not None,'Timestamp needs a timezone')
     return date.astimezone(timezone.utc).isoformat(timespec='microseconds')
-READING_METHOD={'method_id':('A','B','C','D','single','blind','context'),'context_isolation':('fresh','shared','unknown'),
+READING_METHOD={'method_id':('A','B','C','D','single','blind','not_blind','context'),'context_isolation':('fresh','shared','unknown'),
                 'status':('completed','partial','abstained','blocked')}
 METHOD_TEXT_FIELDS=('context_id','model_identity','execution_kind')
 def reading_method(block):
