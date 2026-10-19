@@ -99,6 +99,10 @@ The export command prints the case JSON. The import command gets the path to a c
 - Processing runs, versions and page results stay in their own ledger. Observations link to them by ID.
 - The bundled projector is not an importer. Generated fact files and tree notes are outputs, not import sources.
 
+## Publish build and working trees
+
+Declare in the adapter whether the host's publish build filters conclusions by status (excludes or visibly labels anything that is not `supported`). When the working tree is also the published tree, that declaration decides whether `source_supported` conclusions may enter the tree; see gps-policy.md. If the adapter does not declare a filter, treat the build as unable to filter and keep `source_supported` out of the tree until `supported`.
+
 ## Extending the contract
 
 Add a row to the contract file and to the tables above when the case gains a section or a field that may live outside its record. The tests fail on an unclassified section. A new field on a record in a required section needs no change: it round trips with that record. List it under `fields` only when a host may keep it in the sidecar instead.
