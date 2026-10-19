@@ -229,6 +229,23 @@ class ReadingMethodTests(unittest.TestCase):
                 c = fixture(); c['observations'][0]['reading_method'] = block
                 self.assertTrue(validate_case(c, gps=True))
 
+    def test_not_blind_double_reading_is_valid(self):
+        block = {'methods': [{**SINGLE, 'method_id': m, 'context_isolation': 'shared', 'context_id': 'ctx-synthetic-shared'}
+                             for m in ('not_blind', 'context')]}
+        c = fixture(); c['observations'][0]['reading_method'] = block
+        self.assertEqual(validate_case(c, gps=True), [])
+
+    def test_every_documented_text_form_parses_to_a_valid_block(self):
+        text = (ROOT / 'skills/genealogy-read-manuscripts/references/protocol.md').read_text(encoding='utf-8')
+        lines = re.findall(r'^reading_method: .+$', text, re.M)
+        self.assertTrue(any('method_id=not_blind' in line for line in lines), 'no not_blind example in protocol.md')
+        for line in lines:
+            block = {'methods': [dict(field.strip().split('=', 1) for field in method.split(','))
+                                 for method in line.split(':', 1)[1].split(';')]}
+            with self.subTest(line=line[:60]):
+                c = fixture(); c['observations'][0]['reading_method'] = block
+                self.assertEqual(validate_case(c, gps=True), [])
+
     def test_documented_text_form_parses_to_a_valid_block(self):
         text = (ROOT / 'skills/genealogy-read-manuscripts/references/protocol.md').read_text(encoding='utf-8')
         line = re.search(r'^reading_method: .+$', text, re.M).group(0)

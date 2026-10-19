@@ -102,7 +102,7 @@ Example `result.json` for an assigned page 5:
 python skills/genealogy-document-processing/scripts/document_queue.py --db research/processing.sqlite finish --job RETURNED_JOB_ID --worker reader-1 --result result.json
 ```
 
-A detailed run must include `metadata.reading_method`, built from the method reports as described in genealogy-read-manuscripts references/protocol.md (Carry the method record forward). `finish` refuses a detailed run without it, or with an unknown `method_id`, `context_isolation` or `status`. Other modes may include the block, and `finish` checks it when present.
+A detailed run must include `metadata.reading_method`, built from the method reports as described in genealogy-read-manuscripts references/protocol.md (Carry the method record forward). `finish` refuses a detailed run without it, or with an unknown `method_id`, `context_isolation` or `status`. The accepted `method_id` values are `A`, `B`, `C`, `D`, `single`, `blind`, `not_blind` and `context`. Other modes may include the block, and `finish` checks it when present.
 
 Every assigned page must appear once. Full/partial pages require an existing artifact and exact artifact locator. Failed pages require a reason; all-failed runs may have no artifacts. Artifact hashes are computed; supplied hashes, if any, must match. Paths are resolved from the working directory, so absolute paths are preferable for workers.
 
