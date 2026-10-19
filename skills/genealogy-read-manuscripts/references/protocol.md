@@ -33,6 +33,57 @@ reading_method: method_id=A, context_isolation=fresh, context_id=ctx-example-a, 
 
 Separate methods with `;` and fields with `,`. Write each field as `name=value`. Values cannot contain `;`, `,` or `=`. Parse the line back into the block before you check or project it.
 
+## Recorded human check
+
+A fallback double reading on a host without fresh contexts is capped at `tentative`. A later real four-method panel can raise it. So can a **recorded human check**. This section defines that check. Without one (or a later panel), the `tentative` ceiling stands.
+
+### Who counts
+
+A named human reader. The user of the session counts. An agent in another conversation does not, even if labelled as a reviewer. Record the person's name or handle as they give it; do not invent one.
+
+### What they check
+
+Only the consequential words: names, places, ages, dates, sums, kinship and negation that decide the reading. They check those words against the frozen target and line crops from the packet, not against a reconstructed page or a later edit. Ideally they see the crops before seeing the agent's reading. If they already saw the agent's reading, record that fact.
+
+### What gets recorded
+
+Store one `human_check` object next to `reading_method` on the run and on each observation the reading supports:
+
+- `reviewer`: name or handle of the human
+- `reviewed_on`: ISO date, or `unknown` when the date was not kept
+- `words_checked`: the consequential spans they looked at
+- `confirmed_reading`: the text they confirmed, or the corrected text if they changed it
+- `saw_agent_reading_first`: `true` or `false`
+
+A host that has only a free-text field can store the same object as one line:
+
+```text
+human_check: reviewer=Example Reader, reviewed_on=2026-10-19, words_checked=given name and surname, confirmed_reading=Example Name, saw_agent_reading_first=false
+```
+
+Separate fields with `,` and write each as `name=value`. Values cannot contain `,` or `=`. Parse the line back into the object before you check or project it.
+
+### Where the host stores it
+
+Put `human_check` alongside `reading_method` in the run's `finish` metadata and on the observation. The local queue and case schema do not yet validate this field. Until they do, the host keeps the object (or its one-line form) in those same places using whatever free-form metadata or observation property it already accepts. Do not drop the check, and do not invent a second authority for it.
+
+### What it allows
+
+After a recorded human check that confirms the consequential words against the frozen crops, the reading may reach `visually_supported`. If the reviewer corrects the text, use their `confirmed_reading` and keep the check on the corrected observation. If they saw the agent's reading first, still allow `visually_supported` when they confirm from the crops, but the report must say they saw the agent reading first. Without a recorded human check or a later real panel, a fallback double reading stays at most `tentative`.
+
+### Request template
+
+When you need the check, send the user one message in this shape (fill the brackets):
+
+```text
+Please check these consequential words against the frozen crops (not against my reading if you can avoid it):
+- Words: [list]
+- Crop paths: [exact paths]
+- My current reading (look only after you have decided, or skip): [text]
+
+Reply with: your name, the date, each word you checked, the reading you confirm or correct, and whether you saw my reading before deciding.
+```
+
 ## What an agreement count means
 
 Use “four methods agree in separate contexts, same model” when that is what happened. Never say four independent witnesses, independent corroboration, 100% confidence, or that method diversity establishes statistical independence. A/B/C share pixels; D may share the same model's language priors. A different engine is a different recognizer, not another historical source.
