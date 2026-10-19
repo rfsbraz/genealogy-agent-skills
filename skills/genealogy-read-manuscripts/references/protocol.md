@@ -20,7 +20,7 @@ Only normalize Unicode composition and outside whitespace when comparing literal
 
 After the reading, keep a record of how it was read next to what it says. Build one `reading_method` block from the frozen reports. Put it in the run's `finish` metadata and on each observation the reading supports; generated fact rows copy it from the observation. The block has a `methods` list with one entry for each method that ran:
 
-- `method_id`: `A`, `B`, `C` or `D` for the panel, `single` for one reading, or `blind` and `context` for the double reading in one context.
+- `method_id`: `A`, `B`, `C` or `D` for the panel, `single` for one reading, or `blind` and `context` for the double reading in one context. Use `not_blind` instead of `blind` when a quick read already happened in the same context, so the record shows that the first reading was meant to be blind but was not.
 - `context_isolation`: `fresh`, `shared` or `unknown`.
 - `context_id`, `model_identity` and `execution_kind`: copied from the report, including `unknown` and `host-default-unspecified`.
 - `status`: `completed`, `partial`, `abstained` or `blocked`.
@@ -29,6 +29,12 @@ The block records what ran. It does not make the reading more or less reliable. 
 
 ```text
 reading_method: method_id=A, context_isolation=fresh, context_id=ctx-example-a, model_identity=host-default-unspecified, execution_kind=visual_feature_analysis, status=completed; method_id=B, context_isolation=fresh, context_id=ctx-example-b, model_identity=host-default-unspecified, execution_kind=same_hand_comparison, status=abstained; method_id=C, context_isolation=fresh, context_id=ctx-example-c, model_identity=host-default-unspecified, execution_kind=vlm_line_reading, status=completed; method_id=D, context_isolation=fresh, context_id=ctx-example-d, model_identity=host-default-unspecified, execution_kind=contextual_decoding, status=completed
+```
+
+For a double reading in one context, not blind, the line is:
+
+```text
+reading_method: method_id=not_blind, context_isolation=shared, context_id=ctx-example-shared, model_identity=host-default-unspecified, execution_kind=visual_reading, status=completed; method_id=context, context_isolation=shared, context_id=ctx-example-shared, model_identity=host-default-unspecified, execution_kind=contextual_decoding, status=completed
 ```
 
 Separate methods with `;` and fields with `,`. Write each field as `name=value`. Values cannot contain `;`, `,` or `=`. Parse the line back into the block before you check or project it.

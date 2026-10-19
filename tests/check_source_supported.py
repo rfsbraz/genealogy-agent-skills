@@ -63,3 +63,14 @@ class StatusCard(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+
+
+class PublishedWorkingTreeDocs(unittest.TestCase):
+    def test_gps_policy_covers_shared_working_and_published_tree(self):
+        gps = (ROOT / 'skills/genealogy-mode/references/gps-policy.md').read_text(encoding='utf-8')
+        adapter = (ROOT / 'skills/genealogy-mode/references/host-adapter.md').read_text(encoding='utf-8')
+        contract = (ROOT / 'skills/genealogy-mode/references/shared-contract.md').read_text(encoding='utf-8')
+        self.assertIn('When the working tree is also the published tree', gps)
+        self.assertIn('must not create an ancestry edge', gps)
+        self.assertIn('publish build filters conclusions by status', adapter)
+        self.assertIn('not an accepted proof-reviewed ancestry edge', contract)
