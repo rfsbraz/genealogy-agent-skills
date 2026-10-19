@@ -342,12 +342,12 @@
       "bytes": 4451
     },
     "skills/genealogy-mode/references/gps-policy.md": {
-      "sha256": "88f98ac0cb515dcb809c3efef8f35d8ac9987e39b5f28bdf9023629597a26264",
-      "bytes": 8165
+      "sha256": "d4005be986cfeaf0698e380d3697b3cb98a6467ef445fed2416454c26fe57168",
+      "bytes": 8774
     },
     "skills/genealogy-mode/references/host-adapter.md": {
-      "sha256": "7ef00cf33868e1aa2440f860be6f8dc68d83e8b67612573f88ab226fbad8e589",
-      "bytes": 6551
+      "sha256": "324614342e65d307e3c832375883174177a557481a9a2259e394e508c2941463",
+      "bytes": 7031
     },
     "skills/genealogy-mode/references/revisions-and-projections.md": {
       "sha256": "a009ca02728d14cd86240ae3fbba690044ee0bca2de0d8be3dc2ce3f7a6b572c",
@@ -766,8 +766,8 @@
       "bytes": 1614
     },
     "tests/check_source_supported.py": {
-      "sha256": "2d8318cb1de8c5efc9f07071c5aa05aef42bc0cc5d063f619eeec4b5fa80e725",
-      "bytes": 2921
+      "sha256": "440542919cfbb33e8b98fa9eca0b5840b938501fa966fe82bc7d67396301d2fd",
+      "bytes": 3662
     },
     "tests/check_v14.py": {
       "sha256": "5b215d6a80ef920e719c901ac76a4a68a3fef2c89e7a11885376800fecd2cbbc",
