@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime,timezone,timedelta
 import importlib.util
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -144,6 +145,26 @@ class QueueTests(unittest.TestCase):
         out=q.import_history(self.db,'DOC1','quick',result); self.assertEqual(out['charged_tokens'],0)
         self.assertFalse(q.import_history(self.db,'DOC1','quick',result)['created'])
         self.assertEqual(q.status(self.db,'DOC1')['full_coverage']['quick']['count'],2)
+    def test_documented_import_example_is_accepted(self):
+        cli=(ROOT/'skills/genealogy-document-processing/references/cli.md').read_text(encoding='utf-8')
+        section=cli.split('## Import prior readings',1)[1].split('\n## ',1)[0]
+        for field in ('metadata.method','metadata.skill_version','metadata.external_run_id','metadata.original_read_on'):
+            self.assertIn(field, section)
+        self.assertIn('Use `unknown` when the reading predates these skills', section)
+        block=re.search(r'```json\n(\{.*?\n\})\n```', section, re.S).group(1)
+        result=json.loads(block)
+        art=self.base/Path(result['artifacts'][0]['path'])
+        art.parent.mkdir(parents=True, exist_ok=True)
+        art.write_text('Imported historical reading fixture.\n')
+        result['artifacts'][0]['path']=str(art)
+        q.register(self.db,{'document_id':'DOC-EXAMPLE','source_id':'DOC-EXAMPLE','page_count':1,'sha256':'c'*64,
+                            'location':{'kind':'fixture','path':'example.invalid'}})
+        out=q.import_history(self.db,'DOC-EXAMPLE','quick',result)
+        self.assertTrue(out['created']); self.assertEqual(out['charged_tokens'],0)
+        missing={**result,'metadata':{k:v for k,v in result['metadata'].items() if k!='skill_version'}}
+        missing['metadata']['external_run_id']='legacy-example-missing-version'
+        with self.assertRaises(ValueError) as ctx: q.import_history(self.db,'DOC-EXAMPLE','quick',missing)
+        self.assertIn('skill_version', str(ctx.exception))
     def test_cancel_running_rejected(self):
         self.allowance(); q.plan(self.db,'DOC1','quick',[1],tokens_per_page=100); job=q.claim(self.db,'worker')['job']
         with self.assertRaises(ValueError): q.cancel(self.db,job['id'],'cancel')

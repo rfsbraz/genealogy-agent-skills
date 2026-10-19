@@ -206,8 +206,8 @@
       "bytes": 423
     },
     "skills/genealogy-document-processing/references/cli.md": {
-      "sha256": "38e95b3d6a7ad30cb5c0dad333200e74d43802d94aa4fc0655233770bd858811",
-      "bytes": 12313
+      "sha256": "802414ac3d682430a021c94da4b52575058c9e09f9b6d7231ad4258ccd89d2d8",
+      "bytes": 13363
     },
     "skills/genealogy-document-processing/references/processing-protocol.md": {
       "sha256": "06eb2d93deb268d12de1cd6f913f233f5abd5179e02a9414dc4f379e4547af99",
@@ -674,8 +674,8 @@
       "bytes": 3527
     },
     "tests/check_document_queue.py": {
-      "sha256": "ad588a878fec099381276cf19deb5f631d4b64cd8f8c4852b5c2d33e921509a8",
-      "bytes": 19921
+      "sha256": "96ed25fcf41ae197e42d51dcbe47e844bc0d79a9b97c45a87431c284483053e7",
+      "bytes": 21459
     },
     "tests/check_evaluation_layout.py": {
       "sha256": "a47f01206ba732cb7f5f70fdab3880e47b0f6f6260168292a18e83913922ce3d",
