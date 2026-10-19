@@ -47,5 +47,12 @@ class FourMethodReading(unittest.TestCase):
         self.assertTrue('four distinct handwriting methods' in read('genealogy-transcribe-detailed/SKILL.md').split('---', 2)[1], 'detailed description')
 
 
+    def test_quick_read_rule_names_the_method_ids(self):
+        rule = next(line for line in read('genealogy-read-manuscripts/SKILL.md').splitlines()
+                    if 'When a quick read already happened in this context' in line)
+        for value in ('`not_blind`', '`context`', '`context_isolation=shared`'):
+            with self.subTest(value=value):
+                self.assertTrue(value in rule, value)
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
