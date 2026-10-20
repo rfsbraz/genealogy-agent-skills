@@ -110,7 +110,36 @@ Every assigned page must appear once. Full/partial pages require an existing art
 
 ## Import prior readings
 
-Use `import-run --doc DOC-EXAMPLE --mode quick --result historical-result.json` with the same result shape plus `metadata.external_run_id` (stable import key) and `metadata.original_read_on` (actual date or `unknown`). Preserve actual method and scope; do not promote OCR to a quick reading, or a single-pass transcript to a blind quorum. The command records import time separately, charges zero new model usage and preserves original reported usage in metadata. A detailed import also needs `metadata.reading_method`; use `unknown` for a context that was not recorded. Reusing the key returns the existing run; corrected imports need a new key. Source-version registration must match the original document.
+Use `import-run --doc DOC-EXAMPLE --mode quick --result historical-result.json`. `import-run` runs the same metadata checks as `finish`, so every import needs nonempty text for:
+
+- `metadata.method`: how the original reading was made. Use `unknown` when the method was not recorded.
+- `metadata.skill_version`: the skill revision that produced the reading. Use `unknown` when the reading predates these skills or the version is unknown.
+- `metadata.external_run_id`: stable import key
+- `metadata.original_read_on`: actual date or `unknown`
+
+A detailed import also needs `metadata.reading_method`; use `unknown` for a context that was not recorded. Preserve actual method and scope; do not promote OCR to a quick reading, or a single-pass transcript to a blind quorum. The command records import time separately, charges zero new model usage and preserves original reported usage in metadata. Reusing the key returns the existing run; corrected imports need a new key. Source-version registration must match the original document.
+
+Minimal `historical-result.json` that `import-run` accepts for a quick reading:
+
+```json
+{
+  "metadata": {
+    "method": "unknown",
+    "skill_version": "unknown",
+    "external_run_id": "legacy-example-1",
+    "original_read_on": "unknown"
+  },
+  "actual_tokens": null,
+  "artifacts": [{"id": "A1", "path": "research/transcriptions/legacy-example.md"}],
+  "pages": [{"page": 1, "coverage": "full", "requires_review": true,
+             "artifact_id": "A1", "locator": "#page-1",
+             "note": "Imported historical reading"}]
+}
+```
+
+```sh
+python skills/genealogy-document-processing/scripts/document_queue.py --db research/processing.sqlite import-run --doc DOC-EXAMPLE --mode quick --result historical-result.json
+```
 
 ## Status and export
 
