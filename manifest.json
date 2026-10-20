@@ -522,8 +522,8 @@
       "bytes": 268
     },
     "skills/genealogy-read-manuscripts/SKILL.md": {
-      "sha256": "f3ea01eb8c248205e2307737c6ee26f359d5e63f3963e4a99cbb790a9fd12641",
-      "bytes": 12969
+      "sha256": "a721a95b93c8fa399ff569824f70e5e5596c199c011aee2d6c04b57b37e616af",
+      "bytes": 13016
     },
     "skills/genealogy-read-manuscripts/agents/openai.yaml": {
       "sha256": "866ffded1cd7ac0ba8559877987ae494cd6cce0c8bffb8599a684af2cee5750d",
@@ -554,8 +554,8 @@
       "bytes": 11294
     },
     "skills/genealogy-read-manuscripts/references/protocol.md": {
-      "sha256": "c65aeafbff8a6282dce05b4088aef1031058785ff0e5537b36f8a90b00b50f3a",
-      "bytes": 13132
+      "sha256": "2a862cfc4ed6b3287cea69c570ef6bf5fc938781ba557a224a36836f8bc558d2",
+      "bytes": 16336
     },
     "skills/genealogy-read-manuscripts/references/research-basis.md": {
       "sha256": "ce5931401eb666fc99955fcd1be08ff8ff3ea0072020b584862494df62f31893",
