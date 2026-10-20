@@ -107,3 +107,13 @@ class JsonFileArguments(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+
+
+class HostCanonicalDocs(unittest.TestCase):
+    def test_host_canonical_covers_artifacts(self):
+        cli = (ROOT / 'skills/genealogy-document-processing/references/cli.md').read_text(encoding='utf-8')
+        section = cli.split('## Host-canonical mode', 1)[1]
+        for phrase in ('Artifacts in host-canonical mode', 'dated run file', 'does not invalidate the reading',
+                       'Never update the old hash', 'artifact_git_commit'):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, section)

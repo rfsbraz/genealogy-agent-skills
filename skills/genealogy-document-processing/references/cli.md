@@ -168,3 +168,23 @@ Some host projects keep their canonical record as text in Git, for example a JSO
 - Do not copy queue rows (versions, runs, page results) into the host's own record. Keep a link instead, such as the queue `version_id` or `run_id`, so the host's recount checks do not change when a document is registered.
 - If the host cannot run the queue at all, keep the run in the host's own record and pass it to `reread` as an external run. See the coordinator's references/revisions-and-projections.md.
 - Never hand-edit the export. Treat a restore failure as a sign the export was changed outside the queue.
+
+### Artifacts in host-canonical mode
+
+`finish` and `import-run` store a SHA-256 for every artifact path at the moment the run is recorded. Keep prior outputs immutable (processing-protocol.md). In host-canonical mode that means:
+
+- The recorded artifact must be a file that will not keep changing. Write a dated run file next to a living research note, and point the run at that file. The living note may cite the run ID; it should not itself be the run's artifact.
+- If a host does point a run at a file under version control, the Git commit that held the hashed content is the preserved version. Record that commit in the run metadata (for example `metadata.artifact_git_commit`).
+- A later edit to a living file does not invalidate the reading, but the stored hash will no longer match. Check for drift by comparing each stored artifact hash to the file on disk. From an export:
+
+```sh
+python -c "import json,hashlib,sys; from pathlib import Path
+e=json.load(open(sys.argv[1]))
+for r in e['tables']['runs']:
+  for a in json.loads(r['artifacts']):
+    p=Path(a['path']); got=hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None
+    print(r['id'], a['path'], 'ok' if got==a['sha256'] else 'drift')
+" research/processing-export.json
+```
+
+When a hash no longer matches, record a new run or a reread. Never update the old hash in place.
