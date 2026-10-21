@@ -48,10 +48,11 @@ For Gmail discover actual host tool schemas rather than hardcoding names from an
 - `scripts/case_tools.py hash-file FILE`: return SHA-256 and byte size of a supplied file.
 - `scripts/gedcom_tools.py check FILE`: pre-import check of a GEDCOM 5.5.1 or 7.0 file for possible duplicates, impossible dates and impossible parent/child ages. Errors are impossible combinations; warnings are doubtful ones. Exits 1 when there are errors. It checks the tree against itself, never against records.
 - `scripts/gedcom_tools.py import FILE --out CASE [--question TEXT]`: open a new case from a GEDCOM file, refusing to overwrite. The file is the one source consulted; each fact becomes a cited observation with a provisional conclusion, the tree's own citations are kept on the observations as leads, and each check issue becomes a planned task. Nothing is marked supported. Merging into an existing case is research-maintenance work.
+- `scripts/gedcom_tools.py export CASE --out FILE [--report LOSS] [--include provisional]`: write GEDCOM 5.5.1 holding only `supported` and `source_supported` claims (provisional ones only on request, and then labelled), each fact citing its source with the citation locator and text and noting its status. Families never gain a parent whose link was not reviewed. A loss report (default `FILE.loss.json`) counts what was left out and lists people not known to be deceased, to check before sharing. Refuses to overwrite and refuses a case that does not validate.
 - `evaluation/genealogy-evaluation/scripts/stage_case.py` (maintainers only, not installed by default): stage public synthetic case inputs and selected runtime skills for a test.
 - `evaluation/genealogy-evaluation/scripts/score_result.py` (maintainers only, not installed by default): score a result against starter fixtures; trusted action traces are separate from agent output.
 
-All helpers use Python's standard library and perform no network access or sending. The GEDCOM helper reads and checks files; it is not a full converter. No PostgreSQL/MCP server, OCR engine, scheduling service or vendor adapter is implemented by this ZIP.
+All helpers use Python's standard library and perform no network access or sending. The GEDCOM helper checks, imports and exports; GEDCOM is an exchange view, so the full case stays the record. No PostgreSQL/MCP server, OCR engine, scheduling service or vendor adapter is implemented by this ZIP.
 
 ## Failure and retry
 

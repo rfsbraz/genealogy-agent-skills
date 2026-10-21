@@ -67,7 +67,7 @@ A finding checked against its cited source can be saved as `source_supported`, w
 
 ## Bring in an existing tree
 
-Say "Import my GEDCOM file", or run `python genealogy.py gedcom check tree.ged` first. The check lists possible duplicates, impossible dates (death before birth, lifespans over 120 years, days that don't exist) and parents born after their children or children born after a parent's death. `python genealogy.py gedcom import tree.ged --out case.json` then opens a new case from the file. Every person, fact and link comes in as a provisional claim, cited to the GEDCOM file, with each check issue saved as a task. Nothing from the tree counts as proof until it is tested against records. Neither command runs a model or uses the network.
+Say "Import my GEDCOM file", or run `python genealogy.py gedcom check tree.ged` first. The check lists possible duplicates, impossible dates (death before birth, lifespans over 120 years, days that don't exist) and parents born after their children or children born after a parent's death. `python genealogy.py gedcom import tree.ged --out case.json` then opens a new case from the file. Every person, fact and link comes in as a provisional claim, cited to the GEDCOM file, with each check issue saved as a task. Nothing from the tree counts as proof until it is tested against records. When findings are reviewed, `python genealogy.py gedcom export case.json --out reviewed.ged` writes only the supported and source-supported claims, each with its sources, for other genealogy programs, plus a report of what GEDCOM could not carry. None of these commands runs a model or uses the network.
 
 ## Commands
 

@@ -2,6 +2,7 @@
 name: genealogy-reporting
 description: "Use when genealogy-mode or the user wants findings written up as cited reports, timelines, trees or handoffs. Not for literary life stories, which genealogy-narrative writes."
 license: MIT
+compatibility: "Python 3.10+ for the coordinator's GEDCOM export (standard library only)."
 metadata:
   author: Rodrigo Braz
 disable-model-invocation: true
@@ -24,7 +25,7 @@ Audience and format; active question; accepted/provisional conclusions; sources;
 5. Summarize conflicting evidence and why a conclusion was accepted or left open. Do not bury uncertainty in footnotes while drawing a certain tree edge.
 6. Include a concise search/coverage summary and prioritized next actions. For handoff, provide source IDs, unresolved hypotheses, pending requests and the exact restart point.
 7. Apply the audience’s disclosure scope to living-person and sensitive information. Internal case records and a public family narrative may need different content.
-8. Use available document/PDF/diagram skills for requested formats and inspect rendered output. For GEDCOM, preserve a separate full research bundle and document export losses.
+8. Use available document/PDF/diagram skills for requested formats and inspect rendered output. For GEDCOM, use the coordinator's scripts/gedcom_tools.py export (also `python genealogy.py gedcom export`), which writes only supported and source_supported claims with their sources and a loss report; keep the full case as the research record and hand over the loss report with the file.
 
 ## Output contract
 

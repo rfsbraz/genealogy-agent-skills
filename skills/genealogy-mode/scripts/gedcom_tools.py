@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""GEDCOM helpers: a pre-import check, and import into a provisional case. Standard library only, no network.
+"""GEDCOM helpers: a pre-import check, import into a provisional case, and export of reviewed conclusions. Standard library only, no network.
 
 An imported tree is a claim to test, not evidence. Import keeps the GEDCOM file as the source actually
 consulted, turns each fact into a cited observation with a provisional conclusion, and never marks
-anything supported. The tree's own citations are kept as leads on the observations.
+anything supported. The tree's own citations are kept as leads on the observations. Export goes the other way: only
+supported and source_supported claims, each with its sources, plus a report of what GEDCOM cannot carry.
 """
 import argparse
 from datetime import date
@@ -490,6 +491,253 @@ def import_tree(tree, question=None, case_id=None, prefix='GED'):
     return case
 
 
+# ---------------------------------------------------------------- export
+
+EXPORT_TAGS = {
+    'birth': 'BIRT', 'birth_date': 'BIRT', 'baptism': 'CHR', 'baptism_date': 'CHR', 'christening': 'CHR',
+    'death': 'DEAT', 'death_date': 'DEAT', 'burial': 'BURI', 'burial_date': 'BURI',
+    'residence': 'RESI', 'occupation': 'OCCU',
+}
+FAMILY_TAGS = {'marriage': 'MARR', 'marriage_date': 'MARR', 'divorce': 'DIV', 'divorce_date': 'DIV'}
+PARENT_TYPES = ('parent', 'biological_parent')
+REVIEWED = ('supported', 'source_supported')
+ALWAYS_LOST = [
+    'observation statements, literal wording and uncertainty notes',
+    'GPS reviews and evidence assessments (only their status is noted on each fact)',
+    'hypotheses, searches, tasks and correspondence',
+    'rejected, superseded and unresolved conclusions, and the change history',
+    'mentions that are not linked to a person, and identity decisions',
+]
+MONTH_NAMES = 'JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC'.split()
+
+
+def gedcom_lines(level, tag, value='', xref=None):
+    """One GEDCOM line, with CONT for line breaks and CONC so no line passes 255 characters."""
+    head = f"{level} {xref + ' ' if xref else ''}{tag}"
+    parts = str(value or '').split('\n')
+    lines = []
+    for i, part in enumerate(parts):
+        prefix = head if i == 0 else f'{level + 1} CONT'
+        room = 250 - len(prefix)
+        chunk, part = part[:room], part[room:]
+        lines.append(f'{prefix} {chunk}'.rstrip() if chunk or i else prefix)
+        while part:
+            room = 250 - len(f'{level + 1} CONC ')
+            chunk, part = part[:room], part[room:]
+            lines.append(f'{level + 1} CONC {chunk}')
+    return lines
+
+
+def _iso_to_gedcom(iso):
+    bits = iso.split('-')
+    if len(bits) == 3:
+        return f'{int(bits[2])} {MONTH_NAMES[int(bits[1]) - 1]} {int(bits[0])}'
+    if len(bits) == 2:
+        return f'{MONTH_NAMES[int(bits[1]) - 1]} {int(bits[0])}'
+    return str(int(bits[0]))
+
+
+def gedcom_date(value):
+    """A case date object (or literal) as a GEDCOM date; a free-text phrase when it has no GEDCOM form."""
+    if not value:
+        return None
+    literal = value.get('literal') if isinstance(value, dict) else str(value)
+    parsed = parse_date(literal) if literal else None
+    if parsed and parsed['kind'] not in ('invalid', 'text', 'unparsed', 'empty'):
+        return ' '.join(literal.upper().split())
+    if isinstance(value, dict):
+        exact = value.get('date') or (value.get('earliest') if value.get('earliest') == value.get('latest') else None)
+        try:
+            if exact:
+                return _iso_to_gedcom(exact)
+            if value.get('earliest') and value.get('latest'):
+                return f"BET {_iso_to_gedcom(value['earliest'])} AND {_iso_to_gedcom(value['latest'])}"
+        except (ValueError, IndexError):
+            pass
+    return f'({literal})' if literal else None
+
+
+def export_case(case, include=REVIEWED):
+    """GEDCOM 5.5.1 text and a loss report for the claims whose status is in `include`."""
+    errors = validate_case(case, gps=case.get('schema_version') in ('1.1', '1.2'))
+    if errors:
+        raise ValueError('case does not validate; fix it before exporting: ' + '; '.join(errors[:5]))
+    persons = {p['id']: p for p in case['persons']}
+    mentions = {m['id']: m for m in case['mentions']}
+    observations = {o['id']: o for o in case['observations']}
+    sources = {s['id']: s for s in case['sources']}
+    citations = {c['id']: c for c in case['citations']}
+    places = {p['id']: p['literal'] for p in case['places']}
+    conclusions = {c['id']: c for c in case['conclusions']}
+    loss = {'conclusions_by_status': {}, 'relationship_types': {}, 'predicates': {}, 'unlinked_mentions': 0}
+    assumed_roles = []
+
+    def count(bucket, key):
+        loss[bucket][key] = loss[bucket].get(key, 0) + 1
+
+    def person_of(subject):
+        if subject in persons:
+            return subject
+        mention = mentions.get(subject)
+        return mention.get('person_id') if mention else None
+
+    facts = {}          # person id -> [(tag, observation, conclusion)]
+    family_facts = {}   # frozenset(person ids) -> [(tag, observation, conclusion)]
+    for con in case['conclusions']:
+        if con['status'] not in include:
+            count('conclusions_by_status', con['status'])
+            continue
+        for oid in con['observation_ids']:
+            obs = observations[oid]
+            predicate = obs.get('predicate', '')
+            subject = person_of(obs.get('subject_id'))
+            if predicate in FAMILY_TAGS and subject and obs.get('object_person_id') in persons:
+                family_facts.setdefault(frozenset((subject, obs['object_person_id'])), []).append((FAMILY_TAGS[predicate], obs, con))
+            elif predicate in EXPORT_TAGS and subject:
+                facts.setdefault(subject, []).append((EXPORT_TAGS[predicate], obs, con))
+            elif predicate in EXPORT_TAGS or predicate in FAMILY_TAGS:
+                loss['unlinked_mentions'] += 1
+            elif predicate not in ('parent', 'spouse') + PARENT_TYPES:
+                count('predicates', predicate or 'none')
+
+    couples, children = {}, {}
+    for rel in case['relationships']:
+        if rel['status'] not in include:
+            continue
+        con = conclusions.get(rel['conclusion_id'])
+        if rel['type'] == 'spouse':
+            couples.setdefault(frozenset((rel['from_person_id'], rel['to_person_id'])), []).append(con)
+        elif rel['type'] in PARENT_TYPES:
+            children.setdefault(rel['to_person_id'], {})[rel['from_person_id']] = con
+        else:
+            count('relationship_types', rel['type'])
+    families = {key: {'spouses': key, 'children': [], 'cons': list(cons), 'facts': []} for key, cons in couples.items()}
+    for child, parents in sorted(children.items()):
+        key = frozenset(parents)
+        family = families.setdefault(key, {'spouses': key, 'children': [], 'cons': [], 'facts': []})
+        family['children'].append(child)
+        family['cons'].extend(parents.values())
+    for key, items in family_facts.items():
+        families.setdefault(key, {'spouses': key, 'children': [], 'cons': [], 'facts': []})['facts'].extend(items)
+
+    included = set(facts)
+    for family in families.values():
+        included |= set(family['spouses']) | set(family['children'])
+    included = sorted(p for p in included if p in persons)
+    ixref = {pid: f'@I{n}@' for n, pid in enumerate(included, 1)}
+    used_sources = []
+
+    def sref(source_id):
+        if source_id not in used_sources:
+            used_sources.append(source_id)
+        return f'@S{used_sources.index(source_id) + 1}@'
+
+    def cite(level, obs):
+        out = gedcom_lines(level, 'SOUR', sref(obs['source_id']))
+        cit = citations.get(obs.get('citation_id'))
+        out += gedcom_lines(level + 1, 'PAGE', cit['locator'] if cit else obs['locator'])
+        if cit and cit.get('text'):
+            out += gedcom_lines(level + 1, 'DATA') + gedcom_lines(level + 2, 'TEXT', cit['text'])
+        return out
+
+    def status_note(level, con):
+        note = f"Status: {con['status']}."
+        assessment = con.get('evidence_assessment')
+        if assessment:
+            note += f" Scope: {assessment['scope']} Reviewed {assessment['reviewed_on']}."
+        return gedcom_lines(level, 'NOTE', note)
+
+    def fact_lines(tag, obs, con):
+        value = obs.get('value')
+        out = gedcom_lines(1, tag, value if tag == 'OCCU' and isinstance(value, str) else '')
+        when = gedcom_date(value) if isinstance(value, dict) else None
+        if when:
+            out += gedcom_lines(2, 'DATE', when)
+        where = places.get(obs.get('place_id'))
+        if where:
+            out += gedcom_lines(2, 'PLAC', where)
+        if isinstance(value, str) and tag != 'OCCU' and value:
+            out += gedcom_lines(2, 'NOTE', value)
+        return out + cite(2, obs) + status_note(2, con)
+
+    reviewed_obs = {oid for c in case['conclusions'] if c['status'] in include for oid in c['observation_ids']}
+
+    def sex_of(pid, reviewed_only=True):
+        """Sex from the person row or a sex observation; unreviewed ones only guide HUSB/WIFE."""
+        if persons[pid].get('sex') in ('M', 'F'):
+            return persons[pid]['sex']
+        for obs in case['observations']:
+            if (obs.get('predicate') == 'sex' and person_of(obs.get('subject_id')) == pid
+                    and obs.get('value') in ('M', 'F') and (obs['id'] in reviewed_obs or not reviewed_only)):
+                return obs['value']
+        return None
+
+    out = ['0 HEAD'] + gedcom_lines(1, 'SOUR', 'GENEALOGY_AGENT_SKILLS') + ['1 GEDC', '2 VERS 5.5.1',
+           '2 FORM LINEAGE-LINKED', '1 CHAR UTF-8']
+    out += gedcom_lines(1, 'NOTE', f"Private export of case {case['case_id']}: only claims with status "
+                        f"{', '.join(include)}, each with its sources. The full case keeps the evidence and its limits.")
+    fxref = {}
+    ordered = sorted(families.values(), key=lambda f: (sorted(f['spouses']), f['children']))
+    for n, family in enumerate(ordered, 1):
+        fxref[id(family)] = f'@F{n}@'
+    for pid in included:
+        out += gedcom_lines(0, 'INDI', xref=ixref[pid]) + gedcom_lines(1, 'NAME', persons[pid]['label'])
+        sex = sex_of(pid)
+        if sex:
+            out += gedcom_lines(1, 'SEX', sex)
+        for tag, obs, con in facts.get(pid, []):
+            out += fact_lines(tag, obs, con)
+        for family in ordered:
+            if pid in family['children']:
+                out += gedcom_lines(1, 'FAMC', fxref[id(family)])
+            if pid in family['spouses']:
+                out += gedcom_lines(1, 'FAMS', fxref[id(family)])
+    for family in ordered:
+        out += gedcom_lines(0, 'FAM', xref=fxref[id(family)])
+        slots = {}
+        for pid in sorted(family['spouses']):
+            role = {'M': 'HUSB', 'F': 'WIFE'}.get(sex_of(pid))
+            if not role:
+                role = {'M': 'HUSB', 'F': 'WIFE'}.get(sex_of(pid, reviewed_only=False))
+                if role:
+                    assumed_roles.append({'person_id': pid, 'role': role, 'reason': 'from an unreviewed sex claim'})
+            if not role or role in slots:
+                role = 'WIFE' if 'HUSB' in slots else 'HUSB'
+                assumed_roles.append({'person_id': pid, 'role': role, 'reason': 'sex unknown; GEDCOM 5.5.1 needs HUSB or WIFE'})
+            slots[role] = pid
+        for role in ('HUSB', 'WIFE'):
+            if role in slots:
+                out += gedcom_lines(1, role, ixref[slots[role]])
+        for child in family['children']:
+            out += gedcom_lines(1, 'CHIL', ixref[child])
+        for tag, obs, con in family['facts']:
+            out += fact_lines(tag, obs, con)
+        seen = set()
+        for con in family['cons']:
+            for oid in con['observation_ids'] if con else []:
+                if oid not in seen:
+                    seen.add(oid)
+                    out += cite(1, observations[oid])
+        for con in {c['id']: c for c in family['cons'] if c}.values():
+            out += status_note(1, con)
+    for n, source_id in enumerate(used_sources, 1):
+        source = sources[source_id]
+        out += gedcom_lines(0, 'SOUR', xref=f'@S{n}@') + gedcom_lines(1, 'TITL', source['title'])
+        where = source.get('uri') or source.get('reference')
+        if where:
+            out += gedcom_lines(1, 'PUBL', where)
+        out += gedcom_lines(1, 'NOTE', f"Source type: {source['source_type']}.")
+    out.append('0 TRLR')
+    report = {'case_id': case['case_id'], 'gedcom_version': '5.5.1', 'included_statuses': list(include),
+              'exported': {'individuals': len(included), 'families': len(ordered),
+                           'facts': sum(len(v) for v in facts.values()) + sum(len(f['facts']) for f in ordered),
+                           'sources': len(used_sources)},
+              'not_exported': loss, 'always_lost': ALWAYS_LOST, 'assumed_roles': assumed_roles,
+              'check_before_sharing': [pid for pid in included if persons[pid].get('life_status') != 'deceased'],
+              'note': 'Private artifact. People not known to be deceased are listed in check_before_sharing.'}
+    return '\n'.join(out) + '\n', report
+
+
 # ---------------------------------------------------------------- CLI
 
 def main(argv=None):
@@ -503,8 +751,31 @@ def main(argv=None):
     imp.add_argument('--question', help='research question for the case')
     imp.add_argument('--case-id')
     imp.add_argument('--prefix', default='GED', help='ID prefix for imported rows (default GED)')
+    exp = sub.add_parser('export', help='Export supported and source_supported claims, with sources, as GEDCOM 5.5.1')
+    exp.add_argument('file', help='case JSON')
+    exp.add_argument('--out', required=True, help='new .ged file; never overwritten')
+    exp.add_argument('--report', help='loss report path (default: OUT.loss.json)')
+    exp.add_argument('--include', action='append', choices=['provisional'],
+                     help='also export provisional claims (marked as such); off by default')
     args = parser.parse_args(argv)
     try:
+        if args.command == 'export':
+            case = json.loads(Path(args.file).read_text(encoding='utf-8'))
+            text, report = export_case(case, REVIEWED + tuple(args.include or ()))
+            out = Path(args.out)
+            report_path = Path(args.report) if args.report else out.with_name(out.name + '.loss.json')
+            for target in (out, report_path):
+                if target.exists():
+                    raise ValueError(f'{target} exists; choose a new path')
+            out.parent.mkdir(parents=True, exist_ok=True)
+            with out.open('x', encoding='utf-8') as handle:
+                handle.write(text)
+            with report_path.open('x', encoding='utf-8') as handle:
+                json.dump(report, handle, ensure_ascii=False, indent=2)
+                handle.write('\n')
+            print(json.dumps({'status': 'created', 'path': str(out), 'loss_report': str(report_path),
+                              **report['exported']}, ensure_ascii=False, indent=2))
+            return 0
         tree = parse_gedcom(args.file)
         if args.command == 'check':
             report = check_tree(tree)
