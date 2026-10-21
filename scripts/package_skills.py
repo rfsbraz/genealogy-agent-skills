@@ -188,7 +188,26 @@ def clean_frontmatter(bundle):
     skill_md.write_text('---\n' + '\n'.join(kept) + '\n---' + body, encoding='utf-8')
 
 
-BUNDLE_STEPS = [copy_skill, make_self_contained, clean_frontmatter]
+def stamp_version(bundle):
+    """Add metadata.version from .release-please-manifest.json, the one place release-please bumps.
+
+    The source SKILL.md files carry no version: they are covered by manifest.json checksums, so a
+    release-please bump inside them would leave manifest.json stale on every release PR.
+    """
+    skill_md = bundle.path / 'SKILL.md'
+    _, head, body = skill_md.read_text(encoding='utf-8').split('---', 2)
+    lines = head.strip('\n').splitlines()
+    if any(re.match(r'^\s+version:', line) for line in lines):
+        raise PackagingError(f'{bundle.skill}: metadata.version belongs in .release-please-manifest.json, not SKILL.md')
+    stamp = f'  version: "{version()}"'
+    if 'metadata:' in lines:
+        lines.insert(lines.index('metadata:') + 1, stamp)
+    else:
+        lines += ['metadata:', stamp]
+    skill_md.write_text('---\n' + '\n'.join(lines) + '\n---' + body, encoding='utf-8')
+
+
+BUNDLE_STEPS = [copy_skill, make_self_contained, clean_frontmatter, stamp_version]
 
 
 def write_zip(target, entries):

@@ -1,6 +1,10 @@
 ---
 name: genealogy-repository-discovery
 description: "Use when genealogy-mode or the user needs the archives, registries or libraries that hold records for a place and period. Not for writing to them or searching their catalogues."
+license: MIT
+compatibility: "Network access to check archives, registries and libraries."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,10 @@
 ---
 name: genealogy-origin-source-discovery
 description: "Use when genealogy-mode or the user meets a new birthplace, origin or migration and needs the country's sources mapped. Not for searching a known collection's entries."
+license: MIT
+compatibility: "Python 3.10+ for the country source helper (standard library only); network access to check sources."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

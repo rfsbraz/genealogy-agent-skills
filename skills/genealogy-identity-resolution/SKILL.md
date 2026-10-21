@@ -1,6 +1,9 @@
 ---
 name: genealogy-identity-resolution
 description: "Use when genealogy-mode or the user must decide whether record mentions are the same person: common names, aliases, merges. Not for relationships between known people."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -60,7 +60,8 @@ class SkillFrontmatter(unittest.TestCase):
         for path in skill_files():
             with self.subTest(skill=path.parent.name):
                 data = frontmatter(path)
-                self.assertLessEqual(set(data) - {'name', 'description'}, {'disable-model-invocation'})
+                self.assertLessEqual(set(data) - {'name', 'description', 'license', 'compatibility', 'metadata'},
+                                     {'disable-model-invocation'})
                 self.assertIn(data.get('disable-model-invocation', 'true'), {'true'})
                 self.assertEqual(data['name'], path.parent.name)
                 self.assertRegex(data['name'], r'^[a-z0-9]+(-[a-z0-9]+)*$')

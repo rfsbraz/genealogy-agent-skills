@@ -1,6 +1,9 @@
 ---
 name: genealogy-research-maintenance
 description: "Use when genealogy-mode or the user needs case evidence kept consistent after discoveries, merges, imports or corrections. Not for planning the next search."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 
