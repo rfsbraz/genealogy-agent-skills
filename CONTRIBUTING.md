@@ -56,6 +56,20 @@ python scripts/build_manifest.py
 
 Do not edit version numbers or `CHANGELOG.md`. Releases are made by release-please from the commit messages.
 
+## Host validators
+
+A separate CI job runs the validators the hosts use themselves, on the built release assets: `skills-ref validate` and Anthropic's `quick_validate.py` on every skill zip, and `claude plugin validate --strict --profile directory` on the repository, on `.claude-plugin/plugin.json` and on the plugin zip. The raw folders under `skills/` are not checked this way, because they keep `disable-model-invocation`, which both skill validators reject. To run them locally (needs Node.js 22 and curl; best inside a virtual environment):
+
+```sh
+scripts/install_host_validators.sh /tmp/validators
+python scripts/package_skills.py --release
+python scripts/run_host_validators.py dist/release \
+  --quick-validate /tmp/validators/quick_validate.py \
+  --claude /tmp/validators/npm/node_modules/.bin/claude
+```
+
+The tool versions are pinned in `scripts/install_host_validators.sh`. The Release workflow runs the same checks before it uploads the assets.
+
 ## Skill descriptions
 
 Each `description` in a `SKILL.md` frontmatter starts with "Use when", is written in the third person, names a near miss with "Not for", and stays within 200 characters, the claude.ai limit. Specialist skills start with "Use when genealogy-mode or the user", so they do not take requests from `genealogy-mode` on hosts that let every skill load on its own. `tests/check_skill_routing.py` checks these rules.

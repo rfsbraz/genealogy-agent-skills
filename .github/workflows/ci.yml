@@ -64,6 +64,7 @@ jobs:
           python tests/check_repo_hygiene.py
           python tests/check_bundles.py
           python tests/check_release_assets.py
+          python tests/check_host_validators.py
       - name: Reading panel tests
         run: |
           for test in tests/check_panel_*.py; do
@@ -78,6 +79,30 @@ jobs:
           python genealogy.py project --help
       - name: Repository tests
         run: python tests/test_repo.py
+
+  host-validators:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned host validators
+        run: scripts/install_host_validators.sh "$RUNNER_TEMP/validators"
+      - name: Build release assets
+        run: python scripts/package_skills.py --release --out dist > /dev/null
+      - name: skills-ref, quick_validate and claude plugin validate
+        run: |
+          python scripts/run_host_validators.py dist/release \
+            --quick-validate "$RUNNER_TEMP/validators/quick_validate.py" \
+            --claude "$RUNNER_TEMP/validators/npm/node_modules/.bin/claude" \
+            --log "$RUNNER_TEMP/validators.log"
+      - name: Validator output
+        if: always()
+        run: cat "$RUNNER_TEMP/validators.log" || true
 
   privacy:
     runs-on: ubuntu-latest
