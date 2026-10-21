@@ -1,6 +1,9 @@
 ---
 name: genealogy-oral-history
 description: "Use when genealogy-mode or the user plans or analyses family interviews, letters, photos or inherited stories. Not for the first tree interview, which genealogy-interview runs."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,10 @@
 ---
 name: genealogy-archive-correspondence
 description: "Use when genealogy-mode or the user asks to write to an archive, registry or researcher and track replies and follow-ups. Not for finding which archive to ask."
+license: MIT
+compatibility: "An authorized mail tool, such as Gmail, to draft enquiries and read replies."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: genealogy-transcribe-quick
 description: "Use when genealogy-mode or the user wants a fast first reading of a long document for searchable text and leads. Not for consequential readings, which need transcribe-detailed."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,10 @@
 ---
 name: genealogy-read-manuscripts
 description: "Use when genealogy-mode or the user needs handwritten records read with four separate reading methods and reconciled. Not for typed text or a quick first pass over long files."
+license: MIT
+compatibility: "Python 3.10+; Pillow for building image packets. Review and summaries need only the standard library."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

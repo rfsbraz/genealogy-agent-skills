@@ -1,6 +1,9 @@
 ---
 name: genealogy-evidence-extraction
 description: "Use when genealogy-mode or the user has new records or transcriptions to turn into cited observations, without deciding identity or kinship. Not for transcribing images."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

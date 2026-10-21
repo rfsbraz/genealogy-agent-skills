@@ -1,6 +1,10 @@
 ---
 name: genealogy-evaluation
 description: "Design and score reproducible genealogy-agent evaluations across models, skills and frameworks. Use to benchmark research quality, compare configurations, assess regressions or validate changes to this skill suite."
+license: MIT
+compatibility: "Python 3.10+ for staging and scoring cases (standard library only)."
+metadata:
+  author: Rodrigo Braz
 ---
 
 # Evaluate Genealogy Agents

@@ -1,6 +1,9 @@
 ---
 name: genealogy-proof-evaluation
 description: "Use when genealogy-mode or the user must judge whether an identity, parentage, event or origin claim meets the evidence standard. Not for gathering more records."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

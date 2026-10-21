@@ -1,6 +1,10 @@
 ---
 name: genealogy-narrative
 description: "Use when the user asks for /story or an ancestor's life told as a readable narrative, keeping records, inference and invented scenes apart. Not for finding records or proving facts."
+license: MIT
+compatibility: "Python 3.10+ for the story helper (standard library only)."
+metadata:
+  author: Rodrigo Braz
 ---
 
 # Tell a Family Story
