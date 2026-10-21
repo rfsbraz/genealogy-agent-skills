@@ -6,8 +6,8 @@
   "runtime": "Python 3.10+; local helpers only. Models, quotas and timers supplied by host.",
   "files": {
     "evaluation/genealogy-evaluation/SKILL.md": {
-      "sha256": "553390d6f8ff744b3b09a16b304adb8280c0c0bedb923310912e1378515e405d",
-      "bytes": 5554
+      "sha256": "cd2be20df3841c4b759df59287044b7c9c3cefd9f848ecb51fb8e0ca14c8cea4",
+      "bytes": 5954
     },
     "evaluation/genealogy-evaluation/agents/openai.yaml": {
       "sha256": "42652e7ded396e9f8afba1850d499fa687152d26d69535ebbacc652b1251e497",
@@ -166,8 +166,8 @@
       "bytes": 3469
     },
     "skills/genealogy-archive-correspondence/SKILL.md": {
-      "sha256": "aeda0009e77b8d49d137a48ee5c624a22d9f1a94114e329be5020f26d1acca5e",
-      "bytes": 4724
+      "sha256": "f2fb04572b0fadb9728210dc465450396c968c909079c06d5022c6fa6e90073a",
+      "bytes": 5084
     },
     "skills/genealogy-archive-correspondence/agents/openai.yaml": {
       "sha256": "e63bdf609ead62eb1a7cb4dcb570e305a40bd4c0c13e41c8e00af3e22a96576b",
@@ -178,16 +178,16 @@
       "bytes": 3864
     },
     "skills/genealogy-archive-fieldwork/SKILL.md": {
-      "sha256": "0c24a1ce6161e5e5d57d18c39de57536fb534cb76e47500aa80a26ec89649860",
-      "bytes": 3233
+      "sha256": "3d7b75a0ce17fb2b4a8209bb49d2611c8a6111b6eb9328e48a921564ad1a9bb9",
+      "bytes": 3593
     },
     "skills/genealogy-archive-fieldwork/agents/openai.yaml": {
       "sha256": "da56291343ca361df792609c89d5730902b4a459d85155de6e102b088f7b84f0",
       "bytes": 307
     },
     "skills/genealogy-case-intake/SKILL.md": {
-      "sha256": "51535cd24889697d5e663ee0592b5b5d77dc7ca8e494920fe9601fac30b2919e",
-      "bytes": 4062
+      "sha256": "8b280c28538193e522146f79b2fe5ee851c24f3eb519a40226f06ab0233f06ed",
+      "bytes": 4422
     },
     "skills/genealogy-case-intake/agents/openai.yaml": {
       "sha256": "e1c2ad84a40c4dbc3a9b352e65e336bc3814b98b5896e2e60588266474743caf",
@@ -206,8 +206,8 @@
       "bytes": 423
     },
     "skills/genealogy-document-processing/references/cli.md": {
-      "sha256": "0f864f33e9665117fe51e0eb0d33e6ca5e4c8509c5de414dac26c9f4f18be8fd",
-      "bytes": 14816
+      "sha256": "4f98df093a8f8b5a3897a1059265ecc50f2253cb41ce5219459b753a9f5e2528",
+      "bytes": 15239
     },
     "skills/genealogy-document-processing/references/processing-protocol.md": {
       "sha256": "06eb2d93deb268d12de1cd6f913f233f5abd5179e02a9414dc4f379e4547af99",
@@ -218,56 +218,56 @@
       "bytes": 29239
     },
     "skills/genealogy-evidence-extraction/SKILL.md": {
-      "sha256": "488515cfc8b8c29ec1ef418bb3ed97b050b61e5c656794d81cd0801c40ed6823",
-      "bytes": 4714
+      "sha256": "daca4655b648ab081500261dc6270ca60214a801887cdd2f3612ecd1d160c94c",
+      "bytes": 5074
     },
     "skills/genealogy-evidence-extraction/agents/openai.yaml": {
       "sha256": "e867f9424c4762015b3592883b2b6cd9da65f4ee0337b5bcd098024ad252918c",
       "bytes": 317
     },
     "skills/genealogy-family-reconstruction/SKILL.md": {
-      "sha256": "127f16f1e405c938f94a6e82f06c60a527dec614bf19365cbefedc3442657541",
-      "bytes": 3567
+      "sha256": "c5c54a69dee53acc2dea8efd7e69749a2407d20715190ac9f1c1cda9985089c8",
+      "bytes": 3927
     },
     "skills/genealogy-family-reconstruction/agents/openai.yaml": {
       "sha256": "5bd84df7db016a7bf4ddc1e6db3d11da1d5483a570f036ee9c0ef2d1dc1adcca",
       "bytes": 327
     },
     "skills/genealogy-genetic-evidence/SKILL.md": {
-      "sha256": "6bee7d76b4b4b66adfebd891558dee4bdbc2e45294e884b28134cfd94a9f0071",
-      "bytes": 3757
+      "sha256": "ef6ac125472578661b1eba8888304ad05e725d2e2e2db4f9c7014e13ebf569f8",
+      "bytes": 4117
     },
     "skills/genealogy-genetic-evidence/agents/openai.yaml": {
       "sha256": "343e1db8801d66bd2c2a7947624606adce61c9aa623e73966bb1f902f7d68d6e",
       "bytes": 322
     },
     "skills/genealogy-historical-translation/SKILL.md": {
-      "sha256": "f57685c530cafec38dd8b69735fe4f2c66e7a0babe5513cdc72d6a1ca9f978e8",
-      "bytes": 3312
+      "sha256": "70747b3c5eab92685e1019b7dda1d28a16600e2583d3cd6b2a026c650dc716b0",
+      "bytes": 3672
     },
     "skills/genealogy-historical-translation/agents/openai.yaml": {
       "sha256": "69d943fa066909230ae3df013d3a8315424184b0d32648680c7b5291372ca49e",
       "bytes": 318
     },
     "skills/genealogy-identity-resolution/SKILL.md": {
-      "sha256": "654c8cdc4dba66e0470da2ea8aebed579d448ec0f4537abc7568186b8d2bce88",
-      "bytes": 3773
+      "sha256": "5fe4d50de474d410869f80718103777590aac0b37d0640e51029cfc7e323b6e4",
+      "bytes": 4133
     },
     "skills/genealogy-identity-resolution/agents/openai.yaml": {
       "sha256": "cd6861d1e63c08bcb044d8ac11485e0bceafd16a4bd67f5403689f01d4053c28",
       "bytes": 309
     },
     "skills/genealogy-independent-review/SKILL.md": {
-      "sha256": "d70e3876e1b18c4eb74d1eabfc187721204a2ac3d5b6810c090deccc52090c5d",
-      "bytes": 4030
+      "sha256": "cd672d29ff682f9c73abbb60eb64f026dcc5913d516454b410162d22a3914a78",
+      "bytes": 4390
     },
     "skills/genealogy-independent-review/agents/openai.yaml": {
       "sha256": "ba570506c4f98fb92187a6ab04144d67be8c0bdab5e95e534237a6e8f98304ff",
       "bytes": 318
     },
     "skills/genealogy-interview/SKILL.md": {
-      "sha256": "25a43fece9da5c60cf2a29bed551366b0428134a55ae315153489aabcce79aeb",
-      "bytes": 4964
+      "sha256": "0a3b33086dcb666cf9ad6b0c806e305f170991e914e119c15d9617d6cb6e77fa",
+      "bytes": 5324
     },
     "skills/genealogy-interview/agents/openai.yaml": {
       "sha256": "f09c41bc583e65e63f04d1d0904ffaadd3e0684b61a435e25fdb3d29a339ab3a",
@@ -294,8 +294,8 @@
       "bytes": 12076
     },
     "skills/genealogy-locality-research/SKILL.md": {
-      "sha256": "deb9b1ef662de8b16bce4732fff351a4fe1c0459326f9295e87b2ad636f1fd30",
-      "bytes": 3644
+      "sha256": "3000aee9baeccd67ca13305ca8e98ceed60a38a0baf2c7ff4ff37c3be846a78f",
+      "bytes": 4004
     },
     "skills/genealogy-locality-research/agents/openai.yaml": {
       "sha256": "084b996268444aa3d75d1c457dce988469f1aeafb72dc6a1a227a5bdf2dcfb14",
@@ -346,8 +346,8 @@
       "bytes": 8774
     },
     "skills/genealogy-mode/references/host-adapter.md": {
-      "sha256": "324614342e65d307e3c832375883174177a557481a9a2259e394e508c2941463",
-      "bytes": 7031
+      "sha256": "7783d95cccdef37883cd393f37eb4d524623b62457a7c6806fd509ca6c857613",
+      "bytes": 7340
     },
     "skills/genealogy-mode/references/revisions-and-projections.md": {
       "sha256": "a009ca02728d14cd86240ae3fbba690044ee0bca2de0d8be3dc2ce3f7a6b572c",
@@ -386,8 +386,8 @@
       "bytes": 18654
     },
     "skills/genealogy-narrative/SKILL.md": {
-      "sha256": "43d54bc023106a520f062771f33ca8c04d285784375b3c2bd534ee443232f8da",
-      "bytes": 5363
+      "sha256": "1b17f956f319a2361ade74724e423592fad2966a1175339df1a2bbf99a4c4a5e",
+      "bytes": 5564
     },
     "skills/genealogy-narrative/agents/openai.yaml": {
       "sha256": "373bde87bf6e649c162bf58bce0906e7db65be7d602250fdc88d0ae494f3a0fc",
@@ -414,16 +414,16 @@
       "bytes": 10755
     },
     "skills/genealogy-oral-history/SKILL.md": {
-      "sha256": "10b0f471ed3b2fb152fae1213819f96cc67f54ec9920df45429ed3b87f790c13",
-      "bytes": 3450
+      "sha256": "42999219865a896638782fe553fc24431d6c645ebb0fb34328d497ccc00de697",
+      "bytes": 3810
     },
     "skills/genealogy-oral-history/agents/openai.yaml": {
       "sha256": "73ef0a3d2974a236218c62c05b4203da324447f241be4fdbf29f1edf07b1e44c",
       "bytes": 300
     },
     "skills/genealogy-origin-source-discovery/SKILL.md": {
-      "sha256": "9503e4a3d1c486a773929cb751914ed2a0e72f2ef3228976e0549996ac0f029f",
-      "bytes": 4955
+      "sha256": "110faf096c33636b12f3da848399ac43d7a85833f510b416194c545da826011f",
+      "bytes": 5315
     },
     "skills/genealogy-origin-source-discovery/agents/openai.yaml": {
       "sha256": "2018d814d80278cdcc0f1c5a46aee0875635402f4dbd67cc584cde58545acf12",
@@ -514,16 +514,16 @@
       "bytes": 10981
     },
     "skills/genealogy-proof-evaluation/SKILL.md": {
-      "sha256": "a3deea1a78f13b97444d4eb3a07d643ab555d6929659223d45237455e92e20ee",
-      "bytes": 4596
+      "sha256": "e4610e46464427c26832910952f21418d3912d17c66be59ff11dffaeffdadfcb",
+      "bytes": 4898
     },
     "skills/genealogy-proof-evaluation/agents/openai.yaml": {
       "sha256": "390ee097be575c99a8a2d43ebac77ef920f5603c8eba345b6289a2c1e6e70ccf",
       "bytes": 268
     },
     "skills/genealogy-read-manuscripts/SKILL.md": {
-      "sha256": "a721a95b93c8fa399ff569824f70e5e5596c199c011aee2d6c04b57b37e616af",
-      "bytes": 13016
+      "sha256": "4538ae18303af2183b1d21c064ed45cadbfc2be8ad834c39b5b681388a8305ef",
+      "bytes": 13332
     },
     "skills/genealogy-read-manuscripts/agents/openai.yaml": {
       "sha256": "866ffded1cd7ac0ba8559877987ae494cd6cce0c8bffb8599a684af2cee5750d",
@@ -554,8 +554,8 @@
       "bytes": 11294
     },
     "skills/genealogy-read-manuscripts/references/protocol.md": {
-      "sha256": "2a862cfc4ed6b3287cea69c570ef6bf5fc938781ba557a224a36836f8bc558d2",
-      "bytes": 16336
+      "sha256": "c9d84c5ef98ddfb2a117b36daf711d86a7fcbf7f41fc669a7faaf9f501c69b7e",
+      "bytes": 16921
     },
     "skills/genealogy-read-manuscripts/references/research-basis.md": {
       "sha256": "ce5931401eb666fc99955fcd1be08ff8ff3ea0072020b584862494df62f31893",
@@ -586,16 +586,16 @@
       "bytes": 6563
     },
     "skills/genealogy-record-acquisition/SKILL.md": {
-      "sha256": "cbedb6b352fee4d7a3642b0d6da8660512100d69a6a6d75f1a2d546485dd8d14",
-      "bytes": 4058
+      "sha256": "6604f511f54603afd5108ddd8140c763b7bf4d32360310166207181a78fddc65",
+      "bytes": 4418
     },
     "skills/genealogy-record-acquisition/agents/openai.yaml": {
       "sha256": "cab5c4ddebbc4c3ecac4b19bf2a3fb001457122839df0349eb1f4db91c921248",
       "bytes": 314
     },
     "skills/genealogy-reporting/SKILL.md": {
-      "sha256": "ee90a53b020a7a3d3d9b8b5e097d69991d21b9d326a5d639e9e675095c6bd9d0",
-      "bytes": 4725
+      "sha256": "9f7ec3797b4118673eac0a1a76e1d88ee2ba518ecfca0e04b00005b38b99f5cf",
+      "bytes": 5085
     },
     "skills/genealogy-reporting/agents/openai.yaml": {
       "sha256": "9fd2b244ed60a90fad2bcd73e78b0be1bdc26610d4bbdb5b8b1193a5262666cf",
@@ -606,8 +606,8 @@
       "bytes": 1193
     },
     "skills/genealogy-repository-discovery/SKILL.md": {
-      "sha256": "1b9ba964e2d3ac5531626a8b02386892eee72251b1ab2dc973fcabfa7e6fc13a",
-      "bytes": 5319
+      "sha256": "bc24fd9134e4a8e59d8813929501a381f426ac701a03d5b6bfa96b9fca449d3d",
+      "bytes": 5679
     },
     "skills/genealogy-repository-discovery/agents/openai.yaml": {
       "sha256": "830fc1591988a6c73b4fd322a9a4d9ad912b408097ca834b4780b0cf48ed684b",
@@ -626,16 +626,16 @@
       "bytes": 5095
     },
     "skills/genealogy-research-maintenance/SKILL.md": {
-      "sha256": "64b26ba205778dc4c047d1f339b8f8d3a61eb85567f9b415654e5594c8e5dd7e",
-      "bytes": 5183
+      "sha256": "83efd65d3867478ac7c60b74e5e6640a0d350f761fa0f1037de5dddce96a6c6c",
+      "bytes": 5543
     },
     "skills/genealogy-research-maintenance/agents/openai.yaml": {
       "sha256": "cde9165e365c2d1fcb59a4462c14cb68dc1feda10dfadc34db519481dee9017d",
       "bytes": 306
     },
     "skills/genealogy-research-planner/SKILL.md": {
-      "sha256": "ca5ea5c52aaed4eec1d25dbc108ae0d76a9c2308203ac22f420f8f64bac60394",
-      "bytes": 4462
+      "sha256": "4d6878cb8ccbb5843daf3537a20ebf1413f1400d5e4ba782bcb72fd303569620",
+      "bytes": 4822
     },
     "skills/genealogy-research-planner/agents/openai.yaml": {
       "sha256": "d4000375cca0cfa65ac2d3bf3f844b1f6ac587c1e8c09e21d331b29672c63ca3",
@@ -646,24 +646,24 @@
       "bytes": 792
     },
     "skills/genealogy-source-discovery/SKILL.md": {
-      "sha256": "625fb2646417f88261d1747125572e7132e7a0bebff837a9b0ebb69f5202264c",
-      "bytes": 3395
+      "sha256": "e1aaee0ec7aa0c0c95ca1f4efe655f0b8469f59b3310982d26b972a40b287650",
+      "bytes": 3755
     },
     "skills/genealogy-source-discovery/agents/openai.yaml": {
       "sha256": "6d03aea286881b0eafaf0a842e83cec464c9fbba6086707b66f3b37a48d3a554",
       "bytes": 306
     },
     "skills/genealogy-transcribe-detailed/SKILL.md": {
-      "sha256": "49ffed9285a79ac8ceca34eadfa7c149cd8eb21c26b19b977e993195c94ab8a5",
-      "bytes": 5372
+      "sha256": "b9994e43a2cde2c84129208dac68a2df1bbf763a4a5495ca26a4fc9949afdd15",
+      "bytes": 5573
     },
     "skills/genealogy-transcribe-detailed/agents/openai.yaml": {
       "sha256": "d598d4679d847eca3bbe7333885f02ee4461fe896d2e0872aaf52324d7718684",
       "bytes": 269
     },
     "skills/genealogy-transcribe-quick/SKILL.md": {
-      "sha256": "81bb53475e6062f6c711966a9d33540537cc57eacceaaf4707c9ac5a1d4927f9",
-      "bytes": 5130
+      "sha256": "b793cbbf93064a9adffe41af5198b16907eabf749a336b77e742f7bec1490d52",
+      "bytes": 5331
     },
     "skills/genealogy-transcribe-quick/agents/openai.yaml": {
       "sha256": "677bc88c562835bb9ddca0c729c1cbb38b005725a54d521884c7c1804fc71064",
@@ -748,6 +748,10 @@
     "tests/check_reading_rules.py": {
       "sha256": "3567413cf43ed5c0e0de68764e95b3b3d6f354610d183092c6715f9483e7c47c",
       "bytes": 2808
+    },
+    "tests/check_references.py": {
+      "sha256": "4393e30d846ae8c63cb009c5a1e7544e2c0b377aff9750e0771b46b562343429",
+      "bytes": 3178
     },
     "tests/check_repo_hygiene.py": {
       "sha256": "b378796c8ca62cf77a843c48e7c344cce39e88ffdab62df4c21627f04941fe0c",

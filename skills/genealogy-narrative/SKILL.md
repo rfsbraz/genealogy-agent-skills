@@ -5,7 +5,7 @@ description: "Tell an ancestor's life as a readable historical narrative with pe
 
 # Tell a Family Story
 
-Read the coordinator's [shared contract](../genealogy-mode/references/shared-contract.md), [writing guide](references/writing-guide.md) and [story contract](references/story-contract.md). This is presentation over evidence. It does not change conclusions or count generated prose as a new source.
+Read the coordinator's [shared contract](../genealogy-mode/references/shared-contract.md), [writing guide](references/writing-guide.md) and [story contract](references/story-contract.md). This is presentation over evidence. It does not change conclusions or count generated prose as a new source. Those files point on to the coordinator's [GPS policy](../genealogy-mode/references/gps-policy.md) and [easy-use rules](../genealogy-mode/references/easy-use.md); read them when the task touches them.
 
 ## Start with the person
 

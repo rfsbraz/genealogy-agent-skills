@@ -61,6 +61,7 @@ jobs:
           python tests/check_packaging.py
           python tests/check_reading_rules.py
           python tests/check_repo_hygiene.py
+          python tests/check_references.py
       - name: Reading panel tests
         run: |
           for test in tests/check_panel_*.py; do

@@ -1,5 +1,7 @@
 # Host adapter contract
 
+Contents: [section classes](#section-classes), [the sidecar](#the-sidecar), [export](#export), [import](#import), [round trip check](#round-trip-check), [what stays out](#what-stays-out), [publish build and working trees](#publish-build-and-working-trees), [extending the contract](#extending-the-contract).
+
 Use this when an existing repository stays canonical and the agent works on a case view of it. The host project owns its facts. The adapter is the host's own reviewed code that turns the host record into a case view and takes case changes back. This page says what that adapter must do so a host can build it and test it.
 
 The machine-readable contract is [host-adapter-contract.json](../assets/host-adapter-contract.json) (`genealogy-host-adapter` version 1.0, case schema 1.2). [host_adapter.py](../scripts/host_adapter.py) has split and merge helpers, a sidecar check and a round trip check. `examples/host-adapter` in the suite repository is a small reference adapter on synthetic data.
