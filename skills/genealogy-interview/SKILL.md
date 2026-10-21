@@ -9,7 +9,7 @@ metadata:
 
 # Start a Tree by Talking
 
-Read the coordinator's [shared contract](../genealogy-mode/references/shared-contract.md) and [data model](../genealogy-mode/references/data-model.md). Use [interview-protocol.md](references/interview-protocol.md) for question selection and handoff. Read [storage.md](references/storage.md) before using the local helper.
+Read the coordinator's [shared contract](../genealogy-mode/references/shared-contract.md) and [data model](../genealogy-mode/references/data-model.md). Use [interview-protocol.md](references/interview-protocol.md) for question selection and handoff. Read [storage.md](references/storage.md) before using the local helper. Those files point on to the coordinator's [GPS policy](../genealogy-mode/references/gps-policy.md), [easy-use rules](../genealogy-mode/references/easy-use.md), [revisions and projections](../genealogy-mode/references/revisions-and-projections.md) and [host adapter contract](../genealogy-mode/references/host-adapter.md); read them when the task touches them.
 
 ## Begin immediately
 

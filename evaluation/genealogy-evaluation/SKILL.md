@@ -9,7 +9,7 @@ metadata:
 
 # Evaluate Genealogy Agents
 
-Read the [shared research contract](../../skills/genealogy-mode/references/shared-contract.md) and [data model](../../skills/genealogy-mode/references/data-model.md) before writing case state. When this skill is installed next to the runtime skills, both files are in the sibling genealogy-mode skill. Resolve sibling skills by their declared names if the host uses different folder names. This suite assumes the coordinator is installed alongside its workflow skills. Read only additional references relevant to this task.
+Read the [shared research contract](../../skills/genealogy-mode/references/shared-contract.md) and [data model](../../skills/genealogy-mode/references/data-model.md) before writing case state. When this skill is installed next to the runtime skills, both files are in the sibling genealogy-mode skill. Resolve sibling skills by their declared names if the host uses different folder names. This suite assumes the coordinator is installed alongside its workflow skills. Read only additional references relevant to this task. Those files point on to the coordinator's [GPS policy](../../skills/genealogy-mode/references/gps-policy.md), [easy-use rules](../../skills/genealogy-mode/references/easy-use.md), [revisions and projections](../../skills/genealogy-mode/references/revisions-and-projections.md) and [host adapter contract](../../skills/genealogy-mode/references/host-adapter.md); read them when the task touches them.
 
 ## Inputs
 

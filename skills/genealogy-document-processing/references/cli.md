@@ -1,5 +1,7 @@
 # Local ledger CLI
 
+Contents: [register a document](#register-a-document), [register a set of page images](#register-a-set-of-page-images), [plan progressive detail](#plan-progressive-detail), [host allowance and execution](#host-allowance-and-execution), [import prior readings](#import-prior-readings), [status and export](#status-and-export), [restore from an export](#restore-from-an-export), [host-canonical mode](#host-canonical-mode).
+
 Python 3.10+ and SQLite from the Python standard library suffice. The database contains private research metadata. Commands have no network access, no OCR/model integration, no automatic quota detection and no timer. Use an absolute database path for scheduled host invocations. Exit 0 means the command ran; inspect `status`, since no allowance/no fitting job is a normal idle result. Exit 2 means invalid input or execution error.
 
 Every command and option has `--help`. `register --record`, `finish --result`, `import-run --result` and `restore --from` take a path to a JSON file, or `-` to read the JSON from stdin. Inline JSON is refused with "expected a file path, got inline JSON". A missing or invalid file gives an error that names the argument.
