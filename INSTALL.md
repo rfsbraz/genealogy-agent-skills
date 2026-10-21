@@ -85,7 +85,7 @@ gemini extensions list
 gemini skills list
 ```
 
-The first must show `genealogy (2.0.0)`. The second must show `genealogy-mode [Enabled]`. Restart Gemini CLI so the session picks up the extension. In a session, `/tree` and `/story` are available (shown as `/genealogy.tree` and `/genealogy.story` if another extension already uses those names). <!-- x-release-please-version -->
+The first must show `genealogy (2.0.1)`. The second must show `genealogy-mode [Enabled]`. Restart Gemini CLI so the session picks up the extension. In a session, `/tree` and `/story` are available (shown as `/genealogy.tree` and `/genealogy.story` if another extension already uses those names). <!-- x-release-please-version -->
 
 Only `genealogy-mode`, `genealogy-interview` and `genealogy-narrative` are meant to load on their own; the other skills wait for the user or `genealogy-mode`. Claude Code, Cursor and Codex enforce this. Gemini CLI cannot enforce it, so a specialist skill may still load on its own there.
 

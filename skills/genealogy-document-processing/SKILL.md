@@ -1,6 +1,10 @@
 ---
 name: genealogy-document-processing
 description: "Use when genealogy-mode or the user needs a page ledger or rereading queue for long or interrupted documents under a token budget. Not for reading the handwriting itself."
+license: MIT
+compatibility: "Python 3.10+ for the ledger CLI, which uses SQLite from the standard library."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: genealogy-archive-fieldwork
 description: "Use when genealogy-mode or the user needs an onsite archive visit or a brief for a record agent, for material that is not online. Not for online catalogue searches."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

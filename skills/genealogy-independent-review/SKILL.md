@@ -1,6 +1,9 @@
 ---
 name: genealogy-independent-review
 description: "Use when genealogy-mode or the user wants a disputed identity, parentage or argument challenged by an independent review. Not for a first evaluation of the evidence."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 
