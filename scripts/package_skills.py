@@ -14,9 +14,17 @@ Each bundle is built by running BUNDLE_STEPS in order. A step takes a Bundle
 and changes its folder in place, so later packaging rules (frontmatter, zips,
 version metadata) are added as further steps without touching the others.
 
-Usage: python scripts/package_skills.py [--out dist] [--skill NAME ...]
+With --release it also writes the release assets to <out>/release/:
+<skill>.zip for each skill (the skill folder at the zip root, as claude.ai
+wants), genealogy-skills-claude-ai.zip holding all of them, the plugin as
+genealogy-plugin.zip, and SHA256SUMS. Zips are reproducible: entries are
+sorted and carry a fixed timestamp. check_release() validates the assets and
+runs before SHA256SUMS is written.
+
+Usage: python scripts/package_skills.py [--out dist] [--skill NAME ...] [--release]
 """
 import argparse
+import hashlib
 from dataclasses import dataclass, field
 import json
 import os
@@ -24,7 +32,9 @@ from pathlib import Path
 import posixpath
 import re
 import shutil
+import subprocess
 import sys
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'skills'
@@ -34,6 +44,18 @@ IGNORE = shutil.ignore_patterns('__pycache__', '*.pyc')
 # Frontmatter keys the Agent Skills spec allows. claude.ai rejects an upload
 # with any other key. Source files keep host-specific keys such as
 # disable-model-invocation (Claude Code and Cursor need it); bundles drop them.
+DESCRIPTION_LIMIT = 200  # claude.ai; the spec allows 1024
+COMBINED_ZIP = 'genealogy-skills-claude-ai.zip'
+PLUGIN_ZIP = 'genealogy-plugin.zip'
+PLUGIN_ROOT = 'genealogy'
+# Tracked paths that make up the plugin for Claude Code, Codex, Cursor and Gemini.
+# install.py is left out: it checks the full repository against manifest.json.
+PLUGIN_PATHS = ('.agents', '.claude-plugin', '.cursor-plugin', 'assets', 'commands', 'skills',
+                'plugin.json', 'gemini-extension.json', 'GEMINI.md', 'genealogy.py',
+                'README.md', 'INSTALL.md', 'CHANGELOG.md', 'LICENSE')
+PLUGIN_REQUIRED = ('.claude-plugin/plugin.json', '.claude-plugin/marketplace.json', '.cursor-plugin/plugin.json',
+                   'plugin.json', 'gemini-extension.json', 'skills/genealogy-mode/SKILL.md')
+ZIP_TIME = (1980, 1, 1, 0, 0, 0)
 SPEC_KEYS = ('name', 'description', 'license', 'allowed-tools', 'metadata', 'compatibility')
 
 # Files a skill uses from another skill that are not Markdown links, such as
@@ -169,8 +191,148 @@ def clean_frontmatter(bundle):
 BUNDLE_STEPS = [copy_skill, make_self_contained, clean_frontmatter]
 
 
-def build(out, names=None):
-    """Build bundles into out/skills/. Returns a JSON-ready report."""
+def write_zip(target, entries):
+    """Write a reproducible zip from (archive name, bytes) pairs."""
+    with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED) as archive:
+        for name, data in sorted(entries):
+            info = zipfile.ZipInfo(name, ZIP_TIME)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            archive.writestr(info, data)
+
+
+def folder_entries(folder, prefix):
+    return [(f'{prefix}/{p.relative_to(folder).as_posix()}', p.read_bytes())
+            for p in folder.rglob('*') if p.is_file()]
+
+
+def tracked_files():
+    """Files git tracks under PLUGIN_PATHS, relative to the repository root."""
+    result = subprocess.run(['git', 'ls-files', '-z', '--', *PLUGIN_PATHS], cwd=ROOT,
+                            capture_output=True, check=True)
+    return sorted(p for p in result.stdout.decode('utf-8').split('\0') if p)
+
+
+def skill_zips(out, release, report):
+    names = []
+    for bundle in report['bundles']:
+        name = f"{bundle['skill']}.zip"
+        write_zip(release / name, folder_entries(out / 'skills' / bundle['skill'], bundle['skill']))
+        names.append(name)
+    write_zip(release / COMBINED_ZIP, [(n, (release / n).read_bytes()) for n in names])
+    return names + [COMBINED_ZIP]
+
+
+def plugin_zip(out, release, report):
+    write_zip(release / PLUGIN_ZIP, [(f'{PLUGIN_ROOT}/{rel}', (ROOT / rel).read_bytes()) for rel in tracked_files()])
+    return [PLUGIN_ZIP]
+
+
+# Each builder writes assets into the release folder and returns their names.
+RELEASE_BUILDERS = [skill_zips, plugin_zip]
+
+
+def parse_frontmatter(text):
+    """Top-level frontmatter keys and their single-line values; enough for SKILL.md as written here."""
+    if not text.startswith('---\n') or text.count('---') < 2:
+        return None
+    head = text.split('---', 2)[1]
+    values = {}
+    for line in head.splitlines():
+        match = re.match(r'^([A-Za-z][\w-]*):\s*(.*)$', line)
+        if match:
+            raw = match.group(2).strip()
+            values[match.group(1)] = json.loads(raw) if raw.startswith('"') else raw.strip("'")
+    return values
+
+
+def check_skill_zip(path, skill):
+    problems = []
+    with zipfile.ZipFile(path) as archive:
+        names = set(archive.namelist())
+        roots = {n.split('/', 1)[0] for n in names}
+        if roots != {skill}:
+            return [f'{path.name}: top level is {sorted(roots)}, expected {skill}/']
+        front = parse_frontmatter(archive.read(f'{skill}/SKILL.md').decode('utf-8')) if f'{skill}/SKILL.md' in names else None
+        if front is None:
+            return [f'{path.name}: missing SKILL.md or frontmatter']
+        extra = sorted(set(front) - set(SPEC_KEYS))
+        if extra:
+            problems.append(f'{path.name}: frontmatter keys outside the spec: {extra}')
+        if front.get('name') != skill:
+            problems.append(f'{path.name}: name {front.get("name")!r} does not match the folder')
+        description = front.get('description', '')
+        if not description or len(description) > DESCRIPTION_LIMIT or re.search('[<>]', description):
+            problems.append(f'{path.name}: description is empty, over {DESCRIPTION_LIMIT} characters or has angle brackets')
+        for doc in sorted(n for n in names if n.endswith('.md')):
+            for target in LINK.findall(archive.read(doc).decode('utf-8')):
+                link = target[1].partition('#')[0]
+                if not link or not is_relative(link):
+                    continue
+                resolved = posixpath.normpath(posixpath.join(posixpath.dirname(doc), link))
+                if not resolved.startswith(skill + '/') or (resolved not in names and not any(
+                        n.startswith(resolved + '/') for n in names)):
+                    problems.append(f'{path.name}: {doc} links to {link}, which is not in the zip')
+    return problems
+
+
+def check_release(release):
+    """Validate the assets in a release folder. Returns a list of problems; empty means valid."""
+    release = Path(release)
+    problems = []
+    skill_zips_found = sorted(p for p in release.glob('*.zip') if p.name not in (COMBINED_ZIP, PLUGIN_ZIP))
+    expected = [f'{name}.zip' for name in skill_names()]
+    if [p.name for p in skill_zips_found] != expected:
+        problems.append(f'skill zips are {[p.name for p in skill_zips_found]}, expected {expected}')
+    for path in skill_zips_found:
+        problems.extend(check_skill_zip(path, path.stem))
+    if (release / COMBINED_ZIP).is_file():
+        with zipfile.ZipFile(release / COMBINED_ZIP) as archive:
+            if sorted(archive.namelist()) != [p.name for p in skill_zips_found]:
+                problems.append(f'{COMBINED_ZIP} does not hold exactly the skill zips')
+            for path in skill_zips_found:
+                if path.name in archive.namelist() and archive.read(path.name) != path.read_bytes():
+                    problems.append(f'{COMBINED_ZIP}: {path.name} differs from the separate asset')
+    else:
+        problems.append(f'{COMBINED_ZIP} is missing')
+    if (release / PLUGIN_ZIP).is_file():
+        with zipfile.ZipFile(release / PLUGIN_ZIP) as archive:
+            names = set(archive.namelist())
+        missing = [rel for rel in PLUGIN_REQUIRED if f'{PLUGIN_ROOT}/{rel}' not in names]
+        if missing:
+            problems.append(f'{PLUGIN_ZIP} is missing {missing}')
+    else:
+        problems.append(f'{PLUGIN_ZIP} is missing')
+    sums = release / 'SHA256SUMS'
+    if sums.is_file():
+        for line in sums.read_text(encoding='utf-8').splitlines():
+            digest, _, name = line.partition('  ')
+            if not (release / name).is_file() or sha256(release / name) != digest:
+                problems.append(f'SHA256SUMS does not match {name}')
+    return problems
+
+
+def sha256(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def build_release(out, report):
+    release = out / 'release'
+    if release.exists():
+        shutil.rmtree(release)
+    release.mkdir(parents=True)
+    assets = []
+    for builder in RELEASE_BUILDERS:
+        assets.extend(builder(out, release, report))
+    problems = check_release(release)
+    if problems:
+        raise PackagingError('release check failed: ' + '; '.join(problems))
+    (release / 'SHA256SUMS').write_text(''.join(f'{sha256(release / n)}  {n}\n' for n in sorted(assets)), encoding='utf-8')
+    return {'folder': str(release), 'assets': sorted(assets) + ['SHA256SUMS']}
+
+
+def build(out, names=None, release=False):
+    """Build bundles into out/skills/, and with release=True the assets into out/release/. Returns a report."""
     out = Path(out)
     root = out / 'skills'
     names = names or skill_names()
@@ -187,6 +349,10 @@ def build(out, names=None):
             step(bundle)
         report['bundles'].append({'skill': name, 'shared': sorted(bundle.shared), 'links_rewritten': bundle.rewritten,
                                   'frontmatter_dropped': bundle.dropped})
+    if release:
+        if names != skill_names():
+            raise PackagingError('a release needs every skill; drop --skill')
+        report['release'] = build_release(out, report)
     return report
 
 
@@ -194,9 +360,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--out', default=str(ROOT / 'dist'), help='output folder (default: dist/)')
     parser.add_argument('--skill', action='append', help='build only this skill; repeat for more')
+    parser.add_argument('--release', action='store_true', help='also write the release zips and SHA256SUMS')
     args = parser.parse_args()
     try:
-        report = build(args.out, args.skill)
+        report = build(args.out, args.skill, release=args.release)
     except PackagingError as error:
         print(json.dumps({'error': str(error)}))
         return 1

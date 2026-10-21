@@ -116,6 +116,8 @@ Until then, load it as a local plugin. Clone it straight into the local plugins 
 git clone https://github.com/rfsbraz/genealogy-agent-skills ~/.cursor/plugins/local/genealogy
 ```
 
+Without git, download `genealogy-plugin.zip` from https://github.com/rfsbraz/genealogy-agent-skills/releases/latest/download/genealogy-plugin.zip and unzip it into `~/.cursor/plugins/local/`; it unpacks to a `genealogy` folder.
+
 Check that `~/.cursor/plugins/local/genealogy/.cursor-plugin/plugin.json` exists. Then ask the user to restart Cursor or run Developer: Reload Window, open Customize and confirm the Genealogy skills are listed **(human)**. Typing `/tree` or `/story` in the agent chat should offer the plugin's commands. On Teams and Enterprise plans an admin may have turned local plugins off.
 
 ### Grok Bot
@@ -136,7 +138,7 @@ Check that the list includes `genealogy-mode`, and that `~/genealogy-agent-skill
 You cannot install skills into claude.ai yourself. Give the user these steps **(human)**:
 
 1. On Free, Pro or Max: Settings > Capabilities, turn on Code execution and file creation. On Team or Enterprise an owner enables Skills and code execution.
-2. Download `genealogy-skills-claude-ai.zip` from the latest release at https://github.com/rfsbraz/genealogy-agent-skills/releases and unzip it. It holds one zip per skill. If the release has no such file, zip each folder under `skills/` on its own, with the skill folder at the top of the zip. Before zipping, delete the `disable-model-invocation: true` line from each `SKILL.md` that has it; claude.ai rejects uploads with that line. On claude.ai the specialist skills can then load on their own.
+2. Download `genealogy-skills-claude-ai.zip` from https://github.com/rfsbraz/genealogy-agent-skills/releases/latest/download/genealogy-skills-claude-ai.zip and unzip it. It holds one zip per skill, each with the skill folder at the top. Do not unzip those inner zips; claude.ai takes them as they are. To add a single skill, download just that skill's zip from the same release, for example `genealogy-mode.zip`. The release also has a `SHA256SUMS` file to check the downloads against. These zips are built for claude.ai: each one carries the shared references it needs, and the `disable-model-invocation` line, which claude.ai rejects, is left out. On claude.ai the specialist skills can therefore load on their own; their descriptions tell Claude to use them only when genealogy-mode or the user asks for them.
 3. Go to Customize > Skills, click +, then + Create skill, then Upload a skill. Upload `genealogy-mode` first, then the others.
 
 Check: each uploaded skill is listed in Customize > Skills and switched on.
