@@ -1,6 +1,6 @@
 ---
 name: genealogy-evidence-extraction
-description: "Extract cited genealogical observations from documents, transcriptions, indexes and correspondence without silently accepting identity or kinship. Use whenever newly acquired material needs structured analysis."
+description: "Use when genealogy-mode or the user has new records or transcriptions to turn into cited observations, without deciding identity or kinship. Not for transcribing images."
 disable-model-invocation: true
 ---
 

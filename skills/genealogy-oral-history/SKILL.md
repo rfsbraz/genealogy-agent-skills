@@ -1,6 +1,6 @@
 ---
 name: genealogy-oral-history
-description: "Plan and analyse family interviews, recollections, photographs, letters and inherited stories. Use for oral history, family collections, conflicting memories or provenance questions."
+description: "Use when genealogy-mode or the user plans or analyses family interviews, letters, photos or inherited stories. Not for the first tree interview, which genealogy-interview runs."
 disable-model-invocation: true
 ---
 

@@ -43,7 +43,9 @@ def broken_links(bundle):
     return problems
 
 
-class SelfContainedBundles(unittest.TestCase):
+class BuiltBundles(unittest.TestCase):
+    """Builds every bundle once per test class into a temp folder."""
+
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.TemporaryDirectory()
@@ -59,6 +61,8 @@ class SelfContainedBundles(unittest.TestCase):
     def bundle(self, name):
         return self.out / 'skills' / name
 
+
+class SelfContainedBundles(BuiltBundles):
     def test_one_bundle_per_runtime_skill(self):
         built = sorted(p.name for p in (self.out / 'skills').iterdir())
         self.assertEqual(built, self.skills)
@@ -87,6 +91,35 @@ class SelfContainedBundles(unittest.TestCase):
         # Plugin installs keep sibling folders, so the source keeps one copy of each shared file.
         text = (ROOT / 'skills' / 'genealogy-reporting' / 'SKILL.md').read_text(encoding='utf-8')
         self.assertIn('../genealogy-mode/references/shared-contract.md', text)
+
+
+SPEC_KEYS = {'name', 'description', 'license', 'allowed-tools', 'metadata', 'compatibility'}
+
+
+def frontmatter_keys(skill_md):
+    head = skill_md.read_text(encoding='utf-8').split('---', 2)[1]
+    return {line.split(':', 1)[0] for line in head.splitlines() if re.match(r'^[A-Za-z][\w-]*:', line)}
+
+
+class BundleFrontmatter(BuiltBundles):
+    """claude.ai and the Agent Skills spec accept only SPEC_KEYS; Claude Code still needs disable-model-invocation."""
+
+    def test_bundles_carry_only_spec_keys(self):
+        for name in self.skills:
+            with self.subTest(skill=name):
+                self.assertLessEqual(frontmatter_keys(self.bundle(name) / 'SKILL.md'), SPEC_KEYS)
+
+    def test_source_keeps_the_claude_code_key(self):
+        kept = [n for n in self.skills if 'disable-model-invocation' in frontmatter_keys(ROOT / 'skills' / n / 'SKILL.md')]
+        self.assertEqual(len(kept), 23)
+
+    def test_only_the_frontmatter_changes(self):
+        for name in self.skills:
+            with self.subTest(skill=name):
+                source = (ROOT / 'skills' / name / 'SKILL.md').read_text(encoding='utf-8').split('---', 2)
+                built = (self.bundle(name) / 'SKILL.md').read_text(encoding='utf-8').split('---', 2)
+                self.assertEqual([l for l in source[1].splitlines() if not l.startswith('disable-model-invocation:')],
+                                 built[1].splitlines())
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 ---
 name: genealogy-research-planner
-description: "Plan and reprioritize evidence-led genealogy searches, including stalled investigations. Use to choose the next search, test competing explanations, manage scope or recover from repeated unsuccessful attempts."
+description: "Use when genealogy-mode or the user needs the next search chosen, competing explanations tested or a stalled case unblocked. Not for running the searches themselves."
 disable-model-invocation: true
 ---
 

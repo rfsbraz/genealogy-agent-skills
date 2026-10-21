@@ -1,6 +1,6 @@
 ---
 name: genealogy-reporting
-description: "Create cited genealogy reports, timelines, biographies, family trees, source lists and research handoffs. Use to communicate findings, progress, uncertainty or a completed investigation."
+description: "Use when genealogy-mode or the user wants findings written up as cited reports, timelines, trees or handoffs. Not for literary life stories, which genealogy-narrative writes."
 disable-model-invocation: true
 ---
 

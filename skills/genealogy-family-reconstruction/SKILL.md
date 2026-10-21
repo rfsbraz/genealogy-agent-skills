@@ -1,6 +1,6 @@
 ---
 name: genealogy-family-reconstruction
-description: "Reconstruct households, kinship and community networks from linked evidence. Use for ancestors, descendants, siblings, spouses, witnesses, godparents and indirect relationship problems."
+description: "Use when genealogy-mode or the user needs households, kinship or community networks rebuilt from linked evidence. Not for deciding if two mentions are one person."
 disable-model-invocation: true
 ---
 

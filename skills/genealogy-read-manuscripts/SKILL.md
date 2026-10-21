@@ -1,6 +1,6 @@
 ---
 name: genealogy-read-manuscripts
-description: Transcribe handwritten manuscripts, archival notes and parish records using four distinct reading methods in separate contexts, even with the same model. Combine stroke analysis, same-hand comparison, whole-line recognition and historical-context decoding; preserve original spelling, reconcile evidence and target follow-up rounds without treating agreement as independent proof.
+description: "Use when genealogy-mode or the user needs handwritten records read with four separate reading methods and reconciled. Not for typed text or a quick first pass over long files."
 disable-model-invocation: true
 ---
 

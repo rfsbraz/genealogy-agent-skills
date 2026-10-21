@@ -42,5 +42,35 @@ class ModeRouting(unittest.TestCase):
         self.assertEqual(self.owners(STORY), ['genealogy-narrative'])
 
 
+class DescriptionShape(unittest.TestCase):
+    """claude.ai caps descriptions at 200 characters and, without disable-model-invocation, lets every skill trigger."""
+
+    def test_descriptions_fit_the_claude_ai_limit(self):
+        for name, text in descriptions().items():
+            with self.subTest(skill=name):
+                self.assertLessEqual(len(text), 200)
+
+    def test_descriptions_open_with_use_when_and_name_a_near_miss(self):
+        for name, text in descriptions().items():
+            with self.subTest(skill=name):
+                self.assertTrue(text.startswith('Use when '), text)
+                self.assertIn('Not for ', text)
+
+    def test_descriptions_are_third_person(self):
+        for name, text in descriptions().items():
+            with self.subTest(skill=name):
+                # Quoted user phrases such as 'interview me' are examples, not the description's voice.
+                voice = re.sub(r"(?<!\w)'[^']+'(?!\w)", '', text)
+                self.assertNotRegex(voice, r'\b(I|me|my|we|our|you|your)\b')
+
+    def test_specialists_wait_for_mode_or_the_user(self):
+        entry = {'genealogy-mode', 'genealogy-interview', 'genealogy-narrative'}
+        for name, text in descriptions().items():
+            if name in entry:
+                continue
+            with self.subTest(skill=name):
+                self.assertTrue(text.startswith('Use when genealogy-mode '), text)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,6 @@
 ---
 name: genealogy-genetic-evidence
-description: "Integrate consented DNA evidence with documentary genealogy for ancestry and kinship questions. Use only when DNA data is supplied or explicitly authorized and a genetic hypothesis is relevant."
+description: "Use when genealogy-mode or the user brings consented DNA results to a kinship or ancestry question. Not for choosing a DNA test or for questions with no DNA data."
 disable-model-invocation: true
 ---
 
