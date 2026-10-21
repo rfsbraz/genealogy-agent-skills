@@ -753,6 +753,10 @@
       "sha256": "3567413cf43ed5c0e0de68764e95b3b3d6f354610d183092c6715f9483e7c47c",
       "bytes": 2808
     },
+    "tests/check_release_assets.py": {
+      "sha256": "e5f6577d1ddd927ea2cc7992ab01aff3e25b8e6632f8da49ce9ff2c92f244029",
+      "bytes": 5240
+    },
     "tests/check_repo_hygiene.py": {
       "sha256": "b378796c8ca62cf77a843c48e7c344cce39e88ffdab62df4c21627f04941fe0c",
       "bytes": 1869
