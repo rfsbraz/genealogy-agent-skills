@@ -1,5 +1,7 @@
 # Coordinator-only evidence reconciliation
 
+Contents: [keep separate records](#keep-separate-records), [carry the method record forward](#carry-the-method-record-forward), [recorded human check](#recorded-human-check), [what an agreement count means](#what-an-agreement-count-means), [mandatory sequence-reading check](#mandatory-sequence-reading-check), [confidence from evidence, not votes](#confidence-from-evidence-not-votes), [targeted rounds and admissible clues](#targeted-rounds-and-admissible-clues), [input quality and cost](#input-quality-and-cost), [runtime and technology honesty](#runtime-and-technology-honesty).
+
 ## Keep separate records
 
 For each region keep immutable method reports, exact input hashes, actual context IDs, model/tool/checkpoint identities, execution kind, round, supplied clue IDs and limitations. Record `context_isolation` independently of `model_diversity`: four fresh contexts running one model satisfy the intended workflow, while retaining shared-model error risk.

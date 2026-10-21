@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Detailed Document Reading
 
-Read the [shared contract](../genealogy-mode/references/shared-contract.md) and [processing protocol](../genealogy-document-processing/references/processing-protocol.md). Resolve the existing `genealogy-read-manuscripts` skill by its declared name for handwritten material; host folder names may differ.
+Read the [shared contract](../genealogy-mode/references/shared-contract.md) and [processing protocol](../genealogy-document-processing/references/processing-protocol.md). Resolve the existing `genealogy-read-manuscripts` skill by its declared name for handwritten material; host folder names may differ. Those files point on to the coordinator's [GPS policy](../genealogy-mode/references/gps-policy.md) and [easy-use rules](../genealogy-mode/references/easy-use.md); read them when the task touches them.
 
 ## Inputs
 

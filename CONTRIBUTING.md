@@ -78,6 +78,10 @@ Each `description` in a `SKILL.md` frontmatter starts with "Use when", is writte
 
 CI also runs `python scripts/privacy_scan.py`. It looks for email addresses, phone numbers and home folder paths, plus extra terms from a repository secret. GitHub does not pass secrets to pull requests from forks, so a pull request from a fork only gets the built-in checks. Run `python scripts/privacy_scan.py` locally to get the same built-in result. The full scan runs again on `main` after merging.
 
+## Reference files
+
+A reference file over 100 lines starts with a `Contents:` line under its title that links every `##` section, because an agent may only preview the top of a long file. Every reference an agent can reach from a `SKILL.md` must be linked from that `SKILL.md` directly, even when another reference also links it, so nothing sits more than one link away. `tests/check_references.py` checks both.
+
 ## Pull requests
 
 - Open an issue first for anything larger than a small fix, so we can agree on the approach.
