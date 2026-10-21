@@ -1,6 +1,6 @@
 ---
 name: genealogy-archive-correspondence
-description: "Prepare and manage genealogy enquiries through Gmail or another authorized mail tool. Use for contacting archives, registries, libraries or researchers, handling replies, referrals, quotations and follow-ups."
+description: "Use when genealogy-mode or the user asks to write to an archive, registry or researcher and track replies and follow-ups. Not for finding which archive to ask."
 disable-model-invocation: true
 ---
 

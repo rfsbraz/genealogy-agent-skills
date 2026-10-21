@@ -1,6 +1,6 @@
 ---
 name: genealogy-case-intake
-description: "Gather the research goal and starting evidence once genealogy-mode hands off a new case: audit supplied family history and turn a broad goal into answerable research questions. Also use when importing an existing tree, receiving a new collection or assessing prior research."
+description: "Use when genealogy-mode hands off a new case, an imported tree or a new collection: audits starting evidence and sets research questions. Not for opening a case, which genealogy-mode does."
 disable-model-invocation: true
 ---
 

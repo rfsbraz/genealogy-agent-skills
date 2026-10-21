@@ -1,6 +1,6 @@
 ---
 name: genealogy-transcribe-detailed
-description: "Perform and track detailed genealogy transcription of selected pages or regions, applying four distinct handwriting methods in separate contexts, including with the same model. Use for diplomatic readings, consequential ambiguities, and scheduled upgrades from quick transcription."
+description: "Use when genealogy-mode or the user needs a diplomatic reading of chosen pages using four distinct handwriting methods. Not for a fast first pass, which transcribe-quick does."
 disable-model-invocation: true
 ---
 

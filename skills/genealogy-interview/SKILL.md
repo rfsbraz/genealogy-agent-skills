@@ -1,6 +1,6 @@
 ---
 name: genealogy-interview
-description: "Start or extend a family tree through a conversational interview. Use for 'start my tree', 'interview me', /tree start, /tree resume, /tree add, /tree review or /tree research. Capture attributed memories, preserve uncertainty, and hand a useful starting case to research."
+description: "Use when the user says 'start my tree', 'interview me' or /tree: builds a first family tree one question at a time. Not for searching records, which genealogy-mode handles."
 ---
 
 # Start a Tree by Talking

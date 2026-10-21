@@ -1,6 +1,6 @@
 ---
 name: genealogy-archive-fieldwork
-description: "Prepare an onsite archive visit or a precise brief for a human record agent. Use when material is not online, reading-room consultation is required or the user wants a capture checklist."
+description: "Use when genealogy-mode or the user needs an onsite archive visit or a brief for a record agent, for material that is not online. Not for online catalogue searches."
 disable-model-invocation: true
 ---
 

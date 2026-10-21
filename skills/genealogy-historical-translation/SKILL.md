@@ -1,6 +1,6 @@
 ---
 name: genealogy-historical-translation
-description: "Translate historical genealogical records while preserving legal, religious and kinship distinctions. Use for unfamiliar languages, abbreviations, historical terminology, calendars or ambiguous relationship terms."
+description: "Use when genealogy-mode or the user needs an old record translated with its legal, religious and kinship terms kept exact. Not for reading handwriting or modern text."
 disable-model-invocation: true
 ---
 

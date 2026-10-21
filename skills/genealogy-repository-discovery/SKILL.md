@@ -1,6 +1,6 @@
 ---
 name: genealogy-repository-discovery
-description: "Discover and verify archives, registries, libraries, collections and access services for a place, period and question. Use for new jurisdictions, unavailable records, custody transfers or stale repository profiles."
+description: "Use when genealogy-mode or the user needs the archives, registries or libraries that hold records for a place and period. Not for writing to them or searching their catalogues."
 disable-model-invocation: true
 ---
 

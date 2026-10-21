@@ -1,6 +1,6 @@
 ---
 name: genealogy-locality-research
-description: "Resolve historical places and the jurisdictions, institutions, languages and record practices governing them. Use for unfamiliar localities, changed boundaries, ambiguous place names or period-specific record interpretation."
+description: "Use when genealogy-mode or the user needs a historical place resolved to its jurisdictions, institutions and record practices. Not for finding the records held there."
 disable-model-invocation: true
 ---
 

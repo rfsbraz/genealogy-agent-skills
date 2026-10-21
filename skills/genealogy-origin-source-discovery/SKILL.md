@@ -1,6 +1,6 @@
 ---
 name: genealogy-origin-source-discovery
-description: "Discover country-specific sources for each person’s documented or suspected origins and movements. Use on a new birthplace, parental origin, residence, migration, nationality or historical jurisdiction, including unfamiliar countries."
+description: "Use when genealogy-mode or the user meets a new birthplace, origin or migration and needs the country's sources mapped. Not for searching a known collection's entries."
 disable-model-invocation: true
 ---
 

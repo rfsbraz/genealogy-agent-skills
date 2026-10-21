@@ -1,6 +1,6 @@
 ---
 name: genealogy-proof-evaluation
-description: "Evaluate whether a genealogy conclusion is supported by the complete body of evidence. Use before accepting identity, parentage, event or origin claims, and when conflicting evidence or new findings require review."
+description: "Use when genealogy-mode or the user must judge whether an identity, parentage, event or origin claim meets the evidence standard. Not for gathering more records."
 disable-model-invocation: true
 ---
 

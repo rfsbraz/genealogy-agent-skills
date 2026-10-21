@@ -1,6 +1,6 @@
 ---
 name: genealogy-transcribe-quick
-description: "Make a bounded first reading of large genealogy documents, including long case files, inventories and registers. Use for quick transcription, searchable text, document mapping and research leads before detailed page reading."
+description: "Use when genealogy-mode or the user wants a fast first reading of a long document for searchable text and leads. Not for consequential readings, which need transcribe-detailed."
 disable-model-invocation: true
 ---
 

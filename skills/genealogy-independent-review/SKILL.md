@@ -1,6 +1,6 @@
 ---
 name: genealogy-independent-review
-description: "Challenge consequential genealogy conclusions through source-based independent review. Use for disputed identities, parentage, conflicting records, or validation of a proposed argument."
+description: "Use when genealogy-mode or the user wants a disputed identity, parentage or argument challenged by an independent review. Not for a first evaluation of the evidence."
 disable-model-invocation: true
 ---
 

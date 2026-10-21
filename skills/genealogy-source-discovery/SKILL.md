@@ -1,6 +1,6 @@
 ---
 name: genealogy-source-discovery
-description: "Locate relevant collections, volumes, entries and source leads for an active genealogy question. Use after origin/repository mapping or when searching catalogues, indexes, published research and finding aids."
+description: "Use when genealogy-mode or the user needs collections, volumes or entries found for an open question in catalogues and indexes. Not for mapping a new country's sources."
 disable-model-invocation: true
 ---
 

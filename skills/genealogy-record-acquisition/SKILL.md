@@ -1,6 +1,6 @@
 ---
 name: genealogy-record-acquisition
-description: "Retrieve, capture and preserve genealogical documents with precise provenance and search coverage. Use for downloads, unindexed browsing, archive reproductions, attachments or unavailable-source requests."
+description: "Use when genealogy-mode or the user needs a record downloaded, browsed page by page or ordered, with provenance kept. Not for deciding which collection to search."
 disable-model-invocation: true
 ---
 
