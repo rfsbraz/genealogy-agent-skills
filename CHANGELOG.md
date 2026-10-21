@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.1](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.0.0...v2.0.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **packaging:** build self-contained single-skill bundles ([#24](https://github.com/rfsbraz/genealogy-agent-skills/issues/24)) ([5165cb4](https://github.com/rfsbraz/genealogy-agent-skills/commit/5165cb41100210fa2e4ffa1547caf047d1e48cc9)), closes [#23](https://github.com/rfsbraz/genealogy-agent-skills/issues/23)
+* **reading-method:** add not_blind method_id for a non-blind double reading ([#17](https://github.com/rfsbraz/genealogy-agent-skills/issues/17)) ([62963e8](https://github.com/rfsbraz/genealogy-agent-skills/commit/62963e8173b7adde5c43446222f947a2b3471636)), closes [#12](https://github.com/rfsbraz/genealogy-agent-skills/issues/12)
+* **release:** attach claude.ai and plugin zips to each release ([#28](https://github.com/rfsbraz/genealogy-agent-skills/issues/28)) ([b1d6d16](https://github.com/rfsbraz/genealogy-agent-skills/commit/b1d6d166eb5bd62ba979007b51085e0e985de0e2)), closes [#27](https://github.com/rfsbraz/genealogy-agent-skills/issues/27)
+* **skills:** pass claude.ai frontmatter checks and shorten descriptions ([#26](https://github.com/rfsbraz/genealogy-agent-skills/issues/26)) ([20ad65e](https://github.com/rfsbraz/genealogy-agent-skills/commit/20ad65efc37a69730af10b45f8fdeee3a9b94027)), closes [#25](https://github.com/rfsbraz/genealogy-agent-skills/issues/25)
+
 ## 2.0.0 (2026-10-18)
 
 
