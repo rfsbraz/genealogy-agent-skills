@@ -25,7 +25,7 @@ To install by hand instead:
 | Claude Code | `claude plugin marketplace add rfsbraz/genealogy-agent-skills` then `claude plugin install genealogy@genealogy-agent-skills` |
 | Codex | `codex plugin marketplace add rfsbraz/genealogy-agent-skills` then `codex plugin add genealogy@genealogy-agent-skills` |
 | Gemini CLI | `gemini extensions install https://github.com/rfsbraz/genealogy-agent-skills` |
-| Antigravity CLI | `agy plugin import gemini` after the Gemini install, or `python install.py --dest ~/.gemini/antigravity-cli/skills --apply` |
+| Antigravity CLI | `agy plugin install https://github.com/rfsbraz/genealogy-agent-skills` |
 | Cursor | Clone into `~/.cursor/plugins/local/genealogy`, then reload the window |
 | Grok Bot | Connect apps, search "Genealogy", add it (once listed) |
 | Claude.ai | Upload each skill zip under Customize > Skills; see [INSTALL.md](INSTALL.md#claudeai) |

@@ -60,7 +60,7 @@ class ReleaseAssets(unittest.TestCase):
     def test_plugin_zip_holds_the_plugin(self):
         with zipfile.ZipFile(self.release / PLUGIN) as z:
             names = set(z.namelist())
-        for rel in ('.claude-plugin/plugin.json', '.claude-plugin/marketplace.json', '.cursor-plugin/plugin.json',
+        for rel in ('.antigravity-plugin/plugin.json', '.claude-plugin/plugin.json', '.claude-plugin/marketplace.json', '.cursor-plugin/plugin.json',
                     'gemini-extension.json', 'commands/tree.md', 'skills/genealogy-mode/SKILL.md', 'LICENSE'):
             with self.subTest(file=rel):
                 self.assertIn(f'genealogy/{rel}', names)

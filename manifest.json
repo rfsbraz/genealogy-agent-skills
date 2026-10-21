@@ -669,6 +669,10 @@
       "sha256": "677bc88c562835bb9ddca0c729c1cbb38b005725a54d521884c7c1804fc71064",
       "bytes": 267
     },
+    "tests/check_antigravity.py": {
+      "sha256": "7185815a253904568b1ee741652925df5dfc6a476add33c5fc1de7b4a8715558",
+      "bytes": 2359
+    },
     "tests/check_bundles.py": {
       "sha256": "8299adf3659ce84b9e7ded5e4fa9542cce069cc20f535f8826a855efddf9b127",
       "bytes": 5383
@@ -762,8 +766,8 @@
       "bytes": 3178
     },
     "tests/check_release_assets.py": {
-      "sha256": "e5f6577d1ddd927ea2cc7992ab01aff3e25b8e6632f8da49ce9ff2c92f244029",
-      "bytes": 5240
+      "sha256": "948d94980dbe7bdcf8fb5d4fc432a4b18c50a18a936313422ee717d4efa2c404",
+      "bytes": 5275
     },
     "tests/check_repo_hygiene.py": {
       "sha256": "b378796c8ca62cf77a843c48e7c344cce39e88ffdab62df4c21627f04941fe0c",
@@ -814,8 +818,8 @@
       "bytes": 1589
     },
     "tests/test_repo.py": {
-      "sha256": "29e766fad3355df46d007fa30375917ec77460382cb310b68caf51e8713678ef",
-      "bytes": 11709
+      "sha256": "5ac6124b46c64b881f205cfd5b923cb7f719df17fd1c20cb7f204366a046f506",
+      "bytes": 11796
     },
     "validate_package.py": {
       "sha256": "4295303667df73c8ba137a2dbb6c8017c49960c45a201d3754d3c4caa57f4f31",
