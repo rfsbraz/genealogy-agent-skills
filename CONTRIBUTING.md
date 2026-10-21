@@ -36,6 +36,16 @@ python install.py --dest /tmp/genealogy-skills
 python install.py --dest /tmp/genealogy-skills --apply
 ```
 
+## Single-skill bundles
+
+Some hosts, such as claude.ai, install each skill on its own, without the sibling folders. Skills under `skills/` link to the shared files in `genealogy-mode` (for example `../genealogy-mode/references/shared-contract.md`), and those files are kept in one place only. To get folders that work on their own, build them:
+
+```sh
+python scripts/package_skills.py
+```
+
+This writes one folder per skill to `dist/skills/<name>/`. Each one carries a copy of the files it links to from other skills under `shared/<skill>/`, with the links rewritten. `tests/check_bundles.py` checks that every relative link in every bundle resolves inside that bundle. Edit the files under `skills/`, never the copies in `dist/`, which is not committed.
+
 If you add, remove or change a file under `skills/`, `evaluation/` or `tests/`, or change `install.py`, `validate_package.py` or `genealogy.py`, regenerate the manifest and commit it:
 
 ```sh
