@@ -13,10 +13,12 @@ MANIFESTS = (
     '.cursor-plugin/plugin.json',
     '.claude-plugin/plugin.json',
     '.claude-plugin/marketplace.json',
+    '.antigravity-plugin/plugin.json',
     '.agents/plugins/marketplace.json',
     'gemini-extension.json',
 )
-VERSIONED = ('plugin.json', '.cursor-plugin/plugin.json', '.claude-plugin/plugin.json', 'gemini-extension.json', 'manifest.json')
+VERSIONED = ('plugin.json', '.cursor-plugin/plugin.json', '.claude-plugin/plugin.json', '.antigravity-plugin/plugin.json',
+             'gemini-extension.json', 'manifest.json')
 DESCRIPTION_BUDGET = 8000
 LINK = re.compile(r'(?<!!)\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
 

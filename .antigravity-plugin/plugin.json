@@ -1,0 +1,26 @@
+{
+  "name": "genealogy",
+  "displayName": "Genealogy",
+  "version": "2.0.1",
+  "description": "Evidence-based genealogy research skills: plan, find sources and archives, read records and handwriting, resolve identities, and write cited conclusions.",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "Start a genealogy case for my great-grandfather and plan the first searches",
+    "Transcribe this parish record and list what it says about each person",
+    "Which archive is likely to hold this baptism record, and how do I request it?"
+  ],
+  "keywords": [
+    "genealogy",
+    "family history",
+    "genealogical proof standard",
+    "parish records",
+    "archives"
+  ],
+  "author": {
+    "name": "Rodrigo Braz",
+    "url": "https://github.com/rfsbraz"
+  },
+  "homepage": "https://github.com/rfsbraz/genealogy-agent-skills",
+  "repository": "https://github.com/rfsbraz/genealogy-agent-skills",
+  "license": "MIT"
+}

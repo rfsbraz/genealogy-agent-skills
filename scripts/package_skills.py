@@ -48,12 +48,12 @@ DESCRIPTION_LIMIT = 200  # claude.ai; the spec allows 1024
 COMBINED_ZIP = 'genealogy-skills-claude-ai.zip'
 PLUGIN_ZIP = 'genealogy-plugin.zip'
 PLUGIN_ROOT = 'genealogy'
-# Tracked paths that make up the plugin for Claude Code, Codex, Cursor and Gemini.
+# Tracked paths that make up the plugin for Antigravity, Claude Code, Codex, Cursor and Gemini.
 # install.py is left out: it checks the full repository against manifest.json.
-PLUGIN_PATHS = ('.agents', '.claude-plugin', '.cursor-plugin', 'assets', 'commands', 'skills',
+PLUGIN_PATHS = ('.agents', '.antigravity-plugin', '.claude-plugin', '.cursor-plugin', 'assets', 'commands', 'skills',
                 'plugin.json', 'gemini-extension.json', 'GEMINI.md', 'genealogy.py',
                 'README.md', 'INSTALL.md', 'CHANGELOG.md', 'LICENSE')
-PLUGIN_REQUIRED = ('.claude-plugin/plugin.json', '.claude-plugin/marketplace.json', '.cursor-plugin/plugin.json',
+PLUGIN_REQUIRED = ('.antigravity-plugin/plugin.json', '.claude-plugin/plugin.json', '.claude-plugin/marketplace.json', '.cursor-plugin/plugin.json',
                    'plugin.json', 'gemini-extension.json', 'skills/genealogy-mode/SKILL.md')
 ZIP_TIME = (1980, 1, 1, 0, 0, 0)
 SPEC_KEYS = ('name', 'description', 'license', 'allowed-tools', 'metadata', 'compatibility')

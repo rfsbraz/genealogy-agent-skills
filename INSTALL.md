@@ -91,13 +91,23 @@ Only `genealogy-mode`, `genealogy-interview` and `genealogy-narrative` are meant
 
 ### Antigravity CLI
 
-If the extension is already installed in Gemini CLI on this computer, convert it:
+Run in a shell:
 
 ```
-agy plugin import gemini
+agy plugin install https://github.com/rfsbraz/genealogy-agent-skills
 ```
 
-Otherwise install the skills into the Antigravity skills folder:
+Expected: `[ok]    genealogy`, followed by the number of skills it processed.
+
+Check:
+
+```
+agy plugin list
+```
+
+It must list `genealogy` as enabled, with the skills among its components. Start a new `agy` session so it picks up the plugin. The repository carries a native Antigravity manifest in `.antigravity-plugin/plugin.json`, so this works without installing the Gemini CLI extension first.
+
+If `agy plugin install` is not available in this version of agy, install the skills into the Antigravity skills folder instead:
 
 ```
 git clone https://github.com/rfsbraz/genealogy-agent-skills
@@ -194,7 +204,7 @@ Commands above were checked against:
 - Claude Code: https://code.claude.com/docs/en/discover-plugins and https://code.claude.com/docs/en/plugin-marketplaces
 - Codex: https://developers.openai.com/codex/plugins/build and https://developers.openai.com/codex/skills; `codex plugin add` from the Codex CLI help
 - Gemini CLI: https://geminicli.com/docs/extensions/reference/ and https://geminicli.com/docs/cli/custom-commands/
-- Antigravity CLI: https://antigravity.google/docs/cli/gcli-migration/
+- Antigravity CLI: https://antigravity.google/docs/plugins and https://antigravity.google/docs/marketplace
 - Cursor: https://cursor.com/docs/plugins
 - Grok Bot: https://docs.x.ai/grok-bot/skills-routines-and-automations
 - Claude.ai: https://support.claude.com/en/articles/12512180-use-skills-in-claude
