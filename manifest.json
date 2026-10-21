@@ -158,8 +158,8 @@
       "bytes": 2297
     },
     "genealogy.py": {
-      "sha256": "d4754b16f6c032f23874f9d570c858d8a30fb197095ab6aa752ece8230748b0a",
-      "bytes": 5764
+      "sha256": "ba0ce1f3a8d5df4bc00fef5a5a654873115746108b4ed8d9d5d69290a4b7e8ee",
+      "bytes": 5931
     },
     "install.py": {
       "sha256": "17544bc57e66f128da016e9eb772fb96ef313d40b714ddc82b12d64789fb2336",
@@ -186,8 +186,8 @@
       "bytes": 307
     },
     "skills/genealogy-case-intake/SKILL.md": {
-      "sha256": "5abca0582d3f5e3e47ff32fbf324c998388b32787c6a299d484a899e88b85496",
-      "bytes": 4382
+      "sha256": "a8822efa6952b3bfa4b181e8c989fdb8c2c396d91bc144e0df161146748de493",
+      "bytes": 4693
     },
     "skills/genealogy-case-intake/agents/openai.yaml": {
       "sha256": "e1c2ad84a40c4dbc3a9b352e65e336bc3814b98b5896e2e60588266474743caf",
@@ -302,8 +302,8 @@
       "bytes": 313
     },
     "skills/genealogy-mode/SKILL.md": {
-      "sha256": "61ba57871ec806912ff82037d53d19fb86c6e142dd440e875762f86c44b963fe",
-      "bytes": 8595
+      "sha256": "ff10ac67d185a43be0969e7f3ede84ec1a46a83b8e8e856cf3a744522a98704d",
+      "bytes": 8640
     },
     "skills/genealogy-mode/agents/openai.yaml": {
       "sha256": "b46c1a877e44534da923c68567a59b059faef607978d43c062fe7869a341e1c0",
@@ -334,8 +334,8 @@
       "bytes": 2048
     },
     "skills/genealogy-mode/references/data-model.md": {
-      "sha256": "e82742d8cdd511990965a43976c87e4236e3659c5b4c03fea2185f7aff9543b1",
-      "bytes": 8746
+      "sha256": "8580abc1865f6b592df1eb2e7968ff034ab34eb7433ac1d0ade1efcacbb23989",
+      "bytes": 8884
     },
     "skills/genealogy-mode/references/easy-use.md": {
       "sha256": "149414a258407a984e3adbe73c3d3ce8a5f98abb549b4a5f169ba638f526ee83",
@@ -366,12 +366,16 @@
       "bytes": 2800
     },
     "skills/genealogy-mode/references/tool-contracts.md": {
-      "sha256": "799dff40b17208a560dcddfbc2a568810538fba3f6dc4379793a44a070f6731e",
-      "bytes": 6495
+      "sha256": "29acbfd1601e3b0b4f2ddb58de47f649b679bb60bbe980b012f113e62d2100fc",
+      "bytes": 7297
     },
     "skills/genealogy-mode/scripts/case_tools.py": {
       "sha256": "f9f6da2b354b299d3a45f7da118c157e41f357af0c7494e1af70a3b756001353",
       "bytes": 12437
+    },
+    "skills/genealogy-mode/scripts/gedcom_tools.py": {
+      "sha256": "af331a097eecc1a6631e1dbedce351724ee18431c102b9b99f4b54f14eff916d",
+      "bytes": 28203
     },
     "skills/genealogy-mode/scripts/gps_review.py": {
       "sha256": "c98e7d0b712de61fb168694d0071ba5cce30709e5a16bc1c5442b7eb6e832360",
@@ -713,6 +717,10 @@
       "sha256": "ab1ae5cbd710e2490c62d7a15d253690340cbe4af46496397462dc50526e61bf",
       "bytes": 9432
     },
+    "tests/check_gedcom.py": {
+      "sha256": "9bcf61e65b49550a405516582d5ddf7b0dc944ec6bee4ed7fd3b76174356020d",
+      "bytes": 9814
+    },
     "tests/check_gps_countries.py": {
       "sha256": "63cb3f984f8dc6471ebc1baca5091e43619020b9b2fb7aa6d25579aced2d80d6",
       "bytes": 13597
@@ -732,6 +740,10 @@
     "tests/check_install_docs.py": {
       "sha256": "8dd39e720ede654378e0f9c513853c9f2a6801faf7e0f7d7c3d74de7a7db5019",
       "bytes": 1342
+    },
+    "tests/check_install_smoke.py": {
+      "sha256": "3a9c1997caa8b7b5dfe90c5cbb5518e224da8457244299d29e2f3c8e589caa93",
+      "bytes": 5432
     },
     "tests/check_interview_narrative.py": {
       "sha256": "15a3b070138d10f51b482e7006cae8e4a1596b0869d3c21e8ca8e4cd8cb99591",
@@ -840,6 +852,14 @@
     "tests/fixtures/gap-finder/registry/XF.json": {
       "sha256": "867cfc22ae3d27ea8061e96e1395d5fef2b45a6aaf385a1d1859b86f5bf2a044",
       "bytes": 1611
+    },
+    "tests/fixtures/gedcom/clean.ged": {
+      "sha256": "261456dbaca0703c81e5f9e5761c28333542dab1c3c4f0592318e6fb90378d0a",
+      "bytes": 887
+    },
+    "tests/fixtures/gedcom/problems.ged": {
+      "sha256": "703e293641df42a4cb31a74000bda798511b9bf17268c04ee2d365d709aafa58",
+      "bytes": 496
     },
     "tests/fixtures/line_confidence_cases.json": {
       "sha256": "ba281bbe9a681921e7bc3447f87bcbb099ace8e840ce34d6cd5d5916ba75c97e",

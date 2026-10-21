@@ -76,6 +76,7 @@ Intake -> setting and discovery -> planning -> acquisition -> extraction -> iden
 - [sources.md](references/sources.md)
 - [tool-contracts.md](references/tool-contracts.md)
 - [case_tools.py](scripts/case_tools.py)
+- [gedcom_tools.py](scripts/gedcom_tools.py)
 - [case-template.json](assets/case-template.json)
 - [case.schema.json](assets/case.schema.json)
 
