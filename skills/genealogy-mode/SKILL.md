@@ -1,6 +1,6 @@
 ---
 name: genealogy-mode
-description: "Start and coordinate genealogy investigations, select specialist skills, preserve evidence and resume research. Use when the user wants to start a genealogy case or start a case, and for ancestry, descendants, identity disputes, biographies, multi-country research, or continuing a genealogy project."
+description: "Use when the user wants to start a genealogy case, research ancestors or descendants, or resume family-history work; plans and routes to specialists. Not for code trees or DNA kit shopping."
 ---
 
 # Research Your Family History

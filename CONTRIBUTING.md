@@ -44,7 +44,7 @@ Some hosts, such as claude.ai, install each skill on its own, without the siblin
 python scripts/package_skills.py
 ```
 
-This writes one folder per skill to `dist/skills/<name>/`. Each one carries a copy of the files it links to from other skills under `shared/<skill>/`, with the links rewritten. `tests/check_bundles.py` checks that every relative link in every bundle resolves inside that bundle. Edit the files under `skills/`, never the copies in `dist/`, which is not committed.
+This writes one folder per skill to `dist/skills/<name>/`. Each one carries a copy of the files it links to from other skills under `shared/<skill>/`, with the links rewritten. The build also drops frontmatter keys that the Agent Skills spec does not allow, such as `disable-model-invocation`, because claude.ai rejects an upload that has them. Keep that key in `skills/`: Claude Code and Cursor use it to stop specialist skills loading on their own. `tests/check_bundles.py` checks that every relative link in every bundle resolves inside that bundle and that bundles carry only spec keys. Edit the files under `skills/`, never the copies in `dist/`, which is not committed.
 
 If you add, remove or change a file under `skills/`, `evaluation/` or `tests/`, or change `install.py`, `validate_package.py` or `genealogy.py`, regenerate the manifest and commit it:
 
@@ -53,6 +53,10 @@ python scripts/build_manifest.py
 ```
 
 Do not edit version numbers or `CHANGELOG.md`. Releases are made by release-please from the commit messages.
+
+## Skill descriptions
+
+Each `description` in a `SKILL.md` frontmatter starts with "Use when", is written in the third person, names a near miss with "Not for", and stays within 200 characters, the claude.ai limit. Specialist skills start with "Use when genealogy-mode or the user", so they do not take requests from `genealogy-mode` on hosts that let every skill load on its own. `tests/check_skill_routing.py` checks these rules.
 
 ## Privacy check
 

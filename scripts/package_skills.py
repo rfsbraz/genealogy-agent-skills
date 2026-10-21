@@ -7,6 +7,8 @@ sibling folders, so relative links such as ../genealogy-mode/... work there.
 A host that installs one skill on its own (claude.ai) has no siblings. This
 build copies every file a skill links to from another skill into
 shared/<other-skill>/... inside the bundle and rewrites the links to match.
+It also drops frontmatter keys the Agent Skills spec does not allow (see
+SPEC_KEYS), which claude.ai rejects on upload.
 
 Each bundle is built by running BUNDLE_STEPS in order. A step takes a Bundle
 and changes its folder in place, so later packaging rules (frontmatter, zips,
@@ -29,6 +31,10 @@ SKILLS = ROOT / 'skills'
 SHARED = 'shared'
 LINK = re.compile(r'(\[[^\]]*\]\()([^)\s]+)(\))')
 IGNORE = shutil.ignore_patterns('__pycache__', '*.pyc')
+# Frontmatter keys the Agent Skills spec allows. claude.ai rejects an upload
+# with any other key. Source files keep host-specific keys such as
+# disable-model-invocation (Claude Code and Cursor need it); bundles drop them.
+SPEC_KEYS = ('name', 'description', 'license', 'allowed-tools', 'metadata', 'compatibility')
 
 # Files a skill uses from another skill that are not Markdown links, such as
 # helper modules a script imports. Paths are relative to skills/.
@@ -49,6 +55,7 @@ class Bundle:
     path: Path
     shared: list = field(default_factory=list)
     rewritten: int = 0
+    dropped: list = field(default_factory=list)
 
 
 def version():
@@ -140,7 +147,26 @@ def make_self_contained(bundle):
             doc.write_text(fixed, encoding='utf-8')
 
 
-BUNDLE_STEPS = [copy_skill, make_self_contained]
+def clean_frontmatter(bundle):
+    """Drop top-level frontmatter keys outside SPEC_KEYS, with any indented lines under them."""
+    skill_md = bundle.path / 'SKILL.md'
+    text = skill_md.read_text(encoding='utf-8')
+    if not text.startswith('---\n'):
+        raise PackagingError(f'{bundle.skill}: SKILL.md has no frontmatter')
+    _, head, body = text.split('---', 2)
+    kept, dropping = [], False
+    for line in head.strip('\n').splitlines():
+        key = re.match(r'^([A-Za-z][\w-]*):', line)
+        if key:
+            dropping = key.group(1) not in SPEC_KEYS
+            if dropping:
+                bundle.dropped.append(key.group(1))
+        if not dropping:
+            kept.append(line)
+    skill_md.write_text('---\n' + '\n'.join(kept) + '\n---' + body, encoding='utf-8')
+
+
+BUNDLE_STEPS = [copy_skill, make_self_contained, clean_frontmatter]
 
 
 def build(out, names=None):
@@ -159,7 +185,8 @@ def build(out, names=None):
         bundle.path.parent.mkdir(parents=True, exist_ok=True)
         for step in BUNDLE_STEPS:
             step(bundle)
-        report['bundles'].append({'skill': name, 'shared': sorted(bundle.shared), 'links_rewritten': bundle.rewritten})
+        report['bundles'].append({'skill': name, 'shared': sorted(bundle.shared), 'links_rewritten': bundle.rewritten,
+                                  'frontmatter_dropped': bundle.dropped})
     return report
 
 

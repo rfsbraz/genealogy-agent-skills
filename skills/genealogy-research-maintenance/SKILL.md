@@ -1,6 +1,6 @@
 ---
 name: genealogy-research-maintenance
-description: "Maintain consistent, versioned genealogical evidence and conclusions across sessions and corrections. Use after discoveries, merges, imports, revisions, resumed work or tree synchronization."
+description: "Use when genealogy-mode or the user needs case evidence kept consistent after discoveries, merges, imports or corrections. Not for planning the next search."
 disable-model-invocation: true
 ---
 
