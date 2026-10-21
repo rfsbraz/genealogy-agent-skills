@@ -69,7 +69,7 @@ On conclusion revision, traverse `depends_on` and mark affected descendants for 
 
 ## Exchange
 
-GEDCOM is an exchange view. Preserve the complete research record, source dependencies, searches, uncertainty and correspondence in the full case bundle. Generate an export-loss report for each target application's unsupported fields. Verify import/export behaviour on a fixture before using it on important research.
+GEDCOM is an exchange view. `scripts/gedcom_tools.py import` brings a tree in as provisional claims cited to the file, after the `check` pass; see tool-contracts.md. Preserve the complete research record, source dependencies, searches, uncertainty and correspondence in the full case bundle. Generate an export-loss report for each target application's unsupported fields. Verify import/export behaviour on a fixture before using it on important research.
 
 ## Document processing ledger
 

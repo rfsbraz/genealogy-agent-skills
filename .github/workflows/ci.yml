@@ -44,6 +44,7 @@ jobs:
           python tests/check_helpers.py
           python tests/check_v14.py
           python tests/check_source_supported.py
+          python tests/check_gedcom.py
           python tests/check_reread_story.py
           python tests/check_examples_v14.py
           python tests/check_host_adapter.py
@@ -79,6 +80,7 @@ jobs:
           python genealogy.py story --help
           python genealogy.py reread --help
           python genealogy.py project --help
+          python genealogy.py gedcom check tests/fixtures/gedcom/clean.ged > /dev/null
       - name: Repository tests
         run: python tests/test_repo.py
 

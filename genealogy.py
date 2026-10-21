@@ -23,6 +23,7 @@ def main():
         'story': ROOT / 'skills/genealogy-narrative/scripts/story_tools.py',
         'reread': COORDINATOR / 'scripts/research_updates.py',
         'project': COORDINATOR / 'scripts/research_updates.py',
+        'gedcom': COORDINATOR / 'scripts/gedcom_tools.py',
     }
     if len(sys.argv) > 1 and sys.argv[1] in helpers:
         return subprocess.run([sys.executable, str(helpers[sys.argv[1]]), *([sys.argv[1]] if sys.argv[1] in ('reread', 'project') else []), *sys.argv[2:]]).returncode
@@ -38,6 +39,7 @@ def main():
     sub.add_parser('story', help='Story files: brief, check, render (use story --help)')
     sub.add_parser('reread', help='Save a corrected reading and flag dependent findings (reread --help)')
     sub.add_parser('project', help='Generate private fact files and tree notes (project --help)')
+    sub.add_parser('gedcom', help='Check a GEDCOM file or import it as a provisional case (gedcom --help)')
     sub.add_parser('countries', help='List country starting points')
     sources = sub.add_parser('sources', help='Suggest official source entry points')
     sources.add_argument('country'); add_source_filters(sources)

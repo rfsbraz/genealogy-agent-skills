@@ -1,0 +1,53 @@
+0 HEAD
+1 SOUR SYNTHETIC
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Tomé /Fictício/
+1 SEX M
+1 BIRT
+2 DATE ABT 1850
+2 PLAC Vila Inventada, Distrito Exemplo
+2 SOUR @S1@
+3 PAGE Livro 1, folha 2
+1 DEAT
+2 DATE 3 MAR 1910
+2 PLAC Vila Inventada, Distrito Exemplo
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Rosa /Imaginária/
+1 SEX F
+1 BIRT
+2 DATE BET 1852 AND 1854
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Joana /Fictícia/
+1 SEX F
+1 BIRT
+2 DATE 12 JUN 1880
+2 PLAC Vila Inventada, Distrito Exemplo
+1 CHR
+2 DATE 20 JUN 1880
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Abel /Fictício/
+1 SEX M
+1 BIRT
+2 DATE MAR 1883
+1 NOTE Tree owner's note: said to have
+2 CONT emigrated.
+1 FAMC @F1@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 MARR
+2 DATE 1878
+2 PLAC Vila Inventada, Distrito Exemplo
+0 @S1@ SOUR
+1 TITL Registo paroquial sintético de Vila Inventada
+1 AUTH Fonte de teste
+0 TRLR
