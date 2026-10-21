@@ -16,6 +16,7 @@ Plugin name: `genealogy`. The entry point skill is `genealogy-mode`.
 | `gemini --version` works and the user uses Gemini CLI | Gemini CLI | [Gemini CLI](#gemini-cli) |
 | `agy` is installed and the user uses Antigravity CLI | Antigravity CLI | [Antigravity CLI](#antigravity-cli) |
 | You are Claude in the claude.ai web or desktop chat, with no shell on the user's computer | Claude.ai | [Claude.ai](#claudeai) |
+| None of the above, but Node.js 22.20 or newer is installed (`node --version`) | Skills CLI | [Skills CLI](#skills-cli) |
 | None of the above, but you can run Python 3.10+ and write to your skills folder | Other | [Any other agent](#any-other-agent) |
 
 If more than one row fits, or none does, ask the user which app they want the skills in.
@@ -143,6 +144,22 @@ You cannot install skills into claude.ai yourself. Give the user these steps **(
 
 Check: each uploaded skill is listed in Customize > Skills and switched on.
 
+### Skills CLI
+
+The skills CLI (https://github.com/vercel-labs/skills) copies skills into the skills folder of most coding agents. It needs Node.js 22.20 or newer. First list what the repository offers:
+
+```
+npx skills add rfsbraz/genealogy-agent-skills --list
+```
+
+It must report `Found 26 skills`, including `genealogy-mode`. Then install every skill:
+
+```
+npx skills add rfsbraz/genealogy-agent-skills --skill '*'
+```
+
+The CLI asks which agents to install to; add `-a <agent>` to name one, for example `-a claude-code`. Install all 26 skills, not a selection: the specialist skills link to shared files inside `genealogy-mode`, and those links only work when the skills sit next to each other. Check that `genealogy-mode/SKILL.md` exists in the skills folder the CLI reports, then start a new session.
+
 ### Any other agent
 
 ```
@@ -181,3 +198,4 @@ Commands above were checked against:
 - Cursor: https://cursor.com/docs/plugins
 - Grok Bot: https://docs.x.ai/grok-bot/skills-routines-and-automations
 - Claude.ai: https://support.claude.com/en/articles/12512180-use-skills-in-claude
+- Skills CLI: https://github.com/vercel-labs/skills; `npx skills add --help` from skills 1.7.4

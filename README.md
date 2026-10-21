@@ -29,6 +29,7 @@ To install by hand instead:
 | Cursor | Clone into `~/.cursor/plugins/local/genealogy`, then reload the window |
 | Grok Bot | Connect apps, search "Genealogy", add it (once listed) |
 | Claude.ai | Upload each skill zip under Customize > Skills; see [INSTALL.md](INSTALL.md#claudeai) |
+| Skills CLI | `npx skills add rfsbraz/genealogy-agent-skills --skill '*'` (Node.js 22.20+; picks the agent's skills folder for you) |
 | Anything else | `python install.py --dest <skills dir>` to preview, then add `--apply` |
 
 ## How it works
