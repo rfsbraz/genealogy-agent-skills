@@ -1,6 +1,6 @@
 ---
 name: genealogy-narrative
-description: "Tell an ancestor's life as a readable historical narrative with period atmosphere, flourish and traceable evidence. Use for /story, family chronicles, romantic or evocative biographies, and explicitly novelized reconstructions. Separate records, recollections, inference, historical context and invented scenes."
+description: "Use when the user asks for /story or an ancestor's life told as a readable narrative, keeping records, inference and invented scenes apart. Not for finding records or proving facts."
 ---
 
 # Tell a Family Story

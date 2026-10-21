@@ -1,6 +1,6 @@
 ---
 name: genealogy-identity-resolution
-description: "Determine whether historical record mentions refer to the same person and manage competing candidates. Use for common names, aliases, migration, conflicting ages, duplicate profiles or proposed merges."
+description: "Use when genealogy-mode or the user must decide whether record mentions are the same person: common names, aliases, merges. Not for relationships between known people."
 disable-model-invocation: true
 ---
 

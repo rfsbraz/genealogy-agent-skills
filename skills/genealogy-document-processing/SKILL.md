@@ -1,6 +1,6 @@
 ---
 name: genealogy-document-processing
-description: "Maintain a document and page processing ledger, distinguish extraction from quick and detailed reading, and queue bounded rereading jobs against a supplied token budget. Use for long documents, processing history, interrupted runs and scheduled transcription upgrades."
+description: "Use when genealogy-mode or the user needs a page ledger or rereading queue for long or interrupted documents under a token budget. Not for reading the handwriting itself."
 disable-model-invocation: true
 ---
 
