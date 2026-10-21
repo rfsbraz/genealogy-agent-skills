@@ -1,6 +1,6 @@
 {
   "suite": "genealogy-agent-skills",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "skill_count": 27,
   "reused_unchanged": [],
   "runtime": "Python 3.10+; local helpers only. Models, quotas and timers supplied by host.",
