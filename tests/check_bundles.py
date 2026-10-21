@@ -119,7 +119,7 @@ class BundleFrontmatter(BuiltBundles):
                 source = (ROOT / 'skills' / name / 'SKILL.md').read_text(encoding='utf-8').split('---', 2)
                 built = (self.bundle(name) / 'SKILL.md').read_text(encoding='utf-8').split('---', 2)
                 self.assertEqual([l for l in source[1].splitlines() if not l.startswith('disable-model-invocation:')],
-                                 built[1].splitlines())
+                                 [l for l in built[1].splitlines() if not l.startswith('  version: ')])
 
 
 if __name__ == '__main__':

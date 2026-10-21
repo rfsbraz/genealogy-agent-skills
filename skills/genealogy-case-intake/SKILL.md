@@ -1,6 +1,9 @@
 ---
 name: genealogy-case-intake
 description: "Use when genealogy-mode hands off a new case, an imported tree or a new collection: audits starting evidence and sets research questions. Not for opening a case, which genealogy-mode does."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

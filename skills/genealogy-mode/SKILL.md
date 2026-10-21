@@ -1,6 +1,10 @@
 ---
 name: genealogy-mode
 description: "Use when the user wants to start a genealogy case, research ancestors or descendants, or resume family-history work; plans and routes to specialists. Not for code trees or DNA kit shopping."
+license: MIT
+compatibility: "Python 3.10+ for the local case helpers (standard library only)."
+metadata:
+  author: Rodrigo Braz
 ---
 
 # Research Your Family History

@@ -70,6 +70,10 @@ python scripts/run_host_validators.py dist/release \
 
 The tool versions are pinned in `scripts/install_host_validators.sh`. The Release workflow runs the same checks before it uploads the assets.
 
+## Optional frontmatter fields
+
+Every `SKILL.md` sets `license: MIT` and `metadata.author`. Skills that need more than the agent itself say so in `compatibility` (at most 500 characters): the Python version and packages for skills with scripts, network access for the discovery skills, and a mail tool for archive correspondence. Do not add `metadata.version` to a `SKILL.md`. The packaging build adds it to each bundle from `.release-please-manifest.json`, the file release-please bumps, because a version inside `SKILL.md` would change files that `manifest.json` checksums on every release PR. `tests/check_spec_fields.py` checks these rules.
+
 ## Skill descriptions
 
 Each `description` in a `SKILL.md` frontmatter starts with "Use when", is written in the third person, names a near miss with "Not for", and stays within 200 characters, the claude.ai limit. Specialist skills start with "Use when genealogy-mode or the user", so they do not take requests from `genealogy-mode` on hosts that let every skill load on its own. `tests/check_skill_routing.py` checks these rules.

@@ -1,6 +1,9 @@
 ---
 name: genealogy-historical-translation
 description: "Use when genealogy-mode or the user needs an old record translated with its legal, religious and kinship terms kept exact. Not for reading handwriting or modern text."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: genealogy-locality-research
 description: "Use when genealogy-mode or the user needs a historical place resolved to its jurisdictions, institutions and record practices. Not for finding the records held there."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

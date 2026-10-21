@@ -1,6 +1,10 @@
 ---
 name: genealogy-source-discovery
 description: "Use when genealogy-mode or the user needs collections, volumes or entries found for an open question in catalogues and indexes. Not for mapping a new country's sources."
+license: MIT
+compatibility: "Network access to search catalogues, indexes and finding aids."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

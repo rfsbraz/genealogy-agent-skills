@@ -1,6 +1,9 @@
 ---
 name: genealogy-transcribe-detailed
 description: "Use when genealogy-mode or the user needs a diplomatic reading of chosen pages using four distinct handwriting methods. Not for a fast first pass, which transcribe-quick does."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: genealogy-research-planner
 description: "Use when genealogy-mode or the user needs the next search chosen, competing explanations tested or a stalled case unblocked. Not for running the searches themselves."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

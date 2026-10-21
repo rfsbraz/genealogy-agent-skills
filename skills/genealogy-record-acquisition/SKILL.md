@@ -1,6 +1,10 @@
 ---
 name: genealogy-record-acquisition
 description: "Use when genealogy-mode or the user needs a record downloaded, browsed page by page or ordered, with provenance kept. Not for deciding which collection to search."
+license: MIT
+compatibility: "Network access to download or browse records."
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

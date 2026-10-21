@@ -1,6 +1,10 @@
 ---
 name: genealogy-interview
 description: "Use when the user says 'start my tree', 'interview me' or /tree: builds a first family tree one question at a time. Not for searching records, which genealogy-mode handles."
+license: MIT
+compatibility: "Python 3.10+ for the interview helper (standard library only)."
+metadata:
+  author: Rodrigo Braz
 ---
 
 # Start a Tree by Talking

@@ -1,6 +1,9 @@
 ---
 name: genealogy-genetic-evidence
 description: "Use when genealogy-mode or the user brings consented DNA results to a kinship or ancestry question. Not for choosing a DNA test or for questions with no DNA data."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: genealogy-family-reconstruction
 description: "Use when genealogy-mode or the user needs households, kinship or community networks rebuilt from linked evidence. Not for deciding if two mentions are one person."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 

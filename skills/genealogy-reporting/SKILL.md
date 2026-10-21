@@ -1,6 +1,9 @@
 ---
 name: genealogy-reporting
 description: "Use when genealogy-mode or the user wants findings written up as cited reports, timelines, trees or handoffs. Not for literary life stories, which genealogy-narrative writes."
+license: MIT
+metadata:
+  author: Rodrigo Braz
 disable-model-invocation: true
 ---
 
