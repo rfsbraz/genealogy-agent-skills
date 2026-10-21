@@ -57,6 +57,7 @@ jobs:
           python tests/check_install_docs.py
           python tests/check_interview_narrative.py
           python tests/check_repository_routes.py
+          python tests/check_gap_finder.py
           python tests/check_commands.py
           python tests/check_antigravity.py
           python tests/check_v141.py
