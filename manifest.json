@@ -634,8 +634,8 @@
       "bytes": 306
     },
     "skills/genealogy-research-planner/SKILL.md": {
-      "sha256": "7d185ee833fa417d58ad47b88e43103e33a6e06373b2a38701fcf8f0f2f5eb8c",
-      "bytes": 4824
+      "sha256": "c4be00169aac8fc39bb1dd889949efd492980469d77055f63c30d6499340498d",
+      "bytes": 5486
     },
     "skills/genealogy-research-planner/agents/openai.yaml": {
       "sha256": "d4000375cca0cfa65ac2d3bf3f844b1f6ac587c1e8c09e21d331b29672c63ca3",
@@ -644,6 +644,22 @@
     "skills/genealogy-research-planner/assets/research-plan-template.md": {
       "sha256": "7c983e4e456e295bff4c0a47739c0ff2cf4244baac60aa37d5d728feb972d6b6",
       "bytes": 792
+    },
+    "skills/genealogy-research-planner/assets/source-registry-template.json": {
+      "sha256": "ac0112cf6698a3a59fb5deba3e9793b40c0d7f84bcf889c01d0059613488f009",
+      "bytes": 1039
+    },
+    "skills/genealogy-research-planner/assets/source-registry.schema.json": {
+      "sha256": "63585aaa5543685a7f303022c016ee4fde3f847b9f80cb5f4e3fa464eb1d7726",
+      "bytes": 3442
+    },
+    "skills/genealogy-research-planner/references/source-registry.md": {
+      "sha256": "ce49c95c76879ba165fcfeff83c568f2f31f2cd975ef56906812679b74853562",
+      "bytes": 4538
+    },
+    "skills/genealogy-research-planner/scripts/gap_finder.py": {
+      "sha256": "638fb93799f34b2b72390dc18be3be389a03d023fcf208fbc98ca07fd0b102b4",
+      "bytes": 27667
     },
     "skills/genealogy-source-discovery/SKILL.md": {
       "sha256": "c876efcec3598b2bdbe5a083b5a7e79200dbd51bd848e85f7b180faa4697cc31",
@@ -692,6 +708,10 @@
     "tests/check_examples_v14.py": {
       "sha256": "7ec264bc550f3d26f587043917e1dea6e75917ab2ee2c688c9c920716dc0758e",
       "bytes": 3213
+    },
+    "tests/check_gap_finder.py": {
+      "sha256": "ab1ae5cbd710e2490c62d7a15d253690340cbe4af46496397462dc50526e61bf",
+      "bytes": 9432
     },
     "tests/check_gps_countries.py": {
       "sha256": "63cb3f984f8dc6471ebc1baca5091e43619020b9b2fb7aa6d25579aced2d80d6",
@@ -812,6 +832,14 @@
     "tests/check_v143.py": {
       "sha256": "6a67cd06ea702d96db29727f68e11bcf1b424bf9ee38ea45147feca5c67ef510",
       "bytes": 13717
+    },
+    "tests/fixtures/gap-finder/case.json": {
+      "sha256": "6e85a6817304b54f21bb181983f02556f404b572c8771fadb9c91c4ad66171a9",
+      "bytes": 10841
+    },
+    "tests/fixtures/gap-finder/registry/XF.json": {
+      "sha256": "867cfc22ae3d27ea8061e96e1395d5fef2b45a6aaf385a1d1859b86f5bf2a044",
+      "bytes": 1611
     },
     "tests/fixtures/line_confidence_cases.json": {
       "sha256": "ba281bbe9a681921e7bc3447f87bcbb099ace8e840ce34d6cd5d5916ba75c97e",

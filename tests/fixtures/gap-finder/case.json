@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.2",
+  "case_id": "C-GAP-FIXTURE",
+  "revision": 1,
+  "goal": "Find the parents of Ana Exemplar (fictional)",
+  "active_question_id": "Q-1",
+  "authorization": {
+    "send_mail": false,
+    "paid_orders": false,
+    "public_sharing": false,
+    "evidence": []
+  },
+  "checkpoint": {
+    "next_action": "Review the supplied evidence and choose one useful next step."
+  },
+  "questions": [
+    {
+      "id": "Q-1",
+      "text": "Find the parents of Ana Exemplar (fictional)",
+      "status": "active"
+    }
+  ],
+  "persons": [
+    {
+      "id": "P-ANA",
+      "label": "Ana Exemplar",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    },
+    {
+      "id": "P-RUI",
+      "label": "Rui Exemplar",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    },
+    {
+      "id": "P-LUIS",
+      "label": "Luís Exemplar",
+      "identity_status": "candidate",
+      "life_status": "unknown"
+    }
+  ],
+  "mentions": [],
+  "relationships": [
+    {
+      "id": "REL-SPOUSE",
+      "from_person_id": "P-RUI",
+      "to_person_id": "P-ANA",
+      "type": "spouse",
+      "status": "provisional",
+      "conclusion_id": "CON-SPOUSE"
+    },
+    {
+      "id": "REL-ANA-LUIS",
+      "from_person_id": "P-ANA",
+      "to_person_id": "P-LUIS",
+      "type": "parent",
+      "status": "provisional",
+      "conclusion_id": "CON-ANA-LUIS"
+    },
+    {
+      "id": "REL-RUI-LUIS",
+      "from_person_id": "P-RUI",
+      "to_person_id": "P-LUIS",
+      "type": "parent",
+      "status": "provisional",
+      "conclusion_id": "CON-RUI-LUIS"
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-ANA-BIRTH",
+      "type": "birth",
+      "observation_ids": [
+        "OBS-ANA-BIRTH"
+      ],
+      "participant_ids": [
+        "P-ANA"
+      ],
+      "place_id": "PL-VILA"
+    },
+    {
+      "id": "EV-RUI-BIRTH",
+      "type": "birth",
+      "observation_ids": [
+        "OBS-RUI-BIRTH"
+      ],
+      "participant_ids": [
+        "P-RUI"
+      ],
+      "place_id": "PL-PORTO"
+    },
+    {
+      "id": "EV-RUI-DEATH",
+      "type": "death",
+      "observation_ids": [
+        "OBS-RUI-DEATH"
+      ],
+      "participant_ids": [
+        "P-RUI"
+      ],
+      "place_id": "PL-PORTO"
+    },
+    {
+      "id": "EV-LUIS-BAPT",
+      "type": "baptism",
+      "observation_ids": [
+        "OBS-LUIS-BAPT"
+      ],
+      "participant_ids": [
+        "P-LUIS"
+      ],
+      "place_id": "PL-VILA"
+    }
+  ],
+  "places": [
+    {
+      "id": "PL-VILA",
+      "literal": "Vila Inventada, Fictland",
+      "candidates": []
+    },
+    {
+      "id": "PL-PORTO",
+      "literal": "Porto Imaginário, Fictland",
+      "candidates": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "S-TREE",
+      "title": "Synthetic family tree file",
+      "source_type": "authored",
+      "derived_from": []
+    },
+    {
+      "id": "S-REG",
+      "title": "Synthetic parish book, Vila Inventada",
+      "source_type": "image",
+      "derived_from": []
+    }
+  ],
+  "citations": [
+    {
+      "id": "CIT-TREE",
+      "source_id": "S-TREE",
+      "locator": "Tree file",
+      "text": "Synthetic family tree file."
+    },
+    {
+      "id": "CIT-REG",
+      "source_id": "S-REG",
+      "locator": "Book 3, folio 12",
+      "text": "Synthetic parish book, Vila Inventada, book 3, folio 12, entry 4."
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-ANA-BIRTH",
+      "source_id": "S-TREE",
+      "citation_id": "CIT-TREE",
+      "locator": "Tree file",
+      "subject_id": "P-ANA",
+      "statement": "The tree gives Ana a birth about 1880 at Vila Inventada.",
+      "predicate": "birth_date",
+      "value": {
+        "literal": "ABT 1880",
+        "kind": "approximate",
+        "earliest": "1880",
+        "latest": "1880"
+      },
+      "place_id": "PL-VILA",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "imported_tree"
+    },
+    {
+      "id": "OBS-RUI-BIRTH",
+      "source_id": "S-TREE",
+      "citation_id": "CIT-TREE",
+      "locator": "Tree file",
+      "subject_id": "P-RUI",
+      "statement": "The tree gives Rui a birth in 1874 at Porto Imaginário.",
+      "predicate": "birth_date",
+      "value": {
+        "literal": "1874",
+        "kind": "year",
+        "earliest": "1874",
+        "latest": "1874"
+      },
+      "place_id": "PL-PORTO",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "imported_tree"
+    },
+    {
+      "id": "OBS-RUI-DEATH",
+      "source_id": "S-TREE",
+      "citation_id": "CIT-TREE",
+      "locator": "Tree file",
+      "subject_id": "P-RUI",
+      "statement": "The tree gives Rui a death in 1931 at Porto Imaginário.",
+      "predicate": "death_date",
+      "value": {
+        "literal": "1931",
+        "kind": "year",
+        "earliest": "1931",
+        "latest": "1931"
+      },
+      "place_id": "PL-PORTO",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "imported_tree"
+    },
+    {
+      "id": "OBS-LUIS-BAPT",
+      "source_id": "S-REG",
+      "citation_id": "CIT-REG",
+      "locator": "Book 3, folio 12",
+      "subject_id": "P-LUIS",
+      "statement": "Luís was baptised on 2 May 1905 at Vila Inventada.",
+      "predicate": "baptism_date",
+      "value": {
+        "literal": "2 MAY 1905",
+        "kind": "exact",
+        "earliest": "1905-05-02",
+        "latest": "1905-05-02"
+      },
+      "place_id": "PL-VILA",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "original_record"
+    },
+    {
+      "id": "OBS-SPOUSE",
+      "source_id": "S-TREE",
+      "citation_id": "CIT-TREE",
+      "locator": "Tree file",
+      "subject_id": "P-RUI",
+      "statement": "The tree links P-RUI and P-ANA as spouse.",
+      "predicate": "spouse",
+      "value": null,
+      "object_person_id": "P-ANA",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "imported_tree"
+    },
+    {
+      "id": "OBS-ANA-LUIS",
+      "source_id": "S-TREE",
+      "citation_id": "CIT-TREE",
+      "locator": "Tree file",
+      "subject_id": "P-ANA",
+      "statement": "The tree links P-ANA and P-LUIS as parent.",
+      "predicate": "parent",
+      "value": null,
+      "object_person_id": "P-LUIS",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "imported_tree"
+    },
+    {
+      "id": "OBS-RUI-LUIS",
+      "source_id": "S-TREE",
+      "citation_id": "CIT-TREE",
+      "locator": "Tree file",
+      "subject_id": "P-RUI",
+      "statement": "The tree links P-RUI and P-LUIS as parent.",
+      "predicate": "parent",
+      "value": null,
+      "object_person_id": "P-LUIS",
+      "uncertainty": "Synthetic fixture.",
+      "evidence_class": "imported_tree"
+    }
+  ],
+  "hypotheses": [],
+  "conclusions": [
+    {
+      "id": "CON-ANA-BIRTH",
+      "question_id": "Q-1",
+      "claim": "The tree gives Ana a birth about 1880 at Vila Inventada.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ANA-BIRTH"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-RUI-BIRTH",
+      "question_id": "Q-1",
+      "claim": "The tree gives Rui a birth in 1874 at Porto Imaginário.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-RUI-BIRTH"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-RUI-DEATH",
+      "question_id": "Q-1",
+      "claim": "The tree gives Rui a death in 1931 at Porto Imaginário.",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-RUI-DEATH"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-LUIS-BAPT",
+      "question_id": "Q-1",
+      "claim": "Luís was baptised on 2 May 1905 at Vila Inventada.",
+      "status": "source_supported",
+      "observation_ids": [
+        "OBS-LUIS-BAPT"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": [],
+      "evidence_assessment": {
+        "basis": "Read in the synthetic register image.",
+        "scope": "Baptism date and place only.",
+        "reviewer": "fixture",
+        "reviewed_on": "2026-10-21",
+        "known_conflicts": [],
+        "limitations": "Synthetic."
+      }
+    },
+    {
+      "id": "CON-SPOUSE",
+      "question_id": "Q-1",
+      "claim": "P-RUI spouse P-ANA (tree).",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-SPOUSE"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-ANA-LUIS",
+      "question_id": "Q-1",
+      "claim": "P-ANA parent P-LUIS (tree).",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-ANA-LUIS"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": []
+    },
+    {
+      "id": "CON-RUI-LUIS",
+      "question_id": "Q-1",
+      "claim": "P-RUI parent P-LUIS (tree).",
+      "status": "provisional",
+      "observation_ids": [
+        "OBS-RUI-LUIS"
+      ],
+      "rationale": "Synthetic fixture.",
+      "depends_on": []
+    }
+  ],
+  "searches": [
+    {
+      "id": "SEARCH-ANA-BAPT",
+      "question_id": "Q-1",
+      "target": "Baptism of Ana Exemplar",
+      "method": "Browsed the Vila Inventada baptism book page by page",
+      "coverage": "1874 to 1886, every page",
+      "outcome": "no_match",
+      "gaps": [],
+      "source_id": "XF-PARISH",
+      "record_types": [
+        "baptism"
+      ],
+      "person_ids": [
+        "P-ANA"
+      ],
+      "years": [
+        1874,
+        1886
+      ]
+    },
+    {
+      "id": "SEARCH-RUI-DEATH",
+      "question_id": "Q-1",
+      "target": "Death notice for Rui Exemplar",
+      "method": "Newspaper index search by surname",
+      "coverage": "none; the index was offline",
+      "outcome": "inaccessible",
+      "gaps": [
+        "whole range"
+      ],
+      "source_id": "XF-NEWS",
+      "record_types": [
+        "death"
+      ],
+      "person_ids": [
+        "P-RUI"
+      ],
+      "years": [
+        1925,
+        1940
+      ]
+    },
+    {
+      "id": "SEARCH-COUPLE-MARR",
+      "question_id": "Q-1",
+      "target": "Marriage of Rui and Ana",
+      "method": "Tried to open the Vila Inventada marriage book images",
+      "coverage": "none; the images for these years are missing",
+      "outcome": "inaccessible",
+      "gaps": [
+        "1880 to 1910"
+      ],
+      "source_id": "XF-PARISH",
+      "record_types": [
+        "marriage"
+      ],
+      "person_ids": [
+        "P-RUI",
+        "P-ANA"
+      ],
+      "years": [
+        1890,
+        1905
+      ],
+      "coverage_gap": {
+        "record_types": [
+          "marriage"
+        ],
+        "places": [
+          "Vila Inventada"
+        ],
+        "from_year": 1880,
+        "to_year": 1910,
+        "note": "The marriage book images for 1880 to 1910 are missing online (synthetic)."
+      }
+    }
+  ],
+  "tasks": [],
+  "repositories": [],
+  "holdings": [],
+  "correspondence": [],
+  "changes": []
+}
