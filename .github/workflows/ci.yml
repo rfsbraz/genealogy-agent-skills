@@ -67,6 +67,7 @@ jobs:
           python tests/check_release_assets.py
           python tests/check_host_validators.py
           python tests/check_spec_fields.py
+          python tests/check_install_smoke.py
       - name: Reading panel tests
         run: |
           for test in tests/check_panel_*.py; do

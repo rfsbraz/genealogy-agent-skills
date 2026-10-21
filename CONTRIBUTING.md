@@ -70,6 +70,16 @@ python scripts/run_host_validators.py dist/release \
 
 The tool versions are pinned in `scripts/install_host_validators.sh`. The Release workflow runs the same checks before it uploads the assets.
 
+## Install smoke test
+
+The Install smoke workflow installs the plugin from the checkout with each host's own CLI, the way users do: `claude plugin marketplace add` and `claude plugin install`, `gemini extensions install`, `codex plugin marketplace add` and `codex plugin add`, and `npx skills add`. It then checks that the host lists the plugin as enabled at the version in `.release-please-manifest.json`, that it sees every skill (and, for Claude Code, the `tree` and `story` commands), and that every relative link in the installed copy resolves. It runs on pull requests, on main and nightly, on GitHub-hosted runners. None of the steps sign in or call a model, so it needs no secrets. To run it locally (needs Node.js 22.20 or newer and npm):
+
+```sh
+python scripts/smoke_install.py claude --tools /tmp/smoke-tools
+```
+
+Use `gemini`, `codex` or `skills` for the other hosts, or `--cli PATH` to use a CLI you already have. Each run uses a throwaway `HOME`, so it leaves your own host settings alone. The CLI versions are pinned in `scripts/smoke_install.py`; Claude Code uses the pin from `scripts/install_host_validators.sh`. Antigravity is not covered yet.
+
 ## Optional frontmatter fields
 
 Every `SKILL.md` sets `license: MIT` and `metadata.author`. Skills that need more than the agent itself say so in `compatibility` (at most 500 characters): the Python version and packages for skills with scripts, network access for the discovery skills, and a mail tool for archive correspondence. Do not add `metadata.version` to a `SKILL.md`. The packaging build adds it to each bundle from `.release-please-manifest.json`, the file release-please bumps, because a version inside `SKILL.md` would change files that `manifest.json` checksums on every release PR. `tests/check_spec_fields.py` checks these rules.
