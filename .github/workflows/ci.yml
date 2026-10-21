@@ -45,6 +45,7 @@ jobs:
           python tests/check_v14.py
           python tests/check_source_supported.py
           python tests/check_gedcom.py
+          python tests/check_gedcom_export.py
           python tests/check_reread_story.py
           python tests/check_examples_v14.py
           python tests/check_host_adapter.py

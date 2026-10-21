@@ -334,8 +334,8 @@
       "bytes": 2048
     },
     "skills/genealogy-mode/references/data-model.md": {
-      "sha256": "8580abc1865f6b592df1eb2e7968ff034ab34eb7433ac1d0ade1efcacbb23989",
-      "bytes": 8884
+      "sha256": "286993b54646cbddbc5acfa94fd9ea10d56c7b274fa84c00919676ee303da8b0",
+      "bytes": 8972
     },
     "skills/genealogy-mode/references/easy-use.md": {
       "sha256": "149414a258407a984e3adbe73c3d3ce8a5f98abb549b4a5f169ba638f526ee83",
@@ -366,16 +366,16 @@
       "bytes": 2800
     },
     "skills/genealogy-mode/references/tool-contracts.md": {
-      "sha256": "29acbfd1601e3b0b4f2ddb58de47f649b679bb60bbe980b012f113e62d2100fc",
-      "bytes": 7297
+      "sha256": "e436fed9c6eb08dcf582a3430d24a1d798936e9fce02085b1eefc64646b9c0e2",
+      "bytes": 7900
     },
     "skills/genealogy-mode/scripts/case_tools.py": {
       "sha256": "f9f6da2b354b299d3a45f7da118c157e41f357af0c7494e1af70a3b756001353",
       "bytes": 12437
     },
     "skills/genealogy-mode/scripts/gedcom_tools.py": {
-      "sha256": "af331a097eecc1a6631e1dbedce351724ee18431c102b9b99f4b54f14eff916d",
-      "bytes": 28203
+      "sha256": "bcfeaa06e4c3e419e338c317630127fbdd5d5ca78696fe263df3c920f666e18c",
+      "bytes": 42149
     },
     "skills/genealogy-mode/scripts/gps_review.py": {
       "sha256": "c98e7d0b712de61fb168694d0071ba5cce30709e5a16bc1c5442b7eb6e832360",
@@ -598,8 +598,8 @@
       "bytes": 314
     },
     "skills/genealogy-reporting/SKILL.md": {
-      "sha256": "27fe2e333c8fc0f7fc2b6999e2539c8a29e0d4b66fd9de5503c5cb5a1b42d6a1",
-      "bytes": 5119
+      "sha256": "7c279ce48a3ebc355614a69866d3f66c7ae78f75a22fd92fc8156113ce6b7842",
+      "bytes": 5419
     },
     "skills/genealogy-reporting/agents/openai.yaml": {
       "sha256": "9fd2b244ed60a90fad2bcd73e78b0be1bdc26610d4bbdb5b8b1193a5262666cf",
@@ -700,6 +700,10 @@
     "tests/check_gedcom.py": {
       "sha256": "9bcf61e65b49550a405516582d5ddf7b0dc944ec6bee4ed7fd3b76174356020d",
       "bytes": 9814
+    },
+    "tests/check_gedcom_export.py": {
+      "sha256": "a2e0435046445ba2e35bc62e657d1ecc023bfba771f7e2af19ec55995ba9a343",
+      "bytes": 7905
     },
     "tests/check_gps_countries.py": {
       "sha256": "63cb3f984f8dc6471ebc1baca5091e43619020b9b2fb7aa6d25579aced2d80d6",
