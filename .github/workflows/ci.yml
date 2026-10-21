@@ -52,6 +52,7 @@ jobs:
           python tests/check_evaluation_layout.py
           python tests/check_skill_routing.py
           python tests/check_gps_countries.py
+          python tests/check_install_docs.py
           python tests/check_interview_narrative.py
           python tests/check_repository_routes.py
           python tests/check_commands.py

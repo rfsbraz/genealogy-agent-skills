@@ -705,6 +705,10 @@
       "sha256": "b236b0c0ba4f8bb477f804a434d078e2aaf47383e35f5313e60e7e70d05f1516",
       "bytes": 5074
     },
+    "tests/check_install_docs.py": {
+      "sha256": "8dd39e720ede654378e0f9c513853c9f2a6801faf7e0f7d7c3d74de7a7db5019",
+      "bytes": 1342
+    },
     "tests/check_interview_narrative.py": {
       "sha256": "15a3b070138d10f51b482e7006cae8e4a1596b0869d3c21e8ca8e4cd8cb99591",
       "bytes": 9984
