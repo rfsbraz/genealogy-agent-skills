@@ -46,6 +46,8 @@ python scripts/package_skills.py
 
 This writes one folder per skill to `dist/skills/<name>/`. Each one carries a copy of the files it links to from other skills under `shared/<skill>/`, with the links rewritten. The build also drops frontmatter keys that the Agent Skills spec does not allow, such as `disable-model-invocation`, because claude.ai rejects an upload that has them. Keep that key in `skills/`: Claude Code and Cursor use it to stop specialist skills loading on their own. `tests/check_bundles.py` checks that every relative link in every bundle resolves inside that bundle and that bundles carry only spec keys. Edit the files under `skills/`, never the copies in `dist/`, which is not committed.
 
+`python scripts/package_skills.py --release` also writes the release assets to `dist/release/`: one claude.ai zip per skill, `genealogy-skills-claude-ai.zip` with all of them, `genealogy-plugin.zip` with the plugin, and `SHA256SUMS`. It checks the zips before writing the checksums. The Release workflow runs the same command when release-please creates a release and uploads the files to it with `gh release upload`. `tests/check_release_assets.py` covers the assets.
+
 If you add, remove or change a file under `skills/`, `evaluation/` or `tests/`, or change `install.py`, `validate_package.py` or `genealogy.py`, regenerate the manifest and commit it:
 
 ```sh
