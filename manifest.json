@@ -410,8 +410,8 @@
       "bytes": 4199
     },
     "skills/genealogy-narrative/scripts/story_tools.py": {
-      "sha256": "7b58acbec763056ca07592ef24ffaaead0d2b7bdeb066d06afcb0f00edc03e17",
-      "bytes": 10755
+      "sha256": "ca4c2a22e65abee29feea8918ed2e0422c9fb0d902b0a475c6acc97a9dbc41e8",
+      "bytes": 10979
     },
     "skills/genealogy-oral-history/SKILL.md": {
       "sha256": "10b0f471ed3b2fb152fae1213819f96cc67f54ec9920df45429ed3b87f790c13",
@@ -668,6 +668,10 @@
     "skills/genealogy-transcribe-quick/agents/openai.yaml": {
       "sha256": "677bc88c562835bb9ddca0c729c1cbb38b005725a54d521884c7c1804fc71064",
       "bytes": 267
+    },
+    "tests/check_bundles.py": {
+      "sha256": "544a588d894506b8456dc3113164d53e6ec37ce0222014bb45d8493e6557ea12",
+      "bytes": 3866
     },
     "tests/check_commands.py": {
       "sha256": "dc56ab91c81ff4ddf7ac4774a52b80bc22445d3d6d2c203cc8781314cbc8b8d0",

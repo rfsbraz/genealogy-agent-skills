@@ -7,7 +7,11 @@ from pathlib import Path
 import sys
 
 SKILL = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(SKILL.parent / 'genealogy-mode/scripts'))
+# Plugin installs keep genealogy-mode next to this skill; a single-skill bundle carries a copy under shared/.
+for helpers in (SKILL / 'shared/genealogy-mode/scripts', SKILL.parent / 'genealogy-mode/scripts'):
+    if helpers.is_dir():
+        sys.path.insert(0, str(helpers))
+        break
 from case_tools import check_shape, validate_case
 from gps_review import evidence_digest
 
