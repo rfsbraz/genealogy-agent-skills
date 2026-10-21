@@ -88,6 +88,10 @@ Every `SKILL.md` sets `license: MIT` and `metadata.author`. Skills that need mor
 
 Each `description` in a `SKILL.md` frontmatter starts with "Use when", is written in the third person, names a near miss with "Not for", and stays within 200 characters, the claude.ai limit. Specialist skills start with "Use when genealogy-mode or the user", so they do not take requests from `genealogy-mode` on hosts that let every skill load on its own. `tests/check_skill_routing.py` checks these rules.
 
+## Plugin evals
+
+`evals/` is a `claude plugin eval` suite: trigger cases and the benchmark cases. Running it calls a paid model, so CI only runs `python tests/check_evals.py`, which needs no account. If you change the benchmark, run `python scripts/build_evals.py` and commit the result. If you change a skill description, add or adjust a `trigger-*` case in `scripts/build_evals.py`. Commands and the cost estimate are in [docs/VALIDATION.md](docs/VALIDATION.md#plugin-evals).
+
 ## Privacy check
 
 CI also runs `python scripts/privacy_scan.py`. It looks for email addresses, phone numbers and home folder paths, plus extra terms from a repository secret. GitHub does not pass secrets to pull requests from forks, so a pull request from a fork only gets the built-in checks. Run `python scripts/privacy_scan.py` locally to get the same built-in result. The full scan runs again on `main` after merging.

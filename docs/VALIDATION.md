@@ -1,5 +1,32 @@
 > For the v1.4.1 changes, the regression tests are in `tests/check_v14.py` (rereads, source-supported findings, projections), `tests/check_v141.py` (method packets and report checks), `tests/check_reading_rules.py`, `tests/check_source_supported.py`, `tests/check_reread_story.py` and `tests/check_examples_v14.py`. Earlier releases are covered by `tests/check_helpers.py`, `tests/check_document_queue.py`, `tests/check_gps_countries.py` and `tests/check_interview_narrative.py`. The entries below retain the original v1/v1.1 validation history.
 
+## Plugin evals
+
+`evals/` holds a suite for `claude plugin eval`. It has not been run yet, because every run calls a paid model. The free part runs in CI: `tests/check_evals.py` checks the case files, keeps the quality cases in sync with the benchmark, and runs each regex grader in Python against a correct result and a wrong one.
+
+- `trigger-*` (20 cases, tag `trigger`): 10 requests that should load `genealogy-mode`, `genealogy-interview` or `genealogy-narrative`, and 10 near misses (code trees, DNA kit prices, job interviews, fiction) that should load none. Every case also fails if Claude calls a specialist skill directly, since those load only through the coordinator.
+- `quality-*` (10 cases, tag `quality`): the benchmark cases from `evaluation/genealogy-evaluation`, with the task and sources in the prompt. Regex graders check each decision against the answer key (critical decisions weigh 3), the cited source IDs, and that the reply is bare JSON. Another grader fails the run if the trace mentions the answer keys folder. There are no judge graders, so grading costs nothing.
+
+Regenerate the quality cases after changing the benchmark with `python scripts/build_evals.py`. Run the suite from the repository root:
+
+```sh
+claude plugin eval . --tag trigger --ablation none --model sonnet --trust-plugin --no-publish --max-cost-usd 8
+claude plugin eval . --tag quality --model sonnet --trust-plugin --no-publish --max-cost-usd 15
+```
+
+The trigger suite runs one arm, because a with/without comparison of "did the skill load" says nothing. The quality suite runs with and without the plugin and reports the difference. Exit code 0 means every case met the threshold, 1 means one fell short, and 2 means the cost ceiling or a rejected credential stopped the run early.
+
+Estimated cost per full run, at Sonnet 5 list prices ($2 per million input tokens, $2.50 cache writes, $0.20 cache reads, $10 output; https://platform.claude.com/docs/en/about-claude/pricing). These are estimates from typical Claude Code context sizes, not measurements. The `COST` column of a real run replaces them.
+
+| Suite | Runs | Tokens per run (in / out) | Cost |
+| --- | --- | --- | --- |
+| Trigger, one arm | 20 cases x 3 = 60 | about 65k / 1k, mostly cache reads | about $4.60 |
+| Quality, with plugin | 10 x 3 = 30 | about 250k / 4k | about $6.00 |
+| Quality, without plugin | 10 x 3 = 30 | about 42k / 1.5k | about $2.10 |
+| Total | 120 | about 12.7M / 0.2M | about $13 |
+
+Haiku 4.5 ($1 input, $5 output) costs about half. `--runs 1` cuts any line to a third. Record each paid run below with the date, model, version, score, baseline and cost.
+
 ## Version 1.4.1: four reading methods
 
 - 12 checks for `method_packets.py`: scoped inputs, missing files, clue provenance, frozen destinations, same-model runs, duplicate methods, missing evidence products, shared contexts, spelling and accent differences, abstentions, round and coverage mismatches, and claimed recogniser output.
