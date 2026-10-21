@@ -5,4 +5,4 @@ max_turns: 6
 timeout_seconds: 180
 allowed_tools: [Skill, Read, Glob, Grep]
 ---
-Is a single baptism record enough to prove that Joana is Tome's daughter, or do I need more evidence?
+Is a single baptism record enough to prove that Wilhelmina is Caspar's daughter, or do I need more evidence?
