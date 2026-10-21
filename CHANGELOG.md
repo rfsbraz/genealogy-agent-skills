@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.0.1...v2.1.0) (2026-10-21)
+
+
+### Features
+
+* **antigravity:** add a native Antigravity plugin manifest ([#37](https://github.com/rfsbraz/genealogy-agent-skills/issues/37)) ([6bfceef](https://github.com/rfsbraz/genealogy-agent-skills/commit/6bfceef7759efaffa7878d37ab3edb32ac818dda)), closes [#36](https://github.com/rfsbraz/genealogy-agent-skills/issues/36)
+* **gedcom:** check GEDCOM files and import them as provisional cases ([#44](https://github.com/rfsbraz/genealogy-agent-skills/issues/44)) ([294bf75](https://github.com/rfsbraz/genealogy-agent-skills/commit/294bf75a1649993c62938dd2021317d81b9f7c0c)), closes [#43](https://github.com/rfsbraz/genealogy-agent-skills/issues/43)
+* **gedcom:** export reviewed conclusions with their sources and a loss report ([#46](https://github.com/rfsbraz/genealogy-agent-skills/issues/46)) ([88826da](https://github.com/rfsbraz/genealogy-agent-skills/commit/88826daf8204d054aaba6862f10b13f4b53cddf0)), closes [#45](https://github.com/rfsbraz/genealogy-agent-skills/issues/45)
+* **planner:** find tree gaps from a per-country source registry ([#48](https://github.com/rfsbraz/genealogy-agent-skills/issues/48)) ([f21247e](https://github.com/rfsbraz/genealogy-agent-skills/commit/f21247e750332968e5af81ff476461b1c0fbfc59)), closes [#11](https://github.com/rfsbraz/genealogy-agent-skills/issues/11)
+* **skills:** add license, compatibility and a release-stamped metadata.version ([#35](https://github.com/rfsbraz/genealogy-agent-skills/issues/35)) ([a32e5c5](https://github.com/rfsbraz/genealogy-agent-skills/commit/a32e5c513b2cfc607b701c3405a923327e2235eb))
+
 ## [2.0.1](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.0.0...v2.0.1) (2026-10-21)
 
 

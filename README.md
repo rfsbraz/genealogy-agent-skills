@@ -90,7 +90,7 @@ Never commit family data to this repository or a fork of it. That covers names, 
 
 ## About
 
-Version 2.0.1 of the skill suite: 27 skills (26 for everyday use, plus a maintainer evaluation skill) that plan a family-history investigation, find sources and archives, read records and handwriting, resolve identities and write cited conclusions. <!-- x-release-please-version -->
+Version 2.1.0 of the skill suite: 27 skills (26 for everyday use, plus a maintainer evaluation skill) that plan a family-history investigation, find sources and archives, read records and handwriting, resolve identities and write cited conclusions. <!-- x-release-please-version -->
 
 Start with the `genealogy-mode` skill. The installer and helper scripts need Python 3.10 or later, standard library only. Building manuscript reading packets with `genealogy-read-manuscripts` also needs Pillow (`pip install pillow`); summarizing their reports does not.
 
