@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "code": "ZZ",
+  "name": "Replace with the country name",
+  "note": "Template. Replace every value, and record how each coverage range was verified.",
+  "place_names": ["Replace with names that identify the country in a place, such as its name in the records' language"],
+  "sources": [
+    {
+      "id": "ZZ-EXAMPLE",
+      "name": "Replace with the source or series name",
+      "url": "https://example.org/replace-with-the-official-entry-point",
+      "record_types": ["baptism", "marriage", "burial"],
+      "coverage": [{"from_year": 1600, "to_year": 1900, "places": ["*"], "note": "State how this range was checked."}],
+      "access": {"route": "online_images", "cost": "free", "note": "Account or charges, if any."},
+      "query": {"method": "browse_by_book", "how": "Say how to search it: by catalogue, index, book or certificate order."},
+      "verification": {"checked_on": "YYYY-MM-DD", "evidence_url": "https://example.org/the-page-that-shows-the-coverage"},
+      "known_gaps": []
+    }
+  ]
+}

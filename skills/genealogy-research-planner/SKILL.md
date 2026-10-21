@@ -2,6 +2,7 @@
 name: genealogy-research-planner
 description: "Use when genealogy-mode or the user needs the next search chosen, competing explanations tested or a stalled case unblocked. Not for running the searches themselves."
 license: MIT
+compatibility: "Python 3.10+ for the gap finder (standard library only)."
 metadata:
   author: Rodrigo Braz
 disable-model-invocation: true
@@ -40,7 +41,7 @@ If a required capability is unavailable, record what was and was not done, use a
 
 ## Tools and dependencies
 
-Case and search ledger; source/repository portfolios; optional estimates of actual tool cost and available budget.
+Case and search ledger; source/repository portfolios; optional estimates of actual tool cost and available budget. For a tree with gaps, run scripts/gap_finder.py `gaps` with a source registry folder: it lists the records that should exist for each person (detail) and the searches that find parents and children (expand), skips searches the case already settled and flags paid sources for approval. See [references/source-registry.md](references/source-registry.md).
 
 ## Handoffs
 
@@ -53,6 +54,10 @@ After three name searches fail, inspect index coverage and the parish register i
 ## Bundled resources
 
 - [research-plan-template.md](assets/research-plan-template.md)
+- [source-registry.md](references/source-registry.md)
+- [gap_finder.py](scripts/gap_finder.py)
+- [source-registry.schema.json](assets/source-registry.schema.json)
+- [source-registry-template.json](assets/source-registry-template.json)
 
 ## GPS coverage and a manageable plan
 

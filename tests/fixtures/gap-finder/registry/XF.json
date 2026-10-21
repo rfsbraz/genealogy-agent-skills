@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "code": "XF",
+  "name": "Fictland",
+  "note": "Fictional country for tests. Every source, place and date range here is invented.",
+  "place_names": ["Fictland"],
+  "sources": [
+    {
+      "id": "XF-PARISH",
+      "name": "Fictland parish books (synthetic)",
+      "record_types": ["baptism", "marriage", "burial"],
+      "coverage": [{"from_year": 1600, "to_year": 1910, "places": ["*"]}],
+      "access": {"route": "online_images", "cost": "free"},
+      "query": {"method": "browse_by_book", "how": "Open the parish's book for the year and read entries in order."},
+      "known_gaps": [
+        {"record_types": ["baptism"], "places": ["Porto Imaginário"], "from_year": 1600, "to_year": 1700,
+         "note": "The early baptism books of this parish are lost (synthetic)."}
+      ]
+    },
+    {
+      "id": "XF-CIVIL",
+      "name": "Fictland civil register (synthetic)",
+      "record_types": ["birth", "marriage", "death"],
+      "coverage": [{"from_year": 1911, "to_year": null, "places": ["*"]}],
+      "access": {"route": "request", "cost": "paid"},
+      "query": {"method": "order_certificate", "how": "Order a certificate from the registry office for the place."}
+    },
+    {
+      "id": "XF-NEWS",
+      "name": "Porto Imaginário newspaper index (synthetic)",
+      "record_types": ["death", "marriage"],
+      "coverage": [{"from_year": 1850, "to_year": 1950, "places": ["Porto Imaginário"]}],
+      "access": {"route": "online_index", "cost": "account"},
+      "query": {"method": "catalogue_search", "how": "Search the index by surname and year."}
+    }
+  ]
+}
