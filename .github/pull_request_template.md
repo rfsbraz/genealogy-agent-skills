@@ -1,12 +1,13 @@
-## What and why
+## Summary
+
+<!-- One or two lines: what changes and why. -->
 
 Closes #
 
-## Contributor setup
-Which host and model did you use, and how did you install the skills?
+## Screenshots
 
-## How tested
-Commands you ran (python validate_package.py, the tests you touched) and what you checked by hand.
+<!-- UI changes only. Delete this section otherwise. -->
 
-## AI use
-Which parts were written or changed with an AI agent, and what you reviewed yourself.
+## Tested
+
+<!-- One line: what you ran, for example `python validate_package.py` and the tests you touched. -->
