@@ -107,4 +107,14 @@ A reference file over 100 lines starts with a `Contents:` line under its title t
 - Use a [Conventional Commits](https://www.conventionalcommits.org/) title with a scope, for example `fix(queue): ...` or `docs(reading): ...`. `feat` and `fix` appear in the release notes; `docs`, `test` and `chore` do not.
 - Fill in the pull request template, including the AI use section.
 
+## Low-effort and automated PRs
+
+genealogy-agent-skills is maintained in my spare time, and every PR takes real time to review. I'm happy to get contributions from people who use genealogy-agent-skills and want to make it better.
+
+I will close, without review, PRs that look like contribution farming: accounts opening many PRs across unrelated projects, or changes made mainly to collect contributions rather than to fix something you ran into. This applies even when the change itself is correct.
+
+AI-assisted PRs are fine if you've read and understood the change and can answer questions about it. Please say so in the PR.
+
+The easiest way to get a PR merged is to start with an issue, agree on the approach there, and then open the PR.
+
 By contributing you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md). Report security problems as described in [SECURITY.md](SECURITY.md), not in a public issue.
