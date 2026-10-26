@@ -3,6 +3,9 @@ import hashlib
 from pathlib import Path
 import shutil
 
+# Smallest darkening (0-255 grey levels) that counts as ink rather than paper grain.
+MIN_INK_DIP = 20
+
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -76,6 +79,28 @@ class SourcePages:
                     crop_verification='derived_from_pinned_page',supplied_crop_verified=supplied is not None)
         return result
 
+    def inked_edges(self, record, gap=2):
+        """Sides of a word box where ink runs across the edge, i.e. the box cuts a word.
+
+        A side is cut when the `gap` columns just inside and just outside it both hold
+        ink. A loose box whose blank margin abuts the next word is not cut. A column
+        holds ink when its darkest pixel falls well below its brightest (the paper),
+        scaled to the box's own stroke contrast so faint scans are judged against
+        their own ink. Page edges count as whitespace.
+        """
+        box=record['bbox_original']
+        gray=self.images[page_key(record['source_id'],record['page'])].convert('L')
+        width=gray.size[0]
+
+        def dip(x):
+            column=[gray.getpixel((x,y)) for y in range(box[1],box[3])]
+            return max(column)-min(column)
+
+        threshold=max(MIN_INK_DIP,max(dip(x) for x in range(box[0],box[2]))/2)
+        sides={'left':(range(max(0,box[0]-gap),box[0]),range(box[0],min(box[2],box[0]+gap))),
+               'right':(range(box[2],min(width,box[2]+gap)),range(max(box[0],box[2]-gap),box[2]))}
+        return [side for side,(outside,inside) in sides.items()
+                if any(dip(x)>=threshold for x in outside) and any(dip(x)>=threshold for x in inside)]
 
     def pad(self, record, fraction):
         """Re-crop a verified box with a margin taken from the pinned page, clamped to its edges."""

@@ -130,7 +130,7 @@ class TileOverlap(Base):
         data['pages'][0].update(image=name, sha256=hashlib.sha256((self.p / name).read_bytes()).hexdigest())
         target = data['targets'][0]
         target.update(bbox_original=[300, 10, 400, 90], line_bbox_original=[0, 0, 2000, 100], context_bbox_original=[0, 0, 2000, 100],
-                      anchor_bbox_original=[100, 10, 300, 90])
+                      anchor_bbox_original=[120, 10, 300, 90])
         target['same_hand_samples'][0]['bbox_original'] = [500, 10, 600, 90]
         out = self.p / 'packet'
         manifest = PACKETS.build(data, self.p, out)

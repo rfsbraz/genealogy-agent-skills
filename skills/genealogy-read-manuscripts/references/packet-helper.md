@@ -38,7 +38,7 @@ Example specification beside the images (replace hash placeholders with actual S
 }
 ```
 
-Bounds are `[left, top, right, bottom]` in original pixels, with exclusive right/bottom edges. The target must fit inside its line and context. The preceding-word anchor must fit inside the line and precede the target. At line start, omit it and set `target_at_line_start: true`. These anchor rules currently assume left-to-right text; adapt the helper for another writing direction rather than inventing a left-hand anchor.
+Bounds are `[left, top, right, bottom]` in original pixels, with exclusive right/bottom edges. The target must fit inside its line and context. The preceding-word anchor must fit inside the line and precede the target, and it must sit on word boundaries: the build fails when ink runs across its left or right edge, because the box then starts or ends inside a word. At line start, omit it and set `target_at_line_start: true`. These anchor rules currently assume left-to-right text; adapt the helper for another writing direction rather than inventing a left-hand anchor.
 
 The builder copies each page, verifies the frozen bytes against the pinned hash, then derives canonical PNG crops. Optional `target_image`, `line_image`, `context_image`, `anchor_image` and sample `image` paths must match source pixels exactly after RGBA decoding. Same-size shifted crops and JPEG recompression fail; omit optional paths to derive directly from the registered page. Full source bytes remain in coordinator `sources/`; canonical crops live in `crops/`. Worker crops are derived PNGs, not original JPEG file bytes.
 

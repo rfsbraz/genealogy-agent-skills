@@ -554,8 +554,8 @@
       "bytes": 2115
     },
     "skills/genealogy-read-manuscripts/references/packet-helper.md": {
-      "sha256": "007d4d61b5ce92e3d29a0beced9dcef65660080d198b8a1ff1fa5a92d00e9adf",
-      "bytes": 11294
+      "sha256": "133fca4d6f521255b045404a2f166667f83a2de5d4481187c19e7bf16312e9dd",
+      "bytes": 11442
     },
     "skills/genealogy-read-manuscripts/references/protocol.md": {
       "sha256": "c9d84c5ef98ddfb2a117b36daf711d86a7fcbf7f41fc669a7faaf9f501c69b7e",
@@ -578,16 +578,16 @@
       "bytes": 8021
     },
     "skills/genealogy-read-manuscripts/scripts/method_packets.py": {
-      "sha256": "af6a6373280658a42d1117f118c2ce13f24480ef8b40b12b77fb9178845f18b2",
-      "bytes": 26005
+      "sha256": "7fd99d0c64cc4566cf5f0bbf18e157354a095e67eb10a1a841682ac5384d0298",
+      "bytes": 26276
     },
     "skills/genealogy-read-manuscripts/scripts/packet_review.py": {
       "sha256": "788383e076bfdd7ff6e2d93c06a112d3879a27380722dd16764321c5d6c702d7",
       "bytes": 7451
     },
     "skills/genealogy-read-manuscripts/scripts/source_crops.py": {
-      "sha256": "ad5eccc9b6b9ac4a5031d9fad7003d762dc076bad7cc671dd8a37042d373e714",
-      "bytes": 6563
+      "sha256": "272ab22cee05b64e0d4bde5f99eec8a3df8e1948e397929ed1106d995c4e033b",
+      "bytes": 7927
     },
     "skills/genealogy-record-acquisition/SKILL.md": {
       "sha256": "8264c1725b05d918d0bc904cd020db2c79b32cf6485a2efeef07214c5262f4e9",
@@ -762,7 +762,7 @@
       "bytes": 3953
     },
     "tests/check_panel_build_output.py": {
-      "sha256": "4c216a91a785aaca022dae8eeddb7f9524a45617327b09ea31c389a844dd08e0",
+      "sha256": "4619218e12cf4c71701b0ccc7cdf3ebb4c871f14c3d7abb3a825cab41199c2bf",
       "bytes": 7737
     },
     "tests/check_panel_contexts.py": {
@@ -850,8 +850,8 @@
       "bytes": 10443
     },
     "tests/check_v143.py": {
-      "sha256": "6a67cd06ea702d96db29727f68e11bcf1b424bf9ee38ea45147feca5c67ef510",
-      "bytes": 13717
+      "sha256": "13f64d24bb5ffc0cf98bf0a6f124f9366349bad178866b9d3279b9e39c9d5a01",
+      "bytes": 14745
     },
     "tests/fixtures/gap-finder/case.json": {
       "sha256": "6e85a6817304b54f21bb181983f02556f404b572c8771fadb9c91c4ad66171a9",

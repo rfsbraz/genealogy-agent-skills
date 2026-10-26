@@ -119,6 +119,29 @@ class SourceAndGateChecks(unittest.TestCase):
         self.spec['targets'][0]['anchor_bbox_original']=[180,40,210,70]
         with self.assertRaisesRegex(ValueError,'before the target'):self.build()
 
+    def draw_words(self,*boxes):
+        page=self.p/'page1.png'
+        with Image.open(page) as im:
+            draw=ImageDraw.Draw(im)
+            for box in boxes:draw.rectangle((box[0],box[1],box[2]-1,box[3]-1),fill='black')
+            im.save(page)
+        self.spec['pages'][0]['sha256']=hashlib.sha256(page.read_bytes()).hexdigest()
+
+    def test_anchor_starting_inside_another_word_is_rejected(self):
+        self.draw_words([20,44,80,66])
+        self.spec['targets'][0]['anchor_bbox_original']=[40,40,80,70]
+        with self.assertRaisesRegex(ValueError,'word boundary'):self.build()
+        self.assertFalse((self.p/'packet').exists())
+
+    def test_anchor_ending_inside_a_word_is_rejected(self):
+        self.draw_words([20,44,80,66])
+        self.spec['targets'][0]['anchor_bbox_original']=[20,40,60,70]
+        with self.assertRaisesRegex(ValueError,'word boundary'):self.build()
+
+    def test_anchor_with_whitespace_on_both_sides_is_accepted(self):
+        self.draw_words([24,44,76,66])
+        self.build()
+
     def test_b_has_marked_position_and_neutral_preceding_word(self):
         self.build();b=self.payload('B');t=b['targets'][0]
         self.assertIsNotNone(t['anchor_asset'])
