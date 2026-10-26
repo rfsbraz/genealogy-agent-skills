@@ -1,10 +1,15 @@
 """Record a visual preflight and release only an unchanged, passed packet set."""
-from datetime import datetime
+from datetime import datetime, timezone
+import getpass
 import hashlib
 import json
 from pathlib import Path
 import shutil
+import socket
 import tempfile
+
+LOG='preflight-log.jsonl'
+REPLACED='preflight-replaced'
 
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -18,12 +23,19 @@ def safe_file(root, relative):
     return resolved
 
 
-def fingerprint(root, manifest):
+def require_schema(manifest):
     if manifest.get('schema_version')!='1.2':raise ValueError('Dispatch requires packet schema 1.2; rebuild older packets.')
+
+
+def fingerprint(root, manifest):
+    require_schema(manifest)
     for name,expected in manifest['inventory'].items():
         path=safe_file(root,name)
         if not path.is_file() or sha(path)!=expected:raise ValueError('Packet changed or missing: '+name)
-    return hashlib.sha256(json.dumps(manifest,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    return manifest_digest(manifest)
+
+
+def manifest_digest(manifest):return hashlib.sha256(json.dumps(manifest,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 
 SOURCE_QUALITY=('adequate_for_attempt','needs_better_source')
@@ -78,21 +90,85 @@ def assess(root, manifest, record):
             'limits':'This enforces a recorded operator assessment and immutable inputs, not proof that pixels were actually inspected or targets correctly understood.'}
 
 
+def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False)
+
+
+def digest_of(value):return hashlib.sha256(canonical(value).encode()).hexdigest()
+
+
+def start_log(root, manifest):
+    """Open the append-only review log at build time, so a deleted log cannot pass as a fresh packet."""
+    entry={'event':'built','sequence':0,'previous':None,'packet_id':manifest['packet_id'],'packet_digest':fingerprint(root,manifest)}
+    with (Path(root)/LOG).open('x',encoding='utf-8') as out:out.write(canonical(entry)+'\n')
+
+
+def read_log(root, manifest):
+    require_schema(manifest)
+    path=Path(root)/LOG
+    if not path.is_file() or path.is_symlink():raise ValueError('Preflight review log is missing; rebuild the packet set in a fresh directory.')
+    entries=[json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+    previous=None
+    for n,entry in enumerate(entries):
+        if entry.get('sequence')!=n or entry.get('previous')!=previous:raise ValueError('Preflight review log was edited; rebuild the packet set in a fresh directory.')
+        previous=digest_of(entry)
+    if not entries or entries[0].get('event')!='built' or entries[0].get('packet_digest')!=manifest_digest(manifest):
+        raise ValueError('Preflight review log does not belong to this packet set; rebuild it in a fresh directory.')
+    for entry in entries[1:]:
+        if entry.get('event')!='review' or entry.get('review_digest')!=review_digest(entry):
+            raise ValueError('Preflight review log was edited; rebuild the packet set in a fresh directory.')
+    return entries
+
+
+def review_digest(entry):
+    """Bind a review to its answers, its reviewer and the exact bytes of the files it inspected."""
+    return digest_of({k:entry.get(k) for k in ('packet_digest','reviewer','recorded_by','recorded_at','input_hashes','result')})
+
+
+def operator():
+    try:user=getpass.getuser()
+    except (KeyError,OSError):user='unknown'
+    return user+'@'+socket.gethostname()
+
+
 def record_preflight(manifest_path, record):
+    """Save a review. A replaced review stays in the log and in preflight-replaced/, never overwritten."""
     manifest_path=Path(manifest_path);root=manifest_path.parent
     manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+    entries=read_log(root,manifest)
     result=assess(root,manifest,record)
-    with (root/'preflight.json').open('x',encoding='utf-8') as out:json.dump(result,out,ensure_ascii=False,indent=2);out.write('\n')
-    return result
+    inspected=sorted({p for row in record['regions'] for p in row['inspected_files']})
+    entry={'event':'review','sequence':len(entries),'previous':digest_of(entries[-1]),
+           'packet_digest':result['packet_digest'],'reviewer':record['reviewed_by'],'recorded_by':operator(),
+           'recorded_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),
+           'input_hashes':{name:sha(safe_file(root,name)) for name in inspected},'result':result}
+    entry['review_digest']=review_digest(entry)
+    previous=[e for e in entries if e['event']=='review']
+    receipt=root/'preflight.json'
+    if receipt.exists():
+        kept=root/REPLACED;kept.mkdir(exist_ok=True)
+        receipt.rename(kept/('preflight-'+str(len(list(kept.iterdir()))+1).zfill(3)+'.json'))
+    with (root/LOG).open('a',encoding='utf-8') as out:out.write(canonical(entry)+'\n')
+    saved=dict(result,review_digest=entry['review_digest'],sequence=entry['sequence'],
+               replaces=previous[-1]['review_digest'] if previous else None)
+    with receipt.open('x',encoding='utf-8') as out:json.dump(saved,out,ensure_ascii=False,indent=2);out.write('\n')
+    return saved
 
 
 def dispatch(manifest_path):
     manifest_path=Path(manifest_path);root=manifest_path.parent
     manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+    entries=read_log(root,manifest)
+    reviews=[e for e in entries if e['event']=='review']
     receipt=root/'preflight.json'
-    if not receipt.is_file():raise ValueError('Dispatch blocked: record a completed preflight first.')
+    if not receipt.is_file() or not reviews:raise ValueError('Dispatch blocked: record a completed preflight first.')
+    latest=reviews[-1]
     stored=json.loads(receipt.read_text(encoding='utf-8'))
-    result=assess(root,manifest,stored.get('record'))
+    if not isinstance(stored,dict) or stored.get('review_digest')!=latest['review_digest'] or stored.get('record')!=latest['result']['record']:
+        raise ValueError('Dispatch blocked: preflight.json does not match the review log. Record a new review with record-preflight.')
+    for name,expected in latest['input_hashes'].items():
+        path=safe_file(root,name)
+        if not path.is_file() or sha(path)!=expected:raise ValueError('Packet changed since review: '+name)
+    result=assess(root,manifest,latest['result']['record'])
     if result['status']!='passed':raise ValueError('Dispatch blocked: crop/display/source-quality check failed.')
     out=root/'dispatch'
     if out.exists():raise ValueError('Dispatch already exists; use the recorded task paths or build a new packet set.')
@@ -108,7 +184,7 @@ def dispatch(manifest_path):
                 if file.parent==source:
                     shutil.copyfile(file,destination/file.name)
                     if sha(destination/file.name)!=expected:raise ValueError('Input changed during dispatch.')
-            (destination/'dispatch-receipt.json').write_text(json.dumps({'packet_id':manifest['packet_id'],'method_id':method,'packet_digest':result['packet_digest'],'preflight':'passed'},indent=2)+'\n',encoding='utf-8')
+            (destination/'dispatch-receipt.json').write_text(json.dumps({'packet_id':manifest['packet_id'],'method_id':method,'packet_digest':result['packet_digest'],'preflight':'passed','review_digest':latest['review_digest'],'replaced_reviews':len(reviews)-1},indent=2)+'\n',encoding='utf-8')
             tasks.append({'method_id':method,'prompt':str((out/source.name/'prompt.md').resolve()),
                           'inputs':str((out/source.name/'inputs.json').resolve())})
         fingerprint(root,manifest)
