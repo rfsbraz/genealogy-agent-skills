@@ -214,6 +214,7 @@ def build(spec, base, out):
         (stage/'coordinator-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         review=load_module('packet_review')
         (stage/'preflight-template.json').write_text(json.dumps(review.template(stage,manifest),indent=2)+'\n',encoding='utf-8')
+        review.start_log(stage,manifest)
         stage.rename(out)
     finally:
         if stage.exists():shutil.rmtree(stage)

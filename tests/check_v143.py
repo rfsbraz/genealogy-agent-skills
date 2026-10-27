@@ -236,9 +236,55 @@ class SourceAndGateChecks(unittest.TestCase):
         receipt=self.p/'packet/preflight.json';saved=json.loads(receipt.read_text());saved['status']='passed';receipt.write_text(json.dumps(saved))
         with self.assertRaisesRegex(ValueError,'Dispatch blocked'):self.gate.dispatch(self.manifest)
 
-    def test_preflight_cannot_be_overwritten(self):
+    def test_editing_preflight_answers_in_place_blocks_dispatch(self):
+        self.build();record=self.review();record['regions'][0]['target_complete']=False
+        self.gate.record_preflight(self.manifest,record)
+        receipt=self.p/'packet/preflight.json';saved=json.loads(receipt.read_text())
+        saved['record']['regions'][0]['target_complete']=True;receipt.write_text(json.dumps(saved))
+        with self.assertRaisesRegex(ValueError,'does not match the review log'):self.gate.dispatch(self.manifest)
+        self.assertFalse((self.p/'packet/dispatch').exists())
+
+    def test_recreated_preflight_without_a_logged_review_fails(self):
         self.build();self.pass_review()
-        with self.assertRaises(FileExistsError):self.pass_review()
+        receipt=self.p/'packet/preflight.json';forged=json.loads(receipt.read_text())
+        forged['record']['reviewed_by']='someone else';receipt.write_text(json.dumps(forged))
+        with self.assertRaisesRegex(ValueError,'does not match the review log'):self.gate.dispatch(self.manifest)
+        (self.p/'packet/preflight-log.jsonl').unlink()
+        with self.assertRaisesRegex(ValueError,'review log'):self.gate.dispatch(self.manifest)
+        with self.assertRaisesRegex(ValueError,'review log'):self.pass_review()
+        self.assertFalse((self.p/'packet/dispatch').exists())
+
+    def test_hand_written_preflight_before_any_review_fails(self):
+        self.build();result=self.gate.assess(self.p/'packet',json.loads(self.manifest.read_text()),self.review())
+        (self.p/'packet/preflight.json').write_text(json.dumps(result))
+        with self.assertRaisesRegex(ValueError,'preflight first'):self.gate.dispatch(self.manifest)
+
+    def test_editing_inspected_input_after_review_invalidates_it(self):
+        self.build();self.pass_review()
+        inspected=self.review()['regions'][0]['inspected_files'][0]
+        path=self.p/'packet'/inspected;path.write_bytes(path.read_bytes()+b' ')
+        with self.assertRaisesRegex(ValueError,'Packet changed since review: '+inspected):self.gate.dispatch(self.manifest)
+
+    def test_replaced_review_is_kept_and_dispatch_uses_the_latest(self):
+        self.build();record=self.review();record['regions'][0]['target_complete']=False
+        first=self.gate.record_preflight(self.manifest,record)
+        (self.p/'packet/preflight.json').unlink()
+        second=self.pass_review()
+        self.assertEqual(second['replaces'],first['review_digest'])
+        log=[json.loads(line) for line in (self.p/'packet/preflight-log.jsonl').read_text().splitlines()]
+        reviews=[e for e in log if e['event']=='review']
+        self.assertEqual([e['review_digest'] for e in reviews],[first['review_digest'],second['review_digest']])
+        self.assertFalse(reviews[0]['result']['record']['regions'][0]['target_complete'])
+        self.assertEqual(reviews[1]['reviewer'],'unit-test fixture')
+        self.assertIn(self.review()['regions'][0]['inspected_files'][0],reviews[1]['input_hashes'])
+        third=self.pass_review()
+        kept=sorted((self.p/'packet/preflight-replaced').iterdir())
+        self.assertEqual([json.loads(f.read_text())['review_digest'] for f in kept],[second['review_digest']])
+        self.assertEqual(third['replaces'],second['review_digest'])
+        result=self.gate.dispatch(self.manifest)
+        receipt=json.loads((Path(result['tasks'][0]['prompt']).parent/'dispatch-receipt.json').read_text())
+        self.assertEqual(receipt['review_digest'],third['review_digest'])
+        self.assertEqual(receipt['replaced_reviews'],2)
 
     def test_wrong_target_location_from_b_is_rejected(self):
         self.build();row=reports()[1];row.update(packet_id=self.m['packet_id'],source_id='S')
