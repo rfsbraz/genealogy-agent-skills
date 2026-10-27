@@ -140,6 +140,8 @@ def build(spec, base, out):
                     'sample_id':t['region_id']+'-anchor','bbox_original':anchor,'image':t.get('anchor_image')}
             for role in ('target','line','context','anchor'):
                 if records[role] is not None:records[role]=sources.crop(records[role])
+            if records['anchor'] is not None and (inked:=sources.inked_edges(records['anchor'])):
+                raise ValueError('Preceding anchor must sit on a word boundary: ink runs across its '+' and '.join(inked)+' edge, so the box starts or ends inside a word.')
             if margin:
                 for role in ('target','line'):records[role]=sources.pad(records[role],margin)
             for sample in records['samples']:
