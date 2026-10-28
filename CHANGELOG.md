@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.1.0...v2.1.1) (2026-10-28)
+
+
+### Bug Fixes
+
+* **packets:** bind preflight reviews to their inputs and keep replaced reviews ([#57](https://github.com/rfsbraz/genealogy-agent-skills/issues/57)) ([198dc44](https://github.com/rfsbraz/genealogy-agent-skills/commit/198dc44ea3aa686ab73a0252a99a492edb476fb1)), closes [#3](https://github.com/rfsbraz/genealogy-agent-skills/issues/3)
+* **packets:** reject preceding-word anchors that cut through a word ([#56](https://github.com/rfsbraz/genealogy-agent-skills/issues/56)) ([b543210](https://github.com/rfsbraz/genealogy-agent-skills/commit/b543210aa39dff90211459e78b07167ab43ee10f)), closes [#4](https://github.com/rfsbraz/genealogy-agent-skills/issues/4)
+
 ## [2.1.0](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.0.1...v2.1.0) (2026-10-21)
 
 
