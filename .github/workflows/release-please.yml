@@ -20,9 +20,14 @@ jobs:
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+          # GitHub starts no workflows for a PR opened or updated with GITHUB_TOKEN, so the release PR
+          # gets its checks only with the RELEASE_PLEASE_TOKEN personal token. Without that secret
+          # this falls back to GITHUB_TOKEN: the PR still opens and updates, its checks wait.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
 
-  # Runs in this workflow because a release created with GITHUB_TOKEN does not
-  # start other workflows, so an `on: release` workflow would never fire.
+  # Runs in this workflow rather than an `on: release` one so the assets are built
+  # whichever token made the release. A release made with the personal token would
+  # start an `on: release` workflow, one made with the GITHUB_TOKEN fallback would not.
   assets:
     needs: release-please
     if: needs.release-please.outputs.release_created == 'true'
