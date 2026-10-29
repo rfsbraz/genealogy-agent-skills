@@ -1,7 +1,7 @@
 {
   "name": "genealogy",
   "displayName": "Genealogy",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Evidence-based genealogy research skills: plan, find sources and archives, read records and handwriting, resolve identities, and write cited conclusions.",
   "logo": "assets/logo.svg",
   "suggestedPrompts": [
