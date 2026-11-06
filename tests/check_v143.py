@@ -197,7 +197,22 @@ class SourceAndGateChecks(unittest.TestCase):
     def test_resolution_limit_records_a_block_and_stops_dispatch(self):
         self.build();record=self.review();record['regions'][0]['source_quality']='needs_better_source'
         result=self.gate.record_preflight(self.manifest,record);self.assertEqual(result['status'],'blocked')
-        with self.assertRaisesRegex(ValueError,'Dispatch blocked'):self.gate.dispatch(self.manifest)
+        with self.assertRaisesRegex(ValueError,'Dispatch blocked:.*R1'):self.gate.dispatch(self.manifest)
+
+    def test_dispatch_error_names_every_blocked_region_and_excludes_passed_regions(self):
+        for region in ('R2','R3'):
+            self.spec['targets'].append(dict(copy.deepcopy(self.spec['targets'][0]),region_id=region))
+        self.build();record=self.review()
+        record['regions'][0]['target_complete']=False
+        record['regions'][2]['source_quality']='needs_better_source'
+        self.gate.record_preflight(self.manifest,record)
+        result=subprocess.run([sys.executable,str(Path(MODULE.__file__)),'dispatch',str(self.manifest)],
+                              capture_output=True,text=True)
+        self.assertEqual(result.returncode,2)
+        message=json.loads(result.stderr)['error']
+        self.assertIn('regions: R1, R3',message)
+        self.assertNotIn('R2',message)
+        self.assertFalse((self.p/'packet/dispatch').exists())
 
     def test_passed_review_releases_only_frozen_inputs_and_receipt(self):
         self.build();self.pass_review()

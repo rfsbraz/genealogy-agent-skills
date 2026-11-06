@@ -169,7 +169,9 @@ def dispatch(manifest_path):
         path=safe_file(root,name)
         if not path.is_file() or sha(path)!=expected:raise ValueError('Packet changed since review: '+name)
     result=assess(root,manifest,latest['result']['record'])
-    if result['status']!='passed':raise ValueError('Dispatch blocked: crop/display/source-quality check failed.')
+    if result['status']!='passed':
+        raise ValueError('Dispatch blocked: crop/display/source-quality check failed for regions: '
+                         +', '.join(result['blocked_regions'])+'.')
     out=root/'dispatch'
     if out.exists():raise ValueError('Dispatch already exists; use the recorded task paths or build a new packet set.')
     stage=Path(tempfile.mkdtemp(prefix='dispatch.',dir=root))
