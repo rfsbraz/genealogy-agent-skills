@@ -794,8 +794,8 @@
       "bytes": 6905
     },
     "tests/check_panel_views.py": {
-      "sha256": "09f1c7caf78809d92e6657a6caee5b2f22edd20eb16b477a7859198b3fb9ad1f",
-      "bytes": 11515
+      "sha256": "da41bd279acd975dc69715137c05deebb1e1cac5f2bc47d51456d34df36a1a40",
+      "bytes": 12006
     },
     "tests/check_queue_cli.py": {
       "sha256": "fe2dee77e804fe92f52d10a9c786835f2c4139023fd59b8d5609ec407c9e5f31",
