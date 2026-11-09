@@ -8,6 +8,7 @@ boxes), no model calls.
 """
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 import tempfile
@@ -29,6 +30,20 @@ def by_region(data, role):
     key = {'target': 'target_asset', 'line': 'line_asset', 'context': 'context_asset'}[role]
     return {row['region_id']: assets[row[key]] for row in data['targets'] if key in row}
 
+
+
+def outline_is_covered(locator, marked_size, tiles):
+    """Every pixel of the red outline, clipped to the marked line and scaled, falls in some tile."""
+    x0, y0, x1, y1 = locator['target_bbox_in_line']
+    sx, sy = tiles[0]['transform']['scale']
+    w, h = marked_size
+    box = [max(0, x0 - 2), max(0, y0 - 2), min(w, x1 + 2), min(h, y1 + 2)]
+    size = (round(w * sx), round(h * sy))
+    scaled = [int(box[0] * sx), int(box[1] * sy), min(size[0], math.ceil(box[2] * sx)), min(size[1], math.ceil(box[3] * sy))]
+    covered = Image.new('1', size, 0)
+    for t in tiles:
+        covered.paste(1, tuple(t['transform']['tile_box_in_resized']))
+    return covered.crop(scaled).getextrema() == (1, 1)
 
 class TargetViews(unittest.TestCase):
     @classmethod
@@ -125,6 +140,39 @@ class TargetViews(unittest.TestCase):
                 self.assertIsNone(ImageChops.difference(image.crop(inner), self.page.crop(word['bbox'])).getbbox(), 'crop pixels differ from the page at the word')
                 ink = sum(1 for p in image.crop(inner).convert('L').getdata() if p < 120)
                 self.assertGreater(ink, 100, 'no ink inside the cropped word box')
+
+    def test_b_gets_an_enlarged_copy_of_the_marked_line(self):
+        folder, data = self.packet('B')
+        assets = {a['asset_id']: a for a in data['assets']}
+        listed = {a['asset_id']: a for a in self.manifest['packets']['B']['assets']}
+        for row in data['targets']:
+            with self.subTest(region=row['region_id']):
+                line = assets[row['line_asset']]
+                views = {v['view_id']: v for v in line['views']}
+                locator = views[row['target_locator_view']]
+                self.assertIn('target_locator_enlarged_views', row, 'B has no enlarged marked line')
+                tiles = [views[i] for i in row['target_locator_enlarged_views']]
+                self.assertTrue(tiles)
+                listed_ids = {v['view_id'] for v in listed[line['asset_id']]['views']}
+                with Image.open(folder / locator['file']) as marked:
+                    marked = marked.convert('RGB')
+                for tile in tiles:
+                    self.assertIn(tile['view_id'], listed_ids, 'enlarged locator missing from the manifest')
+                    self.assertEqual(tile['kind'], 'locator_enlarged')
+                    self.assertEqual(sha(folder / tile['file']), tile['sha256'])
+                    self.assertLessEqual(max(tile['dimensions']), 1600)
+                    t = tile['transform']
+                    self.assertEqual(t['operation'], 'orientation_overlay_resize_then_tile')
+                    self.assertEqual(t['source_view'], locator['view_id'])
+                    self.assertEqual(t['resampling'], 'NEAREST')
+                    self.assertGreater(t['scale'][0], 1, 'marked line is not enlarged')
+                    self.assertFalse(t['letter_evidence'])
+                    size = (round(marked.width * t['scale'][0]), round(marked.height * t['scale'][1]))
+                    again = marked.resize(size, Image.Resampling.NEAREST).crop(t['tile_box_in_resized'])
+                    with Image.open(folder / tile['file']) as image:
+                        self.assertIsNone(ImageChops.difference(again, image.convert('RGB')).getbbox(),
+                                          'enlarged locator is not the marked line scaled up')
+                self.assertTrue(outline_is_covered(locator, marked.size, tiles), 'red target box is not fully inside the enlarged tiles')
 
     def test_shared_page_ships_once_per_packet(self):
         folder, data = self.packet('D')

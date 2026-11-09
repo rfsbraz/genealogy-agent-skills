@@ -130,4 +130,35 @@ def mark_location(asset, target, anchor, folder, index):
         'transform':{'operation':'orientation_overlay','scale':[1,1],
                      'target_outline':'red','anchor_outline':'blue','letter_evidence':False}}
     asset['views'].append(view)
+    view['enlarged_view_ids']=enlarge_location(asset,view,image,folder)
     return view
+
+
+def enlarge_location(asset, view, image, folder):
+    """Enlarged tiles of the marked line, so small target and anchor boxes stay visible.
+
+    Same NEAREST scale-then-tile as the enlarged crops, at least 2x. Orientation only."""
+    from PIL import Image, __version__ as pillow_version
+    width,height=image.size
+    scale=max(2,min(8,math.ceil(max(1200/width,160/height))))
+    enlarged=image.resize((width*scale,height*scale),Image.Resampling.NEAREST)
+    overlap=min(800,max(160,scale*min(height,200)))
+    xs,ys=intervals(enlarged.width,overlap=overlap),intervals(enlarged.height,overlap=overlap)
+    if len(xs)*len(ys)>48:
+        raise ValueError('Too many display tiles; prepare smaller source regions before dispatch.')
+    origin=asset['bbox_original'];ids=[]
+    for y,y_end in ys:
+        for x,x_end in xs:
+            bounds=[x,y,x_end,y_end]
+            view_id=view['view_id']+'-enlarged-'+str(len(ids)).zfill(3);name=view_id+'.png'
+            enlarged.crop(bounds).save(folder/name)
+            box=[bounds[0]/scale,bounds[1]/scale,bounds[2]/scale,bounds[3]/scale]
+            asset['views'].append({'view_id':view_id,'file':name,'kind':'locator_enlarged',
+                'dimensions':[x_end-x,y_end-y],'sha256':hashlib.sha256((folder/name).read_bytes()).hexdigest(),
+                'source_box_in_crop':box,'source_bbox_original':[box[0]+origin[0],box[1]+origin[1],box[2]+origin[0],box[3]+origin[1]],
+                'transform':{'operation':'orientation_overlay_resize_then_tile','source_view':view['view_id'],
+                             'scale':[scale,scale],'resampling':'NEAREST','tile_overlap':overlap,
+                             'tile_box_in_resized':bounds,'target_outline':'red','anchor_outline':'blue',
+                             'letter_evidence':False,'tool':'Pillow','version':pillow_version}})
+            ids.append(view_id)
+    return ids
