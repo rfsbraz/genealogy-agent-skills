@@ -8,6 +8,7 @@ boxes), no model calls.
 """
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 import tempfile
@@ -29,6 +30,20 @@ def by_region(data, role):
     key = {'target': 'target_asset', 'line': 'line_asset', 'context': 'context_asset'}[role]
     return {row['region_id']: assets[row[key]] for row in data['targets'] if key in row}
 
+
+
+def outline_is_covered(locator, marked_size, tiles):
+    """Every pixel of the red outline, clipped to the marked line and scaled, falls in some tile."""
+    x0, y0, x1, y1 = locator['target_bbox_in_line']
+    sx, sy = tiles[0]['transform']['scale']
+    w, h = marked_size
+    box = [max(0, x0 - 2), max(0, y0 - 2), min(w, x1 + 2), min(h, y1 + 2)]
+    size = (round(w * sx), round(h * sy))
+    scaled = [int(box[0] * sx), int(box[1] * sy), min(size[0], math.ceil(box[2] * sx)), min(size[1], math.ceil(box[3] * sy))]
+    covered = Image.new('1', size, 0)
+    for t in tiles:
+        covered.paste(1, tuple(t['transform']['tile_box_in_resized']))
+    return covered.crop(scaled).getextrema() == (1, 1)
 
 class TargetViews(unittest.TestCase):
     @classmethod
@@ -157,11 +172,7 @@ class TargetViews(unittest.TestCase):
                     with Image.open(folder / tile['file']) as image:
                         self.assertIsNone(ImageChops.difference(again, image.convert('RGB')).getbbox(),
                                           'enlarged locator is not the marked line scaled up')
-                x0, y0, x1, y1 = locator['target_bbox_in_line']
-                sx, sy = tiles[0]['transform']['scale']
-                self.assertTrue(any(
-                    t['transform']['tile_box_in_resized'][0] <= (x0 - 2) * sx < t['transform']['tile_box_in_resized'][2]
-                    for t in tiles), 'red target box is not in any enlarged tile')
+                self.assertTrue(outline_is_covered(locator, marked.size, tiles), 'red target box is not fully inside the enlarged tiles')
 
     def test_shared_page_ships_once_per_packet(self):
         folder, data = self.packet('D')
