@@ -57,7 +57,7 @@ Build creates a frozen coordinator manifest, source snapshots, draft task folder
 By default build prints a short summary: output folder, manifest and preflight template paths, packet ID, packet digest, counts and `warnings`. Add `--verbose` to print the full manifest. The manifest file is always complete, and its `warnings` list matches the summary.
 
 - A receives neutral target crops and nearest-neighbour enlargements, up to 8×.
-- B also receives neutral line/anchor views, a marked line locator and same-hand samples. Coloured locator boxes are orientation only, excluded from letter evidence.
+- B also receives neutral line/anchor views, a marked line locator with an enlarged copy (`target_locator_enlarged_views`, at least 2x, NEAREST, tiled like the other enlarged views) and same-hand samples. Coloured locator boxes are orientation only, excluded from letter evidence.
 - C receives complete lines, ordered enlarged tiles and target details.
 - D receives page context plus line/target details, reusing a shared page once within its folder.
 

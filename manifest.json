@@ -554,8 +554,8 @@
       "bytes": 2115
     },
     "skills/genealogy-read-manuscripts/references/packet-helper.md": {
-      "sha256": "3cb40f845560351051d38da35396115cb736cb30cc1d6414f1279b5105485542",
-      "bytes": 11976
+      "sha256": "05850c71195880cc904296d751d6b8cdedd9d0bf26861de79f99e59f36584cba",
+      "bytes": 12091
     },
     "skills/genealogy-read-manuscripts/references/protocol.md": {
       "sha256": "c9d84c5ef98ddfb2a117b36daf711d86a7fcbf7f41fc669a7faaf9f501c69b7e",
@@ -574,12 +574,12 @@
       "bytes": 1413
     },
     "skills/genealogy-read-manuscripts/scripts/image_views.py": {
-      "sha256": "09e394517b9f4fdb2686ca069540c7a8e5800fa27d12627bc325c194b69a2de0",
-      "bytes": 8021
+      "sha256": "5a4efd1a3ebb1511754686e83811ccbb3cd46f86ce4ee323fc7632cb975fef0d",
+      "bytes": 9977
     },
     "skills/genealogy-read-manuscripts/scripts/method_packets.py": {
-      "sha256": "fe8eaca210eb77573bfd20226d860f3af0d026ef58cbe391b2212292bd2e9fd4",
-      "bytes": 26317
+      "sha256": "67c47e6375467cc1e836aa1c6c1fc01b7a9ef587a27e6dc07f3137f71f95f145",
+      "bytes": 26404
     },
     "skills/genealogy-read-manuscripts/scripts/packet_review.py": {
       "sha256": "f40d6dcfe0bdbc98dc2e51c33f5137f5987ca61225bf282497967594f96863c5",
@@ -794,8 +794,8 @@
       "bytes": 6905
     },
     "tests/check_panel_views.py": {
-      "sha256": "b9789c652ebae6c99e0a56961bc7c80f7d0a09eb79b75de65bc842fd4a90248f",
-      "bytes": 8945
+      "sha256": "09f1c7caf78809d92e6657a6caee5b2f22edd20eb16b477a7859198b3fb9ad1f",
+      "bytes": 11515
     },
     "tests/check_queue_cli.py": {
       "sha256": "fe2dee77e804fe92f52d10a9c786835f2c4139023fd59b8d5609ec407c9e5f31",

@@ -187,6 +187,7 @@ def build(spec, base, out):
                     row['anchor_bbox_original']=t.get('anchor_bbox_original')
                     location=views.mark_location(asset(records['line']),t['bbox_original'],t.get('anchor_bbox_original'),folder,index)
                     row['target_locator_view']=location['view_id']
+                    row['target_locator_enlarged_views']=location['enlarged_view_ids']
                     review_by_region[t['region_id']]['required_files'].append((folder/location['file']).relative_to(stage).as_posix())
                     refs={}
                     for sample in records['samples']:
