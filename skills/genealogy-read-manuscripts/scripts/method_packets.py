@@ -276,7 +276,19 @@ def summarize(manifest, reports, root=None):
     if manifest.get('schema_version') not in (None,'1.0','1.1','1.2'):
         raise ValueError('Unsupported packet schema version')
     if root is not None and manifest.get('schema_version')=='1.2':
-        load_module('packet_review').fingerprint(root,manifest)
+        review=load_module('packet_review')
+        review.fingerprint(root,manifest)
+        released=Path(root)/'dispatch'
+        if released.is_dir():
+            for packet in manifest['packets'].values():
+                source=review.safe_file(root,packet['prompt']).parent
+                for name,expected in manifest['inventory'].items():
+                    original=review.safe_file(root,name)
+                    if original.parent!=source:continue
+                    copy=released/source.name/original.name
+                    relative=(Path('dispatch')/source.name/original.name).as_posix()
+                    if not copy.is_file() or review.sha(copy)!=expected:
+                        raise ValueError('Packet changed or missing: '+relative)
     expected = manifest['planned_methods']
     if set(expected) != set(BRIEFS):
         raise ValueError('Manifest must plan the four methods A/B/C/D.')

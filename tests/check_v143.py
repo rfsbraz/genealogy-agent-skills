@@ -323,7 +323,7 @@ class SourceAndGateChecks(unittest.TestCase):
 
 
     def test_summarize_refuses_an_edited_released_packet(self):
-        self.build();self.pass_review();self.gate.dispatch(self.manifest)
+        self.build();self.pass_review();released=self.gate.dispatch(self.manifest)
         rows=self.method_reports()
         script=str(Path(MODULE.__file__))
         def run():
@@ -337,8 +337,9 @@ class SourceAndGateChecks(unittest.TestCase):
         unchanged=run()
         self.assertEqual(unchanged.returncode,0,unchanged.stderr+unchanged.stdout)
         self.assertEqual(json.loads(unchanged.stdout)['reported_methods'],list('ABCD'))
-        name=next(n for n in self.m['inventory'] if n.endswith('prompt.md'))
-        path=self.p/'packet'/name
+        path=Path(released['tasks'][0]['prompt'])
+        name=path.relative_to(self.p/'packet').as_posix()
+        self.assertTrue(name.startswith('dispatch/'),name)
         path.write_bytes(path.read_bytes()+b'\n')
         edited=run()
         self.assertEqual(edited.returncode,2,edited.stderr+edited.stdout)
