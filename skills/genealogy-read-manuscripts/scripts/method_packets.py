@@ -269,12 +269,26 @@ def sequence_check(region, reports):
         'rule':'Align consequential characters, including ending and boundaries, against A/B and source detail. Missing evidence is not agreement. Any unresolved material conflict blocks visually_supported; fluency and model confidence cannot clear this gate.'}
 
 
-def summarize(manifest, reports):
+def summarize(manifest, reports, root=None):
     """Count literal agreement, never infer confidence or actual independence."""
     if not isinstance(manifest,dict):raise ValueError('Manifest must be an object.')
     if not isinstance(reports,list):raise ValueError('Reports must be a list.')
     if manifest.get('schema_version') not in (None,'1.0','1.1','1.2'):
         raise ValueError('Unsupported packet schema version')
+    if root is not None and manifest.get('schema_version')=='1.2':
+        review=load_module('packet_review')
+        review.fingerprint(root,manifest)
+        released=Path(root)/'dispatch'
+        if released.is_dir():
+            for packet in manifest['packets'].values():
+                source=review.safe_file(root,packet['prompt']).parent
+                for name,expected in manifest['inventory'].items():
+                    original=review.safe_file(root,name)
+                    if original.parent!=source:continue
+                    copy=released/source.name/original.name
+                    relative=(Path('dispatch')/source.name/original.name).as_posix()
+                    if not copy.is_file() or review.sha(copy)!=expected:
+                        raise ValueError('Packet changed or missing: '+relative)
     expected = manifest['planned_methods']
     if set(expected) != set(BRIEFS):
         raise ValueError('Manifest must plan the four methods A/B/C/D.')
@@ -372,8 +386,10 @@ def main():
         elif args.command == 'dispatch':
             result=load_module('packet_review').dispatch(args.manifest)
         else:
-            result = summarize(json.loads(Path(args.manifest).read_text(encoding='utf-8')),
-                [json.loads(Path(p).read_text(encoding='utf-8')) for p in args.reports])
+            manifest_path=Path(args.manifest)
+            result = summarize(json.loads(manifest_path.read_text(encoding='utf-8')),
+                [json.loads(Path(p).read_text(encoding='utf-8')) for p in args.reports],
+                root=manifest_path.parent)
         print(json.dumps(result,ensure_ascii=False,indent=2))
         return 0
     except (OSError,ValueError,KeyError,TypeError) as exc:

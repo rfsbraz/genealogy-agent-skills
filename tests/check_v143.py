@@ -301,12 +301,51 @@ class SourceAndGateChecks(unittest.TestCase):
         self.assertEqual(receipt['review_digest'],third['review_digest'])
         self.assertEqual(receipt['replaced_reviews'],2)
 
+    def method_reports(self):
+        rows=reports()
+        for row in rows:
+            row.update(packet_id=self.m['packet_id'],source_id='S')
+            if row['method_id']=='B':
+                region=self.m['review_regions'][0]
+                row['spans'][0]['method_product']['target_location']={**{k:region[k] for k in ('source_id','page','bbox_original')},'preceding_anchor':'line start in fixture'}
+            if row['method_id']=='C':
+                row['spans'][0]['method_product'].update(raw_line_output='literal',character_audit=[{'group':'all','verdict':'uncertain'}])
+            asset=self.m['packets'][row['method_id']]['assets'][0]
+            row['inputs_used']=[{**{k:asset[k] for k in ('asset_id','source_id','page')},'view_id':asset['views'][0]['view_id']}]
+        return rows
+
     def test_wrong_target_location_from_b_is_rejected(self):
         self.build();row=reports()[1];row.update(packet_id=self.m['packet_id'],source_id='S')
         asset=self.m['packets']['B']['assets'][0]
         row['inputs_used']=[{**{k:asset[k] for k in ('asset_id','source_id','page')},'view_id':asset['views'][0]['view_id']}]
         row['spans'][0]['method_product']['target_location']={'source_id':'S','page':1,'bbox_original':[200,90,330,120],'preceding_anchor':'sample word'}
         with self.assertRaisesRegex(ValueError,'target_location'):MODULE.summarize(self.m,[row])
+
+
+    def test_summarize_refuses_an_edited_released_packet(self):
+        self.build();self.pass_review();released=self.gate.dispatch(self.manifest)
+        rows=self.method_reports()
+        script=str(Path(MODULE.__file__))
+        def run():
+            folder=self.p/'reports';folder.mkdir(exist_ok=True)
+            paths=[]
+            for row in rows:
+                path=folder/(row['method_id']+'.json')
+                path.write_text(json.dumps(row),encoding='utf-8')
+                paths.append(path)
+            return subprocess.run([sys.executable,script,'summarize',str(self.manifest),*map(str,paths)],capture_output=True,text=True)
+        unchanged=run()
+        self.assertEqual(unchanged.returncode,0,unchanged.stderr+unchanged.stdout)
+        self.assertEqual(json.loads(unchanged.stdout)['reported_methods'],list('ABCD'))
+        path=Path(released['tasks'][0]['prompt'])
+        name=path.relative_to(self.p/'packet').as_posix()
+        self.assertTrue(name.startswith('dispatch/'),name)
+        path.write_bytes(path.read_bytes()+b'\n')
+        edited=run()
+        self.assertEqual(edited.returncode,2,edited.stderr+edited.stdout)
+        self.assertIn('Packet changed or missing',edited.stderr)
+        self.assertIn(name,edited.stderr)
+        self.assertEqual(edited.stdout,'')
 
     def test_legacy_packets_cannot_pass_new_dispatch_gate(self):
         self.build();m=json.loads(self.manifest.read_text());m['schema_version']='1.1';self.manifest.write_text(json.dumps(m))
