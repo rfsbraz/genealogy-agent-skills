@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.2](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.1.1...v2.1.2) (2026-11-25)
+
+
+### Bug Fixes
+
+* **reading:** distinguish crop pixel checks from visual review ([#62](https://github.com/rfsbraz/genealogy-agent-skills/issues/62)) ([4135437](https://github.com/rfsbraz/genealogy-agent-skills/commit/41354379ffb28cf18dfc802cd32d58e447efb402))
+* **reading:** name blocked targets in dispatch errors ([#63](https://github.com/rfsbraz/genealogy-agent-skills/issues/63)) ([9a891a1](https://github.com/rfsbraz/genealogy-agent-skills/commit/9a891a10f7b92951b5669c5207bd76d6f3ed155f))
+
 ## [2.1.1](https://github.com/rfsbraz/genealogy-agent-skills/compare/v2.1.0...v2.1.1) (2026-10-28)
 
 
