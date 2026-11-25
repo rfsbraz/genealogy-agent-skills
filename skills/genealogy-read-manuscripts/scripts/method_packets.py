@@ -119,6 +119,7 @@ def build(spec, base, out):
         'packets':{},'review_regions':[]}
     try:
         source_tools=load_module('source_crops')
+        manifest['crop_check_limits']=source_tools.PIXEL_CHECK_LIMITS
         sources=source_tools.SourcePages(spec.get('pages'),base,stage,views)
         identities={};all_samples=[]
         for t,records in zip(targets,prepared):
@@ -148,7 +149,7 @@ def build(spec, base, out):
                 key=(sample['source_id'],str(sample['page']),sample['sample_id'])
                 if key in identities and identities[key]!=sample['bbox_original']:raise ValueError('A page-qualified sample ID refers to conflicting crops.')
                 identities[key]=sample['bbox_original']
-                verified=sources.crop(sample);all_samples.append(verified)
+                pixel_bound=sources.crop(sample);all_samples.append(pixel_bound)
         groups=source_tools.coalesce_samples(all_samples,sources)
         group_by_alias={}
         for group in groups:
@@ -198,6 +199,7 @@ def build(spec, base, out):
                 rows.append(row)
             payload={'schema_version':'1.2','packet_id':manifest['packet_id'],'source_id':spec['source_id'],'method_id':method,
                 'round':round_number,'targets':rows,'assets':list(assets.values()),
+                'crop_check_limits':source_tools.PIXEL_CHECK_LIMITS,
                 'script':spec.get('script','unspecified'),'private_work_directory':'work'}
             if method=='D':payload['verified_context']=context
             common=(ROOT/'references/common-contract.md').read_text(encoding='utf-8')
@@ -229,7 +231,7 @@ def build_summary(out, manifest):
         'packet_digest':load_module('packet_review').fingerprint(out,manifest),
         'counts':{'regions':len(manifest['review_regions']),'methods':len(manifest['packets']),
                   'assets':sum(len(p['assets']) for p in manifest['packets'].values()),'files':len(manifest['inventory'])},
-        'warnings':manifest['warnings'],
+        'warnings':manifest['warnings'],'crop_check_limits':manifest['crop_check_limits'],
         'next':'Inspect the views, fill preflight-template.json, then run record-preflight. Use --verbose for the full manifest.'}
 
 

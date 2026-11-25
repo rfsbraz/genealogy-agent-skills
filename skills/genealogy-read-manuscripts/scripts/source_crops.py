@@ -6,6 +6,10 @@ import shutil
 # Smallest darkening (0-255 grey levels) that counts as ink rather than paper grain.
 MIN_INK_DIP = 20
 
+PIXEL_CHECK_LIMITS = ('Pixel correspondence checks the stated page and coordinates only. '
+                     'A pixel-exact crop can surround the wrong word or omit part of a phrase. '
+                     'Visual preflight review is the safeguard for intended-word selection and completeness.')
+
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -76,7 +80,9 @@ class SourcePages:
             pixels.save(self.stage/dest)
             self.crops[crop_key]=dest.as_posix()
         result=dict(record,image=self.crops[crop_key],source_page_sha256=page['sha256'],
-                    crop_verification='derived_from_pinned_page',supplied_crop_verified=supplied is not None)
+                    crop_pixel_check='derived_from_pinned_page',
+                    supplied_crop_pixel_check='matched' if supplied is not None else 'not_supplied',
+                    visual_review_requirement='recorded_preflight_before_dispatch')
         return result
 
     def inked_edges(self, record, gap=2):
@@ -103,7 +109,7 @@ class SourcePages:
                 if any(dip(x)>=threshold for x in outside) and any(dip(x)>=threshold for x in inside)]
 
     def pad(self, record, fraction):
-        """Re-crop a verified box with a margin taken from the pinned page, clamped to its edges."""
+        """Re-crop a pixel-bound box with a margin from the pinned page, clamped to its edges."""
         box=record['bbox_original'];width,height=self.pages[page_key(record['source_id'],record['page'])]['dimensions']
         pixels=round(fraction*(box[3]-box[1]))
         wanted=[box[0]-pixels,box[1]-pixels,box[2]+pixels,box[3]+pixels]

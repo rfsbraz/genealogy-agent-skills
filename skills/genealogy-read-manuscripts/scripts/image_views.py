@@ -47,7 +47,7 @@ def intervals(length, tile=1600, overlap=160):
 
 
 def make_views(record, base, folder, asset_id, contrast=False):
-    """Copy verified crop bytes and emit neutral, balanced display tiles with exact lineage."""
+    """Copy pixel-bound crop bytes and emit neutral display tiles with exact lineage."""
     if contrast:raise ValueError('Contrast views are disabled in reading packets; compression blocks can mimic strokes.')
     from PIL import Image, __version__ as pillow_version
     path, folder = Path(base) / record['image'], Path(folder)
@@ -56,7 +56,11 @@ def make_views(record, base, folder, asset_id, contrast=False):
     filename = asset_id + '-original' + path.suffix.lower()
     shutil.copyfile(path, folder / filename)
     identity = {k: record[k] for k in ('source_id', 'page', 'sample_id', 'bbox_original')}
-    result = dict(identity, source_page_sha256=record.get('source_page_sha256'), crop_verification=record.get('crop_verification'), aliases=record.get('aliases',[]), asset_id=asset_id, role=record['role'], original_file=filename,
+    result = dict(identity, source_page_sha256=record.get('source_page_sha256'),
+                  crop_pixel_check=record.get('crop_pixel_check'),
+                  supplied_crop_pixel_check=record.get('supplied_crop_pixel_check'),
+                  visual_review_requirement=record.get('visual_review_requirement'),
+                  aliases=record.get('aliases',[]), asset_id=asset_id, role=record['role'], original_file=filename,
                   original_sha256=original_hash, original_dimensions=[width, height], views=[])
     original = dict(view_id=asset_id+'-original', file=filename, kind='original',
                     dimensions=[width, height], sha256=original_hash,

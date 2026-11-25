@@ -554,8 +554,8 @@
       "bytes": 2115
     },
     "skills/genealogy-read-manuscripts/references/packet-helper.md": {
-      "sha256": "3cb40f845560351051d38da35396115cb736cb30cc1d6414f1279b5105485542",
-      "bytes": 11976
+      "sha256": "f24e25a1361280234ed7ff728ebe94cbcf23aca9b061641e7e5256e6bfd5d882",
+      "bytes": 12869
     },
     "skills/genealogy-read-manuscripts/references/protocol.md": {
       "sha256": "c9d84c5ef98ddfb2a117b36daf711d86a7fcbf7f41fc669a7faaf9f501c69b7e",
@@ -574,20 +574,20 @@
       "bytes": 1413
     },
     "skills/genealogy-read-manuscripts/scripts/image_views.py": {
-      "sha256": "09e394517b9f4fdb2686ca069540c7a8e5800fa27d12627bc325c194b69a2de0",
-      "bytes": 8021
+      "sha256": "fb4b3b234b9b4a3e5190300bdb16f66e4f4de7e27808014ee9c77b0a293e3f10",
+      "bytes": 8218
     },
     "skills/genealogy-read-manuscripts/scripts/method_packets.py": {
-      "sha256": "fe8eaca210eb77573bfd20226d860f3af0d026ef58cbe391b2212292bd2e9fd4",
-      "bytes": 26317
+      "sha256": "f6c6d23372f75913254fdc3383722b778c65f12c0f5173750897914a374bfe01",
+      "bytes": 26512
     },
     "skills/genealogy-read-manuscripts/scripts/packet_review.py": {
       "sha256": "f40d6dcfe0bdbc98dc2e51c33f5137f5987ca61225bf282497967594f96863c5",
       "bytes": 11631
     },
     "skills/genealogy-read-manuscripts/scripts/source_crops.py": {
-      "sha256": "272ab22cee05b64e0d4bde5f99eec8a3df8e1948e397929ed1106d995c4e033b",
-      "bytes": 7927
+      "sha256": "5d0e34acc108e455946426530fa8a5659127be295c16ff87cc934d2b044d56db",
+      "bytes": 8364
     },
     "skills/genealogy-record-acquisition/SKILL.md": {
       "sha256": "8264c1725b05d918d0bc904cd020db2c79b32cf6485a2efeef07214c5262f4e9",
@@ -850,8 +850,8 @@
       "bytes": 10443
     },
     "tests/check_v143.py": {
-      "sha256": "3590d54c3badfc58e814a5f247752822bccc90dca960f5b7bcdd28db20d407fd",
-      "bytes": 18947
+      "sha256": "078bed7b5104fb91d9ab800c3c7a66472bc749e1ad2a2faf6dd7203fec323580",
+      "bytes": 20553
     },
     "tests/fixtures/gap-finder/case.json": {
       "sha256": "6e85a6817304b54f21bb181983f02556f404b572c8771fadb9c91c4ad66171a9",

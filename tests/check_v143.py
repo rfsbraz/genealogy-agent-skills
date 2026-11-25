@@ -105,9 +105,36 @@ class SourceAndGateChecks(unittest.TestCase):
         with Image.open(self.p/'page1.png') as page,Image.open(folder/asset['original_file']) as crop:
             self.assertEqual(page.crop((80,40,180,70)).convert('RGBA').tobytes(),crop.convert('RGBA').tobytes())
         self.assertEqual(asset['source_page_sha256'],self.spec['pages'][0]['sha256'])
-        self.assertEqual(asset['crop_verification'],'derived_from_pinned_page')
+        self.assertEqual(asset['crop_pixel_check'],'derived_from_pinned_page')
         source=self.p/'packet'/self.m['sources'][0]['file']
         self.assertEqual(source.read_bytes(),(self.p/'page1.png').read_bytes())
+
+    def test_pixel_exact_wrong_word_still_requires_visual_preflight(self):
+        # This reproduces the trial failure: the supplied crop matches its
+        # declared page and box perfectly, but selects different ink.
+        box=[200,40,330,70]
+        self.spec['targets'][0]['bbox_original']=box
+        with Image.open(self.p/'page1.png') as page:
+            page.crop(box).save(self.p/'wrong-word.png')
+        self.spec['targets'][0]['target_image']='wrong-word.png'
+        self.build()
+        for method in self.m['planned_methods']:
+            payload=self.payload(method)
+            target_id=payload['targets'][0]['target_asset']
+            asset=next(a for a in payload['assets'] if a['asset_id']==target_id)
+            self.assertEqual(asset['supplied_crop_pixel_check'],'matched')
+            self.assertEqual(asset['visual_review_requirement'],'recorded_preflight_before_dispatch')
+            self.assertNotIn('crop_verification',asset)
+            self.assertNotIn('supplied_crop_verified',asset)
+            self.assertIn('wrong word',payload['crop_check_limits'])
+        summary=MODULE.build_summary(self.p/'packet',self.m)
+        self.assertIn('Visual preflight review is the safeguard',summary['crop_check_limits'])
+        with self.assertRaisesRegex(ValueError,'preflight first'):
+            self.gate.dispatch(self.manifest)
+        record=self.review();record['regions'][0]['target_complete']=False
+        self.gate.record_preflight(self.manifest,record)
+        with self.assertRaisesRegex(ValueError,'Dispatch blocked'):
+            self.gate.dispatch(self.manifest)
 
     def test_crop_outside_page_is_rejected(self):
         self.spec['targets'][0]['context_bbox_original']=[0,0,401,160]
